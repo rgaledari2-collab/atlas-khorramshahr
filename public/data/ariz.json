@@ -26,46 +26,46 @@
       "id": 1,
       "guardianName": "سیده اقدس مفتی عریض",
       "guardianAge": 44,
-      "guardianNationalId": "1728293628",
+      "guardianNationalId": "172***3628",
       "childName": "مریم",
       "childLastName": "عریضاوی",
       "fatherName": "عبدالامام",
-      "childNationalId": "1820939261",
+      "childNationalId": "182***9261",
       "childAge": 11,
       "educationLevel": "پنجم",
       "schoolName": "امام رضایی‌ها",
       "healthStatus": "سالم",
       "address": "روستای عریض - معراج ۲",
-      "phone": "09076792730"
+      "phone": "0907***2730"
     }
   ],
   "underprivileged": [
     {
       "id": 1,
       "fullName": "سکینه عیدیان پور",
-      "nationalId": "1899611037",
-      "phone": "09030137830",
+      "nationalId": "189***1037",
+      "phone": "0903***7830",
       "address": "پل نو روستای عریض انتهای معراج ۴"
     },
     {
       "id": 2,
       "fullName": "حمیده روزی زاده",
       "nationalId": "—",
-      "phone": "09045206539",
+      "phone": "0904***6539",
       "address": "پل نو روستای عریض خ معراج ۹ بعد از حسینیه منزل بلوکی"
     },
     {
       "id": 3,
       "fullName": "جلال قویشاوی",
-      "nationalId": "5279774529",
-      "phone": "09307499368",
+      "nationalId": "527***4529",
+      "phone": "0930***9368",
       "address": "روستای عریض خ اصلی معراج ۹ روبروی مسجد"
     },
     {
       "id": 4,
       "fullName": "نسیمه معرفی",
-      "nationalId": "1820465152",
-      "phone": "09163328512",
+      "nationalId": "182***5152",
+      "phone": "0916***8512",
       "address": "روستای عریض خیابان اصلی بین معراج ۲ و ۳"
     }
   ]
