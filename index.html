@@ -1385,6 +1385,102 @@ header > * {
     transform: scale(1.06) !important;
 }
 
+/* Red Pins (یادمان شهدای شلمچه و یادمان شهدای نهر خین) */
+.pin.is-pin-red .pin-dot {
+    background: #ef4444 !important;
+    border: 2px solid #ffffff !important;
+    box-shadow: 0 0 14px rgba(239, 68, 68, 0.95), 0 2px 6px rgba(0,0,0,0.8) !important;
+}
+.pin.is-pin-red .pin-dot:before {
+    border-color: rgba(239, 68, 68, 0.65) !important;
+}
+.pin.is-pin-red span {
+    opacity: 1 !important;
+    transform: none !important;
+    color: #ff6b6b !important;
+    background: rgba(24, 10, 10, 0.90) !important;
+    border: 1.5px solid #ef4444 !important;
+    font-weight: 800 !important;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.9) !important;
+    font-size: 13px !important;
+    padding: 3px 10px !important;
+    border-radius: 18px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5) !important;
+    pointer-events: auto !important;
+    white-space: nowrap !important;
+}
+.pin.is-pin-red:hover span {
+    background: rgba(45, 12, 12, 0.98) !important;
+    color: #ffffff !important;
+    border-color: #ff4d4d !important;
+    box-shadow: 0 0 16px rgba(239, 68, 68, 0.8) !important;
+    transform: scale(1.06) !important;
+}
+
+/* Green Pins (مجتمع فاطمه الزهرا (س)) */
+.pin.is-pin-green .pin-dot {
+    background: #10b981 !important;
+    border: 2px solid #ffffff !important;
+    box-shadow: 0 0 14px rgba(16, 185, 129, 0.95), 0 2px 6px rgba(0,0,0,0.8) !important;
+}
+.pin.is-pin-green .pin-dot:before {
+    border-color: rgba(16, 185, 129, 0.65) !important;
+}
+.pin.is-pin-green span {
+    opacity: 1 !important;
+    transform: none !important;
+    color: #34d399 !important;
+    background: rgba(6, 24, 18, 0.90) !important;
+    border: 1.5px solid #10b981 !important;
+    font-weight: 800 !important;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.9) !important;
+    font-size: 13px !important;
+    padding: 3px 10px !important;
+    border-radius: 18px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5) !important;
+    pointer-events: auto !important;
+    white-space: nowrap !important;
+}
+.pin.is-pin-green:hover span {
+    background: rgba(8, 38, 28, 0.98) !important;
+    color: #ffffff !important;
+    border-color: #10b981 !important;
+    box-shadow: 0 0 16px rgba(16, 185, 129, 0.8) !important;
+    transform: scale(1.06) !important;
+}
+
+/* Orange Pins (پارکینگ بزرگ اربعین) */
+.pin.is-pin-orange .pin-dot {
+    background: #f97316 !important;
+    border: 2px solid #ffffff !important;
+    box-shadow: 0 0 14px rgba(249, 115, 22, 0.95), 0 2px 6px rgba(0,0,0,0.8) !important;
+}
+.pin.is-pin-orange .pin-dot:before {
+    border-color: rgba(249, 115, 22, 0.65) !important;
+}
+.pin.is-pin-orange span {
+    opacity: 1 !important;
+    transform: none !important;
+    color: #fb923c !important;
+    background: rgba(28, 16, 8, 0.90) !important;
+    border: 1.5px solid #f97316 !important;
+    font-weight: 800 !important;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.9) !important;
+    font-size: 13px !important;
+    padding: 3px 10px !important;
+    border-radius: 18px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5) !important;
+    pointer-events: auto !important;
+    white-space: nowrap !important;
+}
+.pin.is-pin-orange:hover span {
+    background: rgba(45, 22, 10, 0.98) !important;
+    color: #ffffff !important;
+    border-color: #f97316 !important;
+    box-shadow: 0 0 16px rgba(249, 115, 22, 0.8) !important;
+    transform: scale(1.06) !important;
+}
+
 /* Pink badge for مدرسه حاج علی */
 .pin.is-school-pink .pin-dot {
     background: #e64980 !important;
@@ -8295,11 +8391,11 @@ body.in-village .gis-dock-wrap {
                 { id: 'darband-gharbi', name: 'دربند غربی', cat: 'village', x: 0.742, y: 0.872, data: { pop: '۲,۷۵۵', fam: '۶۸۱', stats: [['دانش‌آموزان', 177], ['ایتام', 11], ['کم‌برخوردار', 50], ['مدارس', 1], ['خانه بهداشت', 1]] } },
                 { id: 'sad-dastgah', name: 'صد دستگاه', cat: 'village', x: 0.822, y: 0.888, data: { pop: '۸۸۲', fam: '۲۱۱', stats: [['دانش‌آموزان', 695], ['ایتام', 3], ['کم‌برخوردار', 21], ['مدارس', 2], ['مسجد', 1]] } },
                 
-                // یادمان‌ها و مواضع راهبردی (کد رنگ ff3b30)
-                { id: 'yadman-shalamcheh', name: 'یادمان شهدای شلمچه', cat: 'yadman', x: 0.080, y: 0.520, data: { pop: 'نقطه صفر مرزی', fam: 'محور عملیاتی', stats: [['موقعیت', 'مرز بین‌المللی شلمچه'], ['کاربری', 'زیارتگاهی و فرهنگی'], ['اهمیت', 'نماد مقاومت ملی'], ['زائران سالانه', '+۲,۰۰۰,۰۰۰ نفر']] } },
-                { id: 'yadman-khein', name: 'یادمان شهدای نهر خین', cat: 'yadman', x: 0.440, y: 0.820, data: { pop: 'خط مرزی اروند', fam: 'محور کربلای ۴ و ۵', stats: [['موقعیت', 'جزیره بوارین - نهر خین'], ['کاربری', 'یادمان دفاع مقدس'], ['اهمیت', 'معبر خط‌شکنان غواص'], ['وضعیت', 'زیارتی و رویدادی']] } },
-                { id: 'parking-arbaeen', name: 'پارکینگ بزرگ اربعین', cat: 'infra', x: 0.285, y: 0.425, data: { pop: 'ظرفیت ۵۰,۰۰۰ خودرو', fam: 'پشتیبانی زائران', stats: [['مساحت', '۸۰ هکتار'], ['کاربری', 'پارکینگ و بارانداز'], ['دوره اوج', 'ایام اربعین حسینی'], ['امکانات', 'روشنایی، آب و امداد']] } },
-                { id: 'complex-fatemeh', name: 'مجتمع فاطمه الزهرا (س)', cat: 'infra', x: 0.190, y: 0.535, data: { pop: 'مرکز رفاهی-خدماتی', fam: 'اسکان اضطراری', stats: [['ظرفیت اسکان', '۱۰,۰۰۰ نفر شب'], ['امکانات', 'درمانگاه و مصلای بزرگ'], ['کاربری', 'خدمات‌رسانی مواکب'], ['وضعیت', 'آماده‌به‌خدمت']] } }
+                // یادمان‌ها و مواضع راهبردی (با تفکیک رنگ درخواستی)
+                { id: 'yadman-shalamcheh', name: 'یادمان شهدای شلمچه', cat: 'yadman', colorClass: 'is-pin-red', x: 0.023, y: 0.054, data: { pop: 'نقطه صفر مرزی', fam: 'محور عملیاتی', stats: [['موقعیت', 'مرز بین‌المللی شلمچه'], ['کاربری', 'زیارتگاهی و فرهنگی'], ['اهمیت', 'نماد مقاومت ملی'], ['زائران سالانه', '+۲,۰۰۰,۰۰۰ نفر']] } },
+                { id: 'yadman-khein', name: 'یادمان شهدای نهر خین', cat: 'yadman', colorClass: 'is-pin-red', x: 0.505, y: 0.756, data: { pop: 'خط مرزی اروند', fam: 'محور کربلای ۴ و ۵', stats: [['موقعیت', 'جزیره بوارین - نهر خین'], ['کاربری', 'یادمان دفاع مقدس'], ['اهمیت', 'معبر خط‌شکنان غواص'], ['وضعیت', 'زیارتی و رویدادی']] } },
+                { id: 'parking-arbaeen', name: 'پارکینگ بزرگ اربعین', cat: 'infra', colorClass: 'is-pin-orange', x: 0.249, y: 0.123, data: { pop: 'ظرفیت ۵۰,۰۰۰ خودرو', fam: 'پشتیبانی زائران', stats: [['مساحت', '۸۰ هکتار'], ['کاربری', 'پارکینگ و بارانداز'], ['دوره اوج', 'ایام اربعین حسینی'], ['امکانات', 'روشنایی، آب و امداد']] } },
+                { id: 'complex-fatemeh', name: 'مجتمع فاطمه الزهرا (س)', cat: 'infra', colorClass: 'is-pin-green', x: 0.389, y: 0.324, data: { pop: 'مرکز رفاهی-خدماتی', fam: 'اسکان اضطراری', stats: [['ظرفیت اسکان', '۱۰,۰۰۰ نفر شب'], ['امکانات', 'درمانگاه و مصلای بزرگ'], ['کاربری', 'خدمات‌رسانی مواکب'], ['وضعیت', 'آماده‌به‌خدمت']] } }
             ];
 
             
@@ -12483,7 +12579,16 @@ const emptyStatsHtml = `<div class="dos-content-grid" id="stats-content-8" class
 
             function createPinElement(v) {
                 const btn = document.createElement('button');
-                btn.className = 'pin ' + (v.cat === 'village' ? 'is-village' : (v.cat === 'pink' ? 'is-school-pink' : 'is-landmark-black'));
+                let pinClass = v.colorClass;
+                if (!pinClass) {
+                    if (v.cat === 'village') pinClass = 'is-village';
+                    else if (v.cat === 'pink') pinClass = 'is-school-pink';
+                    else if (v.color === 'red') pinClass = 'is-pin-red';
+                    else if (v.color === 'green') pinClass = 'is-pin-green';
+                    else if (v.color === 'orange') pinClass = 'is-pin-orange';
+                    else pinClass = 'is-landmark-black';
+                }
+                btn.className = 'pin ' + pinClass;
                 btn.style.left = (v.x * 100) + '%';
                 btn.style.top = (v.y * 100) + '%';
                 btn.setAttribute('aria-label', 'ورود به ' + v.name);
@@ -12535,7 +12640,7 @@ const emptyStatsHtml = `<div class="dos-content-grid" id="stats-content-8" class
             let cachedRootW = 0, cachedRootH = 0;
             let cachedMapRect = null;
             const borderLabels = [
-                { x: 0.020, y: 0.055, text: 'عراق', el: null },
+                { x: 0.006, y: 0.020, text: 'عراق', el: null },
                 { x: 0.015, y: 0.315, text: 'عراق', el: null },
                 { x: 0.145, y: 0.630, text: 'عراق', el: null }
             ];
@@ -19666,7 +19771,9 @@ addEventListener('resize', layout); layout();
                     'sarhaniyeh-avval': 'sarhaniyeh-olya',
                     'sarhaniyeh-ola': 'sarhaniyeh-olya',
                     'nahr-khein': 'yadman-khein',
-                    'terminal-shalamcheh': 'yadman-shalamcheh'
+                    'terminal-shalamcheh': 'yadman-shalamcheh',
+                    'mojtama-fatemeh-zahra': 'complex-fatemeh',
+                    'fatemeh-zahra': 'complex-fatemeh'
                 };
                 if (aliasMap[villageId]) {
                     v = villages.find(x => x.id === aliasMap[villageId]);
