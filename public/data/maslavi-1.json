@@ -1,0 +1,212 @@
+{
+  "metadata": {
+    "id": "maslavi-1",
+    "name": "مصلاوی ۱",
+    "dehestan": "حومه غربی",
+    "bakhsh": "مرکزی",
+    "shahrestan": "خرمشهر",
+    "ostan": "خوزستان",
+    "coords": {
+      "lat": 30.47266675,
+      "lng": 48.13717632,
+      "display": "30.4726° N, 48.1371° E"
+    },
+    "pop": 2063,
+    "households": 689,
+    "corridor": "محور ارتباطی مصلاوی - حومه غربی",
+    "priorityRank": "اولویت ۱ از ۱۲ (کانون جمعیتی فعال)",
+    "priorityDesc": "دارای ۲,۰۶۳ نفر جمعیت و ۶۸۹ خانوار، خانه بهداشت ۲۰۰ متری، ۲ دبستان فعال با ۲۶۴ دانش‌آموز (مصلاوی ۱ و ۲)، ۳ پرونده ایتام و ۱۳ خانوار کم‌برخوردار."
+  },
+  "infrastructure": [
+    {
+      "id": 1,
+      "title": "خانه بهداشت",
+      "area": "200",
+      "stat": "689 خانوار"
+    },
+    {
+      "id": 2,
+      "title": "مدرسه",
+      "area": "*",
+      "stat": "264 دانش آموز"
+    }
+  ],
+  "schools": [
+    {
+      "schoolName": "مصلاوی ۱",
+      "preSchool": "*",
+      "grade1": "21",
+      "grade2": "24",
+      "grade3": "27",
+      "grade4": "22",
+      "grade5": "33",
+      "grade6": "19",
+      "total": "146"
+    },
+    {
+      "schoolName": "مصلاوی ۲",
+      "preSchool": "21",
+      "grade1": "20",
+      "grade2": "21",
+      "grade3": "14",
+      "grade4": "17",
+      "grade5": "14",
+      "grade6": "11",
+      "total": "118"
+    },
+    {
+      "schoolName": "جمع",
+      "preSchool": "21",
+      "grade1": "41",
+      "grade2": "45",
+      "grade3": "41",
+      "grade4": "39",
+      "grade5": "47",
+      "grade6": "30",
+      "total": "264"
+    }
+  ],
+  "orphans": [
+    {
+      "id": 1,
+      "guardianName": "محبوبه غزلاوی",
+      "guardianAge": "38",
+      "guardianNationalId": "182***9532",
+      "childName": "علی اکبر",
+      "childLastName": "غزلی",
+      "fatherName": "حسین",
+      "childNationalId": "182***4806",
+      "childAge": "11",
+      "educationLevel": "ششم",
+      "schoolName": "انقلاب اسلامی",
+      "healthStatus": "سالم",
+      "address": "مصلاوی 1 - بهار 2",
+      "phone": "0904***9687"
+    },
+    {
+      "id": 2,
+      "guardianName": "سکینه ناصری",
+      "guardianAge": "55",
+      "guardianNationalId": "175***4597",
+      "childName": "فاطمه",
+      "childLastName": "ناصری",
+      "fatherName": "علی",
+      "childNationalId": "182***1729",
+      "childAge": "14",
+      "educationLevel": "هشتم",
+      "schoolName": "راهیان نور",
+      "healthStatus": "کلیه",
+      "address": "مصلاوی بهار 7",
+      "phone": "0904***5635"
+    },
+    {
+      "id": 3,
+      "guardianName": "—",
+      "guardianAge": "—",
+      "guardianNationalId": "—",
+      "childName": "زهرا",
+      "childLastName": "—",
+      "fatherName": "—",
+      "childNationalId": "182***7891",
+      "childAge": "11",
+      "educationLevel": "پنجم",
+      "schoolName": "شهدای مصلاوی",
+      "healthStatus": "سالم",
+      "address": "—",
+      "phone": "—"
+    }
+  ],
+  "underprivileged": [
+    {
+      "id": 1,
+      "fullName": "زینب پورمصلاوی سوره",
+      "nationalId": "182***6536",
+      "phone": "0904***6891 - 0939***0696",
+      "address": "مصلاوی 2 خیابان شمالی سمت راست منزل یکی مونده آخر"
+    },
+    {
+      "id": 2,
+      "fullName": "حسنه رحیماویان",
+      "nationalId": "182***4527",
+      "phone": "0902***3389",
+      "address": "مصلاوی 2 مصلاوی شمالی 4 منزل مانده به آخر سمت راست"
+    },
+    {
+      "id": 3,
+      "fullName": "عبدالخالق سگری",
+      "nationalId": "182***5241",
+      "phone": "0916***3911 - 0901***5352",
+      "address": "مصلاوی 2 خ شمالی سمت راست نبش ایثار6"
+    },
+    {
+      "id": 4,
+      "fullName": "علیرضا تابع معتوقی",
+      "nationalId": "189***4120",
+      "phone": "0937***6540 - 0916***5193",
+      "address": "مصلاوی2 خ مصلاوی شمالی سمت چپ منزل اول"
+    },
+    {
+      "id": 5,
+      "fullName": "خلف سگری",
+      "nationalId": "182***4901",
+      "phone": "0903***7738",
+      "address": "روستای مصلاوی بهار 2"
+    },
+    {
+      "id": 6,
+      "fullName": "امید اخوت زاده",
+      "nationalId": "182***8010",
+      "phone": "0936***8193",
+      "address": "روستای مصلاوی شقایق 13"
+    },
+    {
+      "id": 7,
+      "fullName": "صادق سگری",
+      "nationalId": "195***1553",
+      "phone": "0902***8590",
+      "address": "روستای مصلاوی شمالی"
+    },
+    {
+      "id": 8,
+      "fullName": "سجاد سگری",
+      "nationalId": "182***7316",
+      "phone": "0939***8162",
+      "address": "روستای مصلاوی شمالی"
+    },
+    {
+      "id": 9,
+      "fullName": "حسین دشتی",
+      "nationalId": "182***6372",
+      "phone": "0907***9435",
+      "address": "روستای مصلاوی"
+    },
+    {
+      "id": 10,
+      "fullName": "ریاض اخوت زاده",
+      "nationalId": "182***7907",
+      "phone": "0905***4707",
+      "address": "روستای مصلاوی"
+    },
+    {
+      "id": 11,
+      "fullName": "عبدالخالق نیک خواه",
+      "nationalId": "—",
+      "phone": "0930***2507",
+      "address": "روستای مصلاوی"
+    },
+    {
+      "id": 12,
+      "fullName": "شبیب غزلی",
+      "nationalId": "017***2371",
+      "phone": "0937***5900",
+      "address": "روستای مصلاوی"
+    },
+    {
+      "id": 13,
+      "fullName": "فارس سگری",
+      "nationalId": "182***4931",
+      "phone": "0938***7554",
+      "address": "روستای مصلاوی شمالی"
+    }
+  ]
+}

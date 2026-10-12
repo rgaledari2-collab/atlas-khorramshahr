@@ -1,1 +1,252 @@
-{}
+{
+  "metadata": {
+    "id": "darband-sharqi",
+    "name": "دربند شرقی",
+    "dehestan": "حومه غربی",
+    "bakhsh": "مرکزی",
+    "shahrestan": "خرمشهر",
+    "ostan": "خوزستان",
+    "coords": {
+      "lat": 30.456944,
+      "lng": 48.148056,
+      "display": "30°27'25\" N, 48°08'53\" E"
+    },
+    "pop": 714,
+    "households": 211,
+    "corridor": "محور حومه غربی - دربند",
+    "priorityRank": "اولویت ۲ از ۱۲ (منطقه بدون مدرسه مستقل)",
+    "priorityDesc": "دارای ۲۱۱ خانوار و ۷۱۴ نفر جمعیت بدون مدرسه مستقل؛ ۲ پرونده خاص ایتام (بیماری قلبی) و ۲۶ خانوار کم‌برخوردار."
+  },
+  "infrastructure": [],
+  "schools": [
+    {
+      "schoolName": "این منطقه مدرسه مستقل ندارد",
+      "preSchool": "—",
+      "grade1": "—",
+      "grade2": "—",
+      "grade3": "—",
+      "grade4": "—",
+      "grade5": "—",
+      "grade6": "—",
+      "total": "—"
+    }
+  ],
+  "orphans": [
+    {
+      "id": 1,
+      "guardianName": "سیده لیلا محمودی فرحانی",
+      "guardianAge": "36",
+      "guardianNationalId": "182***1203",
+      "childName": "حیدر علی",
+      "childLastName": "محمدی صفایی",
+      "fatherName": "عدنان",
+      "childNationalId": "685***1061",
+      "childAge": "7",
+      "educationLevel": "اول",
+      "schoolName": "—",
+      "healthStatus": "سالم",
+      "address": "دربند شرقی – انتهای جاده سمت راست – جنب حسینیه فاطمیه",
+      "phone": "0936***5859 - 0937***7409"
+    },
+    {
+      "id": 2,
+      "guardianName": "خیریه شرفی",
+      "guardianAge": "46",
+      "guardianNationalId": "—",
+      "childName": "سهیل",
+      "childLastName": "شرفی",
+      "fatherName": "منصور",
+      "childNationalId": "182***9701",
+      "childAge": "22",
+      "educationLevel": "دانشگاه (مدیریت)",
+      "schoolName": "آزاد ترم 2",
+      "healthStatus": "پیوند قلب",
+      "address": "دربند شرقی 8",
+      "phone": "0903***6842"
+    }
+  ],
+  "underprivileged": [
+    {
+      "id": 1,
+      "fullName": "علی چنعانی",
+      "nationalId": "186***5947",
+      "phone": "0902***0405",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 2,
+      "fullName": "علیرضا علقی‌زاده",
+      "nationalId": "182***5756",
+      "phone": "0936***6637",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 3,
+      "fullName": "ابتسام شریفی‌نسب",
+      "nationalId": "182***9870",
+      "phone": "0936***9311",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 4,
+      "fullName": "حسین اصل احمدیان",
+      "nationalId": "182***0304",
+      "phone": "0916***7053",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 5,
+      "fullName": "رضا اصل احمدیان",
+      "nationalId": "182***9509",
+      "phone": "0916***7053",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 6,
+      "fullName": "زینب عسکری‌زاده",
+      "nationalId": "194***3440",
+      "phone": "0932***7408",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 7,
+      "fullName": "احمد حسینی صفائی",
+      "nationalId": "093***0029",
+      "phone": "0936***2216",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 8,
+      "fullName": "مجید اصل احمدیان",
+      "nationalId": "186***2791",
+      "phone": "0930***7151",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 9,
+      "fullName": "صدیقه حموداوی",
+      "nationalId": "182***2293",
+      "phone": "0903***1254",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 10,
+      "fullName": "عدنان سکینی‌نژاد",
+      "nationalId": "189***9854",
+      "phone": "0916***4588",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 11,
+      "fullName": "علی باوی",
+      "nationalId": "182***5390",
+      "phone": "0916***2461",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 12,
+      "fullName": "زینب غزلی",
+      "nationalId": "182***0099",
+      "phone": "0930***2080",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 13,
+      "fullName": "ولید غژلاوی",
+      "nationalId": "182***2760",
+      "phone": "0902***3017",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 14,
+      "fullName": "اسما صفائی‌پور",
+      "nationalId": "182***5376",
+      "phone": "0916***1843",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 15,
+      "fullName": "غالیه حسن‌زاده",
+      "nationalId": "198***6801",
+      "phone": "0937***2412",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 16,
+      "fullName": "هاشمیه غژلاوی",
+      "nationalId": "182***7426",
+      "phone": "0901***5256",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 17,
+      "fullName": "جعفر یاسائی",
+      "nationalId": "182***8014",
+      "phone": "0905***9261",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 18,
+      "fullName": "فاطمه صفائی دربندی",
+      "nationalId": "182***8501",
+      "phone": "0937***0738",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 19,
+      "fullName": "تاجی حسینی اصل‌نژاد",
+      "nationalId": "182***5462",
+      "phone": "0916***5052",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 20,
+      "fullName": "زهرا عوده‌زاده",
+      "nationalId": "185***9088",
+      "phone": "0939***9464",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 21,
+      "fullName": "سید حمید تیسی",
+      "nationalId": "175***9076",
+      "phone": "0916***5689",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 22,
+      "fullName": "جمیله براجعه",
+      "nationalId": "174***6781",
+      "phone": "0904***2260",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 23,
+      "fullName": "امنه محمدی‌نسب",
+      "nationalId": "182***4021",
+      "phone": "0938***1271",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 24,
+      "fullName": "فاطمه البوعلی",
+      "nationalId": "092***9388",
+      "phone": "0938***6375",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 25,
+      "fullName": "رکینه عسکری",
+      "nationalId": "189***2652",
+      "phone": "0916***8320",
+      "address": "دربند شرقی"
+    },
+    {
+      "id": 26,
+      "fullName": "هدیه راشدی",
+      "nationalId": "182***2948",
+      "phone": "0939***9911",
+      "address": "دربند شرقی"
+    }
+  ]
+}

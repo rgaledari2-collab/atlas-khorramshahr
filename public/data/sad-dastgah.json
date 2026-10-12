@@ -1,28 +1,268 @@
 {
-  "disabilityStats": [
+  "metadata": {
+    "id": "sad-dastgah",
+    "name": "صد دستگاه",
+    "dehestan": "حومه غربی",
+    "bakhsh": "مرکزی",
+    "shahrestan": "خرمشهر",
+    "ostan": "خوزستان",
+    "coords": {
+      "lat": 30.451389,
+      "lng": 48.175,
+      "display": "30°27'05\" N, 48°10'30\" E"
+    },
+    "pop": 882,
+    "households": 211,
+    "corridor": "محور مواصلاتی شلمچه - حومه غربی (صد دستگاه)",
+    "priorityRank": "اولویت ۲ از ۱۲ (مرکز آموزشی منطقه‌ای)",
+    "priorityDesc": "قطب آموزشی مهم با ۶۹۵ دانش‌آموز (مدارس علویه و متوسطه راهیان نور)، مسجد صاحب‌الزمان، ۳ یتیم و ۲۱ خانوار کم‌برخوردار."
+  },
+  "infrastructure": [
     {
-      "label": "شنوایی",
-      "count": 20
+      "id": 1,
+      "title": "مسجد صاحب الزمان",
+      "area": "*",
+      "stat": "*"
     },
     {
-      "label": "جسمی‌حرکتی",
-      "count": 50
+      "id": 2,
+      "title": "مدرسه علویه - راهیان نور",
+      "area": "*",
+      "stat": "695"
+    }
+  ],
+  "schools": [
+    {
+      "schoolName": "علویه",
+      "preSchool": "*",
+      "grade1": "49",
+      "grade2": "38",
+      "grade3": "40",
+      "grade4": "53",
+      "grade5": "53",
+      "grade6": "32",
+      "total": "265"
     },
     {
-      "label": "بینایی",
-      "count": 20
+      "schoolName": "متوسطه اول - راهیان نور",
+      "preSchool": "—",
+      "grade1": "—",
+      "grade2": "—",
+      "grade3": "—",
+      "grade4": "—",
+      "grade5": "—",
+      "grade6": "—",
+      "total": "430"
     },
     {
-      "label": "ذهنی",
-      "count": 45
+      "schoolName": "*",
+      "preSchool": "—",
+      "grade1": "—",
+      "grade2": "—",
+      "grade3": "—",
+      "grade4": "—",
+      "grade5": "—",
+      "grade6": "—",
+      "total": "695"
+    }
+  ],
+  "orphans": [
+    {
+      "id": 1,
+      "guardianName": "صدیقه زباری",
+      "guardianAge": "—",
+      "guardianNationalId": "018***1234",
+      "childName": "دنیا",
+      "childLastName": "عریضاوی",
+      "fatherName": "هاشم",
+      "childNationalId": "182***2635",
+      "childAge": "19",
+      "educationLevel": "دانشجو",
+      "schoolName": "—",
+      "healthStatus": "سالم",
+      "address": "صد دستگاه – منازل بندر -ردیف 4 – پلاک 10",
+      "phone": "0935***6599"
     },
     {
-      "label": "روانی",
-      "count": 5
+      "id": 2,
+      "guardianName": "سمیه سلیمانی",
+      "guardianAge": "—",
+      "guardianNationalId": "109***8480",
+      "childName": "مرام",
+      "childLastName": "طیبی",
+      "fatherName": "احمد",
+      "childNationalId": "182***9374",
+      "childAge": "17",
+      "educationLevel": "یازدهم",
+      "schoolName": "شهدای شمخانی",
+      "healthStatus": "سالم",
+      "address": "صد دستگاه – پشت مدرسه راهیان نور – پلاک 1",
+      "phone": "0930***9842"
     },
     {
-      "label": "صوت و گفتار",
-      "count": 1
+      "id": 3,
+      "guardianName": "ملکه عنبی (عمه)",
+      "guardianAge": "—",
+      "guardianNationalId": "182***4536",
+      "childName": "رسول",
+      "childLastName": "عنبی",
+      "fatherName": "جاسم",
+      "childNationalId": "181***8712",
+      "childAge": "17",
+      "educationLevel": "دهم",
+      "schoolName": "شهر",
+      "healthStatus": "سالم",
+      "address": "صد دستگاه – منازل اداره بندر – پلاک 9",
+      "phone": "0916***4199 - 0916***7791"
+    }
+  ],
+  "underprivileged": [
+    {
+      "id": 1,
+      "fullName": "مریم غزلاوی",
+      "nationalId": "182***5121",
+      "phone": "090***549",
+      "address": "صد دستگاه"
+    },
+    {
+      "id": 2,
+      "fullName": "علی محمدی هلالیان",
+      "nationalId": "182***4433",
+      "phone": "0938***0917",
+      "address": "صد دستگاه"
+    },
+    {
+      "id": 3,
+      "fullName": "نرگس سلمانیان اصل",
+      "nationalId": "182***1081",
+      "phone": "0904***3785",
+      "address": "صد دستگاه"
+    },
+    {
+      "id": 4,
+      "fullName": "سید هاشم مفتی عریض",
+      "nationalId": "182***4187",
+      "phone": "0937***5289",
+      "address": "صد دستگاه"
+    },
+    {
+      "id": 5,
+      "fullName": "حلیمه سلیمانی",
+      "nationalId": "182***9150",
+      "phone": "0902***4921",
+      "address": "صد دستگاه"
+    },
+    {
+      "id": 6,
+      "fullName": "زهرا عسکری",
+      "nationalId": "182***4580",
+      "phone": "0916***9881",
+      "address": "صد دستگاه"
+    },
+    {
+      "id": 7,
+      "fullName": "فروغ عباسیان پور",
+      "nationalId": "182***8755",
+      "phone": "0903***8587",
+      "address": "صد دستگاه"
+    },
+    {
+      "id": 8,
+      "fullName": "سیده کوثر موسوی",
+      "nationalId": "194***0079",
+      "phone": "0905***6711",
+      "address": "صد دستگاه"
+    },
+    {
+      "id": 9,
+      "fullName": "سکینه محمودپور عریض",
+      "nationalId": "662***1752",
+      "phone": "0903***2641",
+      "address": "صد دستگاه"
+    },
+    {
+      "id": 10,
+      "fullName": "علی عباسی کیان",
+      "nationalId": "182***2326",
+      "phone": "0933***3899",
+      "address": "صد دستگاه"
+    },
+    {
+      "id": 11,
+      "fullName": "مرضیه کاشفی سمن",
+      "nationalId": "397***1109",
+      "phone": "0916***1644",
+      "address": "صد دستگاه"
+    },
+    {
+      "id": 12,
+      "fullName": "حسین محمدی اطهر",
+      "nationalId": "706***6643",
+      "phone": "0916***8116",
+      "address": "صد دستگاه"
+    },
+    {
+      "id": 13,
+      "fullName": "محمد مجیل",
+      "nationalId": "175***0106",
+      "phone": "0936***5693",
+      "address": "صد دستگاه"
+    },
+    {
+      "id": 14,
+      "fullName": "ایمان خواجه",
+      "nationalId": "182***0075",
+      "phone": "090***667",
+      "address": "صد دستگاه"
+    },
+    {
+      "id": 15,
+      "fullName": "رقیه فیسلی",
+      "nationalId": "182***2981",
+      "phone": "0902***8943",
+      "address": "صد دستگاه"
+    },
+    {
+      "id": 16,
+      "fullName": "عماد فتیلی",
+      "nationalId": "182***8528",
+      "phone": "0939***4496",
+      "address": "صد دستگاه"
+    },
+    {
+      "id": 17,
+      "fullName": "زینب عبادی نژاد",
+      "nationalId": "182***3054",
+      "phone": "0937***9793",
+      "address": "صد دستگاه"
+    },
+    {
+      "id": 18,
+      "fullName": "قدیمه سلیمانی",
+      "nationalId": "175***6548",
+      "phone": "0938***3788",
+      "address": "صد دستگاه"
+    },
+    {
+      "id": 19,
+      "fullName": "حیات جاسم پور بغلانی",
+      "nationalId": "181***1029",
+      "phone": "0902***0333",
+      "address": "صد دستگاه"
+    },
+    {
+      "id": 20,
+      "fullName": "مریم علقمی زاده",
+      "nationalId": "182***2145",
+      "phone": "0936***4346",
+      "address": "صد دستگاه"
+    },
+    {
+      "id": 21,
+      "fullName": "راضیه دریس",
+      "nationalId": "182***4785",
+      "phone": "0930***3894",
+      "address": "صد دستگاه"
     }
   ]
 }

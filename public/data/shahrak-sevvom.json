@@ -1,1 +1,211 @@
-{}
+{
+  "metadata": {
+    "id": "shahrak-sevvom",
+    "name": "شهرک سوم",
+    "dehestan": "حومه غربی",
+    "bakhsh": "مرکزی",
+    "shahrestan": "خرمشهر",
+    "ostan": "خوزستان",
+    "coords": {
+      "lat": 30.483038,
+      "lng": 48.096659,
+      "display": "30.4830° N, 48.0966° E"
+    },
+    "pop": 403,
+    "households": 134,
+    "corridor": "محور شلمچه - حومه غربی (شهرک سوم)",
+    "priorityRank": "اولویت ۳ از ۱۲ (کانون توسعه نوساز)",
+    "priorityDesc": "روستای نوساز با دبستان تازه‌تأسیس آل‌یاسین، ۶ پرونده ایتام و ۱۰ خانوار کم‌برخوردار نیازمند زیرساخت‌های آموزشی و معیشتی."
+  },
+  "infrastructure": [
+    {
+      "id": 1,
+      "title": "مدرسه",
+      "area": "*",
+      "stat": "*"
+    }
+  ],
+  "schools": [
+    {
+      "schoolName": "مدرسه آل یاسین",
+      "preSchool": "تازه تاسیس شده است",
+      "grade1": "—",
+      "grade2": "—",
+      "grade3": "—",
+      "grade4": "—",
+      "grade5": "—",
+      "grade6": "—",
+      "total": "—"
+    }
+  ],
+  "orphans": [
+    {
+      "id": 1,
+      "guardianName": "غیده عسکری",
+      "guardianAge": "—",
+      "guardianNationalId": "061***8177",
+      "childName": "—",
+      "childLastName": "—",
+      "fatherName": "—",
+      "childNationalId": "—",
+      "childAge": "—",
+      "educationLevel": "—",
+      "schoolName": "—",
+      "healthStatus": "—",
+      "address": "شهرک سوم",
+      "phone": "0916***0377"
+    },
+    {
+      "id": 2,
+      "guardianName": "حکیمه نواصر",
+      "guardianAge": "—",
+      "guardianNationalId": "182***9043",
+      "childName": "عبدالقادر",
+      "childLastName": "عالعلی",
+      "fatherName": "خالد",
+      "childNationalId": "182***9191",
+      "childAge": "9",
+      "educationLevel": "سوم",
+      "schoolName": "امام/سجاد",
+      "healthStatus": "بینی",
+      "address": "شهرک سوم",
+      "phone": "0937***1729"
+    },
+    {
+      "id": 3,
+      "guardianName": "حلاف بروایه",
+      "guardianAge": "—",
+      "guardianNationalId": "198***0465",
+      "childName": "هاشم",
+      "childLastName": "حلاف/بروایه",
+      "fatherName": "علی",
+      "childNationalId": "182***4654",
+      "childAge": "14",
+      "educationLevel": "ششم",
+      "schoolName": "شهید/بهنام",
+      "healthStatus": "*1",
+      "address": "شهرک سوم",
+      "phone": "0936***7789"
+    },
+    {
+      "id": 4,
+      "guardianName": "حسین چیغانی",
+      "guardianAge": "—",
+      "guardianNationalId": "182***3746",
+      "childName": "محمد/جواد",
+      "childLastName": "غانمی",
+      "fatherName": "علی",
+      "childNationalId": "182***9551",
+      "childAge": "10",
+      "educationLevel": "چهارم",
+      "schoolName": "انقلاب",
+      "healthStatus": "دندان",
+      "address": "شهرک سوم",
+      "phone": "0936***8030"
+    },
+    {
+      "id": 5,
+      "guardianName": "شکریه صالحی",
+      "guardianAge": "42",
+      "guardianNationalId": "182***7254",
+      "childName": "فاطمه",
+      "childLastName": "کعبی اصل سوره",
+      "fatherName": "محمد",
+      "childNationalId": "182***2908",
+      "childAge": "21",
+      "educationLevel": "نهم",
+      "schoolName": "—",
+      "healthStatus": "سالم",
+      "address": "شهرک سوم",
+      "phone": "0905***3066"
+    },
+    {
+      "id": 6,
+      "guardianName": "عالیه شامیان",
+      "guardianAge": "44",
+      "guardianNationalId": "188***3633",
+      "childName": "بیان",
+      "childLastName": "شامیان نژاد",
+      "fatherName": "علی",
+      "childNationalId": "—",
+      "childAge": "11",
+      "educationLevel": "پنجم",
+      "schoolName": "شهر",
+      "healthStatus": "سالم",
+      "address": "شهرک سوم",
+      "phone": "0939***5498"
+    }
+  ],
+  "underprivileged": [
+    {
+      "id": 1,
+      "fullName": "قسمه ودوودی",
+      "nationalId": "472***3867",
+      "phone": "0902***1413 - 0905***2697",
+      "address": "شهرک سوم جنب مسجد جهار راه اول سمت چپ خ اول سمت راست انتهای خیابان سمت راست  قبل از نیزار"
+    },
+    {
+      "id": 2,
+      "fullName": "حفیظه افادت",
+      "nationalId": "182***2072",
+      "phone": "0930***6471 - 0938***7407",
+      "address": "شهرک سوم بعد از دکل ایرانسل سمت چپ منزل دوم"
+    },
+    {
+      "id": 3,
+      "fullName": "فوزیه صالحیان اصل نژاد",
+      "nationalId": "182***8561",
+      "phone": "0930***3258 - 0916***2469",
+      "address": "شهرک سوم خیابان جنب مسجد شهدا چهار راه اول انتهای خیابان روبروی قبرستان منزل دوم"
+    },
+    {
+      "id": 4,
+      "fullName": "ایمان فیصلی زاده",
+      "nationalId": "182***9460",
+      "phone": "0930***6962 - 0933***3045",
+      "address": "شهرک سوم خیابان هشتم  سمت راست انتهای خیابان منزل آخر"
+    },
+    {
+      "id": 5,
+      "fullName": "حسنه عسکری",
+      "nationalId": "182***8481",
+      "phone": "0938***3046",
+      "address": "شهرک سوم بعد از مسجدسید الشهدا بعد از دکل آخرین منزل سمت چپ"
+    },
+    {
+      "id": 6,
+      "fullName": "حاچم نواصر",
+      "nationalId": "181***2131",
+      "phone": "0916***1846 - 0916***1248",
+      "address": "شهرک سوم  خ 12متری درب اول. سمت راست منزل سر نبش (دیوار پشت منزل مربوط به دخترشان)"
+    },
+    {
+      "id": 7,
+      "fullName": "مهدی شلهاوی زاده",
+      "nationalId": "182***9444",
+      "phone": "0937***2653 - 0939***8093",
+      "address": "شهرک سوم خ12متری بعد ازدکل ایرانسل منزل سمت چپ دو طبقه"
+    },
+    {
+      "id": 8,
+      "fullName": "سجاد شلهاوی زاده",
+      "nationalId": "182***3162",
+      "phone": "0937***2653 - 0939***8093",
+      "address": "شهرک سوم خ12متری بعد ازدکل ایرانسل منزل سمت چپ دو طبقه"
+    },
+    {
+      "id": 9,
+      "fullName": "صفیه صواعی",
+      "nationalId": "182***3002",
+      "phone": "0901***9009 - 0916***8430",
+      "address": "شهرک سوم خ اصلی کنار مسجد چهار راه اول سمت راست  خیابان فرعی اول سمت چپ منزل دوم سمت راست"
+    },
+    {
+      "id": 10,
+      "fullName": "فاطمه مذکرپور",
+      "nationalId": "182***7464",
+      "phone": "0916***4216",
+      "address": "شهرک سوم خ کنار مسجد شهدای شلمچه سمت راست چهار راه، بعد از ایستگاه اتوبوس فرعی سمت چپ منزل سوم سمت راست"
+    }
+  ]
+}
