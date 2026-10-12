@@ -1,0 +1,326 @@
+{
+  "infrastructure": [
+    {
+      "name": "خانه بهداشت پل نو",
+      "area": "۲۰۰ متر",
+      "stat": "۵۹۲",
+      "unit": "خانوار",
+      "type": "health"
+    },
+    {
+      "name": "مدرسه حر بن ریاحی",
+      "area": "۸۰۰ متر",
+      "stat": "۹۴",
+      "unit": "دانش‌آموز",
+      "type": "education"
+    },
+    {
+      "name": "دهیاری پل نو",
+      "area": "۲۰۰ متر",
+      "stat": "فعال",
+      "unit": "مرکز",
+      "type": "gov"
+    },
+    {
+      "name": "خانه عالم",
+      "area": "۳۰۰ متر",
+      "stat": "۱",
+      "unit": "واحد",
+      "type": "religion"
+    }
+  ],
+  "schools": [
+    {
+      "schoolName": "حر بن ریاحی (پسرانه)",
+      "preSchool": "—",
+      "grade1": 11,
+      "grade2": 10,
+      "grade3": 8,
+      "grade4": 7,
+      "grade5": 3,
+      "grade6": 15,
+      "total": 54
+    },
+    {
+      "schoolName": "حر بن ریاحی (دخترانه)",
+      "preSchool": "—",
+      "grade1": 4,
+      "grade2": 11,
+      "grade3": 7,
+      "grade4": 6,
+      "grade5": 8,
+      "grade6": 4,
+      "total": 40
+    }
+  ],
+  "orphans": [
+    {
+      "id": 1,
+      "guardianName": "جواهر سلیمانی",
+      "guardianAge": 30,
+      "guardianNationalId": "1829567251",
+      "childName": "کرار",
+      "childLastName": "سلیمانی",
+      "fatherName": "سعید",
+      "childNationalId": "1821068858",
+      "childAge": 7,
+      "educationLevel": "اول",
+      "schoolName": "حر بن ریاحی",
+      "healthStatus": "سالم",
+      "address": "پل نو - ولایت ۵ - روبروی حسینیه",
+      "phone": "09309552337"
+    },
+    {
+      "id": 2,
+      "guardianName": "فاطمه غزلی",
+      "guardianAge": 53,
+      "guardianNationalId": "—",
+      "childName": "مهدی",
+      "childLastName": "غزلی",
+      "fatherName": "رحیم",
+      "childNationalId": "1820587444",
+      "childAge": 19,
+      "educationLevel": "بزرگسالان",
+      "schoolName": "شهر",
+      "healthStatus": "سالم",
+      "address": "پل نو - شهرک اول - خ دوم",
+      "phone": "09331522544"
+    },
+    {
+      "id": 3,
+      "guardianName": "سکینه هجر",
+      "guardianAge": 38,
+      "guardianNationalId": "2432947703",
+      "childName": "ثریا",
+      "childLastName": "حساوی نژاد",
+      "fatherName": "احمد",
+      "childNationalId": "1821091531",
+      "childAge": 7,
+      "educationLevel": "اول",
+      "schoolName": "شهدای شلمچه",
+      "healthStatus": "سالم",
+      "address": "پل نو - جاده شلمچه - پشت مدرسه انقلاب",
+      "phone": "09380591304"
+    },
+    {
+      "id": 4,
+      "guardianName": "هیفاء سلیمانی",
+      "guardianAge": 34,
+      "guardianNationalId": "1820100405",
+      "childName": "رقیه",
+      "childLastName": "سلیمانی",
+      "fatherName": "حمید",
+      "childNationalId": "1748594818",
+      "childAge": 10,
+      "educationLevel": "چهارم",
+      "schoolName": "شهدای شلمچه",
+      "healthStatus": "سالم",
+      "address": "پل نو - خیابان اصلی - ولایت ۷",
+      "phone": "09398303973"
+    },
+    {
+      "id": 5,
+      "guardianName": "سمیره عیدانی پور",
+      "guardianAge": "—",
+      "guardianNationalId": "—",
+      "childName": "فاطمه",
+      "childLastName": "فرحانی معموری",
+      "fatherName": "محمدجواد",
+      "childNationalId": "1820592316",
+      "childAge": "—",
+      "educationLevel": "—",
+      "schoolName": "—",
+      "healthStatus": "سالم",
+      "address": "پل نو - جاده شلمچه - خ ساحلی فدک ۳ منزل چهارم",
+      "phone": "09373988324"
+    },
+    {
+      "id": 6,
+      "guardianName": "بشری عیاشی",
+      "guardianAge": 60,
+      "guardianNationalId": "اتباع عراقی",
+      "childName": "حامد",
+      "childLastName": "عیاشی",
+      "fatherName": "حسین",
+      "childNationalId": "1820568210",
+      "childAge": 22,
+      "educationLevel": "دوم",
+      "schoolName": "ترک تحصیل",
+      "healthStatus": "سالم",
+      "address": "پل نو ولایت ۶",
+      "phone": "09383711450"
+    },
+    {
+      "id": 7,
+      "guardianName": "شهین نیسی",
+      "guardianAge": 48,
+      "guardianNationalId": "1827931371",
+      "childName": "مهدی",
+      "childLastName": "سگر",
+      "fatherName": "علی",
+      "childNationalId": "1820695271",
+      "childAge": 17,
+      "educationLevel": "یازدهم",
+      "schoolName": "شهر",
+      "healthStatus": "سالم",
+      "address": "پل نو - بعد از مدرسه - کوچه معلم",
+      "phone": "09046602553"
+    }
+  ],
+  "underprivileged": [
+    {
+      "id": 1,
+      "fullName": "اصیله ناصری پورسوره",
+      "nationalId": "1828127221",
+      "phone": "09308718261",
+      "address": "پل نو جاده شلمچه شهرک اول خ پل نو ۷ سمت راست منزل هفتم"
+    },
+    {
+      "id": 2,
+      "fullName": "غیده مجدماوی",
+      "nationalId": "1828471119",
+      "phone": "09306693492",
+      "address": "پل نو شهرک اول خ ولایت ۴ پل نو ۴ سمت چپ منزل دوم"
+    },
+    {
+      "id": 3,
+      "fullName": "زهرا عیدان",
+      "nationalId": "1828193402",
+      "phone": "09385699171",
+      "address": "پل نو شهرک اول ولایت ۳ خین ۶ سمت چپ منزل دوم"
+    },
+    {
+      "id": 4,
+      "fullName": "جابر فرحانی",
+      "nationalId": "1829601733",
+      "phone": "09396071614",
+      "address": "پل نو شهرک اول خیابان پل نو ۳ انتهای خیابان منزل پنجم"
+    },
+    {
+      "id": 5,
+      "fullName": "دیوان ادگیان پور",
+      "nationalId": "1828294284",
+      "phone": "09169288793",
+      "address": "پل نو شهرک اول ولایت ۱ خین ۳ سمت چپ درب چهارم"
+    },
+    {
+      "id": 6,
+      "fullName": "فرحان شریف",
+      "nationalId": "1818915571",
+      "phone": "09034339448",
+      "address": "پل نو شهرک اول خیابان پل نو ۶ سمت راست"
+    },
+    {
+      "id": 7,
+      "fullName": "عبدالهادی ضرغام پور",
+      "nationalId": "1828167320",
+      "phone": "09378806583",
+      "address": "شهرک اول ولایت ۲ پل نو ۱ سمت راست منزل سوم"
+    },
+    {
+      "id": 8,
+      "fullName": "حکیمه هذبری",
+      "nationalId": "1828294081",
+      "phone": "09335099527",
+      "address": "پل نو شهرک اول خ پل نو ۸ منزل چهارم"
+    },
+    {
+      "id": 9,
+      "fullName": "صفیه هیحر",
+      "nationalId": "1815759941",
+      "phone": "09052253725",
+      "address": "پل نو شهرک اول خیابان پل نو ۵ سمت چپ منزل اول"
+    },
+    {
+      "id": 10,
+      "fullName": "هاشمیه موسوی",
+      "nationalId": "1828180181",
+      "phone": "09366157542",
+      "address": "شهرک اول چهارراه اصلی جنب حسینیه ابوالفضل روبه‌روی پارک"
+    },
+    {
+      "id": 11,
+      "fullName": "محمود حبیبی نیا",
+      "nationalId": "1829646745",
+      "phone": "09379209466",
+      "address": "پل نو شهرک اول خیابان خین ۸ سمت راست"
+    },
+    {
+      "id": 12,
+      "fullName": "لفته تمیمی",
+      "nationalId": "1828071145",
+      "phone": "09027244582",
+      "address": "پل نو شهرک اول خیابان پل نو ۲ خیابان مدرسه"
+    },
+    {
+      "id": 13,
+      "fullName": "هادی تمیمی",
+      "nationalId": "1820848991",
+      "phone": "09054756357",
+      "address": "پل نو شهرک اول خ پل نو ۲ جنب مدرسه حر بن ریاحی کوچه ۶ متری"
+    },
+    {
+      "id": 14,
+      "fullName": "زینب هزامی",
+      "nationalId": "3430412358",
+      "phone": "09378002433",
+      "address": "پل نو شهرک اول ولایت ۳ خ خین ۴ سمت چپ منزل اول"
+    },
+    {
+      "id": 15,
+      "fullName": "مصطفی ضرغام پور",
+      "nationalId": "1820594416",
+      "phone": "09301861349",
+      "address": "پل نو شهرک اول خیابان خین ۲ سمت چپ"
+    },
+    {
+      "id": 16,
+      "fullName": "مهدی براجعه",
+      "nationalId": "1820522611",
+      "phone": "09055929824",
+      "address": "شهرک اول خ پل نو ۹ منزل سوم"
+    },
+    {
+      "id": 17,
+      "fullName": "عبدالرحیم معاوی",
+      "nationalId": "1820413322",
+      "phone": "09375230549",
+      "address": "پل نو شهرک اول خ پل نو ۳ سمت چپ منزل آخر"
+    },
+    {
+      "id": 18,
+      "fullName": "مریم غزلی",
+      "nationalId": "1820517871",
+      "phone": "09370405237",
+      "address": "پل نو شهرک اول خ پل نو ۳ سمت چپ جنب بن بست"
+    },
+    {
+      "id": 19,
+      "fullName": "وفاء مهاجران",
+      "nationalId": "1818576422",
+      "phone": "09033607385",
+      "address": "پل نو شهرک اول انتهای ولایت ۳ خین ۴ سمت راست"
+    },
+    {
+      "id": 20,
+      "fullName": "احمد حسائی پور",
+      "nationalId": "1870513894",
+      "phone": "09386798481",
+      "address": "پل نو شهرک اول ولایت ۳ خین ۴"
+    },
+    {
+      "id": 21,
+      "fullName": "لیلا براجعه",
+      "nationalId": "1820522628",
+      "phone": "09055929824",
+      "address": "پل نو شهرک اول خ پل نو ۹ منزل سوم"
+    },
+    {
+      "id": 22,
+      "fullName": "معصومه جران",
+      "nationalId": "1816081906",
+      "phone": "09373806153",
+      "address": "پل نو شهرک اول خیابان ولایت ۴ پل نو ۵ سمت راست"
+    }
+  ]
+}

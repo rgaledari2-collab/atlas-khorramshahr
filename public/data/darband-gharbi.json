@@ -1,0 +1,28 @@
+{
+  "disabilityStats": [
+    {
+      "label": "شنوایی",
+      "count": 15
+    },
+    {
+      "label": "جسمی‌حرکتی",
+      "count": 30
+    },
+    {
+      "label": "بینایی",
+      "count": 10
+    },
+    {
+      "label": "ذهنی",
+      "count": 25
+    },
+    {
+      "label": "روانی",
+      "count": 3
+    },
+    {
+      "label": "صوت و گفتار",
+      "count": 0
+    }
+  ]
+}

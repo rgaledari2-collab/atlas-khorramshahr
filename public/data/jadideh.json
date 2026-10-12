@@ -1,0 +1,37 @@
+{
+  "infrastructure": [
+    {
+      "name": "مرکز جامع سلامت جدیده",
+      "area": "۶۰۰ متر",
+      "stat": "پزشک ثابت",
+      "unit": "مرکز",
+      "type": "health"
+    }
+  ],
+  "disabilityStats": [
+    {
+      "label": "شنوایی",
+      "count": 30
+    },
+    {
+      "label": "جسمی‌حرکتی",
+      "count": 70
+    },
+    {
+      "label": "بینایی",
+      "count": 25
+    },
+    {
+      "label": "ذهنی",
+      "count": 60
+    },
+    {
+      "label": "روانی",
+      "count": 10
+    },
+    {
+      "label": "صوت و گفتار",
+      "count": 1
+    }
+  ]
+}

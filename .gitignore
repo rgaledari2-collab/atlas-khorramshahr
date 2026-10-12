@@ -1,0 +1,14 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+*.bak
+*.original
+*.cjs
+scratch/
+tunnel.txt
+stats_dialog_dump.html
+.env*
+!.env.example

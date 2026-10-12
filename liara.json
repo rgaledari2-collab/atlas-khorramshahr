@@ -1,0 +1,5 @@
+{
+  "platform": "node",
+  "app": "imam-reza-atlas",
+  "port": 3000
+}
