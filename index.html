@@ -7217,6 +7217,253 @@ body.in-village .gis-dock-wrap {
         width: 260px;
     }
 }
+
+/* ==================== TACTICAL LIQUID GLASS SYSTEM ==================== */
+:root {
+    --liquid-glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.03) 100%);
+    --liquid-glass-dark: linear-gradient(145deg, rgba(14, 24, 36, 0.76) 0%, rgba(8, 15, 24, 0.88) 100%);
+    --liquid-glass-border: rgba(255, 255, 255, 0.18);
+    --liquid-glass-border-hover: rgba(255, 255, 255, 0.42);
+    --liquid-specular-top: inset 0 1.5px 2px rgba(255, 255, 255, 0.35);
+    --liquid-specular-dual: inset 0 1.5px 2px rgba(255, 255, 255, 0.32), inset 0 -1px 2px rgba(0, 0, 0, 0.45);
+    --liquid-blur-val: 22px;
+}
+
+/* 1. Header & Navigation Liquid Glass Capsule */
+header {
+    background: linear-gradient(180deg, rgba(6, 12, 14, 0.90) 0%, rgba(6, 12, 14, 0.45) 85%, transparent 100%) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+}
+
+.search-input-inner {
+    background: linear-gradient(135deg, rgba(28, 52, 50, 0.65) 0%, rgba(14, 30, 29, 0.80) 100%) !important;
+    border: 1px solid var(--liquid-glass-border) !important;
+    backdrop-filter: blur(var(--liquid-blur-val)) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(var(--liquid-blur-val)) saturate(160%) !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), var(--liquid-specular-dual) !important;
+    border-radius: 14px !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.search-input-inner:focus-within {
+    background: linear-gradient(135deg, rgba(32, 64, 60, 0.82) 0%, rgba(18, 38, 36, 0.92) 100%) !important;
+    border-color: rgba(233, 193, 0, 0.6) !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 20px rgba(233, 193, 0, 0.25), var(--liquid-specular-dual) !important;
+    transform: translateY(-1px);
+}
+
+/* 2. Floating Tactical GIS Dock */
+.gis-dock-wrap {
+    background: var(--liquid-glass-dark) !important;
+    backdrop-filter: blur(24px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
+    border: 1px solid var(--liquid-glass-border) !important;
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.6), var(--liquid-specular-dual), 0 0 20px rgba(56, 189, 248, 0.12) !important;
+    border-radius: 18px !important;
+}
+
+.gis-dock-wrap.is-minimized {
+    background: linear-gradient(145deg, rgba(14, 24, 38, 0.88) 0%, rgba(8, 15, 26, 0.95) 100%) !important;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), var(--liquid-specular-top), 0 0 18px rgba(56, 189, 248, 0.25) !important;
+}
+
+.gis-dock-head {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.gis-dock-toggle-btn {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    transition: all 0.2s ease !important;
+}
+
+.gis-dock-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.18) !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), var(--liquid-specular-top) !important;
+}
+
+.gis-dock-tab {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    transition: all 0.2s ease !important;
+}
+
+.gis-dock-tab.is-active {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(14, 116, 144, 0.35)) !important;
+    border-color: rgba(56, 189, 248, 0.5) !important;
+    box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25), var(--liquid-specular-top) !important;
+}
+
+/* 3. Map Floating Action Tools */
+.map-tools button {
+    background: linear-gradient(135deg, rgba(24, 44, 42, 0.72) 0%, rgba(12, 24, 22, 0.85) 100%) !important;
+    backdrop-filter: blur(18px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(150%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45), var(--liquid-specular-dual) !important;
+    border-radius: 12px !important;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.map-tools button:hover {
+    background: linear-gradient(135deg, rgba(38, 70, 66, 0.88) 0%, rgba(18, 36, 34, 0.95) 100%) !important;
+    border-color: rgba(233, 193, 0, 0.6) !important;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.6), 0 0 16px rgba(233, 193, 0, 0.3), var(--liquid-specular-dual) !important;
+    transform: translateY(-2px) scale(1.04);
+}
+
+.map-tools button:active {
+    transform: translateY(0) scale(0.96);
+}
+
+/* 4. Filter Box Panel */
+.filter-box-panel {
+    background: var(--liquid-glass-dark) !important;
+    backdrop-filter: blur(28px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(160%) !important;
+    border: 1px solid var(--liquid-glass-border) !important;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), var(--liquid-specular-dual) !important;
+    border-radius: 20px !important;
+}
+
+/* 5. Village Selection Cards in Village View */
+.choice {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.03) 100%) !important;
+    backdrop-filter: blur(26px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(26px) saturate(150%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), var(--liquid-specular-dual) !important;
+    border-radius: 22px !important;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.choice:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.06) 100%) !important;
+    border-color: rgba(255, 255, 255, 0.55) !important;
+    box-shadow: 0 28px 65px rgba(0, 0, 0, 0.55), var(--liquid-specular-top), 0 0 25px rgba(233, 193, 0, 0.2) !important;
+    transform: translateY(-6px) scale(1.015) !important;
+}
+
+.back {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 100%) !important;
+    backdrop-filter: blur(16px) saturate(140%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), var(--liquid-specular-top) !important;
+    transition: all 0.25s ease !important;
+}
+
+.back:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.08) 100%) !important;
+    border-color: rgba(255, 255, 255, 0.45) !important;
+    transform: translateY(-2px);
+}
+
+/* 6. Village Dossier Modal (شناسنامه روستا) */
+dialog#statsDialog {
+    background: linear-gradient(145deg, rgba(247, 242, 231, 0.94) 0%, rgba(239, 230, 215, 0.96) 100%) !important;
+    backdrop-filter: blur(36px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(36px) saturate(150%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.65) !important;
+    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.5), var(--liquid-specular-top), inset 0 -2px 6px rgba(0, 0, 0, 0.08) !important;
+    border-radius: 24px !important;
+}
+
+dialog::backdrop {
+    background: rgba(4, 10, 12, 0.68) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+}
+
+#statsDialog .dialog-head {
+    background: rgba(247, 242, 231, 0.88) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1.5px solid rgba(139, 50, 44, 0.15) !important;
+}
+
+#statsDialog .close {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(234, 224, 203, 0.65) 100%) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), var(--liquid-specular-top) !important;
+}
+
+#statsDialog .close:hover {
+    background: var(--brand-clay) !important;
+    color: #ffffff !important;
+    transform: rotate(90deg) scale(1.05) !important;
+    box-shadow: 0 6px 18px rgba(139, 50, 44, 0.4) !important;
+}
+
+#statsDialog .exec-kpi-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.90) 0%, rgba(255, 255, 255, 0.65) 100%) !important;
+    border: 1px solid rgba(226, 215, 197, 0.8) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04), var(--liquid-specular-top) !important;
+    border-radius: 14px !important;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#statsDialog .exec-kpi-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), var(--liquid-specular-top) !important;
+}
+
+#statsDialog details.dos-accordion summary,
+#statsDialog .dos-accordion-header {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(246, 238, 224, 0.90) 100%) !important;
+    border: 1px solid rgba(226, 215, 197, 0.85) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03), var(--liquid-specular-top) !important;
+    border-radius: 12px !important;
+    transition: all 0.2s ease !important;
+}
+
+#statsDialog details.dos-accordion summary:hover,
+#statsDialog .dos-accordion-header:hover {
+    background: #ffffff !important;
+    border-color: rgba(139, 50, 44, 0.35) !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06), var(--liquid-specular-top) !important;
+}
+
+/* 7. PROTECTED DATA TABLES: NO TRANSPARENCY / NO BLUR / 100% READABILITY */
+#statsDialog table.dos-table,
+#statsDialog .dos-table {
+    background: #ffffff !important;
+    color: #1a1612 !important;
+}
+
+#statsDialog th {
+    background: #f1e9da !important;
+    color: #2b2216 !important;
+    box-shadow: 0 2px 0 var(--brand-clay) !important;
+}
+
+#statsDialog td {
+    background: #ffffff !important;
+    color: #2b2216 !important;
+}
+
+#statsDialog tbody tr:nth-child(even) td {
+    background: #faf7f1 !important;
+}
+
+#statsDialog tbody tr:hover td {
+    background: #f3ebdc !important;
+}
+
+/* 8. LOW-END DEVICE GRACEFUL DEGRADATION */
+html.low-end-device header,
+html.low-end-device .gis-dock-wrap,
+html.low-end-device .map-tools button,
+html.low-end-device .filter-box-panel,
+html.low-end-device .choice,
+html.low-end-device dialog#statsDialog {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
 </style>
 
 </head>
