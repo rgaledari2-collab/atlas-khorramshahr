@@ -7362,14 +7362,107 @@ header {
     transform: translateY(-2px);
 }
 
-/* 6. Village Dossier Modal (شناسنامه روستا) */
-dialog#statsDialog {
+/* 6. Village Dossier Modal (شناسنامه و آمار روستا) */
+@keyframes statsSubtleOpen {
+    0% {
+        opacity: 0;
+        transform: translateY(18px) scale(0.975);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes statsBackdropFadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes statsSubtleSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes statsKpiCardReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(10px) scale(0.97);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+dialog#statsDialog,
+dialog#servicesDialog,
+dialog#compareDialog {
     background: linear-gradient(145deg, rgba(247, 242, 231, 0.94) 0%, rgba(239, 230, 215, 0.96) 100%) !important;
     backdrop-filter: blur(36px) saturate(150%) !important;
     -webkit-backdrop-filter: blur(36px) saturate(150%) !important;
     border: 1px solid rgba(255, 255, 255, 0.65) !important;
     box-shadow: 0 40px 90px rgba(0, 0, 0, 0.5), var(--liquid-specular-top), inset 0 -2px 6px rgba(0, 0, 0, 0.08) !important;
     border-radius: 24px !important;
+}
+
+dialog#statsDialog[open],
+dialog#servicesDialog[open],
+dialog#compareDialog[open] {
+    animation: statsSubtleOpen 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+    transform-origin: center center !important;
+    will-change: transform, opacity;
+}
+
+dialog#statsDialog[open]::backdrop,
+dialog#servicesDialog[open]::backdrop,
+dialog#compareDialog[open]::backdrop {
+    animation: statsBackdropFadeIn 0.32s ease-out forwards !important;
+}
+
+/* Staggered micro-entrance for sections inside statsDialog */
+#statsDialog[open] .dialog-head {
+    animation: statsSubtleSlideUp 0.32s cubic-bezier(0.16, 1, 0.3, 1) 0.04s both !important;
+}
+
+#statsDialog[open] .exec-sidebar {
+    animation: statsSubtleSlideUp 0.38s cubic-bezier(0.16, 1, 0.3, 1) 0.07s both !important;
+}
+
+#statsDialog[open] .sidebar-priority-card {
+    animation: statsSubtleSlideUp 0.38s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both !important;
+}
+
+#statsDialog[open] .exec-kpi-card:nth-child(1) {
+    animation: statsKpiCardReveal 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both !important;
+}
+#statsDialog[open] .exec-kpi-card:nth-child(2) {
+    animation: statsKpiCardReveal 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both !important;
+}
+#statsDialog[open] .exec-kpi-card:nth-child(3) {
+    animation: statsKpiCardReveal 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both !important;
+}
+#statsDialog[open] .exec-kpi-card:nth-child(4) {
+    animation: statsKpiCardReveal 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.20s both !important;
+}
+
+#statsDialog[open] .exec-benchmark-strip {
+    animation: statsSubtleSlideUp 0.36s cubic-bezier(0.16, 1, 0.3, 1) 0.20s both !important;
+}
+
+#statsDialog[open] details.dos-accordion,
+#statsDialog[open] .dos-section {
+    animation: statsSubtleSlideUp 0.38s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both !important;
 }
 
 dialog::backdrop {
