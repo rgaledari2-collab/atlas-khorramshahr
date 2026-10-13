@@ -8629,6 +8629,17 @@ dialog#statsDialog::backdrop {
     padding: 24px 28px !important;
 }
 
+
+/* Smooth Animated GAP Progress Bars */
+.cl-gap-covered, .cl-gap-deficit {
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+#cockpitPopVal, #cockpitFamVal {
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+    min-width: 24px;
+}
+
 </style>
 
 </head>
@@ -9444,54 +9455,7 @@ dialog#statsDialog::backdrop {
 
                 <!-- Main Executive Content -->
                 <main class="exec-main-content">
-                    <!-- 1. Hero KPI Cards (4 Top Metrics) -->
-                    <div class="exec-kpi-grid">
-                        <div class="exec-kpi-card">
-                            <div class="exec-kpi-top">
-                                <span class="exec-kpi-label">👥 جمعیت کل</span>
-                                <div class="exec-kpi-icon" style="background:#e0f2fe; color:#0369a1;">👥</div>
-                            </div>
-                            <div class="exec-kpi-num" id="kpiPop">۴,۱۷۵</div>
-                            <div class="exec-kpi-sub">
-                                <span style="color:#0284c7; font-weight:800;" id="kpiPopSub">۵۲٪ مرد · ۴۸٪ زن</span>
-                            </div>
-                        </div>
-
-                        <div class="exec-kpi-card">
-                            <div class="exec-kpi-top">
-                                <span class="exec-kpi-label">🏠 خانوار ساکن</span>
-                                <div class="exec-kpi-icon" style="background:#fef3c7; color:#b45309;">🏠</div>
-                            </div>
-                            <div class="exec-kpi-num" id="kpiFam">۱,۰۵۱</div>
-                            <div class="exec-kpi-sub">
-                                <span style="color:#b45309; font-weight:800;" id="kpiFamSub">بُعد خانوار: ۴.۰ نفر</span>
-                            </div>
-                        </div>
-
-                        <div class="exec-kpi-card">
-                            <div class="exec-kpi-top">
-                                <span class="exec-kpi-label">♿ توان‌یابی و بهزیستی</span>
-                                <div class="exec-kpi-icon" style="background:#fee2e2; color:#b91c1c;">♿</div>
-                            </div>
-                            <div class="exec-kpi-num" id="kpiDisabled">۲۹۸</div>
-                            <div class="exec-kpi-sub">
-                                <span style="color:#b91c1c; font-weight:800;" id="kpiDisabledSub">۷.۱٪ جمعیت کل</span>
-                            </div>
-                        </div>
-
-                        <div class="exec-kpi-card">
-                            <div class="exec-kpi-top">
-                                <span class="exec-kpi-label">💼 اشتغال و طرح‌ها</span>
-                                <div class="exec-kpi-icon" style="background:#dcfce7; color:#15803d;">💼</div>
-                            </div>
-                            <div class="exec-kpi-num" id="kpiEmp">۶ طرح</div>
-                            <div class="exec-kpi-sub">
-                                <span style="color:#15803d; font-weight:800;" id="kpiEmpSub">۴۲ شغل پایدار تثبیت‌شده</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 2. Tabs Navigation Bar -->
+                    <!-- 1. C-Level Executive Cockpit & Dossier Mount Point -->
                     
 
                     <!-- 3. Tab Contents Container -->
@@ -22830,9 +22794,9 @@ addEventListener('resize', layout); layout();
                                 <span class="cl-pillar-tag">ثبات سکونت</span>
                             </div>
                             <div>
-                                <div class="cl-pillar-hero-num" id="kpiPop">
-                                    ${toFaDigits(ex.popNum)}
-                                    <span style="font-size:12px; font-weight:700; color:#6b5a49;">نفر</span>
+                                <div class="cl-pillar-hero-num">
+                                    <span id="cockpitPopVal">۰</span>
+                                    <span style="font-size:13px; font-weight:800; color:#6b5a49; margin-right:4px;">نفر</span>
                                 </div>
                                 <div class="cl-pillar-subtext" id="kpiPopSub">
                                     ${ex.popSub}
@@ -22841,7 +22805,7 @@ addEventListener('resize', layout); layout();
                             <div class="cl-gap-box">
                                 <div style="display:flex; justify-content:space-between; font-size:11px; font-weight:800; color:#2c2217;">
                                     <span>🏠 خانوار ساکن:</span>
-                                    <strong id="kpiFam">${toFaDigits(ex.famNum)}</strong>
+                                    <strong><span id="cockpitFamVal">۰</span> خانوار</strong>
                                 </div>
                                 <div style="font-size:10px; color:#786653;" id="kpiFamSub">
                                     ${ex.famSub}
