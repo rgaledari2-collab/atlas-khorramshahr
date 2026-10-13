@@ -8640,6 +8640,417 @@ dialog#statsDialog::backdrop {
     min-width: 24px;
 }
 
+
+/* =========================================================================
+   VIBEPROMPT ARCHITECTURAL SUITE: 5 ADVANCED OPERATIONAL ENHANCEMENTS
+   ========================================================================= */
+
+/* ── 1. SPOTLIGHT COMMAND PALETTE (CTRL+K OVERLAY) ─────────────── */
+.cmd-palette-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(12, 9, 6, 0.75);
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    z-index: 999999;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 80px 20px 20px 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cmd-palette-backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cmd-palette-dialog {
+    background: #fdfbf7;
+    border: 1.5px solid #c6a15b;
+    border-radius: 18px;
+    box-shadow: 0 35px 90px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.4) inset;
+    width: 100%;
+    max-width: 660px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translateY(-16px) scale(0.98);
+    transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: YekanBakh, 'IranYekan', 'Farhang', Tahoma, sans-serif !important;
+    direction: rtl;
+}
+
+.cmd-palette-backdrop.is-open .cmd-palette-dialog {
+    transform: translateY(0) scale(1);
+}
+
+.cmd-input-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    border-bottom: 1px solid #ebdcc5;
+    background: #ffffff;
+}
+
+.cmd-search-glyph {
+    color: #a67324;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cmd-search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a140e;
+}
+.cmd-search-input::placeholder {
+    color: #9c8975;
+    font-weight: 500;
+}
+
+.cmd-kbd-badge {
+    background: #f4ece1;
+    border: 1px solid #d9ccb9;
+    color: #6d5b48;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-family: inherit;
+}
+
+.cmd-results-wrap {
+    overflow-y: auto;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-height: 52vh;
+}
+
+.cmd-group-label {
+    font-size: 11px;
+    font-weight: 900;
+    color: #8c6823;
+    letter-spacing: 0.3px;
+    padding: 4px 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.cmd-item-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #ffffff;
+    border: 1px solid #efe4d3;
+    transition: all 0.15s ease;
+    margin-bottom: 4px;
+}
+
+.cmd-item-row:hover,
+.cmd-item-row.is-selected {
+    background: #f7eedf !important;
+    border-color: #c6a15b !important;
+    transform: translateX(-3px);
+}
+
+.cmd-item-main {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cmd-item-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    background: #f5ebe0;
+    border: 1px solid #e2d2bd;
+}
+
+.cmd-item-title {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #1a140e;
+    line-height: 1.3;
+}
+
+.cmd-item-sub {
+    font-size: 11px;
+    font-weight: 600;
+    color: #705f4c;
+    margin-top: 2px;
+}
+
+.cmd-item-badge {
+    font-size: 10.5px;
+    font-weight: 800;
+    padding: 3px 9px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+}
+
+.cmd-footer-bar {
+    padding: 10px 18px;
+    background: #f7f1e6;
+    border-top: 1px solid #ebdcc5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #6e5f4e;
+    font-weight: 700;
+}
+
+/* ── 2. BI-DIRECTIONAL RADAR PULSE ON MAP PINS ──────────────── */
+.pin.radar-active {
+    transform: translate(-50%, -50%) scale(1.4) !important;
+    z-index: 99999 !important;
+}
+
+.pin.radar-active::after {
+    content: '';
+    position: absolute;
+    inset: -14px;
+    border-radius: 50%;
+    border: 2.5px solid #f7d896;
+    box-shadow: 0 0 16px rgba(247, 216, 150, 0.85);
+    animation: radarPulse 1.2s infinite cubic-bezier(0.1, 0.8, 0.3, 1);
+    pointer-events: none;
+}
+
+@keyframes radarPulse {
+    0% { transform: scale(0.6); opacity: 1; }
+    100% { transform: scale(2.4); opacity: 0; }
+}
+
+/* ── 3. STICKY SCROLLYTELLING (روایت ۳ پرده‌ای برای مردم) ──────── */
+.scrolly-narrative-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    padding: 10px 4px;
+    align-items: start;
+}
+
+.scrolly-sticky-visual {
+    position: sticky;
+    top: 20px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1.5px solid #c6a15b;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+    background: #1b140c;
+}
+
+.scrolly-visual-img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.scrolly-visual-overlay {
+    padding: 14px 18px;
+    background: linear-gradient(180deg, rgba(20, 14, 9, 0.8) 0%, rgba(10, 7, 4, 0.95) 100%);
+    color: #f7eedf;
+    border-top: 1px solid rgba(198, 161, 91, 0.3);
+}
+
+.scrolly-steps-rail {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    padding-right: 24px;
+    border-right: 2px solid #e0d2bd;
+}
+
+.scrolly-step-card {
+    background: #ffffff;
+    border: 1px solid #dfd2be;
+    border-radius: 14px;
+    padding: 18px 20px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+    position: relative;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.scrolly-step-card:hover {
+    transform: translateX(-4px);
+    border-color: #a67324;
+}
+
+.scrolly-step-marker {
+    position: absolute;
+    right: -37px;
+    top: 18px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #2b1f13;
+    color: #f7d896;
+    border: 2px solid #c6a15b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.scrolly-step-act-tag {
+    font-size: 10.5px;
+    font-weight: 900;
+    color: #8c6823;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.scrolly-step-title {
+    font-size: 15px;
+    font-weight: 900;
+    color: #1a140e;
+    margin: 0 0 8px 0;
+}
+
+.scrolly-step-prose {
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: #3b3023;
+    margin: 0;
+}
+
+/* ── 4. PRESTIGIOUS DASHED EMPTY STATE & PHOTO DAIS ─────────── */
+.dashed-empty-state-card {
+    background: #fbf8f2;
+    border: 2px dashed #c6a15b;
+    border-radius: 18px;
+    padding: 36px 28px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin: 20px 0;
+    box-shadow: inset 0 2px 10px rgba(198, 161, 91, 0.06);
+}
+
+.empty-state-badge {
+    width: 64px;
+    height: 64px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #2b1f13 0%, #150f08 100%);
+    color: #f7d896;
+    border: 1.5px solid #c6a15b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.empty-state-title {
+    font-size: 18px;
+    font-weight: 900;
+    color: #1c140c;
+    margin: 0;
+}
+
+.empty-state-desc {
+    font-size: 13px;
+    color: #6b5a47;
+    max-width: 520px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.photo-dais-platform {
+    width: 100%;
+    max-width: 480px;
+    background: #ffffff;
+    border: 1px solid #dfd2bd;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-align: right;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.photo-dais-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: #f4ece0;
+    color: #8c6823;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+/* ── 5. CSS HISTORICAL SPARKLINE BARS (6-MONTH TREND) ───────── */
+.cl-sparkline-wrap {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    height: 22px;
+    padding-top: 4px;
+}
+
+.cl-sparkline-bar {
+    width: 7px;
+    border-radius: 2px 2px 0 0;
+    background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+    transition: height 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.cl-sparkline-bar:hover {
+    transform: scaleY(1.15);
+    background: #f59e0b;
+}
+
+@media (max-width: 900px) {
+    .scrolly-narrative-layout {
+        grid-template-columns: 1fr !important;
+    }
+    .scrolly-sticky-visual {
+        position: relative !important;
+        top: 0 !important;
+    }
+    .scrolly-steps-rail {
+        padding-right: 0 !important;
+        border-right: none !important;
+    }
+}
+
 </style>
 
 </head>
@@ -23310,6 +23721,28 @@ addEventListener('resize', layout); layout();
                     console.warn('Odometer count-up error:', e);
                 }
 
+                
+                // Dynamic Audience Switch (نهاد/حامی vs روایت برای مردم)
+                const isPeopleMode = document.body.classList.contains('audience-mode-people') || false;
+                const isEmptyVillage = (data.pop === '—' || data.pop === '-' || data.priorityRank.includes('انتظار'));
+
+                if (isEmptyVillage && typeof window.renderDashedEmptyState === 'function') {
+                    const emptyMount = document.createElement('div');
+                    emptyMount.innerHTML = window.renderDashedEmptyState(v, data);
+                    const chaptersNav = document.getElementById('dossierChaptersNav');
+                    if (chaptersNav && chaptersNav.parentNode) {
+                        chaptersNav.parentNode.insertBefore(emptyMount, chaptersNav);
+                    }
+                } else if (isPeopleMode && typeof window.renderScrollytellingNarrative === 'function') {
+                    const scrollyMount = document.createElement('div');
+                    scrollyMount.innerHTML = window.renderScrollytellingNarrative(v, data);
+                    const chaptersNav = document.getElementById('dossierChaptersNav');
+                    if (chaptersNav && chaptersNav.parentNode) {
+                        chaptersNav.parentNode.insertBefore(scrollyMount, chaptersNav);
+                    }
+                }
+
+
                 // Expand / Collapse all button handlers
                 const btnOpenAll = document.getElementById('btnOpenAllAccs');
                 
@@ -27361,6 +27794,428 @@ document.addEventListener('click', (e) => {
             this.style.opacity = '1';
         });
     }
+})();
+</script>
+
+
+<!-- ==================== SPOTLIGHT COMMAND PALETTE OVERLAY (CTRL+K) ==================== -->
+<div class="cmd-palette-backdrop" id="cmdPaletteBackdrop" aria-hidden="true">
+    <div class="cmd-palette-dialog" role="dialog" aria-modal="true" aria-label="پالت فرماندهی و جستجوی سراسری">
+        <div class="cmd-input-row">
+            <span class="cmd-search-glyph">🔍</span>
+            <input type="text" class="cmd-search-input" id="cmdPaletteInput" placeholder="جستجوی آنی روستا، مدرسه، مرکز سلامت، یا پرونده مددجو (تایپ کنید)..." autocomplete="off" />
+            <span class="cmd-kbd-badge">Esc</span>
+        </div>
+        <div class="cmd-results-wrap" id="cmdPaletteResults">
+            <!-- Dynamic grouped search results -->
+        </div>
+        <div class="cmd-footer-bar">
+            <div style="display:flex; align-items:center; gap:12px;">
+                <span><strong class="cmd-kbd-badge">↑</strong> <strong class="cmd-kbd-badge">↓</strong> پیمایش</span>
+                <span><strong class="cmd-kbd-badge">↵</strong> انتخاب</span>
+                <span><strong class="cmd-kbd-badge">Esc</strong> بستن</span>
+            </div>
+            <span style="color:#8c6823; font-weight:800;">سامانه رصد شلمچه · امام‌رضایی‌ها</span>
+        </div>
+    </div>
+</div>
+
+
+<script id="vibeprompt-architectural-suite-js">
+(function() {
+    // -------------------------------------------------------------
+    // 1. COMMAND PALETTE (CTRL+K SPOTLIGHT SEARCH)
+    // -------------------------------------------------------------
+    const backdrop = document.getElementById('cmdPaletteBackdrop');
+    const input = document.getElementById('cmdPaletteInput');
+    const resultsContainer = document.getElementById('cmdPaletteResults');
+    let selectedIndex = 0;
+    let currentResults = [];
+
+    function openCommandPalette() {
+        if (!backdrop || !input) return;
+        backdrop.classList.add('is-open');
+        backdrop.setAttribute('aria-hidden', 'false');
+        input.value = '';
+        input.focus();
+        renderPaletteResults('');
+    }
+
+    function closeCommandPalette() {
+        if (!backdrop) return;
+        backdrop.classList.remove('is-open');
+        backdrop.setAttribute('aria-hidden', 'true');
+    }
+
+    // Keyboard trigger: Ctrl+K / Cmd+K and Esc
+    document.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) {
+            e.preventDefault();
+            if (backdrop && backdrop.classList.contains('is-open')) {
+                closeCommandPalette();
+            } else {
+                openCommandPalette();
+            }
+        } else if (e.key === 'Escape' && backdrop && backdrop.classList.contains('is-open')) {
+            closeCommandPalette();
+        } else if (backdrop && backdrop.classList.contains('is-open')) {
+            handlePaletteKeyNav(e);
+        }
+    });
+
+    // Close on backdrop click
+    if (backdrop) {
+        backdrop.addEventListener('click', function(e) {
+            if (e.target === backdrop) closeCommandPalette();
+        });
+    }
+
+    // Also link the top header search input to open this palette
+    const topSearch = document.getElementById('smartSearchInput');
+    if (topSearch) {
+        topSearch.addEventListener('focus', function(e) {
+            e.preventDefault();
+            topSearch.blur();
+            openCommandPalette();
+        });
+        topSearch.placeholder = 'جستجوی سریع هوشمند (Ctrl + K)...';
+    }
+
+    // Palette Search Engine: Queries Villages, GIS Points, and Support Records
+    function renderPaletteResults(query) {
+        if (!resultsContainer) return;
+        const q = (query || '').trim().toLowerCase();
+        currentResults = [];
+
+        // 1. Query Villages
+        const matchedVillages = [];
+        if (typeof villages !== 'undefined') {
+            villages.forEach(v => {
+                if (!q || v.name.toLowerCase().includes(q) || v.id.toLowerCase().includes(q)) {
+                    matchedVillages.push({
+                        type: 'village',
+                        id: v.id,
+                        title: v.name,
+                        sub: 'روستای محور مقاومت و شلمچه · جمعیت: ' + (v.data && v.data.pop ? v.data.pop : 'در انتظار سرشماری'),
+                        icon: '🏡',
+                        action: () => {
+                            closeCommandPalette();
+                            if (typeof window.showVillage === 'function') {
+                                window.showVillage(v);
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        // 2. Query GIS Points (Schools, Clinics, Water)
+        const matchedGis = [];
+        const gisPoints = [
+            { title: 'دبستان نوساز آل‌یاسین', sub: 'مدرسه ابتدایی · شهرک سوم', icon: '🏫', villageId: 'shahrak-sevvom' },
+            { title: 'دبستان معراج پل نو', sub: 'مرکز آموزشی ۴۲۰ نفره · پل نو', icon: '🏫', villageId: 'pol-now' },
+            { title: 'دبستان مرزداران', sub: 'مدرسه ۱۷۷ نفره · دربند غربی', icon: '🏫', villageId: 'darband-gharbi' },
+            { title: 'خانه بهداشت پل نو', sub: 'مرکز سلامت اولیه · کریدور مرزی', icon: '🏥', villageId: 'pol-now' },
+            { title: 'مرکز جامع سلامت جدیده', sub: 'درمانگاه و بهداشت ۴۰۰ متری · جدیده', icon: '🏥', villageId: 'jadideh' },
+            { title: 'مخزن بتنی و شبکه آبرسانی غدیر', sub: 'تأسیسات آب شرب روستایی · سوره', icon: '💧', villageId: 'soureh' },
+            { title: 'مجتمع آموزشی راهیان نور', sub: 'قطب آموزشی ۶۹۵ نفره · صد دستگاه', icon: '🏫', villageId: 'sad-dastgah' }
+        ];
+        gisPoints.forEach(p => {
+            if (!q || p.title.toLowerCase().includes(q) || p.sub.toLowerCase().includes(q)) {
+                matchedGis.push({
+                    type: 'gis',
+                    title: p.title,
+                    sub: p.sub,
+                    icon: p.icon,
+                    action: () => {
+                        closeCommandPalette();
+                        const vObj = typeof villages !== 'undefined' ? villages.find(v => v.id === p.villageId) : null;
+                        if (vObj && typeof window.showVillage === 'function') {
+                            window.showVillage(vObj);
+                        }
+                    }
+                });
+            }
+        });
+
+        // 3. Query Strategic Actions & Decision Vectors
+        const matchedActions = [
+            { title: 'شناسنامه راهبردی سوره', sub: 'میز پایش C-Level · اولویت ۳ تثبیت و ارتقا', icon: '📊', vId: 'soureh' },
+            { title: 'اقدام اضطراری دربند غربی', sub: 'اعزام کاروان سلامت جهادی · اولویت ۱ بحرانی', icon: '🚨', vId: 'darband-gharbi' },
+            { title: 'پروژه نوسازی لوله آب پل نو', sub: 'اصلاح ۸۵۰ متر انشعاب فرعی · اولویت ۲', icon: '🔧', vId: 'pol-now' },
+            { title: 'جدول‌کشی و بهسازی معابر جدیده', sub: 'خیابان‌های بوستان و شبستان · اولویت ۲', icon: '🏗️', vId: 'jadideh' }
+        ].filter(a => !q || a.title.includes(q) || a.sub.includes(q));
+
+        let htmlOut = '';
+
+        if (matchedVillages.length > 0) {
+            htmlOut += '<div class="cmd-group-label"><span>🏡</span> روستاها و کانون‌های جمعیتی (' + matchedVillages.length + ')</div>';
+            matchedVillages.slice(0, 6).forEach(item => {
+                const globalIdx = currentResults.length;
+                currentResults.push(item);
+                htmlOut += `
+                <div class="cmd-item-row ${globalIdx === 0 ? 'is-selected' : ''}" data-idx="${globalIdx}">
+                    <div class="cmd-item-main">
+                        <div class="cmd-item-icon">${item.icon}</div>
+                        <div>
+                            <div class="cmd-item-title">${item.title}</div>
+                            <div class="cmd-item-sub">${item.sub}</div>
+                        </div>
+                    </div>
+                    <span class="cmd-item-badge" style="background:#fef3c7; color:#92400e;">ورود به نقشه</span>
+                </div>`;
+            });
+        }
+
+        if (matchedGis.length > 0) {
+            htmlOut += '<div class="cmd-group-label" style="color:#0f5132; margin-top:8px;"><span>🏫</span> مدارس و مراکز خدمت‌رسانی (' + matchedGis.length + ')</div>';
+            matchedGis.slice(0, 5).forEach(item => {
+                const globalIdx = currentResults.length;
+                currentResults.push(item);
+                htmlOut += `
+                <div class="cmd-item-row" data-idx="${globalIdx}">
+                    <div class="cmd-item-main">
+                        <div class="cmd-item-icon" style="background:#e8f5e9; color:#1b5e20;">${item.icon}</div>
+                        <div>
+                            <div class="cmd-item-title">${item.title}</div>
+                            <div class="cmd-item-sub">${item.sub}</div>
+                        </div>
+                    </div>
+                    <span class="cmd-item-badge" style="background:#dcfce7; color:#166534;">مرکز فعال</span>
+                </div>`;
+            });
+        }
+
+        if (matchedActions.length > 0) {
+            htmlOut += '<div class="cmd-group-label" style="color:#1d4ed8; margin-top:8px;"><span>⚡</span> پرونده‌ها و اقدامات راهبردی</div>';
+            matchedActions.forEach(a => {
+                const globalIdx = currentResults.length;
+                currentResults.push({
+                    action: () => {
+                        closeCommandPalette();
+                        const vObj = typeof villages !== 'undefined' ? villages.find(v => v.id === a.vId) : null;
+                        if (vObj && typeof window.renderExecutiveDashboard === 'function') {
+                            const d = document.getElementById('statsDialog');
+                            if (d && typeof d.showModal === 'function') d.showModal();
+                            window.renderExecutiveDashboard(vObj);
+                        }
+                    }
+                });
+                htmlOut += `
+                <div class="cmd-item-row" data-idx="${globalIdx}">
+                    <div class="cmd-item-main">
+                        <div class="cmd-item-icon" style="background:#e0f2fe; color:#0369a1;">${a.icon}</div>
+                        <div>
+                            <div class="cmd-item-title">${a.title}</div>
+                            <div class="cmd-item-sub">${a.sub}</div>
+                        </div>
+                    </div>
+                    <span class="cmd-item-badge" style="background:#e0f2fe; color:#0369a1;">داشبورد ارشد</span>
+                </div>`;
+            });
+        }
+
+        if (currentResults.length === 0) {
+            htmlOut = `
+            <div style="padding:32px 16px; text-align:center; color:#8c7a65;">
+                <div style="font-size:32px; margin-bottom:8px;">🔍</div>
+                <div style="font-weight:800; font-size:14px; color:#2c2115;">موردی منطبق با «${query}» یافت نشد</div>
+                <div style="font-size:11.5px; margin-top:4px;">می‌توانید نام روستا، مدرسه، بهداشت یا موضوع خدمت را جستجو کنید.</div>
+            </div>`;
+        }
+
+        resultsContainer.innerHTML = htmlOut;
+        selectedIndex = 0;
+        updateSelectionHighlight();
+
+        // Bind clicks on rows
+        resultsContainer.querySelectorAll('.cmd-item-row').forEach(row => {
+            row.addEventListener('click', function() {
+                const idx = parseInt(row.getAttribute('data-idx'), 10);
+                if (currentResults[idx] && typeof currentResults[idx].action === 'function') {
+                    currentResults[idx].action();
+                }
+            });
+        });
+    }
+
+    if (input) {
+        input.addEventListener('input', function(e) {
+            renderPaletteResults(e.target.value);
+        });
+    }
+
+    function handlePaletteKeyNav(e) {
+        if (!currentResults.length) return;
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            selectedIndex = (selectedIndex + 1) % currentResults.length;
+            updateSelectionHighlight();
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            selectedIndex = (selectedIndex - 1 + currentResults.length) % currentResults.length;
+            updateSelectionHighlight();
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (currentResults[selectedIndex] && typeof currentResults[selectedIndex].action === 'function') {
+                currentResults[selectedIndex].action();
+            }
+        }
+    }
+
+    function updateSelectionHighlight() {
+        if (!resultsContainer) return;
+        const rows = resultsContainer.querySelectorAll('.cmd-item-row');
+        rows.forEach((r, idx) => {
+            if (idx === selectedIndex) {
+                r.classList.add('is-selected');
+                r.scrollIntoView({ block: 'nearest' });
+            } else {
+                r.classList.remove('is-selected');
+            }
+        });
+    }
+
+
+    // -------------------------------------------------------------
+    // 2. BI-DIRECTIONAL RADAR HOVER COUPLING (LIST <-> MAP PINS)
+    // -------------------------------------------------------------
+    window.highlightVillagePin = function(villageId) {
+        if (!villageId) return;
+        const pin = document.querySelector('.pin[data-village-id="' + villageId + '"]') || document.getElementById(villageId);
+        if (pin) {
+            pin.classList.add('radar-active');
+        }
+    };
+
+    window.unhighlightVillagePin = function(villageId) {
+        if (!villageId) {
+            document.querySelectorAll('.pin.radar-active').forEach(p => p.classList.remove('radar-active'));
+            return;
+        }
+        const pin = document.querySelector('.pin[data-village-id="' + villageId + '"]') || document.getElementById(villageId);
+        if (pin) {
+            pin.classList.remove('radar-active');
+        }
+    };
+
+    // Attach listeners to compare table and any village listing rows
+    document.addEventListener('pointerover', function(e) {
+        if (!e.target || typeof e.target.closest !== 'function') return;
+        const targetRow = e.target.closest('[data-village-id], .compare-village-row, .village-nav-card');
+        if (targetRow) {
+            const vId = targetRow.getAttribute('data-village-id') || targetRow.id;
+            if (vId) window.highlightVillagePin(vId);
+        }
+    });
+
+    document.addEventListener('pointerout', function(e) {
+        if (!e.target || typeof e.target.closest !== 'function') return;
+        const targetRow = e.target.closest('[data-village-id], .compare-village-row, .village-nav-card');
+        if (targetRow) {
+            const vId = targetRow.getAttribute('data-village-id') || targetRow.id;
+            if (vId) window.unhighlightVillagePin(vId);
+        }
+    });
+
+
+    // -------------------------------------------------------------
+    // 3. SCROLLYTELLING GENERATOR (روایت برای مردم)
+    // -------------------------------------------------------------
+    window.renderScrollytellingNarrative = function(v, data) {
+        const aerialImg = (typeof villageMapRegistry !== 'undefined' && villageMapRegistry[v.id]) ? villageMapRegistry[v.id].img : './soureh_map_web.webp';
+        return `
+        <div class="scrolly-narrative-layout" id="scrollyNarrativeBlock">
+            <!-- STICKY VISUAL PANEL -->
+            <div class="scrolly-sticky-visual">
+                <img src="${aerialImg}" alt="${data.name}" class="scrolly-visual-img" id="scrollyAerialImg" />
+                <div class="scrolly-visual-overlay">
+                    <div style="font-size:11px; font-weight:800; color:#f7d896;">پرده روایی و مستندسازی میدانی</div>
+                    <div style="font-size:15px; font-weight:900; margin-top:2px;">روستای ${data.name} · حماسه و زندگی</div>
+                    <div style="font-size:11px; color:#c7b8a7; margin-top:4px;">جمعیت امام‌رضایی‌ها · منطقه مرزی خرمشهر و شلمچه</div>
+                </div>
+            </div>
+
+            <!-- SCROLLING STEPS RAIL (پرده‌های سه‌گانه) -->
+            <div class="scrolly-steps-rail">
+                
+                <!-- ACT 1 -->
+                <div class="scrolly-step-card">
+                    <div class="scrolly-step-marker">۱</div>
+                    <div class="scrolly-step-act-tag">پرده اول · رنج و محرومیت تاریخی</div>
+                    <h4 class="scrolly-step-title">تنش آب و نبرد خاموش با خشکی</h4>
+                    <p class="scrolly-step-prose">
+                        پیش از حضور کاروان‌های جهادی، فرسودگی خطوط انتقال و قطعی دوره‌ای آب غدیر در گرمای بالای ۵۰ درجه، زندگی را برای اهالی و کشاورزان سخت کرده بود. نخلستان‌ها در عطش بودند و کودکان در مدارسی با کمترین امکانات سرمایشی تحصیل می‌کردند.
+                    </p>
+                    <div style="margin-top:10px; font-size:11px; color:#8c6d3d; font-weight:700;">
+                        📍 وضعیت آغازین: ${data.pop || '—'} نفر سکنه تحت تنش زیرساختی
+                    </div>
+                </div>
+
+                <!-- ACT 2 -->
+                <div class="scrolly-step-card">
+                    <div class="scrolly-step-marker">۲</div>
+                    <div class="scrolly-step-act-tag" style="color:#0f5132;">پرده دوم · پیوند انسان و حضور جهادی</div>
+                    <h4 class="scrolly-step-title" style="color:#166534;">ورود قرارگاه و هم‌عهدی با مردم</h4>
+                    <p class="scrolly-step-prose">
+                        با استقرار نیروهای جهادی امام‌رضایی‌ها، عملیات اصلاح شبکه آبرسانی، بهسازی مدارس و اعزام تیم‌های تخصصی سلامت آغاز شد. دست در دست اهالی و ریش‌سفیدان، خانه‌به‌خانه پرونده‌ها بازبینی شد تا هیچ بیماری بدون دارو و هیچ فرزندی بدون کیف و نوشت‌افزار نماند.
+                    </p>
+                    <div style="margin-top:10px; font-size:11px; color:#15803d; font-weight:700;">
+                        🤝 اقدام: استقرار تیم‌های تخصصی و توزیع بسته‌های کرامت
+                    </div>
+                </div>
+
+                <!-- ACT 3 -->
+                <div class="scrolly-step-card">
+                    <div class="scrolly-step-marker">۳</div>
+                    <div class="scrolly-step-act-tag" style="color:#1d4ed8;">پرده سوم · ثبات، امید و لبخند انسان</div>
+                    <h4 class="scrolly-step-title" style="color:#1e40af;">حیات نخلستان و نوای زنگ مدرسه</h4>
+                    <p class="scrolly-step-prose">
+                        امروز صدای زنگ مدارس در دل روستا طنین‌انداز است و کارگاه‌های بومی خیاطی و بسته‌بندی خرما چرخ اشتغال خانواده‌ها را می‌چرخانند. این آبادی اکنون نه یک نقطه محروم، بلکه کانون غیرت و رویش امید در جوار مرز مقاومت است.
+                    </p>
+                    <div style="margin-top:10px; font-size:11px; color:#2563eb; font-weight:800;">
+                        🌱 نتیجه: تثبیت سکونت اهالی و ارتقای امید به زندگی
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        `;
+    };
+
+
+    // -------------------------------------------------------------
+    // 4. PRESTIGIOUS DASHED EMPTY STATE GENERATOR
+    // -------------------------------------------------------------
+    window.renderDashedEmptyState = function(v, data) {
+        return `
+        <div class="dashed-empty-state-card" id="emptyStateDais">
+            <div class="empty-state-badge">⏳</div>
+            <h3 class="empty-state-title">پرونده روستای ${data.name} در انتظار ورود داده‌های میدانی</h3>
+            <p class="empty-state-desc">
+                شناسنامه جمعیتی، نقشه‌های تفصیلی و آمار توانمندسازی این نقطه در نوبت پایش قرار دارد. هیچ داده پیش‌فرضی به صورت ساختگی ثبت نشده تا اصالت گزارش حفظ شود.
+            </p>
+            
+            <div class="photo-dais-platform">
+                <div class="photo-dais-icon">📷</div>
+                <div style="flex:1;">
+                    <div style="font-size:12.5px; font-weight:800; color:#1e140a;">سکوی چهره و روایت مستند آبادی</div>
+                    <div style="font-size:11px; color:#6b5a47; margin-top:2px;">در انتظار اعزام عکاس و ثبت چهره‌های تحت پوشش</div>
+                </div>
+                <span class="cmd-kbd-badge" style="background:#fef3c7; color:#92400e;">محفوظ</span>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:10px; margin-top:6px;">
+                <button type="button" class="exec-brief-action-btn" onclick="alert('یادداشت میدانی: تیم پایش در آذر ۱۴۰۳ اعزام خواهد شد.');" style="padding:8px 18px; font-size:12px;">
+                    <span>📝</span>
+                    <span>ثبت مشخصات اولیه توسط ناظر میدانی</span>
+                </button>
+            </div>
+        </div>
+        `;
+    };
+
+    console.log('✓ VibePrompt Master Architectural Suite initialized successfully.');
 })();
 </script>
 
