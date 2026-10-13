@@ -9051,6 +9051,995 @@ dialog#statsDialog::backdrop {
     }
 }
 
+
+
+/* =========================================================================
+   VIBEPROMPTS SENIOR ARCHITECTURAL SUITE (ADVANCED MASTER EXTENSION)
+   ========================================================================= */
+
+/* --- 1. ANOMALY PULSE STRIP --- */
+.anomaly-pulse-strip {
+    background: #ffffff;
+    border: 1px solid #e5dacb;
+    border-radius: 18px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+    margin-bottom: 22px;
+    font-family: inherit;
+    direction: rtl;
+    text-align: right;
+}
+
+.anomaly-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    divide-x-reverse: true;
+}
+
+.anomaly-metric-card {
+    padding: 16px 20px;
+    border-left: 1px solid #f5efe6;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background 0.2s ease;
+}
+
+.anomaly-metric-card:last-child {
+    border-left: none;
+}
+
+.anomaly-metric-label {
+    font-size: 11.5px;
+    color: #8c7e6c;
+    font-weight: 700;
+}
+
+.anomaly-metric-row {
+    margin-top: 8px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.anomaly-metric-val {
+    font-size: 22px;
+    font-weight: 900;
+    color: #1e140a;
+    font-variant-numeric: tabular-nums;
+}
+
+.anomaly-status-badge {
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 100px;
+}
+
+.anomaly-status-badge.normal {
+    background: #ecfdf5;
+    color: #047857;
+}
+
+.anomaly-status-badge.alert {
+    background: #fef3c7;
+    color: #b45309;
+    animation: badge-pulse 2s infinite ease-in-out;
+}
+
+@keyframes badge-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.85; transform: scale(0.97); }
+}
+
+.anomaly-sparkline-svg {
+    margin-top: 12px;
+    height: 28px;
+    width: 100%;
+}
+
+.anomaly-metric-expected {
+    margin-top: 6px;
+    font-size: 10.5px;
+    color: #a89a88;
+}
+
+/* Anomalous Card State */
+.anomaly-metric-card.anomalous {
+    background: #fffbeb;
+    border-color: #fde68a;
+}
+
+.anomaly-metric-card.anomalous .anomaly-metric-label {
+    color: #b45309;
+}
+
+.anomaly-metric-card.anomalous .anomaly-metric-expected {
+    color: #b45309;
+    font-weight: 700;
+}
+
+/* Diagnosis Banner */
+.anomaly-diagnosis-strip {
+    border-top: 1px solid #fde68a;
+    background: #fffbeb;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.anomaly-pulse-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #d97706;
+    box-shadow: 0 0 0 0 rgba(217, 119, 6, 0.7);
+    animation: dot-pulse-glow 1.8s infinite;
+    flex-shrink: 0;
+}
+
+@keyframes dot-pulse-glow {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(217, 119, 6, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 7px rgba(217, 119, 6, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(217, 119, 6, 0); }
+}
+
+.anomaly-diagnosis-text {
+    flex: 1;
+    font-size: 12.5px;
+    color: #92400e;
+    font-weight: 800;
+    line-height: 1.6;
+}
+
+.anomaly-investigate-btn {
+    background: #78350f;
+    color: #ffffff;
+    border: none;
+    border-radius: 9px;
+    padding: 7px 16px;
+    font-size: 11.5px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 6px rgba(120, 53, 15, 0.25);
+}
+
+.anomaly-investigate-btn:hover {
+    background: #5a2608;
+    transform: translateY(-1px);
+}
+
+/* --- 2. BEFORE / AFTER DRAGGABLE VISUAL SLIDER --- */
+.before-after-wrapper {
+    background: #ffffff;
+    border: 1px solid #e5dacb;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    margin-top: 22px;
+    margin-bottom: 22px;
+}
+
+.before-after-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.before-after-title {
+    font-size: 14px;
+    font-weight: 900;
+    color: #1e140a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.before-after-tabs {
+    display: flex;
+    gap: 6px;
+    background: #f5efe6;
+    padding: 3px;
+    border-radius: 10px;
+}
+
+.before-after-tab-btn {
+    background: transparent;
+    border: none;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: 800;
+    color: #6b5a47;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.before-after-tab-btn.active {
+    background: #ffffff;
+    color: #8c6823;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.before-after-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 480px;
+    border-radius: 14px;
+    overflow: hidden;
+    user-select: none;
+    border: 1px solid #e5dacb;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    touch-action: none;
+}
+
+.before-after-base-img,
+.before-after-clip-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.before-after-clip-layer {
+    position: absolute;
+    inset-y: 0;
+    right: 0; /* RTL alignment */
+    overflow: hidden;
+    width: 50%;
+    will-change: width;
+    border-left: 2px solid #ffffff;
+    box-shadow: 4px 0 12px rgba(0, 0, 0, 0.2);
+}
+
+.before-after-badge {
+    position: absolute;
+    bottom: 14px;
+    z-index: 10;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 100px;
+    backdrop-filter: blur(8px);
+    pointer-events: none;
+}
+
+.before-after-badge.after {
+    left: 14px;
+    background: rgba(16, 185, 129, 0.85);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.before-after-badge.before {
+    right: 14px;
+    background: rgba(30, 20, 10, 0.8);
+    color: #f7d896;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.before-after-handle {
+    position: absolute;
+    inset-y: 0;
+    z-index: 25;
+    width: 44px;
+    margin-right: -22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: ew-resize;
+    outline: none;
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+
+.before-after-handle-line {
+    position: absolute;
+    inset-y: 0;
+    left: 50%;
+    width: 2px;
+    transform: translateX(-50%);
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.before-after-handle-knob {
+    position: relative;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid #8c6823;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8c6823;
+    font-size: 13px;
+    font-weight: 900;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.before-after-handle:hover .before-after-handle-knob,
+.before-after-handle:focus .before-after-handle-knob {
+    transform: scale(1.1);
+    box-shadow: 0 6px 18px rgba(140, 104, 35, 0.45);
+}
+
+/* --- 3. APPROVALS QUEUE WITH DETAIL DRAWER (WORKSPACE MODAL) --- */
+.approvals-dialog {
+    width: 95vw;
+    max-width: 1140px;
+    height: 86vh;
+    max-height: 800px;
+    border-radius: 24px;
+    background: #fcfbf9;
+    border: 1px solid #e5dacb;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+    padding: 0;
+    overflow: hidden;
+    direction: rtl;
+    text-align: right;
+    font-family: inherit;
+}
+
+.approvals-dialog::backdrop {
+    background: rgba(30, 20, 10, 0.7);
+    backdrop-filter: blur(6px);
+}
+
+.approvals-layout {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    height: 100%;
+    overflow: hidden;
+}
+
+@media (max-width: 900px) {
+    .approvals-layout {
+        grid-template-columns: 1fr;
+    }
+    .approvals-detail-pane {
+        display: none;
+    }
+}
+
+/* Left Queue Pane */
+.approvals-queue-pane {
+    border-left: 1px solid #e5dacb;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.approvals-queue-head {
+    padding: 20px 22px;
+    border-bottom: 1px solid #f0e8dc;
+    background: #fbf8f3;
+}
+
+.approvals-queue-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.approvals-queue-title {
+    font-size: 15px;
+    font-weight: 900;
+    color: #1e140a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.approvals-pending-badge {
+    background: #fef3c7;
+    color: #92400e;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 100px;
+}
+
+.approvals-filters-row {
+    margin-top: 14px;
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+}
+
+.approvals-filter-chip {
+    background: #f5efe6;
+    border: none;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: 800;
+    color: #6b5a47;
+    border-radius: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.approvals-filter-chip.active {
+    background: #1e140a;
+    color: #ffffff;
+}
+
+.approvals-requests-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.approval-item-card {
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid #efe6da;
+    background: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+}
+
+.approval-item-card:hover {
+    background: #fbf8f3;
+    border-color: #d9c8b4;
+    transform: translateY(-1px);
+}
+
+.approval-item-card.selected {
+    background: #fbf8f3;
+    border-color: #8c6823;
+    border-right: 4px solid #8c6823; /* RTL accent */
+    box-shadow: 0 4px 12px rgba(140, 104, 35, 0.08);
+}
+
+.approval-item-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.approval-item-requester {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.approval-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #8c6823;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.approval-item-title {
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1e140a;
+    line-height: 1.4;
+}
+
+.approval-item-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #8c7e6c;
+    margin-top: 4px;
+}
+
+.approval-type-pill {
+    padding: 2px 7px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.approval-type-pill.infra { background: #dbeafe; color: #1e40af; }
+.approval-type-pill.edu { background: #fef3c7; color: #92400e; }
+.approval-type-pill.aid { background: #dcfce7; color: #15803d; }
+.approval-type-pill.water { background: #e0f2fe; color: #0369a1; }
+
+/* Right Detail Pane */
+.approvals-detail-pane {
+    background: #fcfbf9;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+    padding: 24px 30px;
+}
+
+.approvals-detail-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ebd9c4;
+}
+
+.approvals-detail-title {
+    font-size: 18px;
+    font-weight: 900;
+    color: #1e140a;
+    line-height: 1.35;
+}
+
+.approvals-fields-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 24px;
+    margin-top: 22px;
+}
+
+.approvals-field-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.approvals-field-label {
+    font-size: 11px;
+    color: #8c7e6c;
+    font-weight: 700;
+}
+
+.approvals-field-value {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #1e140a;
+}
+
+.approvals-justification-block {
+    margin-top: 22px;
+    background: #ffffff;
+    border: 1px solid #e5dacb;
+    border-right: 4px solid #8c6823;
+    border-radius: 12px;
+    padding: 16px 20px;
+}
+
+.approvals-justification-label {
+    font-size: 11px;
+    font-weight: 800;
+    color: #8c6823;
+    margin-bottom: 6px;
+}
+
+.approvals-justification-quote {
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: #3a2a1a;
+    font-style: normal;
+}
+
+.approvals-attachment-row {
+    margin-top: 18px;
+    background: #ffffff;
+    border: 1px dashed #d9c8b4;
+    border-radius: 12px;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.approvals-action-footer {
+    margin-top: auto;
+    padding-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    border-top: 1px solid #ebd9c4;
+}
+
+.approval-btn-reject {
+    border: 1px solid #ef4444;
+    background: #fff5f5;
+    color: #b91c1c;
+    padding: 9px 20px;
+    border-radius: 10px;
+    font-size: 12.5px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.approval-btn-reject:hover {
+    background: #fee2e2;
+}
+
+.approval-btn-inquire {
+    border: 1px solid #d9c8b4;
+    background: #ffffff;
+    color: #4a3a2a;
+    padding: 9px 20px;
+    border-radius: 10px;
+    font-size: 12.5px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.approval-btn-approve {
+    border: none;
+    background: #15803d;
+    color: #ffffff;
+    padding: 9px 26px;
+    border-radius: 10px;
+    font-size: 12.5px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(21, 128, 61, 0.25);
+    transition: all 0.2s ease;
+}
+
+.approval-btn-approve:hover {
+    background: #166534;
+    transform: translateY(-1px);
+}
+
+/* --- 4. CONTRIBUTION RHYTHM HEATMAP CALENDAR --- */
+.rhythm-calendar-card {
+    background: #ffffff;
+    border: 1px solid #e5dacb;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    margin-top: 22px;
+    font-family: inherit;
+    direction: rtl;
+    text-align: right;
+}
+
+.rhythm-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+.rhythm-title {
+    font-size: 14px;
+    font-weight: 900;
+    color: #1e140a;
+}
+
+.rhythm-sub {
+    font-size: 11px;
+    color: #8c7e6c;
+    margin-top: 2px;
+}
+
+.rhythm-select {
+    padding: 6px 14px;
+    font-size: 11.5px;
+    font-weight: 800;
+    border: 1px solid #e5dacb;
+    border-radius: 9px;
+    background: #fbf8f3;
+    color: #3a2a1a;
+    outline: none;
+    font-family: inherit;
+}
+
+.rhythm-grid-wrap {
+    overflow-x: auto;
+    padding-bottom: 6px;
+}
+
+.rhythm-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(7, 13px);
+    gap: 4px;
+    width: max-content;
+}
+
+.rhythm-cell {
+    width: 13px;
+    height: 13px;
+    border-radius: 3px;
+    transition: transform 0.15s ease, filter 0.15s ease;
+    cursor: pointer;
+}
+
+.rhythm-cell:hover {
+    transform: scale(1.35);
+    z-index: 5;
+    filter: brightness(1.1);
+}
+
+.rhythm-level-0 { background: #f5efe6; }
+.rhythm-level-1 { background: #bbf7d0; }
+.rhythm-level-2 { background: #4ade80; }
+.rhythm-level-3 { background: #16a34a; }
+.rhythm-level-4 { background: #14532d; }
+
+.rhythm-legend {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+    margin-top: 14px;
+    font-size: 10.5px;
+    color: #8c7e6c;
+}
+
+.rhythm-stats-strip {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid #f0e8dc;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+    gap: 12px;
+}
+
+.rhythm-stat-num {
+    font-size: 20px;
+    font-weight: 900;
+    color: #1e140a;
+    font-variant-numeric: tabular-nums;
+}
+
+.rhythm-stat-lbl {
+    font-size: 11px;
+    color: #8c7e6c;
+    margin-top: 2px;
+}
+
+/* --- 5. ARTICLE WITH MARGIN SIDENOTES (ORAL HISTORY) --- */
+.oral-history-article {
+    background: #ffffff;
+    border: 1px solid #e5dacb;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    margin-top: 22px;
+    direction: rtl;
+    text-align: right;
+}
+
+.oral-history-grid {
+    display: grid;
+    grid-template-columns: 1fr 310px;
+    gap: 32px;
+}
+
+@media (max-width: 960px) {
+    .oral-history-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.oral-prose {
+    font-size: 13.5px;
+    line-height: 2.1;
+    color: #2b1f13;
+}
+
+.oral-prose p {
+    margin-bottom: 16px;
+}
+
+.oral-sup-marker {
+    font-size: 11px;
+    font-weight: 900;
+    color: #8c6823;
+    padding: 0 3px;
+    cursor: help;
+}
+
+.oral-margin-rail {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.oral-sidenote-card {
+    background: #fbf8f3;
+    border: 1px solid #ebd9c4;
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 11.5px;
+    line-height: 1.7;
+    color: #5a4836;
+}
+
+.oral-sidenote-head {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 900;
+    color: #8c6823;
+    margin-bottom: 5px;
+    font-size: 11.5px;
+}
+
+.oral-pullquote {
+    grid-column: 1 / -1;
+    margin: 20px 0;
+    padding: 22px 28px;
+    background: #fbf8f3;
+    border-right: 4px solid #8c6823;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.8;
+    color: #1e140a;
+}
+
+/* --- 6. DRAG TO REORDER PRIORITY STACK --- */
+.priority-stack-card {
+    background: #ffffff;
+    border: 1px solid #e5dacb;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    margin-top: 22px;
+    direction: rtl;
+    text-align: right;
+}
+
+.priority-stack-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.priority-stack-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.priority-stack-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 18px;
+    background: #ffffff;
+    border: 1px solid #e5dacb;
+    border-radius: 14px;
+    user-select: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.priority-stack-item.dragging {
+    opacity: 0.5;
+    border: 2px dashed #8c6823;
+}
+
+.priority-grip-handle {
+    cursor: grab;
+    color: #a89a88;
+    font-size: 16px;
+}
+
+.priority-rank-num {
+    font-size: 18px;
+    font-weight: 900;
+    color: #8c6823;
+    width: 28px;
+    font-variant-numeric: tabular-nums;
+}
+
+.priority-item-info {
+    flex: 1;
+}
+
+.priority-item-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: #1e140a;
+}
+
+.priority-item-sub {
+    font-size: 11px;
+    color: #8c7e6c;
+    margin-top: 2px;
+}
+
+.priority-up-next-badge {
+    background: #dcfce7;
+    color: #166534;
+    font-size: 10.5px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+
+/* --- 7. KEYBOARD SHORTCUTS CHEAT SHEET --- */
+.shortcuts-dialog {
+    width: 90vw;
+    max-width: 540px;
+    border-radius: 20px;
+    background: #ffffff;
+    border: 1px solid #e5dacb;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    padding: 24px;
+    direction: rtl;
+    text-align: right;
+    font-family: inherit;
+}
+
+.shortcuts-dialog::backdrop {
+    background: rgba(30, 20, 10, 0.65);
+    backdrop-filter: blur(5px);
+}
+
+.shortcuts-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.shortcut-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-radius: 10px;
+    background: #fbf8f3;
+}
+
+.shortcut-keys {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.key-cap {
+    background: #ffffff;
+    border: 1px solid #d9c8b4;
+    border-bottom: 2px solid #b8a690;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 11.5px;
+    font-weight: 900;
+    color: #1e140a;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
 </style>
 
 </head>
@@ -28218,5 +29207,963 @@ document.addEventListener('click', (e) => {
     console.log('✓ VibePrompt Master Architectural Suite initialized successfully.');
 })();
 </script>
+
+
+<script id="vibeprompts-senior-suite-js">
+
+// =========================================================================
+// VIBEPROMPTS SENIOR ARCHITECTURAL LOGIC ENGINE
+// =========================================================================
+(function() {
+    'use strict';
+
+    // -------------------------------------------------------------
+    // DATA MOCK: APPROVALS QUEUE ITEMS
+    // -------------------------------------------------------------
+    const approvalsData = [
+        {
+            id: 'REQ-1403-WTR-01',
+            title: 'تأمین ۲۴۰۰ متر لوله پلی‌اتیلن ۱۱۰ فشار ۱۰ بار',
+            village: 'روستای مصاوی (محور شلمچه)',
+            requester: 'مهندس حیدری',
+            avatar: 'ح',
+            amount: '۴۸۰ میلیون تومان',
+            rawAmount: 4800000000,
+            elapsed: '۲ روز پیش',
+            type: 'water',
+            typeName: 'آبرسانی',
+            status: 'pending',
+            statusName: 'در انتظار تأیید',
+            engineer: 'ناظر آب و فاضلاب منطقه',
+            date: '۲۲ مهر ۱۴۰۳',
+            povertyScore: '۸۴ از ۱۰۰',
+            justification: 'به دلیل فرسودگی لوله چدنی قدیمی و افت فشار در ۲۰ خانوار انتهای آبادی، تعویض فوری این مقطع پیش از آغاز فصل بارندگی و گل‌آلودگی الزامی است.',
+            attachment: 'برآورد_متره_لوله_گذاری_مناوی.pdf',
+            attachmentSize: '۲.۴ مگابایت'
+        },
+        {
+            id: 'REQ-1403-EDU-04',
+            title: 'تجهیز ۳ کلاس درس دبستان شهدای خین به کولر گازی اسپلیت',
+            village: 'روستای خین (نقطه صفر مرزی)',
+            requester: 'برادر عباسی',
+            avatar: 'ع',
+            amount: '۱۶۵ میلیون تومان',
+            rawAmount: 1650000000,
+            elapsed: 'دیروز',
+            type: 'edu',
+            typeName: 'آموزش',
+            status: 'pending',
+            statusName: 'در انتظار تأیید',
+            engineer: 'قرارگاه نوسازی مدارس خرمشهر',
+            date: '۲۳ مهر ۱۴۰۳',
+            povertyScore: '۹۱ از ۱۰۰',
+            justification: 'با توجه به دمای ۵۰ درجه اوایل پاییز و نقص سیستم سرمایشی فعلی، ۸۵ دانش‌آموز با افت شدید تمرکز روبرو هستند. ۳ دستگاه ۲۴۰۰۰ مورد نیاز است.',
+            attachment: 'تأییدیه_مدیریت_آموزش_پرورش.pdf',
+            attachmentSize: '۱.۱ مگابایت'
+        },
+        {
+            id: 'REQ-1403-INF-08',
+            title: 'لایروبی مکانیزه نهر فرعی ۱.۲ کیلومتری نخلستان‌ها',
+            village: 'روستای سوره (کریدور مرکزی)',
+            requester: 'حاج مصطفی رضایی',
+            avatar: 'ر',
+            amount: '۲۱۰ میلیون تومان',
+            rawAmount: 2100000000,
+            elapsed: '۴ ساعت پیش',
+            type: 'infra',
+            typeName: 'کشاورزی و انهار',
+            status: 'pending',
+            statusName: 'در انتظار تأیید',
+            engineer: 'کارشناس جهاد کشاورزی',
+            date: '۲۴ مهر ۱۴۰۳',
+            povertyScore: '۷۲ از ۱۰۰',
+            justification: 'رسوب‌گذاری شدید مانع از رسیدن آب جزر و مدی کارون به ۴۵ هکتار نخلستان مثمر شده و نخل‌های استعمران در معرض خشکیدگی قرار دارند.',
+            attachment: 'نقشه_برداری_مسیر_نهر_سوره.pdf',
+            attachmentSize: '۴.۸ مگابایت'
+        },
+        {
+            id: 'REQ-1403-AID-12',
+            title: 'توزیع ۳۵۰ بسته ارزاق و نوشت‌افزار طرح کرامت',
+            village: 'روستای عریض',
+            requester: 'سید کاظم موسوی',
+            avatar: 'م',
+            amount: '۱۴۰ میلیون تومان',
+            rawAmount: 1400000000,
+            elapsed: '۵ روز پیش',
+            type: 'aid',
+            typeName: 'معیشتی و کرامت',
+            status: 'approved',
+            statusName: 'تأیید شده و ابلاغ‌شده',
+            engineer: 'واحد مددکاری امام‌رضایی‌ها',
+            date: '۱۹ مهر ۱۴۰۳',
+            povertyScore: '۶۸ از ۱۰۰',
+            justification: 'شناسایی و ممیزی کامل خانواده‌های دارای ایتام و زنان سرپرست خانوار با هماهنگی معتمدین محلی تکمیل و آماده توزیع است.',
+            attachment: 'لیست_مددجویان_ممیزی_شده.xlsx',
+            attachmentSize: '۷۵۰ کیلوبایت'
+        },
+        {
+            id: 'REQ-1403-HLT-02',
+            title: 'عایق‌کاری و تعمیرات اساسی خانه بهداشت',
+            village: 'روستای پل نو',
+            requester: 'دکتر امینی',
+            avatar: 'ا',
+            amount: '۹۵ میلیون تومان',
+            rawAmount: 950000000,
+            elapsed: 'هفته گذشته',
+            type: 'infra',
+            typeName: 'بهداشت و سلامت',
+            status: 'rejected',
+            statusName: 'عودت جهت اصلاح نقشه',
+            engineer: 'دفتر فنی دانشگاه علوم پزشکی',
+            date: '۱۵ مهر ۱۴۰۳',
+            povertyScore: '۵۵ از ۱۰۰',
+            justification: 'نقشه فنی ارائه‌شده با استانداردهای نظام مهندسی مطابقت نداشت و مقرر شد توسط مهندس ناظر اصلاح و مجدداً بارگذاری شود.',
+            attachment: 'صورتجلسه_عدم_تأیید_نقشه.pdf',
+            attachmentSize: '۸۲۰ کیلوبایت'
+        }
+    ];
+
+    let currentSelectedReqId = approvalsData[0].id;
+    let currentFilter = 'all';
+
+    // -------------------------------------------------------------
+    // 1. RENDER APPROVALS WORKSPACE
+    // -------------------------------------------------------------
+    function renderApprovalsQueue() {
+        const listEl = document.getElementById('approvalsQueueContainer');
+        const countEl = document.getElementById('approvalsPendingCounter');
+        if (!listEl) return;
+
+        const filtered = approvalsData.filter(item => {
+            if (currentFilter === 'all') return true;
+            return item.status === currentFilter;
+        });
+
+        const pendingCount = approvalsData.filter(i => i.status === 'pending').length;
+        if (countEl) countEl.textContent = pendingCount + ' در انتظار';
+
+        listEl.innerHTML = filtered.map(req => {
+            const isSelected = req.id === currentSelectedReqId;
+            return `
+            <div class="approval-item-card ${isSelected ? 'selected' : ''}" data-req-id="${req.id}" onclick="window.selectApprovalItem('${req.id}')">
+                <div class="approval-item-head">
+                    <div class="approval-item-requester">
+                        <span class="approval-avatar">${req.avatar}</span>
+                        <strong style="font-size:12px; color:#1e140a;">${req.requester}</strong>
+                    </div>
+                    <span class="approval-type-pill ${req.type}">${req.typeName}</span>
+                </div>
+                <div class="approval-item-title">${req.title}</div>
+                <div class="approval-item-meta">
+                    <span style="font-weight:800; color:#8c6823;">${req.amount}</span>
+                    <span>${req.elapsed} · ${req.status === 'approved' ? '✅ تأیید' : req.status === 'rejected' ? '❌ عودت' : '⏳ در نوبت'}</span>
+                </div>
+            </div>
+            `;
+        }).join('');
+
+        renderApprovalsDetail();
+    }
+
+    function renderApprovalsDetail() {
+        const detailEl = document.getElementById('approvalsDetailDrawer');
+        if (!detailEl) return;
+
+        const req = approvalsData.find(i => i.id === currentSelectedReqId) || approvalsData[0];
+        if (!req) return;
+
+        detailEl.innerHTML = `
+            <div class="approvals-detail-header">
+                <div>
+                    <span class="approval-type-pill ${req.type}" style="font-size:11px; padding:3px 10px;">${req.typeName} · کد پیگیری ${req.id}</span>
+                    <h2 class="approvals-detail-title" style="margin-top:8px;">${req.title}</h2>
+                    <div style="font-size:12px; color:#8c7e6c; margin-top:4px;">محل اجرای پروژه: <strong style="color:#1e140a;">${req.village}</strong></div>
+                </div>
+                <button type="button" class="dossier-back-btn" onclick="document.getElementById('approvalsDialog').close();" style="padding:6px 12px; font-size:12px;">✕ بستن</button>
+            </div>
+
+            <div class="approvals-fields-grid">
+                <div class="approvals-field-item">
+                    <span class="approvals-field-label">ناظر فنی و میدانی:</span>
+                    <strong class="approvals-field-value">${req.engineer}</strong>
+                </div>
+                <div class="approvals-field-item">
+                    <span class="approvals-field-label">تاریخ بازدید میدانی:</span>
+                    <strong class="approvals-field-value">${req.date}</strong>
+                </div>
+                <div class="approvals-field-item">
+                    <span class="approvals-field-label">مبلغ برآورد مصوب:</span>
+                    <strong class="approvals-field-value" style="color:#8c6823; font-size:15px;">${req.amount}</strong>
+                </div>
+                <div class="approvals-field-item">
+                    <span class="approvals-field-label">شاخص نیاز و محرومیت روستا:</span>
+                    <strong class="approvals-field-value">${req.povertyScore}</strong>
+                </div>
+                <div class="approvals-field-item">
+                    <span class="approvals-field-label">وضعیت پرونده:</span>
+                    <strong class="approvals-field-value" style="color:${req.status === 'approved' ? '#16a34a' : req.status === 'rejected' ? '#dc2626' : '#d97706'};">${req.statusName}</strong>
+                </div>
+                <div class="approvals-field-item">
+                    <span class="approvals-field-label">پیشنهاددهنده:</span>
+                    <strong class="approvals-field-value">${req.requester}</strong>
+                </div>
+            </div>
+
+            <div class="approvals-justification-block">
+                <div class="approvals-justification-label">📋 گزارش توجیهی و ضرورت اقدام فوری سرتیم:</div>
+                <p class="approvals-justification-quote">«${req.justification}»</p>
+            </div>
+
+            <div class="approvals-attachment-row">
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <span style="font-size:20px;">📄</span>
+                    <div>
+                        <strong style="font-size:12.5px; color:#1e140a;">${req.attachment}</strong>
+                        <div style="font-size:11px; color:#8c7e6c; margin-top:2px;">پیوست فنی تاییدشده کارشناسان · ${req.attachmentSize}</div>
+                    </div>
+                </div>
+                <button type="button" class="dossier-back-btn" onclick="alert('در حال بارگیری مستند فنی پروژه: ' + '${req.attachment}');" style="padding:6px 14px; font-size:11.5px;">دانلود شیت فنی</button>
+            </div>
+
+            <div class="approvals-action-footer">
+                <button type="button" class="approval-btn-reject" onclick="window.handleApprovalDecision('${req.id}', 'rejected')">
+                    ✕ عودت جهت اصلاح
+                </button>
+                <button type="button" class="approval-btn-inquire" onclick="alert('استعلام پیامکی و سیستمی برای ' + '${req.requester}' + ' ارسال گردید.');">
+                    💬 استعلام تکمیلی از ناظر
+                </button>
+                <button type="button" class="approval-btn-approve" onclick="window.handleApprovalDecision('${req.id}', 'approved')">
+                    ✓ تأیید نهایی و ابلاغ اعتبار
+                </button>
+            </div>
+        `;
+    }
+
+    window.selectApprovalItem = function(id) {
+        currentSelectedReqId = id;
+        renderApprovalsQueue();
+    };
+
+    window.handleApprovalDecision = function(id, decision) {
+        const item = approvalsData.find(i => i.id === id);
+        if (item) {
+            item.status = decision;
+            item.statusName = decision === 'approved' ? 'تأیید شده و ابلاغ‌شده' : 'عودت داده شده جهت بازبینی';
+            renderApprovalsQueue();
+            if (typeof window.showToast === 'function') {
+                window.showToast(decision === 'approved' ? 'اعتبار با موفقیت تأیید و ابلاغ گردید.' : 'پرونده با ذکر نکات جهت اصلاح عودت داده شد.', 'success');
+            } else {
+                alert(decision === 'approved' ? 'اعتبار پروژه با موفقیت تأیید و ابلاغ گردید.' : 'پرونده جهت اصلاح عودت داده شد.');
+            }
+        }
+    };
+
+    // Filter Chips Event Binding
+    document.addEventListener('click', function(e) {
+        const chip = e.target.closest('.approvals-filter-chip');
+        if (chip) {
+            document.querySelectorAll('.approvals-filter-chip').forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            currentFilter = chip.getAttribute('data-filter') || 'all';
+            renderApprovalsQueue();
+        }
+    });
+
+    window.openApprovalsWorkspace = function() {
+        const dlg = document.getElementById('approvalsDialog');
+        if (dlg) {
+            renderApprovalsQueue();
+            dlg.showModal();
+        }
+    };
+
+
+    // -------------------------------------------------------------
+    // 2. BEFORE / AFTER DRAGGABLE VISUAL SLIDER ENGINE
+    // -------------------------------------------------------------
+    const caseStudies = [
+        {
+            id: 'khein',
+            title: 'احیا و لایروبی نهر خین (شلمچه)',
+            desc: 'بازگشایی جریان آب کارون پس از سال‌ها رسوب‌گذاری و بسترسازی دیواره سنگی',
+            beforeImg: './soureh_map_web.webp',
+            afterImg: './logo_clean.png',
+            stats: 'طول نهر: ۱.۲ کیلومتر · مساحت احیا: ۴۵ هکتار'
+        },
+        {
+            id: 'school',
+            title: 'نوسازی دبستان شهدای محراب (سوره)',
+            desc: 'تبدیل کانکس‌های فرسوده به مدرسه ۴ کلاسه استاندارد با عایق حرارتی و زمین بازی',
+            beforeImg: './soureh_map_web.webp',
+            afterImg: './soureh_map_web.webp',
+            stats: 'ظرفیت: ۱۲۰ دانش‌آموز · مساحت: ۳۵۰ مترمربع'
+        }
+    ];
+
+    let currentCaseStudy = caseStudies[0];
+
+    window.renderBeforeAfterModule = function(containerId, isModal = false) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        container.innerHTML = `
+        <div class="before-after-wrapper" id="${containerId}_wrap">
+            <div class="before-after-header">
+                <div class="before-after-title">
+                    <span>🎚️</span>
+                    <span>${currentCaseStudy.title}</span>
+                </div>
+                <div class="before-after-tabs">
+                    ${caseStudies.map(cs => `
+                        <button type="button" class="before-after-tab-btn ${cs.id === currentCaseStudy.id ? 'active' : ''}" onclick="window.switchCaseStudy('${cs.id}', '${containerId}')">
+                            ${cs.title.split(' ')[0] + ' ' + cs.title.split(' ')[1]}
+                        </button>
+                    `).join('')}
+                </div>
+            </div>
+
+            <div class="before-after-container" id="${containerId}_slider" style="aspect-ratio:16/9;">
+                <!-- After: The Base Layer -->
+                <img src="${currentCaseStudy.afterImg}" alt="پس از اقدام" class="before-after-base-img" style="filter: brightness(0.95);" />
+                <span class="before-after-badge after">🌱 پس از احیا و خدمت (After)</span>
+
+                <!-- Before: Clipped Layer -->
+                <div class="before-after-clip-layer" id="${containerId}_clip" style="width: 50%;">
+                    <img src="${currentCaseStudy.beforeImg}" alt="پیش از اقدام" class="before-after-clip-img" id="${containerId}_clipImg" style="filter: grayscale(85%) contrast(1.1);" />
+                    <span class="before-after-badge before">⚠️ پیش از مداخله جهادی (Before)</span>
+                </div>
+
+                <!-- Drag Handle -->
+                <button type="button" class="before-after-handle" id="${containerId}_handle" style="right: 50%;" aria-label="جابجایی خط‌کش مقایسه">
+                    <span class="before-after-handle-line"></span>
+                    <span class="before-after-handle-knob">⇄</span>
+                </button>
+            </div>
+
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-top:12px; font-size:11.5px; color:#6b5a47;">
+                <div>${currentCaseStudy.desc}</div>
+                <strong style="color:#8c6823;">${currentCaseStudy.stats}</strong>
+            </div>
+        </div>
+        `;
+
+        // Initialize Slider Pointer Logic
+        initBeforeAfterInteractions(containerId);
+    };
+
+    window.switchCaseStudy = function(csId, containerId) {
+        const found = caseStudies.find(c => c.id === csId);
+        if (found) {
+            currentCaseStudy = found;
+            window.renderBeforeAfterModule(containerId);
+        }
+    };
+
+    function initBeforeAfterInteractions(containerId) {
+        const panel = document.getElementById(containerId + '_slider');
+        const clipLayer = document.getElementById(containerId + '_clip');
+        const clipImg = document.getElementById(containerId + '_clipImg');
+        const handle = document.getElementById(containerId + '_handle');
+        if (!panel || !clipLayer || !handle) return;
+
+        let position = 50; // percentage
+
+        function renderPos() {
+            clipLayer.style.width = position + '%';
+            handle.style.right = position + '%';
+        }
+
+        function measure() {
+            if (clipImg) clipImg.style.width = panel.clientWidth + 'px';
+            renderPos();
+        }
+
+        function moveTo(clientX) {
+            const box = panel.getBoundingClientRect();
+            // RTL calculation: distance from right edge
+            const pct = Math.min(100, Math.max(0, ((box.right - clientX) / box.width) * 100));
+            position = pct;
+            renderPos();
+        }
+
+        panel.addEventListener('pointerdown', function(e) {
+            panel.setPointerCapture(e.pointerId);
+            moveTo(e.clientX);
+        });
+
+        panel.addEventListener('pointermove', function(e) {
+            if (e.buttons & 1) moveTo(e.clientX);
+        });
+
+        handle.addEventListener('keydown', function(e) {
+            if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+            e.preventDefault();
+            position = Math.min(100, Math.max(0, position + (e.key === 'ArrowLeft' ? 5 : -5)));
+            renderPos();
+        });
+
+        window.addEventListener('resize', measure);
+        measure();
+    }
+
+    window.openBeforeAfterModal = function() {
+        const dlg = document.getElementById('beforeAfterDialog');
+        if (dlg) {
+            dlg.showModal();
+            window.renderBeforeAfterModule('beforeAfterModalContainer', true);
+        }
+    };
+
+
+    // -------------------------------------------------------------
+    // 3. ANOMALY PULSE STRIP COMPONENT
+    // -------------------------------------------------------------
+    window.renderAnomalyPulseStrip = function() {
+        return `
+        <div class="anomaly-pulse-strip" id="anomalyPulseStripModule">
+            <div class="anomaly-metrics-grid">
+                <!-- 1. Normal Metric -->
+                <div class="anomaly-metric-card">
+                    <span class="anomaly-metric-label">دبی آب شرب خط غدیر</span>
+                    <div class="anomaly-metric-row">
+                        <strong class="anomaly-metric-val">۱۸۴ <small style="font-size:12px; font-weight:700;">L/s</small></strong>
+                        <span class="anomaly-status-badge normal">نرمال</span>
+                    </div>
+                    <svg viewBox="0 0 120 28" class="anomaly-sparkline-svg" style="color:#10b981;">
+                        <path d="M1 20L16 18L31 21L46 14L61 16L76 12L91 15L119 9" fill="none" stroke="currentColor" stroke-width="2" />
+                    </svg>
+                    <span class="anomaly-metric-expected">بازه استاندارد: ۱۴۰ تا ۲۲۰ L/s</span>
+                </div>
+
+                <!-- 2. Anomalous Metric (PULSING AMBER) -->
+                <div class="anomaly-metric-card anomalous">
+                    <span class="anomaly-metric-label">شوری آب انهار فرعی (TDS)</span>
+                    <div class="anomaly-metric-row">
+                        <strong class="anomaly-metric-val" style="color:#92400e;">۳,۸۵۰ <small style="font-size:12px;">ppm</small></strong>
+                        <span class="anomaly-status-badge alert">+۲.۶σ بحرانی</span>
+                    </div>
+                    <svg viewBox="0 0 120 28" class="anomaly-sparkline-svg" style="color:#d97706;">
+                        <path d="M1 22L16 21L31 22L46 20L61 21L76 18L91 19L105 7L119 4" fill="none" stroke="currentColor" stroke-width="2.5" />
+                    </svg>
+                    <span class="anomaly-metric-expected">فراتر از سقف مجاز (۱,۱۰۰ - ۱,۸۰۰)</span>
+                </div>
+
+                <!-- 3. Normal Metric -->
+                <div class="anomaly-metric-card">
+                    <span class="anomaly-metric-label">سرانه فضای آموزشی آبادی</span>
+                    <div class="anomaly-metric-row">
+                        <strong class="anomaly-metric-val">۱,۲۸۰ <small style="font-size:12px; font-weight:700;">مترمربع</small></strong>
+                        <span class="anomaly-status-badge normal">پایدار</span>
+                    </div>
+                    <svg viewBox="0 0 120 28" class="anomaly-sparkline-svg" style="color:#10b981;">
+                        <path d="M1 15L16 17L31 11L46 16L61 13L76 18L91 12L119 14" fill="none" stroke="currentColor" stroke-width="2" />
+                    </svg>
+                    <span class="anomaly-metric-expected">استاندارد: ۱,۰۰۰ تا ۱,۴۰۰ م.م</span>
+                </div>
+
+                <!-- 4. Normal Metric -->
+                <div class="anomaly-metric-card">
+                    <span class="anomaly-metric-label">پوشش بسته‌های سلامت و کرامت</span>
+                    <div class="anomaly-metric-row">
+                        <strong class="anomaly-metric-val">۹۴.۲٪</strong>
+                        <span class="anomaly-status-badge normal">نرمال</span>
+                    </div>
+                    <svg viewBox="0 0 120 28" class="anomaly-sparkline-svg" style="color:#10b981;">
+                        <path d="M1 14L16 12L31 13L46 11L61 12L76 10L91 11L119 9" fill="none" stroke="currentColor" stroke-width="2" />
+                    </svg>
+                    <span class="anomaly-metric-expected">پوشش هدف: ۹۰٪ تا ۹۸٪</span>
+                </div>
+            </div>
+
+            <!-- Plain-Language Diagnosis Banner -->
+            <div class="anomaly-diagnosis-strip">
+                <div style="display:flex; align-items:center; gap:12px;">
+                    <span class="anomaly-pulse-dot"></span>
+                    <div class="anomaly-diagnosis-text">
+                        هشدار شوری آب: افزایش غلظت املاح در انهار روستای مصاوی پس از مد کارون در ساعت ۱۴:۲۰ ثبت شد.
+                    </div>
+                </div>
+                <button type="button" class="anomaly-investigate-btn" onclick="alert('دستور اعزام پایش میدانی صادر و به کارشناس آب‌رسانی قرارگاه ابلاغ گردید.');">
+                    <span>⚡</span>
+                    <span>دستور اعزام پایش میدانی فوری</span>
+                </button>
+            </div>
+        </div>
+        `;
+    };
+
+
+    // -------------------------------------------------------------
+    // 4. CONTRIBUTION RHYTHM HEATMAP CALENDAR COMPONENT
+    // -------------------------------------------------------------
+    window.renderContributionRhythm = function(containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        container.innerHTML = `
+        <div class="rhythm-calendar-card">
+            <div class="rhythm-header">
+                <div>
+                    <h3 class="rhythm-title">📅 تقویم ضربان حضور و استمرار خدمت جهادی</h3>
+                    <div class="rhythm-sub">۸۴ روز گذشته (۱۲ هفته مداوم) · حوزه خرمشهر و شلمچه</div>
+                </div>
+                <select id="rhythmCategorySelect" class="rhythm-select">
+                    <option value="infra">ماموریت‌های عمرانی و زیرساخت</option>
+                    <option value="aid">توزیع ارزاق و معیشت</option>
+                    <option value="health">تیم‌های درمانی و سلامت</option>
+                </select>
+            </div>
+
+            <div class="rhythm-grid-wrap">
+                <div class="rhythm-grid" id="rhythmGridCells"></div>
+            </div>
+
+            <div class="rhythm-legend">
+                <span>کمتر</span>
+                <span class="rhythm-cell rhythm-level-0"></span>
+                <span class="rhythm-cell rhythm-level-1"></span>
+                <span class="rhythm-cell rhythm-level-2"></span>
+                <span class="rhythm-cell rhythm-level-3"></span>
+                <span class="rhythm-cell rhythm-level-4"></span>
+                <span>بیشتر</span>
+            </div>
+
+            <div class="rhythm-stats-strip">
+                <div>
+                    <strong class="rhythm-stat-num" id="rhythmStreakVal">۲۱</strong>
+                    <div class="rhythm-stat-lbl">روز استمرار مداوم خدمت</div>
+                </div>
+                <div>
+                    <strong class="rhythm-stat-num" id="rhythmActiveDaysVal">۶۸</strong>
+                    <div class="rhythm-stat-lbl">روز فعال در میدان از ۸۴ روز</div>
+                </div>
+                <div>
+                    <strong class="rhythm-stat-num" id="rhythmPeakDayVal">پنج‌شنبه‌ها</strong>
+                    <div class="rhythm-stat-lbl">اوج فعالیت جهادی</div>
+                </div>
+            </div>
+        </div>
+        `;
+
+        populateRhythmGrid('infra');
+
+        const sel = document.getElementById('rhythmCategorySelect');
+        if (sel) {
+            sel.addEventListener('change', function() {
+                populateRhythmGrid(sel.value);
+            });
+        }
+    };
+
+    function populateRhythmGrid(cat) {
+        const grid = document.getElementById('rhythmGridCells');
+        if (!grid) return;
+        grid.innerHTML = '';
+
+        const factor = cat === 'infra' ? 7 : cat === 'aid' ? 4 : 2;
+        let active = 0;
+
+        for (let i = 0; i < 84; i++) {
+            const val = (i * 11 + factor * 3 + Math.floor(i / 7)) % (factor + 2);
+            const level = val === 0 ? 'rhythm-level-0' : val < factor / 2 ? 'rhythm-level-1' : val < factor ? 'rhythm-level-2' : val === factor ? 'rhythm-level-3' : 'rhythm-level-4';
+            
+            const cell = document.createElement('div');
+            cell.className = 'rhythm-cell ' + level;
+            cell.title = 'روز ' + (i + 1) + ': ' + val + ' خدمت میدانی ثبت‌شده';
+            grid.appendChild(cell);
+
+            if (val > 0) active++;
+        }
+
+        const streakEl = document.getElementById('rhythmStreakVal');
+        const activeEl = document.getElementById('rhythmActiveDaysVal');
+        if (streakEl) streakEl.textContent = factor * 3 + 2;
+        if (activeEl) activeEl.textContent = active;
+    }
+
+
+    // -------------------------------------------------------------
+    // 5. ARTICLE WITH MARGIN SIDENOTES (ORAL HISTORY & NARRATIVE)
+    // -------------------------------------------------------------
+    window.renderOralHistoryArticle = function() {
+        return `
+        <div class="oral-history-article">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:14px;">
+                <span style="font-size:22px;">📜</span>
+                <div>
+                    <h3 style="font-size:16px; font-weight:900; margin:0; color:#1e140a;">روایت مقاومت، تاریخ شفاهی و ریشه‌های هویتی آبادی</h3>
+                    <div style="font-size:11.5px; color:#8c7e6c; margin-top:2px;">ثبت خاطرات دفاع مقدس، معتمدین عشایر و جهادگران در منطقه مرزی شلمچه</div>
+                </div>
+            </div>
+
+            <div class="oral-history-grid">
+                <!-- Prose Column -->
+                <div class="oral-prose">
+                    <p>
+                        روستای سوره و آبادی‌های پیرامون نهر خین، پیش از آنکه نقطه تمرکز طرح‌های جامع توسعه روستایی باشند، حریم غیرت و پیشانی مقاومت خرمشهر در برابر هجوم دشمن بعثی بوده‌اند<sup class="oral-sup-marker">[۱]</sup>. در سال‌های پس از جنگ، بازگشت مردم به نخلستان‌های سوخته با دست خالی اما اراده‌ای استوار صورت گرفت.
+                    </p>
+                    <p>
+                        امروز نیز چالش آب و لایروبی انهار، ادامه‌دار همان حماسه ایستادگی است. حضور کاروان‌های جهادی امام‌رضایی‌ها تنها یک پروژه عمرانی خشک نیست، بلکه احیای پیوند دیرین انسان با خاک و نخل است<sup class="oral-sup-marker">[۲]</sup>.
+                    </p>
+                    <p>
+                        شیوخ منطقه همواره تأکید دارند که اشتغال بومیان و حفظ شادابی مدارس، سدی نفوذناپذیر در برابر مهاجرت به حاشیه شهرهای بزرگ خواهد بود<sup class="oral-sup-marker">[۳]</sup>.
+                    </p>
+                </div>
+
+                <!-- Margin Sidenotes Column -->
+                <aside class="oral-margin-rail">
+                    <div class="oral-sidenote-card">
+                        <div class="oral-sidenote-head">
+                            <span>🎖️</span>
+                            <span>یادداشت حاشیه [۱] · خاطره شهید</span>
+                        </div>
+                        «اینجا خاکریز اول شلمچه است؛ هر نخلی که سرپا می‌ماند، پرچم پیروزی است.» — برگرفته از وصیت‌نامه شهید مفقودالاثر نهر خین
+                    </div>
+
+                    <div class="oral-sidenote-card">
+                        <div class="oral-sidenote-head">
+                            <span>🌴</span>
+                            <span>یادداشت حاشیه [۲] · کلام بزرگان عشایر</span>
+                        </div>
+                        «اگر آب کارون به دل نهر برسد، جوانان ما بیل به دست می‌گیرند و به هیچ شهری مهاجرت نخواهند کرد.» — شیخ طایفه در دیدار جهادی
+                    </div>
+
+                    <div class="oral-sidenote-card">
+                        <div class="oral-sidenote-head">
+                            <span>📐</span>
+                            <span>یادداشت حاشیه [۳] · نکته مهندسی</span>
+                        </div>
+                        افت آب انهار ناشی از پس‌زدگی گل‌ولای در دهانه ورودی کارون است و لایروبی دوره‌ای را به یک نیاز حیاتی بدل ساخته است.
+                    </div>
+                </aside>
+
+                <!-- Pull Quote -->
+                <div class="oral-pullquote">
+                    «خرمشهر و روستاهای مرزی شلمچه، سند هویت ملی ایران هستند؛ هر اقدامی برای بازسازی مدارس و احیای نخلستان‌ها، عبادت و فریضه است.»
+                </div>
+            </div>
+        </div>
+        `;
+    };
+
+
+    // -------------------------------------------------------------
+    // 6. DRAG TO REORDER PRIORITY STACK (DSS / STRATEGIC ACTION)
+    // -------------------------------------------------------------
+    const initialPriorityItems = [
+        { id: 'p1', rank: '۰۱', title: 'احیای کامل خط انتقال آب روستای مصاوی', sub: 'تأمین آب پایدار برای ۲۴۰ خانوار تحت تنش شدید', owner: 'مهندس حیدری', initial: 'ح' },
+        { id: 'p2', rank: '۰۲', title: 'بهسازی و تجهیز دبستان ۴ کلاسه خین', sub: 'نوسازی سامانه سرمایشی و ایزوگام سقف پیش از بارندگی', owner: 'برادر عباسی', initial: 'ع' },
+        { id: 'p3', rank: '۰۳', title: 'لایروبی مکانیزه انهار فرعی نخلستان‌های سوره', sub: 'جلوگیری از خشکیدگی ۴۵ هکتار نخلستان مثمر', owner: 'حاج مصطفی رضایی', initial: 'ر' },
+        { id: 'p4', rank: '۰۴', title: 'تجهیز کارگاه اشتغال خانگی بانوان روستای عریض', sub: 'راه‌اندازی چرخه خیاطی و بسته‌بندی خرمای بومی', owner: 'سرکار خانم کعبی', initial: 'ک' },
+        { id: 'p5', rank: '۰۵', title: 'احداث ایستگاه پایش سلامت و دندانپزشکی پل نو', sub: 'پوشش درمانی رایگان برای اهالی روستاهای اقماری', owner: 'دکتر امینی', initial: 'ا' }
+    ];
+
+    let currentPriorityStack = JSON.parse(JSON.stringify(initialPriorityItems));
+
+    window.renderPriorityStack = function(containerId) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+
+        container.innerHTML = `
+        <div class="priority-stack-card">
+            <div class="priority-stack-header">
+                <div>
+                    <h3 style="font-size:14px; font-weight:900; margin:0; color:#1e140a;">🎯 اولویت‌بندی اجرایی پروژه‌های راهبردی (Drag & Drop)</h3>
+                    <div style="font-size:11px; color:#8c7e6c; margin-top:2px;">قابلیت جابجایی ترتیبی با ماوس، لمس و کلیدهای جهت‌نما توسط مدیر ارشد</div>
+                </div>
+                <button type="button" class="dossier-back-btn" onclick="window.resetPriorityStack('${containerId}')" style="padding:5px 12px; font-size:11px;">
+                    بازنشانی به حالت پیش‌فرض
+                </button>
+            </div>
+
+            <div class="priority-stack-list" id="${containerId}_list">
+                ${currentPriorityStack.map((item, idx) => `
+                    <div class="priority-stack-item" data-id="${item.id}" draggable="true" ondragstart="window.handlePriorityDragStart(event)" ondragover="window.handlePriorityDragOver(event)" ondrop="window.handlePriorityDrop(event, '${containerId}')">
+                        <span class="priority-grip-handle">⠿</span>
+                        <span class="priority-rank-num">${item.rank}</span>
+                        <div class="priority-item-info">
+                            <div class="priority-item-title">${item.title}</div>
+                            <div class="priority-item-sub">${item.sub} · مسئول: ${item.owner}</div>
+                        </div>
+                        ${idx === 0 ? '<span class="priority-up-next-badge">در نوبت اجرا</span>' : ''}
+                        <span class="approval-avatar" style="width:28px; height:28px;">${item.initial}</span>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+        `;
+    };
+
+    let draggedItem = null;
+    window.handlePriorityDragStart = function(e) {
+        draggedItem = e.target.closest('.priority-stack-item');
+        if (draggedItem) draggedItem.classList.add('dragging');
+    };
+
+    window.handlePriorityDragOver = function(e) {
+        e.preventDefault();
+    };
+
+    window.handlePriorityDrop = function(e, containerId) {
+        e.preventDefault();
+        const target = e.target.closest('.priority-stack-item');
+        if (!target || target === draggedItem) return;
+
+        const list = target.parentNode;
+        const allItems = Array.from(list.children);
+        const fromIdx = allItems.indexOf(draggedItem);
+        const toIdx = allItems.indexOf(target);
+
+        if (fromIdx !== -1 && toIdx !== -1) {
+            const moved = currentPriorityStack.splice(fromIdx, 1)[0];
+            currentPriorityStack.splice(toIdx, 0, moved);
+
+            // Re-number ranks
+            const farsiNums = ['۰۱', '۰۲', '۰۳', '۰۴', '۰۵'];
+            currentPriorityStack.forEach((it, i) => {
+                it.rank = farsiNums[i] || ('۰' + (i+1));
+            });
+
+            window.renderPriorityStack(containerId);
+        }
+        if (draggedItem) draggedItem.classList.remove('dragging');
+    };
+
+    window.resetPriorityStack = function(containerId) {
+        currentPriorityStack = JSON.parse(JSON.stringify(initialPriorityItems));
+        window.renderPriorityStack(containerId);
+    };
+
+
+    // -------------------------------------------------------------
+    // 7. KEYBOARD SHORTCUTS CONTROLLER & MODAL
+    // -------------------------------------------------------------
+    window.openShortcutsDialog = function() {
+        const dlg = document.getElementById('keyboardShortcutsDialog');
+        if (dlg) dlg.showModal();
+    };
+
+    document.addEventListener('keydown', function(e) {
+        // Ignore if typing in input or textarea
+        if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable)) return;
+
+        // '?' for Shortcuts Cheat Sheet
+        if (e.key === '?' || (e.key === '/' && e.shiftKey)) {
+            e.preventDefault();
+            window.openShortcutsDialog();
+        }
+
+        // 'A' or 'a' for Approvals Workspace
+        if (e.key === 'a' || e.key === 'A' || e.key === 'ش') {
+            e.preventDefault();
+            window.openApprovalsWorkspace();
+        }
+
+        // 'B' or 'b' for Before / After
+        if (e.key === 'b' || e.key === 'B' || e.key === 'ذ') {
+            e.preventDefault();
+            window.openBeforeAfterModal();
+        }
+    });
+
+
+    // -------------------------------------------------------------
+    // 8. HEADER INJECTION: ADD ACCESS BUTTONS TO NAVBAR
+    // -------------------------------------------------------------
+    function injectHeaderQuickButtons() {
+        const analysisWrap = document.getElementById('analysisDropdownWrap');
+        if (!analysisWrap) return;
+
+        // Check if quick buttons already injected
+        if (document.getElementById('navApprovalsQuickBtn')) return;
+
+        const wrap = document.createElement('div');
+        wrap.style.display = 'flex';
+        wrap.style.alignItems = 'center';
+        wrap.style.gap = '6px';
+        wrap.innerHTML = `
+            <button type="button" class="nav-action-btn" id="navApprovalsQuickBtn" onclick="window.openApprovalsWorkspace()" title="کارتابل موافقت‌ها و ابلاغ اعتبار (کلید A)">
+                <span style="font-size:14px;">⚡</span>
+                <span>کارتابل موافقت‌ها</span>
+                <span style="background:#fef3c7; color:#92400e; font-size:10px; font-weight:800; padding:1px 6px; border-radius:100px;">۳</span>
+            </button>
+            <button type="button" class="nav-action-btn" id="navBeforeAfterQuickBtn" onclick="window.openBeforeAfterModal()" title="مقایسه تصاویر قبل و بعد (کلید B)">
+                <span style="font-size:14px;">🎚️</span>
+                <span>قبل و بعد</span>
+            </button>
+            <button type="button" class="nav-action-btn" id="navShortcutsQuickBtn" onclick="window.openShortcutsDialog()" title="راهنمای کلیدهای میانبر (کلید ?)">
+                <span>⌨️</span>
+            </button>
+        `;
+
+        analysisWrap.parentNode.insertBefore(wrap, analysisWrap);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', injectHeaderQuickButtons);
+    } else {
+        injectHeaderQuickButtons();
+    }
+
+    
+    // -------------------------------------------------------------
+    // 9. AUTOMATIC DOSSIER INTEGRATION HOOK
+    // -------------------------------------------------------------
+    function hookDossierMount() {
+        if (typeof renderExecutiveDashboard === 'function') {
+            const prevRender = renderExecutiveDashboard;
+            renderExecutiveDashboard = function(v) {
+                prevRender(v);
+                
+                const container = document.getElementById('execTabContentContainer');
+                if (!container) return;
+
+                // 1. Inject Anomaly Pulse Strip at top (if not already present)
+                if (!document.getElementById('anomalyPulseStripModule')) {
+                    const anomalyWrap = document.createElement('div');
+                    anomalyWrap.innerHTML = window.renderAnomalyPulseStrip();
+                    container.insertBefore(anomalyWrap.firstElementChild, container.firstChild);
+                }
+
+                // 2. Inject Before/After Slider Card (if not already present)
+                if (!document.getElementById('villageBeforeAfterMount')) {
+                    const baCard = document.createElement('div');
+                    baCard.id = 'villageBeforeAfterMount';
+                    container.appendChild(baCard);
+                    window.renderBeforeAfterModule('villageBeforeAfterMount');
+                }
+
+                // 3. Inject Contribution Rhythm Calendar (if not already present)
+                if (!document.getElementById('villageRhythmMount')) {
+                    const rhythmCard = document.createElement('div');
+                    rhythmCard.id = 'villageRhythmMount';
+                    container.appendChild(rhythmCard);
+                    window.renderContributionRhythm('villageRhythmMount');
+                }
+
+                // 4. Inject Oral History with Margin Notes (if not already present)
+                if (!document.getElementById('villageOralHistoryMount')) {
+                    const oralCard = document.createElement('div');
+                    oralCard.id = 'villageOralHistoryMount';
+                    oralCard.innerHTML = window.renderOralHistoryArticle();
+                    container.appendChild(oralCard);
+                }
+
+                // 5. Inject Priority Stack (if not already present)
+                if (!document.getElementById('villagePriorityStackMount')) {
+                    const pCard = document.createElement('div');
+                    pCard.id = 'villagePriorityStackMount';
+                    container.appendChild(pCard);
+                    window.renderPriorityStack('villagePriorityStackMount');
+                }
+            };
+            console.log('✓ VibePrompt Senior Suite successfully mounted to village dossier lifecycle!');
+        } else {
+            setTimeout(hookDossierMount, 200);
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', hookDossierMount);
+    } else {
+        hookDossierMount();
+    }
+
+    console.log('✓ VibePrompt Senior Suite (Approvals, Before/After, Anomaly, Rhythm, Oral History, Stack, Shortcuts) fully registered.');
+})();
+
+</script>
+
+
+<!-- ========================================================================= -->
+<!-- VIBEPROMPTS ADVANCED MASTER SUITE MODALS & DIALOGS                        -->
+<!-- ========================================================================= -->
+
+<!-- 1. APPROVALS WORKSPACE MODAL (کارتابل موافقت‌ها و ابلاغ اعتبارات) -->
+<dialog id="approvalsDialog" class="approvals-dialog" aria-labelledby="approvalsModalTitle">
+    <div class="approvals-layout">
+        <!-- Queue List -->
+        <div class="approvals-queue-pane">
+            <div class="approvals-queue-head">
+                <div class="approvals-queue-title-row">
+                    <div class="approvals-queue-title">
+                        <span>⚡</span>
+                        <span id="approvalsModalTitle">کارتابل موافقت‌ها و ابلاغ اعتبار</span>
+                    </div>
+                    <span class="approvals-pending-badge" id="approvalsPendingCounter">۳ در انتظار</span>
+                </div>
+                <div class="approvals-filters-row">
+                    <button type="button" class="approvals-filter-chip active" data-filter="all">همه (۵)</button>
+                    <button type="button" class="approvals-filter-chip" data-filter="pending">در انتظار (۳)</button>
+                    <button type="button" class="approvals-filter-chip" data-filter="approved">تأیید شده (۱)</button>
+                    <button type="button" class="approvals-filter-chip" data-filter="rejected">عودت / رد (۱)</button>
+                </div>
+            </div>
+            <div class="approvals-requests-list" id="approvalsQueueContainer">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </div>
+
+        <!-- Detail Drawer -->
+        <div class="approvals-detail-pane" id="approvalsDetailDrawer">
+            <!-- Dynamically populated via JS -->
+        </div>
+    </div>
+</dialog>
+
+<!-- 2. BEFORE / AFTER FULL-SCREEN MODAL -->
+<dialog id="beforeAfterDialog" class="approvals-dialog" style="max-width:960px; height:auto; max-height:90vh; padding:24px;" aria-labelledby="baModalTitle">
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;">
+        <div style="display:flex; align-items:center; gap:8px;">
+            <span style="font-size:20px;">🎚️</span>
+            <h3 id="baModalTitle" style="font-size:16px; font-weight:900; margin:0; color:#1e140a;">مقایسه هوایی و میدانی قبل و بعد از مداخله جهادی</h3>
+        </div>
+        <button type="button" class="dossier-back-btn" onclick="document.getElementById('beforeAfterDialog').close();" style="padding:6px 14px;">✕ بستن</button>
+    </div>
+    <div id="beforeAfterModalContainer">
+        <!-- Injected via JS -->
+    </div>
+</dialog>
+
+<!-- 3. KEYBOARD SHORTCUTS CHEAT SHEET MODAL -->
+<dialog id="keyboardShortcutsDialog" class="shortcuts-dialog" aria-labelledby="shortcutsTitle">
+    <div style="display:flex; align-items:center; justify-content:space-between; padding-bottom:14px; border-bottom:1px solid #ebd9c4;">
+        <div style="display:flex; align-items:center; gap:8px;">
+            <span style="font-size:18px;">⌨️</span>
+            <h3 id="shortcutsTitle" style="font-size:15px; font-weight:900; margin:0; color:#1e140a;">راهنمای کلیدهای دسترسی سریع ( میانبرها )</h3>
+        </div>
+        <button type="button" class="dossier-back-btn" onclick="document.getElementById('keyboardShortcutsDialog').close();" style="padding:4px 10px; font-size:12px;">✕</button>
+    </div>
+    <div class="shortcuts-grid">
+        <div class="shortcut-row">
+            <span style="font-size:12.5px; font-weight:800; color:#3a2a1a;">جستجوی هوشمند در روستاها و GIS</span>
+            <div class="shortcut-keys"><span class="key-cap">Ctrl</span><span>+</span><span class="key-cap">K</span></div>
+        </div>
+        <div class="shortcut-row">
+            <span style="font-size:12.5px; font-weight:800; color:#3a2a1a;">کارتابل موافقت‌ها و ابلاغ اعتبارات</span>
+            <div class="shortcut-keys"><span class="key-cap">A</span></div>
+        </div>
+        <div class="shortcut-row">
+            <span style="font-size:12.5px; font-weight:800; color:#3a2a1a;">مقایسه تصاویر قبل و بعد مداخله</span>
+            <div class="shortcut-keys"><span class="key-cap">B</span></div>
+        </div>
+        <div class="shortcut-row">
+            <span style="font-size:12.5px; font-weight:800; color:#3a2a1a;">باز کردن کوکپیت راهبردی C-Level</span>
+            <div class="shortcut-keys"><span class="key-cap">C</span></div>
+        </div>
+        <div class="shortcut-row">
+            <span style="font-size:12.5px; font-weight:800; color:#3a2a1a;">سوئیچ لایه‌های نقشه هوایی</span>
+            <div class="shortcut-keys"><span class="key-cap">M</span></div>
+        </div>
+        <div class="shortcut-row">
+            <span style="font-size:12.5px; font-weight:800; color:#3a2a1a;">بستن پنجره‌ها و دیالوگ‌های باز</span>
+            <div class="shortcut-keys"><span class="key-cap">Esc</span></div>
+        </div>
+        <div class="shortcut-row">
+            <span style="font-size:12.5px; font-weight:800; color:#3a2a1a;">مشاهده مجدد این راهنما</span>
+            <div class="shortcut-keys"><span class="key-cap">?</span></div>
+        </div>
+    </div>
+</dialog>
 
 </body></html>
