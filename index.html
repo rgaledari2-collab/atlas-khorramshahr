@@ -6708,7 +6708,8 @@ dialog#statsDialog::backdrop {
 .gis-dock-wrap {
     position: fixed;
     top: 76px;
-    right: 20px;
+    left: 24px;
+    right: auto;
     z-index: 85;
     width: 290px;
     max-width: calc(100vw - 40px);
@@ -7213,7 +7214,8 @@ body.in-village .gis-dock-wrap {
 @media (max-width: 768px) {
     .gis-dock-wrap {
         top: 60px;
-        right: 12px;
+        left: 12px;
+        right: auto;
         width: 260px;
     }
 }
@@ -23759,7 +23761,7 @@ addEventListener('resize', layout); layout();
             { id: 'jadideh', name: 'جدیده', defaultImg: './jadideh_map.webp', fallback: './jadideh_map.webp', desc: 'حومه شرقی · نخلستان‌ها' },
             { id: 'darband-gharbi', name: 'دربند غربی', defaultImg: './darband-gharbi_map_web.webp', fallback: './darband-gharbi_map.webp', desc: 'حومه غربی · کانون سکونتگاهی' },
             { id: 'darband-sharqi', name: 'دربند شرقی', defaultImg: './darband-sharqi_map_web.webp', fallback: './darband-sharqi_map.webp', desc: 'حومه غربی · همجوار دربند غربی' },
-            { id: 'shahrak-sevvom', name: 'شهرک سوم', defaultImg: './shahrak-sevvom_map_web.webp', fallback: './shahrak-sevvom_map_hq.jpg', desc: 'محور مواصلاتی شلمچه · حومه غربی' }
+            { id: 'shahrak-sevvom', name: 'شهرک سوم', defaultImg: './shahrak-sevvom_map_web.webp', fallback: './shahrak-sevvom_map.webp', desc: 'محور مواصلاتی شلمچه · حومه غربی' }
         ];
 
         const villageMapRegistry = {
@@ -23823,8 +23825,8 @@ addEventListener('resize', layout); layout();
                 ]
             },
             'darband-gharbi': {
-                img: './darband_gharbi_map_web.webp',
-                fallback: './darband_gharbi_map.webp',
+                img: './darband-gharbi_map_web.webp',
+                fallback: './darband-gharbi_map.webp',
                 badge: 'پایش هوایی شلمچه · نقشه تفصیلی دربند غربی',
                 kicker: '🛰️ نقشه هوایی ماهواره‌ای تفصیلی · دربند غربی',
                 name: 'دربند غربی',
@@ -23843,8 +23845,8 @@ addEventListener('resize', layout); layout();
                 ]
             },
             'darband-sharqi': {
-                img: './darband_sharqi_map_web.webp',
-                fallback: './darband_sharqi_map.webp',
+                img: './darband-sharqi_map_web.webp',
+                fallback: './darband-sharqi_map.webp',
                 badge: 'پایش هوایی شلمچه · نقشه تفصیلی دربند شرقی',
                 kicker: '🛰️ نقشه هوایی ماهواره‌ای تفصیلی · دربند شرقی',
                 name: 'دربند شرقی',
@@ -23939,8 +23941,8 @@ addEventListener('resize', layout); layout();
                 ]
             },
             'shahrak-sevvom': {
-                img: './shahrak_sevvom_map_web.webp',
-                fallback: './shahrak_sevvom_map.webp',
+                img: './shahrak-sevvom_map_web.webp',
+                fallback: './shahrak-sevvom_map.webp',
                 badge: 'پایش هوایی شلمچه · نقشه تفصیلی شهرک سوم',
                 kicker: '🛰️ نقشه هوایی ماهواره‌ای تفصیلی · شهرک سوم',
                 name: 'شهرک سوم',
@@ -23958,8 +23960,8 @@ addEventListener('resize', layout); layout();
                 ]
             },
             'shahrak-3': {
-                img: './shahrak_sevvom_map_web.webp',
-                fallback: './shahrak_sevvom_map.webp',
+                img: './shahrak-sevvom_map_web.webp',
+                fallback: './shahrak-sevvom_map.webp',
                 badge: 'پایش هوایی شلمچه · نقشه تفصیلی شهرک سوم',
                 kicker: '🛰️ نقشه هوایی ماهواره‌ای تفصیلی · شهرک سوم',
                 name: 'شهرک سوم',
@@ -26140,6 +26142,60 @@ document.addEventListener('click', (e) => {
             timelineCard.style.display = (chapter === 'all' || chapter === 'support') ? '' : 'none';
         }
     });
+})();
+</script>
+
+
+<script id="village-image-speed-optimizer">
+(function() {
+    // 1. Preload village satellite maps into browser disk/memory cache
+    const preloadedMapUrls = new Set();
+
+    function preloadImage(url) {
+        if (!url || preloadedMapUrls.has(url)) return;
+        preloadedMapUrls.add(url);
+        const img = new Image();
+        img.decoding = 'async';
+        img.src = url;
+    }
+
+    function preloadAllVillageMaps() {
+        if (typeof villageMapRegistry === 'undefined') return;
+        const keys = Object.keys(villageMapRegistry);
+        keys.forEach((k, idx) => {
+            // Stagger preloading by 80ms to keep main thread completely idle
+            setTimeout(() => {
+                const item = villageMapRegistry[k];
+                if (item && item.img) preloadImage(item.img);
+            }, 300 + idx * 80);
+        });
+    }
+
+    // Trigger preloading on idle
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(preloadAllVillageMaps);
+    } else {
+        setTimeout(preloadAllVillageMaps, 1000);
+    }
+
+    // Instant priority preload on pin hover / pointer enter
+    document.addEventListener('pointerenter', function(e) {
+        const pin = e.target.closest('.pin');
+        if (!pin) return;
+        const vId = pin.getAttribute('data-village-id') || pin.id;
+        if (vId && typeof villageMapRegistry !== 'undefined' && villageMapRegistry[vId]) {
+            preloadImage(villageMapRegistry[vId].img);
+        }
+    }, true);
+
+    // Fast image transition for #villageSatelliteImg
+    const satImg = document.getElementById('villageSatelliteImg');
+    if (satImg) {
+        satImg.style.transition = 'opacity 0.22s ease';
+        satImg.addEventListener('load', function() {
+            this.style.opacity = '1';
+        });
+    }
 })();
 </script>
 
