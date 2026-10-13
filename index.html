@@ -7557,6 +7557,575 @@ html.low-end-device dialog#statsDialog {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
 }
+
+/* =========================================================================
+   STRATEGIC OVERHAUL: WARM PARCHMENT & BRONZE DESIGN SYSTEM
+   Theme: Warm Parchment Cream, Gold Hairline, Dark Espresso Brown
+   ========================================================================= */
+
+:root {
+    --parchment-cream: #f7f3ea;
+    --parchment-sheet: #fbf9f4;
+    --parchment-border: #e4d8c5;
+    --parchment-border-gold: rgba(198, 146, 59, 0.45);
+    --espresso-deep: #16100c;
+    --espresso-surface: rgba(26, 19, 14, 0.95);
+    --espresso-subtle: #2d2218;
+    --gold-warm: #c6923b;
+    --gold-bright: #d4a359;
+    --bronze-hairline: rgba(198, 146, 59, 0.35);
+    --bronze-glow: rgba(198, 146, 59, 0.22);
+    --text-ink: #1b1610;
+    --text-espresso: #2e241b;
+    --text-muted-warm: #6a5d4e;
+
+    /* Secondary Thematic Colors per Domain */
+    --sec-health: #1a7f78;
+    --sec-health-bg: #e6f6f5;
+    --sec-health-border: rgba(26, 127, 120, 0.35);
+    --sec-edu: #c47920;
+    --sec-edu-bg: #fdf5e8;
+    --sec-edu-border: rgba(196, 121, 32, 0.35);
+    --sec-infra: #2b5a88;
+    --sec-infra-bg: #ebf3fa;
+    --sec-infra-border: rgba(43, 90, 136, 0.35);
+    --sec-aid: #963128;
+    --sec-aid-bg: #faebea;
+    --sec-aid-border: rgba(150, 49, 40, 0.35);
+}
+
+/* 1. Warm Header & Navigation Capsule */
+header {
+    background: linear-gradient(180deg, rgba(22, 16, 12, 0.94) 0%, rgba(22, 16, 12, 0.65) 80%, transparent 100%) !important;
+    border-bottom: 1px solid rgba(198, 146, 59, 0.18) !important;
+}
+
+.search-input-inner {
+    background: linear-gradient(135deg, rgba(38, 28, 20, 0.88) 0%, rgba(26, 19, 14, 0.94) 100%) !important;
+    border: 1px solid var(--parchment-border-gold) !important;
+    color: #f7f3ea !important;
+}
+.search-input-inner input {
+    color: #f7f3ea !important;
+    font-family: YekanBakh, 'IranYekan', 'Farhang', sans-serif !important;
+}
+.search-input-inner input::placeholder {
+    color: #b5a593 !important;
+}
+
+/* Streamlined Nav Action Buttons */
+.nav-action-btn {
+    background: linear-gradient(135deg, rgba(38, 28, 20, 0.92) 0%, rgba(24, 18, 13, 0.96) 100%) !important;
+    border: 1px solid var(--parchment-border-gold) !important;
+    color: var(--gold-bright) !important;
+    font-family: YekanBakh, 'IranYekan', 'Farhang', sans-serif !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
+    border-radius: 9px !important;
+    transition: all 0.22s ease !important;
+}
+.nav-action-btn:hover {
+    background: linear-gradient(135deg, rgba(54, 40, 28, 0.96) 0%, rgba(36, 26, 18, 0.98) 100%) !important;
+    border-color: rgba(212, 163, 89, 0.75) !important;
+    color: #ffffff !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5), 0 0 14px var(--bronze-glow) !important;
+    transform: translateY(-1px);
+}
+
+/* 2. Dual Audience Toggle Switch */
+.audience-toggle-pill {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(18, 13, 9, 0.88);
+    border: 1px solid var(--parchment-border-gold);
+    border-radius: 30px;
+    padding: 2.5px;
+    gap: 3px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    flex-shrink: 0;
+}
+.audience-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 11px;
+    border: none;
+    background: transparent;
+    color: #c9b9a6;
+    font-family: YekanBakh, 'IranYekan', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+.audience-btn:hover {
+    color: #ffffff;
+}
+.audience-btn.active {
+    background: linear-gradient(135deg, var(--gold-warm), #a67324);
+    color: #1a1208;
+    font-weight: 900;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+.audience-btn svg {
+    flex-shrink: 0;
+}
+
+/* 3. Analysis Dropdown Menu */
+.analysis-dropdown-wrap {
+    position: relative;
+    display: inline-block;
+}
+.analysis-menu-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.analysis-menu-trigger .menu-caret {
+    transition: transform 0.2s ease;
+}
+.analysis-dropdown-wrap.is-open .analysis-menu-trigger .menu-caret {
+    transform: rotate(180deg);
+}
+
+.analysis-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 290px;
+    background: linear-gradient(160deg, rgba(28, 21, 15, 0.98) 0%, rgba(18, 13, 9, 0.99) 100%);
+    border: 1px solid var(--parchment-border-gold);
+    border-radius: 14px;
+    padding: 8px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65), 0 0 24px var(--bronze-glow);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    animation: menuSlideIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.analysis-dropdown-menu[hidden] {
+    display: none !important;
+}
+@keyframes menuSlideIn {
+    from { opacity: 0; transform: translateY(-8px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.analysis-menu-header {
+    padding: 6px 10px 4px;
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--gold-bright);
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(198, 146, 59, 0.15);
+    margin-bottom: 2px;
+}
+
+.analysis-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: transparent;
+    color: #e8dccb;
+    text-align: right;
+    cursor: pointer;
+    font-family: YekanBakh, 'IranYekan', sans-serif;
+    transition: all 0.18s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+.analysis-menu-item:hover {
+    background: rgba(198, 146, 59, 0.12);
+    border-color: rgba(198, 146, 59, 0.35);
+    color: #ffffff;
+    transform: translateX(-2px);
+}
+.menu-item-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--gold-bright);
+}
+.menu-item-icon.icon-compare { color: #60a5fa; background: rgba(96, 165, 250, 0.12); }
+.menu-item-icon.icon-dss { color: #fbbf24; background: rgba(251, 191, 36, 0.12); }
+.menu-item-icon.icon-projects { color: #34d399; background: rgba(52, 211, 153, 0.12); }
+.menu-item-icon.icon-gis { color: #38bdf8; background: rgba(56, 189, 248, 0.12); }
+.menu-item-icon.icon-summary { color: #c084fc; background: rgba(192, 132, 252, 0.12); }
+.menu-item-icon.icon-excel { color: #10b981; background: rgba(16, 185, 129, 0.15); }
+
+.menu-item-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.menu-item-text strong {
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.3;
+}
+.menu-item-text small {
+    font-size: 10px;
+    color: #9c8e7e;
+    line-height: 1.3;
+}
+.analysis-menu-divider {
+    height: 1px;
+    background: rgba(198, 146, 59, 0.18);
+    margin: 4px 6px;
+}
+.menu-excel-item {
+    background: rgba(16, 185, 129, 0.08) !important;
+    border: 1px solid rgba(16, 185, 129, 0.25) !important;
+}
+.menu-excel-item:hover {
+    background: rgba(16, 185, 129, 0.18) !important;
+    border-color: rgba(16, 185, 129, 0.5) !important;
+}
+
+/* 4. Asymmetric Village Sidebar Cards */
+.village-sidebar {
+    width: 375px !important;
+    max-width: 38vw !important;
+    background: linear-gradient(180deg, rgba(22, 16, 12, 0.97) 0%, rgba(14, 10, 8, 0.98) 100%) !important;
+    border-right: 1.5px solid var(--parchment-border-gold) !important;
+}
+
+/* Dominant Card (آمار و شناسنامه) */
+.v-side-card.is-dominant {
+    flex: 1.45 !important;
+    border: 1.8px solid rgba(198, 146, 59, 0.55) !important;
+    background: linear-gradient(145deg, rgba(32, 23, 16, 0.95) 0%, rgba(20, 14, 10, 0.97) 100%) !important;
+    box-shadow: 0 14px 38px rgba(0, 0, 0, 0.65), 0 0 24px var(--bronze-glow), inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
+}
+.v-side-card.is-dominant:hover {
+    border-color: #f0c56b !important;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.8), 0 0 32px rgba(198, 146, 59, 0.35) !important;
+    transform: translateY(-3px) !important;
+}
+.dominant-badge {
+    background: rgba(198, 146, 59, 0.2) !important;
+    border: 1px solid var(--gold-bright) !important;
+    color: #f7d794 !important;
+    font-weight: 900 !important;
+}
+.icon-dominant {
+    background: rgba(198, 146, 59, 0.2) !important;
+    color: #f7d794 !important;
+}
+.dominant-cta {
+    background: linear-gradient(135deg, rgba(198, 146, 59, 0.25) 0%, rgba(140, 100, 35, 0.35) 100%);
+    border: 1px solid var(--gold-bright);
+    color: #f7d794 !important;
+    border-radius: 8px;
+    padding: 8px 12px !important;
+}
+.dominant-cta:hover {
+    background: linear-gradient(135deg, var(--gold-warm), #a67324);
+    color: #1a1208 !important;
+}
+
+/* Ratio Bar inside Dominant Card */
+.ratio-bar-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin: 3px 0 6px;
+}
+.ratio-bar-track {
+    height: 6px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.ratio-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1s ease;
+}
+.ratio-bar-fill.fill-amber {
+    background: linear-gradient(90deg, #b45309, #f59e0b);
+}
+.ratio-bar-caption {
+    font-size: 9.5px;
+    color: #a89a88;
+    text-align: left;
+}
+.tag-need {
+    color: #f87171 !important;
+    font-weight: 800;
+}
+
+/* Secondary Card (خدمات و پروژه‌ها) */
+.v-side-card.is-secondary {
+    flex: 0.85 !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    background: linear-gradient(145deg, rgba(22, 16, 12, 0.88) 0%, rgba(16, 11, 8, 0.92) 100%) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+    padding: 12px 14px !important;
+}
+.v-side-card.is-secondary:hover {
+    border-color: rgba(198, 146, 59, 0.45) !important;
+    transform: translateY(-2px) !important;
+}
+.secondary-badge {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: #c9b9a6 !important;
+}
+.icon-secondary {
+    background: rgba(255, 255, 255, 0.06) !important;
+    color: #c9b9a6 !important;
+}
+.secondary-cta {
+    color: #c9b9a6 !important;
+}
+.v-metric-compact-pills {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+.compact-status-pill {
+    font-size: 10px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+}
+.compact-status-pill.pill-health {
+    background: rgba(26, 127, 120, 0.15);
+    border-color: rgba(26, 127, 120, 0.35);
+    color: #5eead4;
+}
+.compact-status-pill.pill-water {
+    background: rgba(43, 90, 136, 0.15);
+    border-color: rgba(43, 90, 136, 0.35);
+    color: #93c5fd;
+}
+.compact-status-pill.pill-aid {
+    background: rgba(150, 49, 40, 0.15);
+    border-color: rgba(150, 49, 40, 0.35);
+    color: #fca5a5;
+}
+
+/* 5. Pin Label Font Cascade & Increased Size */
+.pin span {
+    font-family: YekanBakh, 'IranYekan', 'Farhang', 'Mahoor', 'Hasti', system-ui, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    background: rgba(26, 19, 14, 0.92) !important;
+    border: 1.5px solid var(--gold-bright) !important;
+    color: #fbf9f4 !important;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.7), 0 0 14px var(--bronze-glow) !important;
+}
+
+/* 6. Cinematic Portal Iris Transition */
+.portal {
+    background: radial-gradient(circle at var(--portal-x, 50%) var(--portal-y, 50%), transparent 0%, rgba(26, 19, 14, 0.88) 60%, rgba(14, 10, 7, 0.98) 100%) !important;
+}
+.portal strong {
+    font-family: YekanBakh, 'Farhang', 'IranYekan', sans-serif !important;
+    color: #f7d794 !important;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.8), 0 0 30px rgba(198, 146, 59, 0.4) !important;
+}
+.portal-line {
+    background: linear-gradient(90deg, transparent, #c6923b, #f7d794, #c6923b, transparent) !important;
+    box-shadow: 0 0 16px rgba(198, 146, 59, 0.6) !important;
+}
+
+/* 7. Stats Dossier 3-Chapter Navigation */
+.dossier-chapters-nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    background: #f1e9dc;
+    padding: 6px;
+    border-radius: 12px;
+    border: 1px solid #dfd2be;
+}
+.chapter-tab {
+    flex: 1;
+    min-width: 140px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 9px 14px;
+    background: #ffffff;
+    border: 1px solid #d9cbaf;
+    border-radius: 9px;
+    color: #443729;
+    font-family: YekanBakh, 'IranYekan', sans-serif;
+    font-size: 12.5px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.chapter-tab:hover {
+    border-color: var(--gold-warm);
+    background: #fdfaf4;
+}
+.chapter-tab.active {
+    background: linear-gradient(135deg, #2b2015 0%, #17110a 100%);
+    color: #f7d794;
+    border-color: var(--gold-bright);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+.chapter-tab[data-chapter="status"].active { border-bottom: 3px solid #c47920; }
+.chapter-tab[data-chapter="services"].active { border-bottom: 3px solid #1a7f78; }
+.chapter-tab[data-chapter="support"].active { border-bottom: 3px solid #963128; }
+
+/* 8. Dignified Photo Dais Empty State */
+.field-pending-card {
+    background: linear-gradient(150deg, #fbf8f2 0%, #f4ede0 100%);
+    border: 1.5px solid #d9ccb6;
+    border-radius: 18px;
+    padding: 36px 28px;
+    text-align: center;
+    margin: 18px 0;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+.pending-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #eadecc;
+    border: 1px solid #cbba9e;
+    color: #4b3b2a;
+    font-size: 11.5px;
+    font-weight: 800;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+.pending-title {
+    font-size: 18px;
+    font-weight: 900;
+    color: #241c14;
+    margin: 0 0 8px;
+}
+.pending-sub {
+    font-size: 12.5px;
+    color: #6a5a48;
+    max-width: 540px;
+    margin: 0 auto 20px;
+    line-height: 1.8;
+}
+
+/* Photo Dais Platform (سکوی عکس و چهره‌ی محافظت‌شده) */
+.photo-dais-platform {
+    max-width: 460px;
+    margin: 0 auto 20px;
+    background: #ffffff;
+    border: 1.5px dashed var(--gold-warm);
+    border-radius: 14px;
+    padding: 24px 20px;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+.dais-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #fbf5e8;
+    border: 1px solid #e8d0a3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+    color: var(--gold-warm);
+}
+.dais-label {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #2c2115;
+    margin-bottom: 4px;
+}
+.dais-sub {
+    font-size: 11px;
+    color: #8c7b66;
+    line-height: 1.7;
+}
+
+/* 9. Responsive Rules (< 1440px and Mobile) */
+@media (max-width: 1440px) {
+    header {
+        padding: 16px 2.5vw !important;
+        gap: 12px !important;
+    }
+    .search-input-inner {
+        width: 220px !important;
+    }
+    .nav-actions {
+        gap: 6px !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .search-input-inner {
+        width: 170px !important;
+    }
+    .village-sidebar {
+        width: 320px !important;
+        max-width: 42vw !important;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 12px 14px !important;
+        flex-wrap: wrap !important;
+        height: auto !important;
+    }
+    .search-input-inner {
+        width: 100% !important;
+    }
+    .search-box-wrap {
+        order: 3;
+        width: 100%;
+        margin-top: 6px;
+    }
+    .nav-actions {
+        order: 2;
+        gap: 4px !important;
+    }
+    .audience-toggle-pill {
+        padding: 2px;
+    }
+    .audience-btn {
+        padding: 3px 8px;
+        font-size: 10px;
+    }
+    .village-workspace {
+        flex-direction: column !important;
+    }
+    .village-sidebar {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        max-height: 300px !important;
+        border-right: none !important;
+        border-top: 1.5px solid var(--parchment-border-gold) !important;
+    }
+    .analysis-dropdown-menu {
+        left: auto;
+        right: 0;
+        width: 270px;
+    }
+}
+
 </style>
 
 </head>
@@ -7769,65 +8338,143 @@ html.low-end-device dialog#statsDialog {
         <div class="search-dropdown" id="searchResultsDropdown"></div>
     </div>
 
-    <!-- Top Action Buttons -->
+    <!-- Streamlined Header Actions (< 1440px & Mobile Tested) -->
     <div class="nav-actions" id="topNavActions">
-        <button class="nav-action-btn" id="openFilterBoxBtn" title="کادر فیلتر چندمعیاره و پایش روستاها">
+        <!-- 1. Primary Filter Button -->
+        <button class="nav-action-btn primary-action-btn" id="openFilterBoxBtn" title="کادر فیلتر چندمعیاره و پایش روستاها">
             <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
                 <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
             </svg>
-            <span>فیلتر روستاها 🎛️</span>
+            <span>فیلتر روستاها</span>
         </button>
 
-        <button class="nav-action-btn dss-glow-btn" id="dssDecisionBtn" title="اتاق تصمیم‌گیری و اولویت‌بندی مداخله (DSS)">
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-            </svg>
-            <span>اتاق تصمیم‌یار (DSS)</span>
-        </button>
-        
-        <button class="nav-action-btn" id="projectsTrackBtn"  title="پایش چرخه عمر پروژه‌های محرومیت‌زدایی">
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-            </svg>
-            <span>پایش پروژه‌ها</span>
-        </button>
-        
-        
-        <button class="nav-action-btn gis-layers-btn" id="gisLayersBtn" title="مدیریت لایه‌های موضوعی GIS (مدارس، سلامت، آب، کریدور)">
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                <polyline points="2 17 12 22 22 17"></polyline>
-                <polyline points="2 12 12 17 22 12"></polyline>
-            </svg>
-            <span>لایه‌های GIS 🌐</span>
-            <span class="gis-layers-active-count" id="gisActiveCount">۰</span>
-        </button>
+        <!-- 2. Dual Audience Toggle Switch (گزارش نهاد / روایت مردم) -->
+        <div class="audience-toggle-pill" id="audienceToggleWrap" role="group" aria-label="حالت مخاطب">
+            <button type="button" class="audience-btn active" id="audienceGovBtn" title="گزارش تحلیلی، جداول و آمار تفصیلی برای نهادها و حامیان">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+                <span>گزارش نهاد</span>
+            </button>
+            <button type="button" class="audience-btn" id="audiencePeopleBtn" title="روایت ملموس، مستندات تصویری و داستان روستا برای مردم">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <span>روایت مردم</span>
+            </button>
+        </div>
 
-        <button class="nav-action-btn" id="compareBtn" title="مقایسه تطبیقی روستاهای منطقه">
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="3" width="7" height="18" rx="1"></rect>
-                <rect x="14" y="9" width="7" height="12" rx="1"></rect>
-            </svg>
-            <span>مقایسه روستاها</span>
-        </button>
-        <button class="nav-action-btn" id="regionalSummaryBtn" title="شناسنامه و گزارش تجمیعی ۱۲ روستای منطقه">
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
-            </svg>
-            <span>گزارش تجمیعی</span>
-        </button>
-        <button class="nav-action-btn btn-master-excel" id="masterExcelExportBtn" title="دریافت دیتابیس جامع ۵ برگه اکسل کل منطقه (۲۲۴ پرونده، مدارس و زیرساخت‌ها)">
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="7 10 12 15 17 10"></polyline>
-                <line x1="12" y1="15" x2="12" y2="3"></line>
-            </svg>
-            <span>اکسل جامع منطقه</span>
-        </button>
+        <!-- 3. Consolidated Analysis Tools Dropdown Menu -->
+        <div class="analysis-dropdown-wrap" id="analysisDropdownWrap">
+            <button type="button" class="nav-action-btn analysis-menu-trigger" id="analysisMenuBtn" aria-haspopup="true" aria-expanded="false" title="ابزارهای تخصصی تحلیل، تصمیم‌یار و مقایسه">
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+                <span>ابزار تحلیل</span>
+                <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" class="menu-caret">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </button>
+
+            <!-- Dropdown Panel (Preserves all original IDs so JS listeners remain intact) -->
+            <div class="analysis-dropdown-menu" id="analysisMenuDropdown" hidden>
+                <div class="analysis-menu-header">
+                    <span>سامانه‌های تحلیلی و ممیزی</span>
+                </div>
+
+                <button class="analysis-menu-item" id="compareBtn" type="button" title="مقایسه تطبیقی روستاهای منطقه">
+                    <div class="menu-item-icon icon-compare">
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="18" rx="1"></rect>
+                            <rect x="14" y="9" width="7" height="12" rx="1"></rect>
+                        </svg>
+                    </div>
+                    <div class="menu-item-text">
+                        <strong>مقایسه تطبیقی روستاها</strong>
+                        <small>سنجش چندمعیاره شاخص‌های توسعه</small>
+                    </div>
+                </button>
+
+                <button class="analysis-menu-item" id="dssDecisionBtn" type="button" title="اتاق تصمیم‌گیری و اولویت‌بندی مداخله (DSS)">
+                    <div class="menu-item-icon icon-dss">
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </div>
+                    <div class="menu-item-text">
+                        <strong>اتاق تصمیم‌یار مداخله (DSS)</strong>
+                        <small>محاسبه ضریب نیاز و اولویت اقدام</small>
+                    </div>
+                </button>
+
+                <button class="analysis-menu-item" id="projectsTrackBtn" type="button" title="پایش چرخه عمر پروژه‌های محرومیت‌زدایی">
+                    <div class="menu-item-icon icon-projects">
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <div class="menu-item-text">
+                        <strong>پایش پروژه‌های محرومیت‌زدایی</strong>
+                        <small>رهگیری پیشرفت فیزیکی و ریالی</small>
+                    </div>
+                </button>
+
+                <button class="analysis-menu-item" id="gisLayersBtn" type="button" title="مدیریت لایه‌های موضوعی GIS">
+                    <div class="menu-item-icon icon-gis">
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                            <polyline points="2 17 12 22 22 17"></polyline>
+                            <polyline points="2 12 12 17 22 12"></polyline>
+                        </svg>
+                    </div>
+                    <div class="menu-item-text">
+                        <strong>لایه‌های موضوعی GIS</strong>
+                        <small>مدارس، سلامت، شبکه آب و کریدور</small>
+                    </div>
+                    <span class="gis-layers-active-count" id="gisActiveCount">۰</span>
+                </button>
+
+                <div class="analysis-menu-divider"></div>
+
+                <button class="analysis-menu-item" id="regionalSummaryBtn" type="button" title="شناسنامه و گزارش تجمیعی ۱۲ روستای منطقه">
+                    <div class="menu-item-icon icon-summary">
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                        </svg>
+                    </div>
+                    <div class="menu-item-text">
+                        <strong>گزارش تجمیعی منطقه</strong>
+                        <small>کارنامه مدیریتی ۱۲ آبادی حوزه شلمچه</small>
+                    </div>
+                </button>
+
+                <button class="analysis-menu-item menu-excel-item" id="masterExcelExportBtn" type="button" title="دریافت دیتابیس جامع ۵ برگه اکسل کل منطقه">
+                    <div class="menu-item-icon icon-excel">
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                    </div>
+                    <div class="menu-item-text">
+                        <strong>اکسل جامع کل منطقه</strong>
+                        <small>دانلود ۲۲۴ پرونده، مدارس و زیرساخت‌ها</small>
+                    </div>
+                </button>
+            </div>
+        </div>
     </div>
     <button class="back" id="backMap" hidden>بازگشت به نقشه ↗</button>
 </header>
@@ -7961,82 +8608,82 @@ html.low-end-device dialog#statsDialog {
                 </div>
             </div>
 
-            <!-- 2. Dedicated Command Dossier Sidebar (Incorporated Side-by-Side with Map) -->
+            <!-- 2. Dedicated Asymmetric Dossier Sidebar (Dominant Stats vs Secondary Services) -->
             <aside class="village-sidebar" id="villageSidebar">
-                <!-- Card 1: آمار (Stats) -->
-                <button type="button" class="choice v-side-card card-stats" id="statsButton" aria-haspopup="dialog">
+                <!-- Card 1: آمار و شناسنامه (غالب - Dominant: ~68% Visual Weight) -->
+                <button type="button" class="choice v-side-card card-stats is-dominant" id="statsButton" aria-haspopup="dialog">
                     <div class="v-card-glow"></div>
                     <div class="v-card-header">
-                        <div class="v-card-badge">۰۱</div>
+                        <div class="v-card-badge dominant-badge">۰۱ · فصل غالب</div>
                         <div class="v-card-titles">
-                            <span class="v-card-kicker">کارپوشه تخصصی</span>
-                            <h2 class="v-card-name">آمار و شناسنامه جمعیتی</h2>
+                            <span class="v-card-kicker">شناسنامه مرجع آبادی</span>
+                            <h2 class="v-card-name">آمار، هرم جمعیتی و نیازمندی‌ها</h2>
                         </div>
-                        <div class="v-card-icon">
-                            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor">
-                                <path d="M5 26V17h5v9m4 0V6h5v20m4 0V12h5v14M3 27h27" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <div class="v-card-icon icon-dominant">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="20" x2="18" y2="10"></line>
+                                <line x1="12" y1="20" x2="12" y2="4"></line>
+                                <line x1="6" y1="20" x2="6" y2="14"></line>
                             </svg>
                         </div>
                     </div>
                     
-                    <p class="v-card-desc" id="statsChoiceDesc">جمعیت، هرم تحصیلی، دانش‌آموزان و پرونده‌های نیازمندان</p>
+                    <p class="v-card-desc" id="statsChoiceDesc">سرشماری تفصیلی خانوارها، پایه‌های تحصیلی مدارس و پرونده‌های مددجویی</p>
                     
-                    <div class="v-metrics-list" id="statsMetricsPreview">
+                    <!-- Featured Metrics Grid with Persian Digits and Ratio Bars -->
+                    <div class="v-metrics-list dominant-metrics" id="statsMetricsPreview">
                         <div class="v-metric-row">
-                            <span class="m-label">👥 جمعیت کل روستا:</span>
-                            <span class="m-val highlight">۳,۸۵۰ نفر (۹۵۰ خانوار)</span>
+                            <span class="m-label">جمعیت و خانوار:</span>
+                            <span class="m-val highlight" id="sideMetricPopFam">۳,۸۵۰ نفر (۹۵۰ خانوار)</span>
+                        </div>
+                        <div class="ratio-bar-wrap">
+                            <div class="ratio-bar-track">
+                                <div class="ratio-bar-fill fill-amber" style="width: 72%;"></div>
+                            </div>
+                            <span class="ratio-bar-caption">پوشش سرشماری میدانی: ۷۲٪ حوزه</span>
+                        </div>
+
+                        <div class="v-metric-row">
+                            <span class="m-label">دانش‌آموزان و مدارس:</span>
+                            <span class="m-val" id="sideMetricSchools">۴۲۰ دانش‌آموز (دبستان معراج)</span>
                         </div>
                         <div class="v-metric-row">
-                            <span class="m-label">🎒 دبستان معراج:</span>
-                            <span class="m-val">۴۲۰ دانش‌آموز</span>
-                        </div>
-                        <div class="v-metric-row">
-                            <span class="m-label">📋 پرونده‌های مستند:</span>
-                            <span class="m-val">۲۹ مورد (ایتام و نیازمند)</span>
+                            <span class="m-label">پرونده‌های حمایتی:</span>
+                            <span class="m-val tag-need" id="sideMetricNeeds">۲۹ مورد (ایتام و بیماران خاص)</span>
                         </div>
                     </div>
 
-                    <div class="v-card-cta cyber-btn">
-                        <span>ورود به سامانه آمار و شناسنامه</span>
+                    <div class="v-card-cta dominant-cta">
+                        <span>ورود به کارپوشه جامع آمار و شناسنامه</span>
                         <span class="v-cta-arrow">←</span>
                     </div>
                 </button>
 
-                <!-- Card 2: خدمات (Services) -->
-                <button type="button" class="choice v-side-card card-services" id="servicesButton" aria-haspopup="dialog">
-                    <div class="v-card-glow"></div>
+                <!-- Card 2: خدمات و پروژه‌ها (فرعی - Secondary: ~32% Visual Weight) -->
+                <button type="button" class="choice v-side-card card-services is-secondary" id="servicesButton" aria-haspopup="dialog">
                     <div class="v-card-header">
-                        <div class="v-card-badge">۰۲</div>
+                        <div class="v-card-badge secondary-badge">۰۲ · فرعی</div>
                         <div class="v-card-titles">
-                            <span class="v-card-kicker">کارپوشه تخصصی</span>
+                            <span class="v-card-kicker">کارپوشه اقدامات</span>
                             <h2 class="v-card-name">خدمات، زیرساخت و پروژه‌ها</h2>
                         </div>
-                        <div class="v-card-icon">
-                            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor">
-                                <path d="M12 5h8v7h7v8h-7v7h-8v-7H5v-8h7z" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <div class="v-card-icon icon-secondary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
                             </svg>
                         </div>
                     </div>
 
-                    <p class="v-card-desc" id="servicesChoiceDesc">خانه بهداشت، دبستان معراج، شبکه آب و طرح‌های توانمندسازی</p>
-
-                    <div class="v-metrics-list" id="servicesMetricsPreview">
-                        <div class="v-metric-row">
-                            <span class="m-label">🏥 مرکز سلامت:</span>
-                            <span class="m-val highlight">خانه بهداشت فعال و بهورزی</span>
-                        </div>
-                        <div class="v-metric-row">
-                            <span class="m-label">💧 زیرساخت معابر و آب:</span>
-                            <span class="m-val">شبکه آب شرب و آسفالت</span>
-                        </div>
-                        <div class="v-metric-row">
-                            <span class="m-label">🤝 اقدامات حمایتی:</span>
-                            <span class="m-val">بسته‌های معیشتی و اشتغال</span>
+                    <div class="v-metrics-list secondary-metrics" id="servicesMetricsPreview">
+                        <div class="v-metric-compact-pills">
+                            <span class="compact-status-pill pill-health">بهداشت: فعال</span>
+                            <span class="compact-status-pill pill-water">آب: خط پایدار</span>
+                            <span class="compact-status-pill pill-aid">امداد: دوره‌ای</span>
                         </div>
                     </div>
 
-                    <div class="v-card-cta cyber-btn">
-                        <span>ورود به سامانه خدمات و پروژه‌ها</span>
+                    <div class="v-card-cta secondary-cta">
+                        <span>مشاهده خدمات و پروژه‌ها</span>
                         <span class="v-cta-arrow">←</span>
                     </div>
                 </button>
@@ -13103,6 +13750,16 @@ const emptyStatsHtml = `<div class="dos-content-grid" id="stats-content-8" class
                 activeLocation = v;
                 if (portalName) portalName.textContent = v.name;
                 if (villageName) villageName.textContent = v.name;
+
+                // Cinematic Portal Iris Origin (capture pin coordinates)
+                let pX = '50%', pY = '50%';
+                if (v && v.el) {
+                    const rect = v.el.getBoundingClientRect();
+                    pX = (rect.left + rect.width / 2) + 'px';
+                    pY = (rect.top + rect.height / 2) + 'px';
+                }
+                document.documentElement.style.setProperty('--portal-x', pX);
+                document.documentElement.style.setProperty('--portal-y', pY);
                 
                 // Update dynamic data
                 document.querySelectorAll('.dos-title').forEach(el => el.textContent = v.name);
@@ -20475,17 +21132,35 @@ addEventListener('resize', layout); layout();
                 else if (villageId === 'complex-fatemeh') raw = complexFatemehStatsHtml;
                 
                 if (!raw) {
-                    // Clean and honest empty state for unentered villages
+                    // 3-Act Strategic Dignified State (Region -> Village -> Human Dais)
                     return `
-                        <div style="background:#f8fafc; border:2px dashed #cbd5e1; border-radius:14px; padding:36px 24px; text-align:center; color:#64748b; margin:16px 0;">
-                            <div style="font-size:38px; margin-bottom:10px;">📋</div>
-                            <h3 style="font-size:16px; font-weight:800; color:#334155; margin-bottom:8px;">اطلاعات و آمار روستای «${villageName}» هنوز وارد نشده است</h3>
-                            <p style="font-size:13px; color:#64748b; max-width:460px; margin:0 auto 16px; line-height:1.8;">
-                                بر اساس ضوابط جمعیت امام‌رضایی‌ها، شناسنامه این روستا خالی نگه داشته شده است تا پس از دریافت داده‌های رسمی و مستند در سامانه ثبت گردد.
+                        <div class="field-pending-card">
+                            <div class="pending-badge">
+                                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+                                <span>در انتظار تکمیل داده‌های میدانی و پیمایش محلی</span>
+                            </div>
+                            <h3 class="pending-title">پرونده آماری و میدانی روستای «${villageName}»</h3>
+                            <p class="pending-sub">
+                                بر اساس چارچوب سه پرده‌ای اطلس (منطقه ← روستا ← انسان)، داده‌های این آبادی جهت تدقیق آمار جمعیتی و ثبت دقیق خدمات، در نوبت پیمایش حضوری قرار دارد.
                             </p>
-                            <div style="display:inline-flex; align-items:center; gap:8px; font-size:11.5px; background:#e2e8f0; color:#475569; padding:6px 14px; border-radius:20px; font-weight:700;">
-                                <span>وضعیت شناسنامه:</span>
-                                <span style="color:#0f172a; font-weight:800;">خالی (در صف ورود آمار)</span>
+
+                            <!-- پرده‌ی سوم: انسان (سکوی عکس و چهره‌ی محافظت‌شده) -->
+                            <div class="photo-dais-platform">
+                                <div class="dais-icon">
+                                    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="12" cy="7" r="4"/>
+                                    </svg>
+                                </div>
+                                <div class="dais-label">سکوی مستندسازی چهره‌ی محافظت‌شده مددجویان و راویان محلی</div>
+                                <div class="dais-sub">
+                                    جایگاه ثبت تصویر و روایت زیسته اهالی · با رعایت کامل ضوابط کرامت انسانی جمعیت امام‌رضایی‌ها
+                                </div>
+                            </div>
+
+                            <div style="display:inline-flex; align-items:center; gap:8px; font-size:11.5px; background:#e8dcce; color:#3b2d1f; padding:6px 16px; border-radius:20px; font-weight:800;">
+                                <span>وضعیت رصد:</span>
+                                <span style="color:#b45309;">تیم پیمایش میدانی در حال پایش خانوارها</span>
                             </div>
                         </div>
                     `;
@@ -21233,13 +21908,24 @@ addEventListener('resize', layout); layout();
                 if (!container) return;
 
                 container.innerHTML = `
-                    <!-- QUICK CATEGORY CHIPS & LIVE SEARCH -->
-                    <div class="dossier-filter-chips" id="dossierCategoryChips">
-                        <button type="button" class="dossier-chip active" data-cat="all">📑 همه بخش‌ها</button>
-                        <button type="button" class="dossier-chip" data-cat="schools">🏫 آموزش و مدارس</button>
-                        <button type="button" class="dossier-chip" data-cat="vulnerable">🤝 پرونده‌های نیازمندان و ایتام</button>
-                        <button type="button" class="dossier-chip" data-cat="health">🏥 بهداشت و سلامت</button>
-                        <button type="button" class="dossier-chip" data-cat="jobs">💼 اشتغال و زیرساخت</button>
+                    <!-- 3-CHAPTER DOSSIER NAVIGATION (وضعیت، خدمات، حمایت) -->
+                    <div class="dossier-chapters-nav" id="dossierChaptersNav">
+                        <button type="button" class="chapter-tab active" data-chapter="all">
+                            <span>📑</span>
+                            <span>همه فصل‌ها (جامع)</span>
+                        </button>
+                        <button type="button" class="chapter-tab" data-chapter="status">
+                            <span style="color:#c47920;">📊</span>
+                            <span>فصل ۱: وضعیت و جمعیت</span>
+                        </button>
+                        <button type="button" class="chapter-tab" data-chapter="services">
+                            <span style="color:#1a7f78;">🏥</span>
+                            <span>فصل ۲: خدمات و زیرساخت</span>
+                        </button>
+                        <button type="button" class="chapter-tab" data-chapter="support">
+                            <span style="color:#963128;">🤝</span>
+                            <span>فصل ۳: حمایت و کرامت انسان</span>
+                        </button>
                     </div>
                     <div class="dossier-search-bar-wrap">
                         <div class="dossier-search-input-box">
@@ -25320,6 +26006,140 @@ document.addEventListener('click', (e) => {
     } else {
         setTimeout(initGisLayers, 100);
     }
+})();
+</script>
+
+
+<script id="strategic-overhaul-runtime-js">
+(function() {
+    // 1. Analysis Tools Dropdown Toggle & Outside Click
+    document.addEventListener('click', function(e) {
+        const wrap = document.getElementById('analysisDropdownWrap');
+        const menu = document.getElementById('analysisMenuDropdown');
+        const trigger = document.getElementById('analysisMenuBtn');
+        if (!wrap || !menu || !trigger) return;
+
+        if (trigger.contains(e.target)) {
+            e.stopPropagation();
+            const isOpen = !menu.hidden;
+            menu.hidden = isOpen;
+            wrap.classList.toggle('is-open', !isOpen);
+            trigger.setAttribute('aria-expanded', !isOpen);
+            return;
+        }
+
+        if (menu.contains(e.target)) {
+            // Close menu when an action item is chosen
+            menu.hidden = true;
+            wrap.classList.remove('is-open');
+            trigger.setAttribute('aria-expanded', 'false');
+            return;
+        }
+
+        if (!menu.hidden) {
+            menu.hidden = true;
+            wrap.classList.remove('is-open');
+            trigger.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    // 2. Dual Audience Mode Toggle (گزارش نهاد / روایت مردم)
+    function initAudienceToggle() {
+        const govBtn = document.getElementById('audienceGovBtn');
+        const peopleBtn = document.getElementById('audiencePeopleBtn');
+        if (!govBtn || !peopleBtn) return;
+
+        function setAudienceMode(mode) {
+            if (mode === 'people') {
+                peopleBtn.classList.add('active');
+                govBtn.classList.remove('active');
+                document.body.classList.add('audience-people-mode');
+            } else {
+                govBtn.classList.add('active');
+                peopleBtn.classList.remove('active');
+                document.body.classList.remove('audience-people-mode');
+            }
+            try { localStorage.setItem('atlas_audience_mode', mode); } catch(e){}
+        }
+
+        govBtn.onclick = function() { setAudienceMode('gov'); };
+        peopleBtn.onclick = function() { setAudienceMode('people'); };
+
+        try {
+            const saved = localStorage.getItem('atlas_audience_mode');
+            if (saved) setAudienceMode(saved);
+        } catch(e){}
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAudienceToggle);
+    } else {
+        initAudienceToggle();
+    }
+
+    // 3. Three-Chapter Dossier Filtering (وضعیت، خدمات، حمایت)
+    document.addEventListener('click', function(e) {
+        const tab = e.target.closest('.chapter-tab');
+        if (!tab) return;
+        e.stopPropagation();
+
+        const nav = document.getElementById('dossierChaptersNav');
+        if (nav) {
+            nav.querySelectorAll('.chapter-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+        }
+
+        const chapter = tab.getAttribute('data-chapter');
+        const container = document.getElementById('execTabContentContainer');
+        if (!container) return;
+
+        // Filter sections by chapter
+        container.querySelectorAll('details').forEach(function(d) {
+            const txt = (d.textContent || '').toLowerCase();
+            if (chapter === 'all') {
+                d.style.display = '';
+                d.open = false;
+            } else if (chapter === 'status') {
+                // هرم جمعیتی، مدارس، دانش‌آموزان، ممیزی، سنین
+                if (txt.includes('مدرسه') || txt.includes('دانش‌آموز') || txt.includes('پایه') || txt.includes('جمعیت') || txt.includes('ساختار')) {
+                    d.style.display = '';
+                    d.open = true;
+                } else {
+                    d.style.display = 'none';
+                }
+            } else if (chapter === 'services') {
+                // بهداشت، آب، معابر، جاده، اشتغال، طرح‌ها
+                if (txt.includes('بهداشت') || txt.includes('سلامت') || txt.includes('آب') || txt.includes('اشتغال') || txt.includes('زیرساخت') || txt.includes('معابر')) {
+                    d.style.display = '';
+                    d.open = true;
+                } else {
+                    d.style.display = 'none';
+                }
+            } else if (chapter === 'support') {
+                // نیازمندان، ایتام، مددجو، بهزیستی، امداد
+                if (txt.includes('یتیم') || txt.includes('ایتام') || txt.includes('نیازمند') || txt.includes('مددجو') || txt.includes('بیمار') || txt.includes('حمایت')) {
+                    d.style.display = '';
+                    d.open = true;
+                } else {
+                    d.style.display = 'none';
+                }
+            }
+        });
+
+        // Filter non-details cards
+        const schoolCard = container.querySelector('.school-stats-card');
+        const matrixCard = container.querySelector('.exec-matrix-container');
+        const timelineCard = container.querySelector('#villageOperationalTimeline');
+        
+        if (schoolCard) {
+            schoolCard.style.display = (chapter === 'all' || chapter === 'status') ? '' : 'none';
+        }
+        if (matrixCard) {
+            matrixCard.style.display = (chapter === 'all' || chapter === 'services' || chapter === 'status') ? '' : 'none';
+        }
+        if (timelineCard) {
+            timelineCard.style.display = (chapter === 'all' || chapter === 'support') ? '' : 'none';
+        }
+    });
 })();
 </script>
 
