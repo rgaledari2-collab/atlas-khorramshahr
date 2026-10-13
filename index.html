@@ -26130,6 +26130,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // UNIVERSAL BACK BUTTON CONTROLLER (ALL WINDOWS & DIALOGS)
 // =========================================================================
 document.addEventListener('click', (e) => {
+    if (!e.target || typeof e.target.closest !== 'function') return;
     const backBtn = e.target.closest('[data-action="close-dialog"], .dossier-back-btn, #villageBackNavBtn');
     if (backBtn) {
         e.stopPropagation();
@@ -27249,6 +27250,7 @@ document.addEventListener('click', (e) => {
 
     // 3. Three-Chapter Dossier Filtering (وضعیت، خدمات، حمایت)
     document.addEventListener('click', function(e) {
+        if (!e.target || typeof e.target.closest !== 'function') return;
         const tab = e.target.closest('.chapter-tab');
         if (!tab) return;
         e.stopPropagation();
@@ -27349,6 +27351,7 @@ document.addEventListener('click', (e) => {
 
     // Instant priority preload on pin hover / pointer enter
     document.addEventListener('pointerenter', function(e) {
+        if (!e.target || typeof e.target.closest !== 'function') return;
         const pin = e.target.closest('.pin');
         if (!pin) return;
         const vId = pin.getAttribute('data-village-id') || pin.id;
