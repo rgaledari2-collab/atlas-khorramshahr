@@ -10040,6 +10040,374 @@ dialog#statsDialog::backdrop {
     box-shadow: 0 1px 3px rgba(0,0,0,0.06);
 }
 
+
+
+/* =========================================================================
+   VIBEPROMPTS & V0 / GETLAYERS STATS PAGE MASTER ENHANCEMENTS
+   ========================================================================= */
+
+/* --- 1. GROUPED CAPABILITY CHECKLIST --- */
+.capability-checklist-card {
+    background: #ffffff;
+    border: 1px solid #e5dacb;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    margin-top: 22px;
+    direction: rtl;
+    text-align: right;
+    font-family: inherit;
+}
+
+.capability-checklist-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.capability-grid-4col {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.capability-group {
+    background: #fcfbf9;
+    border: 1px solid #f0e8dc;
+    border-radius: 14px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.capability-group-title {
+    font-size: 12px;
+    font-weight: 900;
+    color: #8c6823;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed #e5dacb;
+}
+
+.capability-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 11.5px;
+    font-weight: 700;
+}
+
+.cap-badge-check {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    background: #dcfce7;
+    color: #15803d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 900;
+    flex-shrink: 0;
+}
+
+.cap-badge-cross {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    background: #fee2e2;
+    color: #b91c1c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 900;
+    flex-shrink: 0;
+}
+
+.cap-text-check {
+    color: #1e140a;
+}
+
+.cap-text-cross {
+    color: #8c7e6c;
+}
+
+.capability-summary-strip {
+    margin-top: 18px;
+    padding: 10px 16px;
+    background: #fbf8f3;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11.5px;
+    font-weight: 800;
+    color: #6b5a47;
+}
+
+/* --- 2. REGIONAL BENCHMARK COMPARATOR BARS --- */
+.benchmark-comparators-card {
+    background: #ffffff;
+    border: 1px solid #e5dacb;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    margin-top: 22px;
+    direction: rtl;
+    text-align: right;
+    font-family: inherit;
+}
+
+.benchmark-row {
+    margin-top: 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f3eee6;
+}
+
+.benchmark-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.benchmark-meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12.5px;
+    font-weight: 800;
+    color: #1e140a;
+}
+
+.benchmark-track-wrap {
+    position: relative;
+    height: 10px;
+    background: #f5efe6;
+    border-radius: 100px;
+    margin-top: 14px;
+    margin-bottom: 22px;
+}
+
+.benchmark-track-fill {
+    position: absolute;
+    height: 100%;
+    right: 0;
+    background: linear-gradient(to left, #8c6823, #d97706);
+    border-radius: 100px;
+    transition: width 1s ease;
+}
+
+.benchmark-marker {
+    position: absolute;
+    top: -4px;
+    transform: translateX(50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+}
+
+.benchmark-marker-pin {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.benchmark-marker-pin.village { border: 2px solid #b91c1c; color: #b91c1c; }
+.benchmark-marker-pin.median { border: 2px solid #8c6823; color: #8c6823; }
+.benchmark-marker-pin.target { border: 2px solid #15803d; color: #15803d; }
+
+.benchmark-marker-lbl {
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+    margin-top: 4px;
+}
+
+/* --- 3. TARGET VS ACTUAL PROGRESS MILESTONES --- */
+.milestones-card {
+    background: #ffffff;
+    border: 1px solid #e5dacb;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    margin-top: 22px;
+    direction: rtl;
+    text-align: right;
+    font-family: inherit;
+}
+
+.milestones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.milestone-item-box {
+    background: #fcfbf9;
+    border: 1px solid #ebd9c4;
+    border-radius: 14px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.milestone-title {
+    font-size: 12.5px;
+    font-weight: 900;
+    color: #1e140a;
+}
+
+.milestone-progress-bar-wrap {
+    height: 8px;
+    background: #f0e8dc;
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.milestone-progress-bar-fill {
+    height: 100%;
+    border-radius: 100px;
+    transition: width 1s ease;
+}
+
+.milestone-footer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #6b5a47;
+    font-weight: 700;
+}
+
+/* --- 4. NEEDS ASSESSMENT BREAKDOWN --- */
+.needs-assessment-card {
+    background: #ffffff;
+    border: 1px solid #e5dacb;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    margin-top: 22px;
+    direction: rtl;
+    text-align: right;
+    font-family: inherit;
+}
+
+.needs-bar-row {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.needs-bar-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 800;
+    color: #1e140a;
+}
+
+.needs-bar-track {
+    height: 9px;
+    background: #f5efe6;
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.needs-bar-fill {
+    height: 100%;
+    background: #8c6823;
+    border-radius: 100px;
+}
+
+/* --- 5. VOXEL LAND USE CARDS (GETLAYERS) --- */
+.voxel-land-card {
+    background: #ffffff;
+    border: 1px solid #e5dacb;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    margin-top: 22px;
+    direction: rtl;
+    text-align: right;
+    font-family: inherit;
+}
+
+.voxel-proportional-bar {
+    display: flex;
+    height: 16px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 14px;
+    margin-bottom: 18px;
+    border: 1px solid #ebd9c4;
+}
+
+.voxel-seg {
+    height: 100%;
+    transition: filter 0.2s ease;
+    cursor: pointer;
+}
+
+.voxel-seg:hover {
+    filter: brightness(1.15);
+}
+
+.voxel-seg.palms { background: #15803d; }
+.voxel-seg.houses { background: #b45309; }
+.voxel-seg.canals { background: #0284c7; }
+.voxel-seg.fallow { background: #d97706; }
+
+.voxel-legend-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+}
+
+.voxel-legend-item {
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid #f0e8dc;
+    background: #fcfbf9;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* --- 6. FIELD AUDIT TRAIL BADGE BAR --- */
+.field-audit-strip {
+    background: #fbf8f3;
+    border: 1px dashed #d9c8b4;
+    border-radius: 14px;
+    padding: 14px 20px;
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-family: inherit;
+    direction: rtl;
+    text-align: right;
+}
+
 </style>
 
 </head>
@@ -30009,6 +30377,384 @@ document.addEventListener('click', (e) => {
     // -------------------------------------------------------------
     // 9. AUTOMATIC DOSSIER INTEGRATION HOOK
     // -------------------------------------------------------------
+    
+    // =============================================================
+    // STATS PAGE ADVANCED EXTENSION MODULES (VIBEPROMPT + V0 + 3D)
+    // =============================================================
+
+    // 1. GROUPED CAPABILITY CHECKLIST (24 INDICATORS)
+    window.renderCapabilityChecklist = function(villageData) {
+        return `
+        <div class="capability-checklist-card" id="villageCapabilityChecklistBlock">
+            <div class="capability-checklist-header">
+                <div>
+                    <h3 style="font-size:14px; font-weight:900; margin:0; color:#1e140a;">📋 ماتریس جامع خدمات و زیرساخت‌های پایه روستا (۲۴ شاخص حاکمیتی)</h3>
+                    <div style="font-size:11px; color:#8c7e6c; margin-top:2px;">پایش میدانی آخرین وضعیت دسترسی به انرژی، آموزش، سلامت و اشتغال</div>
+                </div>
+                <span class="cmd-kbd-badge" style="background:#fef3c7; color:#92400e; font-size:11px;">ممیزی رسمی ۱۴۰۳</span>
+            </div>
+
+            <div class="capability-grid-4col">
+                <!-- Group 1: Energy & Comms -->
+                <div class="capability-group">
+                    <div class="capability-group-title">
+                        <span>⚡</span>
+                        <span>انرژی و ارتباطات</span>
+                    </div>
+                    <div class="capability-item"><span class="cap-badge-check">✓</span><span class="cap-text-check">انشعاب آب لوله‌کشی</span></div>
+                    <div class="capability-item"><span class="cap-badge-check">✓</span><span class="cap-text-check">شبکه گاز شهری</span></div>
+                    <div class="capability-item"><span class="cap-badge-check">✓</span><span class="cap-text-check">شبکه برق پایدار</span></div>
+                    <div class="capability-item"><span class="cap-badge-check">✓</span><span class="cap-text-check">روشنایی معابر آبادی</span></div>
+                    <div class="capability-item"><span class="cap-badge-cross">✕</span><span class="cap-text-cross">دکل اینترنت 4G پرسرعت</span></div>
+                    <div class="capability-item"><span class="cap-badge-cross">✕</span><span class="cap-text-cross">فیبر نوری و تلفن ثابت</span></div>
+                </div>
+
+                <!-- Group 2: Education -->
+                <div class="capability-group">
+                    <div class="capability-group-title">
+                        <span>🏫</span>
+                        <span>آموزش و پرورش</span>
+                    </div>
+                    <div class="capability-item"><span class="cap-badge-check">✓</span><span class="cap-text-check">دبستان دوره ابتدایی</span></div>
+                    <div class="capability-item"><span class="cap-badge-check">✓</span><span class="cap-text-check">سامانه سرمایشی کلاس‌ها</span></div>
+                    <div class="capability-item"><span class="cap-badge-cross">✕</span><span class="cap-text-cross">متوسطه دوره اول (راهنمایی)</span></div>
+                    <div class="capability-item"><span class="cap-badge-cross">✕</span><span class="cap-text-cross">متوسطه دوره دوم (دبیرستان)</span></div>
+                    <div class="capability-item"><span class="cap-badge-cross">✕</span><span class="cap-text-cross">سرویس ایاب و ذهاب دانش‌آموز</span></div>
+                    <div class="capability-item"><span class="cap-badge-cross">✕</span><span class="cap-text-cross">فضای ورزشی و زمین بازی</span></div>
+                </div>
+
+                <!-- Group 3: Health -->
+                <div class="capability-group">
+                    <div class="capability-group-title">
+                        <span>🏥</span>
+                        <span>بهداشت و محیط‌زیست</span>
+                    </div>
+                    <div class="capability-item"><span class="cap-badge-check">✓</span><span class="cap-text-check">خانه بهداشت فعال</span></div>
+                    <div class="capability-item"><span class="cap-badge-check">✓</span><span class="cap-text-check">بهورز و مامای بومی</span></div>
+                    <div class="capability-item"><span class="cap-badge-cross">✕</span><span class="cap-text-cross">پزشک عمومی مستقر</span></div>
+                    <div class="capability-item"><span class="cap-badge-cross">✕</span><span class="cap-text-cross">داروخانه یا پست دارویی</span></div>
+                    <div class="capability-item"><span class="cap-badge-cross">✕</span><span class="cap-text-cross">ماشین جمع‌آوری پسماند</span></div>
+                    <div class="capability-item"><span class="cap-badge-cross">✕</span><span class="cap-text-cross">شبکه دفع بهداشتی فاضلاب</span></div>
+                </div>
+
+                <!-- Group 4: Agriculture & Economy -->
+                <div class="capability-group">
+                    <div class="capability-group-title">
+                        <span>🌴</span>
+                        <span>کشاورزی و حکمرانی</span>
+                    </div>
+                    <div class="capability-item"><span class="cap-badge-check">✓</span><span class="cap-text-check">لایروبی انهار فرعی نخلستان</span></div>
+                    <div class="capability-item"><span class="cap-badge-check">✓</span><span class="cap-text-check">کارگاه مشاغل خانگی بانوان</span></div>
+                    <div class="capability-item"><span class="cap-badge-check">✓</span><span class="cap-text-check">دهیاری مصوب و شورای فعال</span></div>
+                    <div class="capability-item"><span class="cap-badge-check">✓</span><span class="cap-text-check">مسجد جامع و کانون فرهنگی</span></div>
+                    <div class="capability-item"><span class="cap-badge-cross">✕</span><span class="cap-text-cross">ایستگاه پمپاژ مکانیزه آب</span></div>
+                    <div class="capability-item"><span class="cap-badge-cross">✕</span><span class="cap-text-cross">تعاونی بسته‌بندی خرمای بومی</span></div>
+                </div>
+            </div>
+
+            <div class="capability-summary-strip">
+                <div>
+                    <span>وضعیت کلی زیرساختی: </span>
+                    <strong style="color:#15803d;">۱۳ شاخص فعال</strong>
+                    <span style="color:#a89a88; margin:0 6px;">|</span>
+                    <strong style="color:#b91c1c;">۱۱ شاخص کسری و اولویت مداخله</strong>
+                </div>
+                <button type="button" class="exec-brief-action-btn" onclick="alert('کاربرگ تطبیقی زیرساخت‌ها با دهیاری به اشتراک گذاشته شد.');" style="padding:6px 14px; font-size:11px;">
+                    ثبت درخواست رفع کسری در کارتابل
+                </button>
+            </div>
+        </div>
+        `;
+    };
+
+    // 2. REGIONAL BENCHMARK COMPARATOR BARS
+    window.renderRegionalBenchmarkBars = function(villageData) {
+        return `
+        <div class="benchmark-comparators-card" id="villageBenchmarkBarsBlock">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;">
+                <div>
+                    <h3 style="font-size:14px; font-weight:900; margin:0; color:#1e140a;">📊 تراز تحلیلی روستا در برابر میانه منطقه شلمچه و هدف ملی</h3>
+                    <div style="font-size:11px; color:#8c7e6c; margin-top:2px;">مقایسه چندمعیاره برای سنجش عمق شکاف توسعه‌یافتگی آبادی</div>
+                </div>
+                <div style="display:flex; gap:10px; font-size:10.5px; font-weight:800;">
+                    <span style="color:#b91c1c;">● این روستا</span>
+                    <span style="color:#8c6823;">● میانه منطقه</span>
+                    <span style="color:#15803d;">● هدف ملی</span>
+                </div>
+            </div>
+
+            <!-- Indicator 1 -->
+            <div class="benchmark-row">
+                <div class="benchmark-meta-row">
+                    <span>۱. سرانه آب شرب پایدار (لیتر به ازای هر نفر در روز)</span>
+                    <span style="color:#b91c1c;">۸۵ L/d <small style="color:#6b5a47;">(میانه: ۹۵ · هدف: ۱۳۰)</small></span>
+                </div>
+                <div class="benchmark-track-wrap">
+                    <div class="benchmark-track-fill" style="width: 65%;"></div>
+                    <!-- Village Pin -->
+                    <div class="benchmark-marker" style="right: 65%;">
+                        <div class="benchmark-marker-pin village">۸۵</div>
+                        <div class="benchmark-marker-lbl" style="color:#b91c1c;">روستا</div>
+                    </div>
+                    <!-- Median Pin -->
+                    <div class="benchmark-marker" style="right: 73%;">
+                        <div class="benchmark-marker-pin median">۹۵</div>
+                        <div class="benchmark-marker-lbl" style="color:#8c6823;">میانه</div>
+                    </div>
+                    <!-- Target Pin -->
+                    <div class="benchmark-marker" style="right: 100%;">
+                        <div class="benchmark-marker-pin target">۱۳۰</div>
+                        <div class="benchmark-marker-lbl" style="color:#15803d;">هدف</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Indicator 2 -->
+            <div class="benchmark-row">
+                <div class="benchmark-meta-row">
+                    <span>۲. سرانه فضای آموزشی سرپوشیده (مترمربع به ازای هر دانش‌آموز)</span>
+                    <span style="color:#8c6823;">۲.۲ م.م <small style="color:#6b5a47;">(میانه: ۲.۱ · هدف: ۳.۵)</small></span>
+                </div>
+                <div class="benchmark-track-wrap">
+                    <div class="benchmark-track-fill" style="width: 62%;"></div>
+                    <div class="benchmark-marker" style="right: 62%;">
+                        <div class="benchmark-marker-pin village">۲.۲</div>
+                        <div class="benchmark-marker-lbl" style="color:#8c6823;">روستا</div>
+                    </div>
+                    <div class="benchmark-marker" style="right: 60%;">
+                        <div class="benchmark-marker-pin median">۲.۱</div>
+                        <div class="benchmark-marker-lbl" style="color:#8c6823;">میانه</div>
+                    </div>
+                    <div class="benchmark-marker" style="right: 100%;">
+                        <div class="benchmark-marker-pin target">۳.۵</div>
+                        <div class="benchmark-marker-lbl" style="color:#15803d;">هدف</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Indicator 3 -->
+            <div class="benchmark-row">
+                <div class="benchmark-meta-row">
+                    <span>۳. نرخ پیشرفت لایروبی انهار نخلستان‌ها</span>
+                    <span style="color:#15803d;">۷۶٪ <small style="color:#6b5a47;">(میانه: ۴۵٪ · هدف: ۱۰۰٪)</small></span>
+                </div>
+                <div class="benchmark-track-wrap">
+                    <div class="benchmark-track-fill" style="width: 76%;"></div>
+                    <div class="benchmark-marker" style="right: 45%;">
+                        <div class="benchmark-marker-pin median">۴۵٪</div>
+                        <div class="benchmark-marker-lbl" style="color:#8c6823;">میانه</div>
+                    </div>
+                    <div class="benchmark-marker" style="right: 76%;">
+                        <div class="benchmark-marker-pin village" style="border-color:#15803d; color:#15803d;">۷۶٪</div>
+                        <div class="benchmark-marker-lbl" style="color:#15803d;">پیشتاز</div>
+                    </div>
+                    <div class="benchmark-marker" style="right: 100%;">
+                        <div class="benchmark-marker-pin target">۱۰۰٪</div>
+                        <div class="benchmark-marker-lbl" style="color:#15803d;">هدف</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `;
+    };
+
+    // 3. TARGET VS ACTUAL MILESTONES (v0 TEMPLATES)
+    window.renderTargetVsActualMilestones = function() {
+        return `
+        <div class="milestones-card" id="villageMilestonesBlock">
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+                <div>
+                    <h3 style="font-size:14px; font-weight:900; margin:0; color:#1e140a;">🎯 کارنامه تحقق اهداف عملیاتی بنیاد در روستا (سال ۱۴۰۳)</h3>
+                    <div style="font-size:11px; color:#8c7e6c; margin-top:2px;">سنجش درصد پیشرفت فیزیکی پروژه‌ها نسبت به برنامه زمان‌بندی مصوب</div>
+                </div>
+                <span class="cmd-kbd-badge" style="background:#dcfce7; color:#166534; font-size:11px;">پیشرفت کل: ۸۱.۵٪</span>
+            </div>
+
+            <div class="milestones-grid">
+                <!-- Milestone 1 -->
+                <div class="milestone-item-box">
+                    <div class="milestone-title">لایروبی انهار سنتی نخلستان</div>
+                    <div class="milestone-progress-bar-wrap">
+                        <div class="milestone-progress-bar-fill" style="width:76%; background:#15803d;"></div>
+                    </div>
+                    <div class="milestone-footer-row">
+                        <span>هدف: ۵,۰۰۰ متر</span>
+                        <strong style="color:#15803d;">۳,۸۰۰ متر (۷۶٪)</strong>
+                    </div>
+                </div>
+
+                <!-- Milestone 2 -->
+                <div class="milestone-item-box">
+                    <div class="milestone-title">احداث و بهسازی مسکن محرومین</div>
+                    <div class="milestone-progress-bar-wrap">
+                        <div class="milestone-progress-bar-fill" style="width:75%; background:#d97706;"></div>
+                    </div>
+                    <div class="milestone-footer-row">
+                        <span>هدف: ۱۲ واحد</span>
+                        <strong style="color:#d97706;">۹ واحد (۷۵٪)</strong>
+                    </div>
+                </div>
+
+                <!-- Milestone 3 -->
+                <div class="milestone-item-box">
+                    <div class="milestone-title">بسته‌های معیشتی طرح کرامت</div>
+                    <div class="milestone-progress-bar-wrap">
+                        <div class="milestone-progress-bar-fill" style="width:100%; background:#16a34a;"></div>
+                    </div>
+                    <div class="milestone-footer-row">
+                        <span>هدف: ۳۵۰ بسته</span>
+                        <strong style="color:#16a34a;">۳۵۰ بسته (۱۰۰٪ کامل)</strong>
+                    </div>
+                </div>
+
+                <!-- Milestone 4 -->
+                <div class="milestone-item-box">
+                    <div class="milestone-title">ایمن‌سازی سرمایشی مدارس</div>
+                    <div class="milestone-progress-bar-wrap">
+                        <div class="milestone-progress-bar-fill" style="width:75%; background:#8c6823;"></div>
+                    </div>
+                    <div class="milestone-footer-row">
+                        <span>هدف: ۴ کلاس</span>
+                        <strong style="color:#8c6823;">۳ کلاس (۷۵٪)</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `;
+    };
+
+    // 4. NEEDS ASSESSMENT BREAKDOWN (VIBEPROMPT POLL)
+    window.renderNeedsAssessmentBreakdown = function() {
+        return `
+        <div class="needs-assessment-card" id="villageNeedsAssessmentBlock">
+            <div>
+                <h3 style="font-size:14px; font-weight:900; margin:0; color:#1e140a;">🗳️ پیمایش اولویت مطالبات مردمی (ممیزی از معتمدین و شیوخ)</h3>
+                <div style="font-size:11px; color:#8c7e6c; margin-top:2px;">نتایج نظرسنجی میدانی از ۲۳۹ خانوار ثبت‌شده پیرامون مهم‌ترین دغدغه آبادی</div>
+            </div>
+
+            <div class="needs-bar-row">
+                <div class="needs-bar-head">
+                    <span>۱. تأمین پایدار آب شرب و ارتقای فشار شبکه</span>
+                    <strong style="color:#8c6823;">۴۸٪ (۱۱۵ خانوار)</strong>
+                </div>
+                <div class="needs-bar-track">
+                    <div class="needs-bar-fill" style="width:48%;"></div>
+                </div>
+            </div>
+
+            <div class="needs-bar-row">
+                <div class="needs-bar-head">
+                    <span>۲. لایروبی انهار و احیای نخل‌های خشکیده</span>
+                    <strong style="color:#8c6823;">۲۸٪ (۶۷ خانوار)</strong>
+                </div>
+                <div class="needs-bar-track">
+                    <div class="needs-bar-fill" style="width:28%; background:#b45309;"></div>
+                </div>
+            </div>
+
+            <div class="needs-bar-row">
+                <div class="needs-bar-head">
+                    <span>۳. سرویس ایاب و ذهاب دانش‌آموزان دختر و پسر</span>
+                    <strong style="color:#8c6823;">۱۶٪ (۳۸ خانوار)</strong>
+                </div>
+                <div class="needs-bar-track">
+                    <div class="needs-bar-fill" style="width:16%; background:#c2410c;"></div>
+                </div>
+            </div>
+
+            <div class="needs-bar-row">
+                <div class="needs-bar-head">
+                    <span>۴. بهسازی آسفالت، روشنایی و معابر داخلی</span>
+                    <strong style="color:#8c6823;">۸٪ (۱۹ خانوار)</strong>
+                </div>
+                <div class="needs-bar-track">
+                    <div class="needs-bar-fill" style="width:8%; background:#9a3412;"></div>
+                </div>
+            </div>
+        </div>
+        `;
+    };
+
+    // 5. 3D VOXEL LAND USE (GETLAYERS PARCEL MAP)
+    window.renderLandUseVoxel = function() {
+        return `
+        <div class="voxel-land-card" id="villageLandUseBlock">
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+                <div>
+                    <h3 style="font-size:14px; font-weight:900; margin:0; color:#1e140a;">📐 پهنه‌بندی کاربری اراضی و مساحت آبادی (مجموع: ۱۲۶ هکتار)</h3>
+                    <div style="font-size:11px; color:#8c7e6c; margin-top:2px;">تراز سطحی نخلستان‌ها، بافت مسکونی، انهار و اراضی مستعد کشاورزی</div>
+                </div>
+                <span class="cmd-kbd-badge" style="background:#f5efe6; color:#6b5a47;">تحلیل GIS</span>
+            </div>
+
+            <!-- Proportional Area Ribbon -->
+            <div class="voxel-proportional-bar">
+                <div class="voxel-seg palms" style="width: 35.7%;" title="نخلستان مثمر: ۴۵ هکتار (۳۵.۷٪)"></div>
+                <div class="voxel-seg fallow" style="width: 47.6%;" title="اراضی بایر مستعد: ۶۰ هکتار (۴۷.۶٪)"></div>
+                <div class="voxel-seg houses" style="width: 14.3%;" title="بافت مسکونی: ۱۸ هکتار (۱۴.۳٪)"></div>
+                <div class="voxel-seg canals" style="width: 2.4%;" title="حریم انهار: ۳ هکتار (۲.۴٪)"></div>
+            </div>
+
+            <div class="voxel-legend-grid">
+                <div class="voxel-legend-item">
+                    <div style="display:flex; align-items:center; gap:6px; font-size:11px; color:#15803d; font-weight:800;">
+                        <span style="width:8px; height:8px; border-radius:50%; background:#15803d;"></span>
+                        <span>نخلستان‌های مثمر</span>
+                    </div>
+                    <strong style="font-size:14px; color:#1e140a;">۴۵ هکتار <small style="font-size:10px; color:#8c7e6c;">(۳۵.۷٪)</small></strong>
+                </div>
+
+                <div class="voxel-legend-item">
+                    <div style="display:flex; align-items:center; gap:6px; font-size:11px; color:#d97706; font-weight:800;">
+                        <span style="width:8px; height:8px; border-radius:50%; background:#d97706;"></span>
+                        <span>اراضی بایر مستعد</span>
+                    </div>
+                    <strong style="font-size:14px; color:#1e140a;">۶۰ هکتار <small style="font-size:10px; color:#8c7e6c;">(۴۷.۶٪)</small></strong>
+                </div>
+
+                <div class="voxel-legend-item">
+                    <div style="display:flex; align-items:center; gap:6px; font-size:11px; color:#b45309; font-weight:800;">
+                        <span style="width:8px; height:8px; border-radius:50%; background:#b45309;"></span>
+                        <span>بافت مسکونی</span>
+                    </div>
+                    <strong style="font-size:14px; color:#1e140a;">۱۸ هکتار <small style="font-size:10px; color:#8c7e6c;">(۱۴.۳٪)</small></strong>
+                </div>
+
+                <div class="voxel-legend-item">
+                    <div style="display:flex; align-items:center; gap:6px; font-size:11px; color:#0284c7; font-weight:800;">
+                        <span style="width:8px; height:8px; border-radius:50%; background:#0284c7;"></span>
+                        <span>حریم انهار و کارون</span>
+                    </div>
+                    <strong style="font-size:14px; color:#1e140a;">۳ هکتار <small style="font-size:10px; color:#8c7e6c;">(۲.۴٪)</small></strong>
+                </div>
+            </div>
+        </div>
+        `;
+    };
+
+    // 6. FIELD AUDIT TRAIL STRIP (v0)
+    window.renderFieldAuditTrail = function() {
+        return `
+        <div class="field-audit-strip" id="villageFieldAuditBlock">
+            <div style="display:flex; align-items:center; gap:12px;">
+                <span style="font-size:24px;">🛡️</span>
+                <div>
+                    <strong style="font-size:12.5px; color:#1e140a;">شناسنامه و سند رسمی اصالت داده‌های آبادی</strong>
+                    <div style="font-size:11px; color:#8c7e6c; margin-top:2px;">
+                        ممیزی‌شده با کاربرگ‌های رسمی استانداری خوزستان، دهیاری و قرارگاه جهادی امام‌رضایی‌ها · کد ممیزی: AUD-1403-KLM
+                    </div>
+                </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px;">
+                <span class="cmd-kbd-badge" style="background:#dcfce7; color:#15803d; font-size:11px;">مهر اصالت فعال</span>
+                <button type="button" class="dossier-back-btn" onclick="window.print();" style="padding:6px 14px; font-size:11.5px;">
+                    🖨️ چاپ کارنامه ممیزی
+                </button>
+            </div>
+        </div>
+        `;
+    };
+
     function hookDossierMount() {
         if (typeof renderExecutiveDashboard === 'function') {
             const prevRender = renderExecutiveDashboard;
@@ -30057,7 +30803,57 @@ document.addEventListener('click', (e) => {
                     window.renderPriorityStack('villagePriorityStackMount');
                 }
             };
-            console.log('✓ VibePrompt Senior Suite successfully mounted to village dossier lifecycle!');
+            
+                // --- NEW STATS ENHANCEMENTS ATTACHMENTS ---
+                // 6. Capability Checklist
+                if (!document.getElementById('villageCapabilityChecklistMount')) {
+                    const capMount = document.createElement('div');
+                    capMount.id = 'villageCapabilityChecklistMount';
+                    capMount.innerHTML = window.renderCapabilityChecklist();
+                    container.appendChild(capMount);
+                }
+
+                // 7. Regional Benchmark Bars
+                if (!document.getElementById('villageBenchmarkBarsMount')) {
+                    const benchMount = document.createElement('div');
+                    benchMount.id = 'villageBenchmarkBarsMount';
+                    benchMount.innerHTML = window.renderRegionalBenchmarkBars();
+                    container.appendChild(benchMount);
+                }
+
+                // 8. Target vs Actual Milestones
+                if (!document.getElementById('villageMilestonesMount')) {
+                    const mileMount = document.createElement('div');
+                    mileMount.id = 'villageMilestonesMount';
+                    mileMount.innerHTML = window.renderTargetVsActualMilestones();
+                    container.appendChild(mileMount);
+                }
+
+                // 9. Needs Assessment Breakdown
+                if (!document.getElementById('villageNeedsAssessmentMount')) {
+                    const needsMount = document.createElement('div');
+                    needsMount.id = 'villageNeedsAssessmentMount';
+                    needsMount.innerHTML = window.renderNeedsAssessmentBreakdown();
+                    container.appendChild(needsMount);
+                }
+
+                // 10. Voxel Land Use Map
+                if (!document.getElementById('villageLandUseMount')) {
+                    const landMount = document.createElement('div');
+                    landMount.id = 'villageLandUseMount';
+                    landMount.innerHTML = window.renderLandUseVoxel();
+                    container.appendChild(landMount);
+                }
+
+                // 11. Field Audit Trail Strip
+                if (!document.getElementById('villageFieldAuditMount')) {
+                    const auditMount = document.createElement('div');
+                    auditMount.id = 'villageFieldAuditMount';
+                    auditMount.innerHTML = window.renderFieldAuditTrail();
+                    container.appendChild(auditMount);
+                }
+        
+                console.log('✓ VibePrompt Senior Suite successfully mounted to village dossier lifecycle!');
         } else {
             setTimeout(hookDossierMount, 200);
         }
