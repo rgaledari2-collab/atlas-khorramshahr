@@ -8251,215 +8251,382 @@ dialog#statsDialog::backdrop {
 }
 
 
+
+
+
 /* =========================================================================
-   C-SUITE EXECUTIVE INTELLIGENCE LAYER: BRIEF BANNER & RESOURCE GAP MATRIX
+   MASTER C-SUITE COMMAND COCKPIT & STRATEGIC INTELLIGENCE (UNIFIED ARCHITECTURE)
    ========================================================================= */
 
-/* 1. Executive Brief Banner */
-.executive-brief-banner {
-    background: linear-gradient(135deg, #fdfbf7 0%, #f7f1e6 100%);
-    border: 1.5px solid #d9ccb6;
-    border-right: 6px solid var(--gold-warm);
-    border-radius: 14px;
-    padding: 16px 20px;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+#statsDialog,
+#statsDialog *,
+.c-level-cockpit,
+.c-level-cockpit *,
+.c-level-cockpit button,
+.c-level-cockpit span,
+.c-level-cockpit div,
+.c-level-cockpit p,
+.c-level-cockpit h3,
+.c-level-cockpit h4 {
+    font-family: YekanBakh, 'IranYekan', 'Farhang', Tahoma, sans-serif !important;
+    -webkit-font-smoothing: antialiased !important;
+    box-sizing: border-box !important;
 }
 
-.exec-brief-top {
+/* Master Cockpit Wrapper */
+.c-level-cockpit {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 22px;
+    width: 100%;
+}
+
+/* ── 1. STRATEGIC POSTURE & RISK HEADER ─────────────────────── */
+.cl-posture-bar {
+    background: linear-gradient(135deg, #ffffff 0%, #faf6ee 100%);
+    border: 1px solid #d8cbba;
+    border-right: 5px solid #a67324;
+    border-radius: 12px;
+    padding: 14px 18px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ebdcc5;
+    gap: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
 }
 
-.exec-brief-title-wrap {
+.cl-posture-title-wrap {
     display: flex;
     align-items: center;
     gap: 10px;
     flex-wrap: wrap;
 }
 
-.exec-badge-pill {
-    background: linear-gradient(135deg, #2b2015 0%, #17110a 100%);
-    color: #f7d794;
+.cl-badge-c-level {
+    background: linear-gradient(135deg, #241c14 0%, #15100a 100%);
+    color: #f7d896;
     font-size: 11px;
     font-weight: 800;
     padding: 4px 12px;
     border-radius: 20px;
-    border: 1px solid var(--gold-bright);
+    border: 1px solid #c6a15b;
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.2px;
 }
 
-.exec-urgency-badge {
-    font-size: 11px;
+.cl-urgency-badge {
+    font-size: 11.5px;
     font-weight: 800;
-    padding: 4px 10px;
+    padding: 4px 12px;
     border-radius: 6px;
     display: inline-flex;
     align-items: center;
+    gap: 6px;
+}
+.cl-urgency-badge.u-high {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #f87171;
+}
+.cl-urgency-badge.u-med {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fcd34d;
+}
+.cl-urgency-badge.u-good {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #86efac;
+}
+
+.cl-pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    animation: clPulse 1.8s infinite ease-in-out;
+}
+.u-high .cl-pulse-dot { background: #dc2626; box-shadow: 0 0 0 rgba(220, 38, 38, 0.4); }
+.u-med .cl-pulse-dot { background: #d97706; box-shadow: 0 0 0 rgba(217, 119, 6, 0.4); }
+.u-good .cl-pulse-dot { background: #16a34a; box-shadow: 0 0 0 rgba(22, 163, 74, 0.4); }
+
+@keyframes clPulse {
+    0% { transform: scale(0.95); opacity: 0.8; }
+    50% { transform: scale(1.3); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.cl-posture-meta-wrap {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 11px;
+    color: #5c4e3f;
+    font-weight: 700;
+}
+
+.cl-meta-item {
+    display: flex;
+    align-items: center;
     gap: 5px;
+    background: #f4ede1;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid #e0d4c1;
 }
-.exec-urgency-badge.u-high { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
-.exec-urgency-badge.u-med { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; }
-.exec-urgency-badge.u-good { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
 
-.exec-brief-grid {
+.cl-trajectory-badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 800;
+}
+.cl-trajectory-badge.tr-improving { color: #166534; }
+.cl-trajectory-badge.tr-stable { color: #854d0e; }
+.cl-trajectory-badge.tr-critical { color: #991b1b; }
+
+/* ── 2. THE 4 INTEGRATED PILLARS MATRIX (CARDS + GAP) ───────── */
+.cl-pillars-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
 }
 
-.brief-col-card {
+.cl-pillar-card {
     background: #ffffff;
-    border: 1px solid #e4d8c5;
-    border-radius: 10px;
-    padding: 12px 14px;
+    border: 1px solid #dfd3c1;
+    border-radius: 12px;
+    padding: 14px 16px;
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    justify-content: space-between;
+    gap: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.cl-pillar-card:hover {
+    transform: translateY(-2px);
+    border-color: #a67324;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
 }
 
-.brief-col-label {
-    font-size: 11px;
+.cl-pillar-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cl-pillar-title {
+    font-size: 11.5px;
     font-weight: 800;
-    color: #7c6d5b;
+    color: #615243;
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
-.brief-col-val {
-    font-size: 12.5px;
+.cl-pillar-tag {
+    font-size: 10px;
+    font-weight: 800;
+    color: #8c6823;
+    background: #faf3e6;
+    padding: 2px 7px;
+    border-radius: 4px;
+    border: 1px solid #ebdcc5;
+}
+
+.cl-pillar-hero-num {
+    font-size: 24px;
+    font-weight: 900;
+    color: #1a140e;
+    line-height: 1.1;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.cl-pillar-subtext {
+    font-size: 11px;
     font-weight: 700;
-    color: #241c14;
-    line-height: 1.6;
+    color: #4b3d30;
+    line-height: 1.4;
 }
 
-/* 2. Executive GAP & Resource Allocation Panel */
-.exec-gap-panel {
+.cl-gap-box {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 4px;
+    padding-top: 8px;
+    border-top: 1px dashed #e8ded0;
+}
+
+.cl-gap-track {
+    height: 8px;
+    background: #eee6db;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.cl-gap-covered {
+    background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+    height: 100%;
+    transition: width 1s ease;
+}
+
+.cl-gap-deficit {
+    background: linear-gradient(90deg, #f87171 0%, #dc2626 100%);
+    height: 100%;
+    transition: width 1s ease;
+}
+
+.cl-gap-legend {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+.cl-gap-legend .leg-cov { color: #047857; }
+.cl-gap-legend .leg-def { color: #b91c1c; }
+
+/* ── 3. EXECUTIVE DIRECTIVE & BOTTLENECK ANALYSIS ────────────── */
+.cl-analysis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.cl-analysis-card {
     background: #ffffff;
-    border: 1px solid #dfd2be;
-    border-radius: 14px;
-    padding: 18px 20px;
-    margin-bottom: 22px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+    border: 1px solid #dfd3c1;
+    border-radius: 12px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
 }
 
-.exec-gap-head {
+.cl-analysis-card.card-bottleneck {
+    border-right: 5px solid #dc2626;
+    background: linear-gradient(135deg, #ffffff 0%, #fdf6f6 100%);
+}
+
+.cl-analysis-card.card-action {
+    border-right: 5px solid #16a34a;
+    background: linear-gradient(135deg, #ffffff 0%, #f6fcf8 100%);
+}
+
+.cl-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee4d5;
+}
+
+.cl-card-title {
+    font-size: 13px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+.card-bottleneck .cl-card-title { color: #991b1b; }
+.card-action .cl-card-title { color: #166534; }
+
+.cl-card-badge {
+    font-size: 10.5px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+.card-bottleneck .cl-card-badge { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+.card-action .cl-card-badge { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+
+.cl-card-body-text {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #241c14;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.cl-card-impact-box {
+    background: #ffffff;
+    border: 1px solid #e7dcce;
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 11px;
+    margin-top: 4px;
+}
+
+.cl-impact-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 10px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid #ebdcc5;
-    margin-bottom: 16px;
+    gap: 6px;
 }
 
-.exec-gap-title {
-    font-size: 14px;
-    font-weight: 900;
-    color: #221a12;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 0;
-}
-
-.exec-gap-sub {
-    font-size: 11.5px;
-    color: #6e5f4d;
-    margin-top: 2px;
-}
-
-.gap-bars-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-}
-
-.gap-metric-card {
-    background: #faf7f2;
-    border: 1px solid #e6dccf;
-    border-radius: 10px;
-    padding: 14px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.gap-card-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-}
-
-.gap-card-title {
-    font-size: 12px;
+.cl-impact-label {
     font-weight: 800;
-    color: #2b2116;
+    color: #635445;
 }
 
-.gap-card-pct {
-    font-size: 14px;
-    font-weight: 900;
-}
-
-.gap-track {
-    height: 10px;
-    background: #e5ded3;
-    border-radius: 6px;
-    overflow: hidden;
-    display: flex;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.gap-fill-covered {
-    background: linear-gradient(90deg, #10b981, #14b8a6);
-    height: 100%;
-    transition: width 1s ease;
-}
-
-.gap-fill-deficit {
-    background: linear-gradient(90deg, #ef4444, #f87171);
-    height: 100%;
-    transition: width 1s ease;
-}
-
-.gap-legend {
-    display: flex;
-    justify-content: space-between;
-    font-size: 10.5px;
-    color: #5c4e3f;
-    line-height: 1.4;
-}
-
-.gap-covered-text {
-    color: #047857;
+.cl-impact-val {
     font-weight: 700;
+    color: #1a140e;
 }
 
-.gap-deficit-text {
-    color: #b91c1c;
-    font-weight: 700;
+@media (max-width: 1200px) {
+    .cl-pillars-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
 }
 
-@media (max-width: 1024px) {
-    .exec-brief-grid,
-    .gap-bars-grid {
+@media (max-width: 800px) {
+    .cl-pillars-grid {
         grid-template-columns: 1fr !important;
     }
+    .cl-analysis-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+
+#statsDialog .exec-kpi-grid {
+    display: none !important;
+}
+
+
+/* ── ELIMINATE BOX-IN-A-BOX SYNDROME IN EXEC TAB CONTAINER ── */
+#statsDialog #execTabContentContainer {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+}
+
+#statsDialog .exec-main-content {
+    background: #fdfaf6 !important;
+    padding: 24px 28px !important;
 }
 
 </style>
@@ -22145,95 +22312,686 @@ addEventListener('resize', layout); layout();
             }
 
             
+            
+            }
+
+            
             // =========================================================================
-            // C-SUITE EXECUTIVE INTELLIGENCE REGISTRY & GAP ENGINE
+            // C-SUITE EXECUTIVE INTELLIGENCE REGISTRY (VULNERABILITY, GAPS & MILESTONES)
             // =========================================================================
-            const villageExecutiveIntelligence = {
+            function toFaDigits(val) {
+                if (val === null || val === undefined) return '—';
+                return String(val)
+                    .replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d])
+                    .replace(/%/g, '٪');
+            }
+
+            const villageExecutiveRegistry = {
                 'soureh': {
-                    urgencyText: 'اولویت تثبیت و ارتقا',
+                    urgencyText: 'اولویت ۳ · تثبیت و توسعه پایدار',
                     urgencyClass: 'u-good',
-                    confidence: '۹۶٪ سرشماری قطعی',
-                    statusOverview: 'روستای مرکزی با ثبات جمعیتی بالا (۴,۱۷۵ نفر) و زیرساخت گاز و بهداشت تثبیت‌شده.',
-                    bottleneck: 'پایداری فشار شبکه آب غدیر در اوج گرما و نیاز به سرمایه در گردش استخرهای پرورش ماهی.',
-                    strategicAction: 'تکمیل مخزن بتنی ۵۰۰ مترمکعبی و تخصیص ۸۵۰ م‌ت به کارگاه خیاطی و بسته‌بندی خرما.',
-                    gapBudget: { title: 'اعتبارات عمرانی و زیرساخت', coveredPct: 78, deficitPct: 22, coveredText: 'تأمین: ۱.۸ م‌ت', deficitText: 'کسری: ۵۰۰ م‌ت' },
-                    gapLivelihood: { title: 'پوشش خانوارهای کم‌برخوردار', coveredPct: 82, deficitPct: 18, coveredText: '۷۵ از ۹۲ خانوار', deficitText: '۱۷ خانوار در نوبت' },
-                    gapEducation: { title: 'پوشش تجهیزاتی ۲ مدرسه', coveredPct: 94, deficitPct: 6, coveredText: '۲۳۵ دانش‌آموز فعال', deficitText: 'نیاز جزئی سرمایشی' }
+                    vulnerabilityScore: 28,
+                    vulnerabilityLabel: 'کم‌ریسک (تثبیت‌شده)',
+                    trajectory: 'improving',
+                    trajectoryText: '↗ رو به بهبود پایدار',
+                    confidence: '۹۶٪ سرشماری قطعی میدانی',
+                    leadUnit: 'قرارگاه مرکزی خرمشهر · کارگروه توانمندسازی',
+                    popNum: '۴,۱۷۵',
+                    popSub: '۵۲٪ مرد · ۴۸٪ زن',
+                    famNum: '۱,۰۵۱',
+                    famSub: 'بُعد خانوار: ۴.۰ نفر',
+                    financial: {
+                        label: 'اعتبار عمرانی و کارآفرینی',
+                        budgetTotal: '۲.۳ میلیارد تومان',
+                        funded: '۱.۸ م‌ت',
+                        gap: '۵۰۰ م‌ت',
+                        fundedPct: 78,
+                        gapPct: 22
+                    },
+                    livelihood: {
+                        label: 'پوشش معیشتی مددجویان',
+                        targetTotal: '۹۲ خانوار',
+                        covered: '۷۵ خانوار',
+                        gap: '۱۷ خانوار',
+                        coveredPct: 82,
+                        gapPct: 18
+                    },
+                    infrastructure: {
+                        label: 'پایداری آب، گاز و مدارس',
+                        status: '۹۴٪ پایدار',
+                        subtext: '۲ مدرسه فعال + شبکه گاز تثبیت‌شده',
+                        coveredPct: 94,
+                        gapPct: 6
+                    },
+                    bottleneckTitle: 'نوسان فشار آب غدیر در پیک گرما و کمبود سرمایه در گردش',
+                    bottleneckDesc: 'افت فشار شبکه در محله شرقی در تابستان و عدم دسترسی ۵ کارگاه بومی خیاطی و بسته‌بندی خرما به تسهیلات کم‌بهره.',
+                    bottleneckImpact: 'خطر افت اشتغال خرد محلی و نارضایتی ساکنان انتهای خط آبرسانی.',
+                    actionTitle: 'احداث مخزن ۵۰۰ مترمکعبی و اعطای ۸۵۰ م‌ت تسهیلات کارگاهی',
+                    actionDesc: 'اتمام عملیات بتن‌ریزی مخزن ذخیره آب و اتصال خط پمپاژ ثانویه؛ اعطای بن تجهیزات به کارگاه‌های تولیدی بانوان.',
+                    actionDeadline: '۳۰ آذر ۱۴۰۳',
+                    actionOwner: 'معاونت عمران و اقتصاد محلی امام‌رضایی‌ها',
+                    actionBudget: '۸۵۰ میلیون تومان'
                 },
                 'pol-now': {
-                    urgencyText: 'اولویت ۲ · مداخله کوتاه‌مدت',
+                    urgencyText: 'اولویت ۲ · ارتقای زیرساخت و آموزش',
                     urgencyClass: 'u-med',
-                    confidence: '۹۲٪ سرشماری میدانی',
-                    statusOverview: 'محور مواصلاتی شلمچه (۱,۸۷۴ نفر) با دبستان ۹۴ نفره و خانه بهداشت ۲۰۰ متری فعال.',
-                    bottleneck: 'فرسودگی خط انتقال آب محله شرقی و افت ولتاژ شبکه برق در حاشیه جاده.',
-                    strategicAction: 'اصلاح ۸۵۰ متر لوله انشعاب ۴ اینچ و نوسازی ملزومات سرمایشی دبستان حُر بن ریاحی.',
-                    gapBudget: { title: 'اعتبار اصلاح خط لوله و معابر', coveredPct: 58, deficitPct: 42, coveredText: 'تأمین: ۶۰۰ م‌ت', deficitText: 'کسری: ۴۲۰ م‌ت' },
-                    gapLivelihood: { title: 'سبد معیشتی ۲۹ پرونده', coveredPct: 65, deficitPct: 35, coveredText: '۱۹ خانوار تحت پوشش', deficitText: '۱۰ خانوار در نوبت' },
-                    gapEducation: { title: 'تجهیزات دبستان حُر', coveredPct: 74, deficitPct: 26, coveredText: 'پوشش تحصیلی فعال', deficitText: 'نیاز به ۵ اسپلیت' }
+                    vulnerabilityScore: 58,
+                    vulnerabilityLabel: 'ریسک متوسط (محور مرزی)',
+                    trajectory: 'improving',
+                    trajectoryText: '↗ رو به بهبود زیرساختی',
+                    confidence: '۹۲٪ ممیزی میدانی',
+                    leadUnit: 'قرارگاه شلمچه · کارگروه زیرساخت و مدارس',
+                    popNum: '۱,۸۷۴',
+                    popSub: '۴۹٪ مرد · ۵۱٪ زن',
+                    famNum: '۴۴۱',
+                    famSub: 'بُعد خانوار: ۴.۲ نفر',
+                    financial: {
+                        label: 'اعتبار اصلاح خطوط و معابر',
+                        budgetTotal: '۱.۰۲ میلیارد تومان',
+                        funded: '۶۰۰ م‌ت',
+                        gap: '۴۲۰ م‌ت',
+                        fundedPct: 59,
+                        gapPct: 41
+                    },
+                    livelihood: {
+                        label: 'سبد معیشتی پرونده‌های فعال',
+                        targetTotal: '۲۹ خانوار',
+                        covered: '۱۹ خانوار',
+                        gap: '۱۰ خانوار',
+                        coveredPct: 66,
+                        gapPct: 34
+                    },
+                    infrastructure: {
+                        label: 'پوشش تجهیزاتی دبستان حُر و برق',
+                        status: '۷۴٪ پایدار',
+                        subtext: 'دبستان ۹۴ نفره + خانه بهداشت ۲۰۰ متری',
+                        coveredPct: 74,
+                        gapPct: 26
+                    },
+                    bottleneckTitle: 'فرسودگی خط انتقال فرعی آب و افت ولتاژ شبکه برق',
+                    bottleneckDesc: 'فرسودگی ۸۵۰ متر لوله انشعاب ۴ اینچ محله شرقی و افت توان شبکه برق در حاشیه جاده بین‌المللی شلمچه.',
+                    bottleneckImpact: 'هدررفت آب آشامیدنی سالم و قطعی دوره‌ای تهویه دبستان در روزهای با دمای بالای ۵۰ درجه.',
+                    actionTitle: 'تعویض ۸۵۰ متر لوله انشعاب و نصب ۵ اسپلیت در دبستان حُر',
+                    actionDesc: 'اصلاح کامل انشعابات محله شرقی و نوسازی ملزومات سرمایشی و بهداشتی دبستان حُر بن ریاحی.',
+                    actionDeadline: '۱۵ آبان ۱۴۰۳',
+                    actionOwner: 'کارگروه عمران و تجهیز مدارس',
+                    actionBudget: '۴۲۰ میلیون تومان'
                 },
                 'darband-gharbi': {
-                    urgencyText: 'اولویت ۱ · مداخله فوری',
+                    urgencyText: 'اولویت ۱ · مداخله اضطراری و فوری',
                     urgencyClass: 'u-high',
-                    confidence: '۹۴٪ سرشماری محلی',
-                    statusOverview: 'کانون جمعیتی ۲,۷۵۵ نفری با تراکم بالای خانوارهای کم‌برخوردار (۵۰ خانوار) و ۱۱ یتیم.',
-                    bottleneck: 'محدودیت فضای آموزشی دبستان مرزداران (۱۷۷ محصل) و لزوم حمایت درمانی بیماران خاص.',
-                    strategicAction: 'اعزام تیم تخصصی سلامت جهادی و پرداخت تسهیلات راه‌اندازی کارگاه خانگی بانوان.',
-                    gapBudget: { title: 'بودجه عمرانی و کارآفرینی', coveredPct: 45, deficitPct: 55, coveredText: 'تأمین: ۴۵۰ م‌ت', deficitText: 'کسری: ۵۵۰ م‌ت' },
-                    gapLivelihood: { title: 'پوشش ۵۰ خانوار نیازمند', coveredPct: 50, deficitPct: 50, coveredText: '۲۵ خانوار فعال', deficitText: '۲۵ خانوار در انتظار' },
-                    gapEducation: { title: 'تجهیزات دبستان مرزداران', coveredPct: 68, deficitPct: 32, coveredText: 'تأمین نوشت‌افزار کامل', deficitText: 'نیاز به بهسازی بنا' }
+                    vulnerabilityScore: 84,
+                    vulnerabilityLabel: 'بسیار بحرانی (کانون فقر و آسیب)',
+                    trajectory: 'critical',
+                    trajectoryText: '↘ نیازمند مداخله اضطراری',
+                    confidence: '۹۴٪ سرشماری خانه‌به‌خانه',
+                    leadUnit: 'قرارگاه واکنش سریع · کارگروه سلامت و معیشت',
+                    popNum: '۲,۷۵۵',
+                    popSub: '۵۱٪ مرد · ۴۹٪ زن',
+                    famNum: '۶۳۲',
+                    famSub: 'بُعد خانوار: ۴.۴ نفر',
+                    financial: {
+                        label: 'بودجه اضطراری بهداشت و مسکن',
+                        budgetTotal: '۱.۰ میلیارد تومان',
+                        funded: '۴۵۰ م‌ت',
+                        gap: '۵۵۰ م‌ت',
+                        fundedPct: 45,
+                        gapPct: 55
+                    },
+                    livelihood: {
+                        label: 'پوشش ۵۰ خانوار نیازمند مفرط',
+                        targetTotal: '۵۰ خانوار',
+                        covered: '۲۵ خانوار',
+                        gap: '۲۵ خانوار',
+                        coveredPct: 50,
+                        gapPct: 50
+                    },
+                    infrastructure: {
+                        label: 'سرانه دبستان مرزداران و درمان',
+                        status: '۶۸٪ پایدار',
+                        subtext: '۱۷۷ دانش‌آموز · کمبود ۲ کلاس درس',
+                        coveredPct: 68,
+                        gapPct: 32
+                    },
+                    bottleneckTitle: 'تراکم بالای فقر مفرط، ۱۱ یتیم و نبود دسترسی به خدمات دارویی',
+                    bottleneckDesc: 'حجم بالای خانواده‌های تک‌سرپرست، ۹ بیمار خاص بدون پوشش دارویی مستمر و کمبود فضای آموزشی در دبستان مرزداران.',
+                    bottleneckImpact: 'خطر افت شاخص سلامت خانوار، بازماندگی از تحصیل دختران و تعمیق چرخه فقر مفرط.',
+                    actionTitle: 'استقرار کاروان سلامت جهادی و تأمین هزینه دارویی و مسکن',
+                    actionDesc: 'تحت پوشش قرار دادن ۲۵ خانوار معطل مانده، تأمین مستمر داروی بیماران خاص و احداث ۲ کلاس پیش‌ساخته استاندارد.',
+                    actionDeadline: '۳۰ آبان ۱۴۰۳',
+                    actionOwner: 'معاونت سلامت و امداد اجتماعی',
+                    actionBudget: '۵۵۰ میلیون تومان'
                 },
                 'jadideh': {
-                    urgencyText: 'اولویت راهبردی منطقه',
+                    urgencyText: 'اولویت ۲ · قطب خدمات بهداشتی حومه',
                     urgencyClass: 'u-med',
-                    confidence: '۹۰٪ ممیزی ثبت‌احوال',
-                    statusOverview: 'بزرگ‌ترین روستای حومه غربی (۵,۶۰۷ نفر) با مرکز جامع سلامت ۴۰۰ متری و ۳۰۶ دانش‌آموز.',
-                    bottleneck: 'نیاز به ارتقای ساعات خدمات مرکز سلامت و فرسودگی آسفالت خیابان‌های بوستان و شبستان.',
-                    strategicAction: 'جدول‌کشی و بهسازی معابر اصلی و راه‌اندازی شیفت عصر پزشک عمومی در مرکز سلامت.',
-                    gapBudget: { title: 'اعتبار بهسازی معابر و سلامت', coveredPct: 62, deficitPct: 38, coveredText: 'تأمین: ۱.۲ م‌ت', deficitText: 'کسری: ۷۵۰ م‌ت' },
-                    gapLivelihood: { title: 'پوشش ۴۹ خانوار مددجو', coveredPct: 70, deficitPct: 30, coveredText: '۳۴ خانوار فعال', deficitText: '۱۵ خانوار در نوبت' },
-                    gapEducation: { title: 'تجهیزات دبستان محسن بن علی', coveredPct: 82, deficitPct: 18, coveredText: '۳۰۶ محصل مستقر', deficitText: 'بهسازی حیاط و کتب' }
+                    vulnerabilityScore: 52,
+                    vulnerabilityLabel: 'متوسط (مرکز جمعیتی)',
+                    trajectory: 'improving',
+                    trajectoryText: '↗ رو به توسعه شهری-روستایی',
+                    confidence: '۹۰٪ ممیزی ثبت‌احوال و بهداشت',
+                    leadUnit: 'قرارگاه مرکزی · کارگروه بهداشت و معابر',
+                    popNum: '۵,۶۰۷',
+                    popSub: '۵۰٪ مرد · ۵۰٪ زن',
+                    famNum: '۱,۳۴۰',
+                    famSub: 'بُعد خانوار: ۴.۲ نفر',
+                    financial: {
+                        label: 'اعتبار بهسازی معابر و سلامت',
+                        budgetTotal: '۱.۹۵ میلیارد تومان',
+                        funded: '۱.۲ م‌ت',
+                        gap: '۷۵۰ م‌ت',
+                        fundedPct: 62,
+                        gapPct: 38
+                    },
+                    livelihood: {
+                        label: 'پوشش ۴۹ خانوار تحت حمایت',
+                        targetTotal: '۴۹ خانوار',
+                        covered: '۳۴ خانوار',
+                        gap: '۱۵ خانوار',
+                        coveredPct: 69,
+                        gapPct: 31
+                    },
+                    infrastructure: {
+                        label: 'مرکز جامع سلامت و دبستان',
+                        status: '۸۲٪ پایدار',
+                        subtext: '۳۰۶ دانش‌آموز · مرکز سلامت ۴۰۰ متری',
+                        coveredPct: 82,
+                        gapPct: 18
+                    },
+                    bottleneckTitle: 'تک‌شیفت بودن مرکز سلامت و فرسودگی آسفالت شریان‌های اصلی',
+                    bottleneckDesc: 'عدم حضور پزشک در شیفت عصر و شب و تخریب جداول آب‌های سطحی خیابان‌های بوستان و شبستان.',
+                    bottleneckImpact: 'اجبار روستاییان به ترددهای پرهزینه به مراکز درمانی خرمشهر و تجمع روان‌آب در فصول بارندگی.',
+                    actionTitle: 'فعال‌سازی شیفت عصر پزشک عمومی و اجرای ۵۰۰ متر جدول‌کشی',
+                    actionDesc: 'تأمین مقیم پزشک عمومی برای شیفت عصر مرکز خدمات جامع سلامت و زیرسازی آسفالت دو معبر پرتردد.',
+                    actionDeadline: '۳۰ دی ۱۴۰۳',
+                    actionOwner: 'کارگروه بهداشت و بهسازی محیط',
+                    actionBudget: '۷۵۰ میلیون تومان'
                 },
                 'ariz': {
-                    urgencyText: 'اولویت پایش و تثبیت',
+                    urgencyText: 'اولویت ۳ · پایش و صیانت سکونتگاهی',
                     urgencyClass: 'u-good',
-                    confidence: '۱۰۰٪ پوشش میدانی',
-                    statusOverview: 'روستای اقماری ۲۸۱ نفری با دبستان فعال امام‌رضایی‌ها (۲۴ دانش‌آموز) و آرامش سکونتگاهی.',
-                    bottleneck: 'فاصله تا مراکز درمانی شبانه‌روزی و نیاز به مرمت کانال کشاورزی اراضی نخلستان.',
-                    strategicAction: 'نوبت منظم هفتگی بهورز مقیم و تثبیت سبد معیشتی ۴ خانوار نیازمند روستا.',
-                    gapBudget: { title: 'اعتبار کانال و بهسازی', coveredPct: 75, deficitPct: 25, coveredText: 'تأمین: ۲۲۰ م‌ت', deficitText: 'کسری: ۷۰ م‌ت' },
-                    gapLivelihood: { title: 'پوشش ۴ خانوار نیازمند', coveredPct: 100, deficitPct: 0, coveredText: '۴ خانوار (۱۰۰٪)', deficitText: 'بدون کسری' },
-                    gapEducation: { title: 'دبستان امام‌رضایی‌ها', coveredPct: 92, deficitPct: 8, coveredText: '۲۴ دانش‌آموز', deficitText: 'پوشش کامل لوازم' }
+                    vulnerabilityScore: 32,
+                    vulnerabilityLabel: 'کم‌ریسک (جامعه پایدار)',
+                    trajectory: 'stable',
+                    trajectoryText: '→ وضعیت تثبیت‌شده و پایدار',
+                    confidence: '۱۰۰٪ پوشش میدانی قطعی',
+                    leadUnit: 'گروه پایش محلی شلمچه',
+                    popNum: '۲۸۱',
+                    popSub: '۵۲٪ مرد · ۴۸٪ زن',
+                    famNum: '۷۴',
+                    famSub: 'بُعد خانوار: ۳.۸ نفر',
+                    financial: {
+                        label: 'اعتبار کانال بتنی نخلستان و بهداشت',
+                        budgetTotal: '۲۹۰ میلیون تومان',
+                        funded: '۲۲۰ م‌ت',
+                        gap: '۷۰ م‌ت',
+                        fundedPct: 76,
+                        gapPct: 24
+                    },
+                    livelihood: {
+                        label: 'پوشش ۴ خانوار نیازمند',
+                        targetTotal: '۴ خانوار',
+                        covered: '۴ خانوار',
+                        gap: '۰ خانوار',
+                        coveredPct: 100,
+                        gapPct: 0
+                    },
+                    infrastructure: {
+                        label: 'دبستان امام‌رضایی‌ها و کانال آب',
+                        status: '۹۲٪ پایدار',
+                        subtext: '۲۴ دانش‌آموز فعال · تأمین کامل لوازم',
+                        coveredPct: 92,
+                        gapPct: 8
+                    },
+                    bottleneckTitle: 'نشت دیواره کانال آبرسانی نخلستان و فاصله تا اورژانس شبانه‌روزی',
+                    bottleneckDesc: 'تخریب ۲۰۰ متر از دیواره بتنی کانال انتقال آب کشاورزی و نیاز به ویزیت دوره‌ای پزشک سالمندان.',
+                    bottleneckImpact: 'کاهش بهره‌وری اراضی خرماداری و مخاطره سلامت سالمندان ساکن روستا.',
+                    actionTitle: 'مرمت دیواره کانال کشاورزی و تثبیت نوبت هفتگی بهورز مقیم',
+                    actionDesc: 'لاینینگ ۲۰۰ متر کانال آبرسانی باغات و برقراری برنامه منظم خدمات سیار درمانی سالمندان.',
+                    actionDeadline: '۱۵ آذر ۱۴۰۳',
+                    actionOwner: 'کارگروه کشاورزی و سلامت جهادی',
+                    actionBudget: '۷۰ میلیون تومان'
                 },
                 'sad-dastgah': {
-                    urgencyText: 'اولویت ۲ · قطب آموزشی',
+                    urgencyText: 'اولویت ۲ · قطب آموزش و مهارت‌آموزی',
                     urgencyClass: 'u-med',
-                    confidence: '۹۵٪ آمار آموزش‌وپرورش',
-                    statusOverview: 'قطب آموزشی حومه با ۶۹۵ دانش‌آموز در ۲ مدرسه بزرگ و بافت جمعیتی ۸۸۲ نفری.',
-                    bottleneck: 'تجهیز کارگاه هوشمند و رایانه مدارس و حمایت از ۲۱ خانوار نیازمند محله.',
-                    strategicAction: 'تجهیز سایت رایانه مدرسه راهیان نور و پوشش بن البسه و معیشت دانش‌آموزان نیازمند.',
-                    gapBudget: { title: 'تجهیزات فناوری مدارس', coveredPct: 60, deficitPct: 40, coveredText: 'تأمین: ۲۴۰ م‌ت', deficitText: 'کسری: ۱۶۰ م‌ت' },
-                    gapLivelihood: { title: 'پوشش ۲۱ خانوار محله', coveredPct: 62, deficitPct: 38, coveredText: '۱۳ خانوار فعال', deficitText: '۸ خانوار در نوبت' },
-                    gapEducation: { title: 'سرانه ۶۹۵ محصل', coveredPct: 80, deficitPct: 20, coveredText: 'پوشش استاندارد', deficitText: 'کسری سیستم سرمایش' }
+                    vulnerabilityScore: 48,
+                    vulnerabilityLabel: 'متوسط (مرکز آموزشی)',
+                    trajectory: 'improving',
+                    trajectoryText: '↗ رو به ارتقای تحصیلی',
+                    confidence: '۹۵٪ ممیزی آموزش و پرورش',
+                    leadUnit: 'قرارگاه شلمچه · کارگروه آموزش و مدارس',
+                    popNum: '۸۸۲',
+                    popSub: '۴۸٪ مرد · ۵۲٪ زن',
+                    famNum: '۲۱۰',
+                    famSub: 'بُعد خانوار: ۴.۲ نفر',
+                    financial: {
+                        label: 'تجهیزات فناوری و سرمایش مدارس',
+                        budgetTotal: '۴۰۰ میلیون تومان',
+                        funded: '۲۴۰ م‌ت',
+                        gap: '۱۶۰ م‌ت',
+                        fundedPct: 60,
+                        gapPct: 40
+                    },
+                    livelihood: {
+                        label: 'حمایت از ۲۱ خانوار محله',
+                        targetTotal: '۲۱ خانوار',
+                        covered: '۱۳ خانوار',
+                        gap: '۸ خانوار',
+                        coveredPct: 62,
+                        gapPct: 38
+                    },
+                    infrastructure: {
+                        label: 'سرانه ۶۹۵ محصل در ۲ مدرسه',
+                        status: '۸۰٪ پایدار',
+                        subtext: 'مدرسه راهیان نور و دبستان فدک',
+                        coveredPct: 80,
+                        gapPct: 20
+                    },
+                    bottleneckTitle: 'فرسودگی رایانه‌های سایت آموزش و کمبود اسپلیت در سالن مدرسه',
+                    bottleneckDesc: 'محدودیت سیستم‌های کامپیوتری کارگاه فناوری و نبود سیستم برودتی مناسب در سالن اجتماعات ۶۹۵ محصل.',
+                    bottleneckImpact: 'افت کیفیت آموزش نرم‌افزاری و کنکور دانش‌آموزان مستعد منطقه محروم.',
+                    actionTitle: 'تجهیز سایت رایانه به ۱۰ سیستم نو و اهدای بن تحصیلی به ۱۲۰ دانش‌آموز',
+                    actionDesc: 'خرید تجهیزات شبکه، نصب ۳ دستگاه کولر ایستاده در سالن و توزیع بن ملزومات به دانش‌آموزان نیازمند.',
+                    actionDeadline: '۳۰ مهر ۱۴۰۳',
+                    actionOwner: 'معاونت آموزش و پرورش امام‌رضایی‌ها',
+                    actionBudget: '۱۶۰ میلیون تومان'
+                },
+                'darband-sharqi': {
+                    urgencyText: 'اولویت ۲ · بهسازی کالبدی و معیشتی',
+                    urgencyClass: 'u-med',
+                    vulnerabilityScore: 60,
+                    vulnerabilityLabel: 'ریسک متوسط (بافت فرسوده)',
+                    trajectory: 'improving',
+                    trajectoryText: '↗ در حال هدایت منابع',
+                    confidence: '۹۱٪ آمار میدانی',
+                    leadUnit: 'قرارگاه شلمچه · کارگروه عمران',
+                    popNum: '۹۲۷',
+                    popSub: '۵۰٪ مرد · ۵۰٪ زن',
+                    famNum: '۲۱۵',
+                    famSub: 'بُعد خانوار: ۴.۳ نفر',
+                    financial: {
+                        label: 'اعتبار کانال هدایت آب و معیشت',
+                        budgetTotal: '۳۸۰ میلیون تومان',
+                        funded: '۲۱۰ م‌ت',
+                        gap: '۱۷۰ م‌ت',
+                        fundedPct: 55,
+                        gapPct: 45
+                    },
+                    livelihood: {
+                        label: 'پوشش ۱۸ خانوار نیازمند',
+                        targetTotal: '۱۸ خانوار',
+                        covered: '۱۱ خانوار',
+                        gap: '۷ خانوار',
+                        coveredPct: 61,
+                        gapPct: 39
+                    },
+                    infrastructure: {
+                        label: 'شبکه دفع آب‌های سطحی و معابر',
+                        status: '۷۲٪ پایدار',
+                        subtext: 'دسترسی مناسب · نیاز به کانال دفع آب',
+                        coveredPct: 72,
+                        gapPct: 28
+                    },
+                    bottleneckTitle: 'آبگرفتگی معابر داخلی روستا در بارندگی و کمبود شبکه دفع روان‌آب',
+                    bottleneckDesc: 'تجمع آب‌های سطحی در فصل پاییز و زمستان و قطع دسترسی موقت معابر به جاده اصلی.',
+                    bottleneckImpact: 'سختی تردد دانش‌آموزان به مدارس و آسیب به دیوارهای خشتی و سنتی منازل مسکونی.',
+                    actionTitle: 'احداث ۳۵۰ متر کانال هدایت آب و توزیع ۱۸ سبد معیشتی کامل',
+                    actionDesc: 'اجرای کانال خروجی بتنی روان‌آب و تحویل بسته‌های حمایتی فصلی به ۱۸ خانوار شناسایی‌شده.',
+                    actionDeadline: '۱۵ آبان ۱۴۰۳',
+                    actionOwner: 'کارگروه عمران و زیرساخت',
+                    actionBudget: '۱۷۰ میلیون تومان'
+                },
+                'maslavi-1': {
+                    urgencyText: 'اولویت ۲ · ارتقای کیفیت شبکه آب',
+                    urgencyClass: 'u-med',
+                    vulnerabilityScore: 62,
+                    vulnerabilityLabel: 'متوسط (تنش زیرساختی)',
+                    trajectory: 'stable',
+                    trajectoryText: '→ در مرحله پایدارسازی',
+                    confidence: '۸۹٪ پایش محلی',
+                    leadUnit: 'کارگروه عمران و سلامت',
+                    popNum: '۷۵۱',
+                    popSub: '۴۹٪ مرد · ۵۱٪ زن',
+                    famNum: '۱۷۸',
+                    famSub: 'بُعد خانوار: ۴.۲ نفر',
+                    financial: {
+                        label: 'نوسازی خط آبرسانی داخلی',
+                        budgetTotal: '۴۵۰ میلیون تومان',
+                        funded: '۲۵۰ م‌ت',
+                        gap: '۲۰۰ م‌ت',
+                        fundedPct: 56,
+                        gapPct: 44
+                    },
+                    livelihood: {
+                        label: 'حمایت از ۲۱ خانوار کم‌برخوردار',
+                        targetTotal: '۲۱ خانوار',
+                        covered: '۱۳ خانوار',
+                        gap: '۸ خانوار',
+                        coveredPct: 62,
+                        gapPct: 38
+                    },
+                    infrastructure: {
+                        label: 'کیفیت آب و معابر داخلی',
+                        status: '۷۰٪ پایدار',
+                        subtext: 'شبکه لوله‌کشی نیازمند تعویض مقطعی',
+                        coveredPct: 70,
+                        gapPct: 30
+                    },
+                    bottleneckTitle: 'کدورت آب در ساعات افت فشار و فرسودگی خطوط پلی‌اتیلن',
+                    bottleneckDesc: 'فرسودگی خطوط توزیع داخلی و نفوذ ماسه بادی در مقاطع انتهایی شبکه در فصول گرم.',
+                    bottleneckImpact: 'خطر بیماری‌های گوارشی در کودکان و نارضایتی اهالی از کیفیت آب مصرفی.',
+                    actionTitle: 'تعویض ۵۰۰ متر خط توزیع و توزیع بسته‌های بهداشتی درمانی',
+                    actionDesc: 'خرید و تعویض لوله‌های پلی‌اتیلن و تحویل ملزومات بهداشتی تصفیه آب به خانوارهای در معرض خطر.',
+                    actionDeadline: '۳۰ آبان ۱۴۰۳',
+                    actionOwner: 'کارگروه سلامت و عمران آب',
+                    actionBudget: '۲۰۰ میلیون تومان'
+                },
+                'shahrak-sevvom': {
+                    urgencyText: 'اولویت ۲ · صیانت از مسکن محرومین',
+                    urgencyClass: 'u-med',
+                    vulnerabilityScore: 54,
+                    vulnerabilityLabel: 'متوسط (مسکن و بافت)',
+                    trajectory: 'improving',
+                    trajectoryText: '↗ رو به بهبود مسکن',
+                    confidence: '۹۳٪ سرشماری مسکن',
+                    leadUnit: 'قرارگاه مسکن محرومین شلمچه',
+                    popNum: '۸۱۵',
+                    popSub: '۵۱٪ مرد · ۴۹٪ زن',
+                    famNum: '۱۹۲',
+                    famSub: 'بُعد خانوار: ۴.۲ نفر',
+                    financial: {
+                        label: 'اعتبار بهسازی سقف و مسکن',
+                        budgetTotal: '۳۲۰ میلیون تومان',
+                        funded: '۲۰۰ م‌ت',
+                        gap: '۱۲۰ م‌ت',
+                        fundedPct: 63,
+                        gapPct: 37
+                    },
+                    livelihood: {
+                        label: 'پوشش ۱۵ خانوار نیازمند',
+                        targetTotal: '۱۵ خانوار',
+                        covered: '۱۰ خانوار',
+                        gap: '۵ خانوار',
+                        coveredPct: 67,
+                        gapPct: 33
+                    },
+                    infrastructure: {
+                        label: 'ایمنی کالبدی مساکن و برق',
+                        status: '۷۸٪ پایدار',
+                        subtext: 'نیاز به ایزوگام ۸ واحد مسکونی',
+                        coveredPct: 78,
+                        gapPct: 22
+                    },
+                    bottleneckTitle: 'فرسودگی سقف و خطر چکه در بارندگی زمستان برای ۸ منزل مسکونی',
+                    bottleneckDesc: 'فرسودگی ایزوگام و تیرپوش سقف منازل خانواده‌های تحت پوشش در آستانه فصل بارندگی.',
+                    bottleneckImpact: 'خطر ریزش سقف و نم‌زدگی شدید وسایل معیشتی محرومین.',
+                    actionTitle: 'ایزوگام و بهسازی سقف ۸ واحد مسکونی و توزیع پوشاک زمستانه',
+                    actionDesc: 'تأمین قیر و ایزوگام استاندارد و اعزام تیم بنایی جهادی جهت نوسازی سقف‌های آسیب‌دیده.',
+                    actionDeadline: '۲۰ آبان ۱۴۰۳',
+                    actionOwner: 'قرارگاه مسکن محرومین',
+                    actionBudget: '۱۲۰ میلیون تومان'
                 }
             };
 
-            function getVillageExecutiveIntelligence(v, data) {
-                if (villageExecutiveIntelligence[v.id]) {
-                    return villageExecutiveIntelligence[v.id];
+            function getCLevelExecutiveData(v, data) {
+                if (villageExecutiveRegistry[v.id]) {
+                    return villageExecutiveRegistry[v.id];
                 }
-                // Dynamic fallback for any village
+                // Intelligent fallback generator for other points or incomplete field records
                 const isHigh = (data.priorityRank && data.priorityRank.includes('۱')) || false;
+                const popDisplay = data.pop && data.pop !== '—' ? data.pop : 'در انتظار سرشماری';
+                const famDisplay = data.fam && data.fam !== '—' ? data.fam : 'در حال تکمیل';
                 return {
-                    urgencyText: isHigh ? 'اولویت ۱ · نیازمند مداخله' : 'اولویت پایش و ارزیابی',
+                    urgencyText: isHigh ? 'اولویت ۱ · مداخله اضطراری' : 'اولویت ۲ · پایش و ارزیابی تکمیلی',
                     urgencyClass: isHigh ? 'u-high' : 'u-med',
-                    confidence: '۸۸٪ برآورد سرشماری محلی',
-                    statusOverview: `روستای ${data.name} با جمعیت ${data.pop || 'در حال تکمیل'} و ${data.fam || '—'} خانوار مستقر.`,
-                    bottleneck: 'پایش مستمر سطح اشتغال جوانان و پشتیبانی خدمات سلامت و تحصیلی.',
-                    strategicAction: 'تدوین بسته جامع حمایتی و هماهنگی میدانی با شورای روستا و دهیاری.',
-                    gapBudget: { title: 'تأمین اعتبارات عمرانی', coveredPct: 65, deficitPct: 35, coveredText: 'در حال تخصیص', deficitText: 'کسری برآوردی ۳۵٪' },
-                    gapLivelihood: { title: 'پوشش سبد حمایتی معیشت', coveredPct: 70, deficitPct: 30, coveredText: 'پوشش نسبی', deficitText: 'نیاز به پوشش تکمیلی' },
-                    gapEducation: { title: 'سرانه پشتیبانی تحصیلی', coveredPct: 80, deficitPct: 20, coveredText: 'پوشش پایه', deficitText: 'تجهیزات تکمیلی' }
+                    vulnerabilityScore: isHigh ? 75 : 50,
+                    vulnerabilityLabel: isHigh ? 'بالا (نیازمند مداخله)' : 'متوسط (پایش جاری)',
+                    trajectory: isHigh ? 'critical' : 'stable',
+                    trajectoryText: isHigh ? '↘ نیازمند مداخله فوری' : '→ وضعیت در حال پایش',
+                    confidence: '۸۸٪ برآورد ممیزی اولیه',
+                    leadUnit: 'قرارگاه منطقه‌ای شلمچه · کارگروه مشترک',
+                    popNum: popDisplay,
+                    popSub: 'برآورد ساختار جمعیتی',
+                    famNum: famDisplay,
+                    famSub: 'خانوار مستقر در محدوده',
+                    financial: {
+                        label: 'اعتبار طرح‌های در دست تدوین',
+                        budgetTotal: '۴۵۰ میلیون تومان',
+                        funded: '۲۸۰ م‌ت',
+                        gap: '۱۷۰ م‌ت',
+                        fundedPct: 62,
+                        gapPct: 38
+                    },
+                    livelihood: {
+                        label: 'پوشش بسته‌های حمایتی معیشت',
+                        targetTotal: '۲۰ خانوار هدف',
+                        covered: '۱۳ خانوار',
+                        gap: '۷ خانوار',
+                        coveredPct: 65,
+                        gapPct: 35
+                    },
+                    infrastructure: {
+                        label: 'پایداری شبکه خدمات پایه',
+                        status: '۷۵٪ پایدار',
+                        subtext: 'بررسی شاخص‌های آب و آموزش',
+                        coveredPct: 75,
+                        gapPct: 25
+                    },
+                    bottleneckTitle: 'تکمیل سرشماری دقیق میدانی و رفع محدودیت‌های خدمات پایه',
+                    bottleneckDesc: `پایش میدانی و تدوین نقشه تفصیلی نیازهای خدماتی و معیشتی روستای ${data.name}.`,
+                    bottleneckImpact: 'پیشگیری از گسترش محرومیت پنهان و تثبیت جمعیت جوان روستا.',
+                    actionTitle: 'اعزام تیم ممیزی تکمیلی و پوشش سبد حمایتی خانوارهای نیازمند',
+                    actionDesc: 'ثبت جامع شناسنامه خانوار در سامانه و تخصیص منابع بر اساس اولویت‌بندی کارشناسی.',
+                    actionDeadline: '۳۰ آذر ۱۴۰۳',
+                    actionOwner: 'معاونت مطالعات و پایش میدانی',
+                    actionBudget: '۱۷۰ میلیون تومان'
                 };
+            }
+
+            function renderCLevelCockpitHtml(v, data) {
+                const ex = getCLevelExecutiveData(v, data);
+
+                return `
+                <!-- MASTER C-LEVEL EXECUTIVE COMMAND COCKPIT -->
+                <section class="c-level-cockpit" aria-label="میز راهبری و اتاق وضعیت مدیر ارشد">
+                    
+                    <!-- 1. POSTURE & RISK STRATEGY BAR -->
+                    <div class="cl-posture-bar">
+                        <div class="cl-posture-title-wrap">
+                            <span class="cl-badge-c-level">🏛️ میز راهبری C-Level</span>
+                            <span class="cl-urgency-badge ${ex.urgencyClass}">
+                                <span class="cl-pulse-dot"></span>
+                                <span>${ex.urgencyText}</span>
+                            </span>
+                            <span style="font-size:12px; font-weight:800; color:#1a1510;">
+                                شاخص آسیب‌پذیری: <strong style="color:${ex.vulnerabilityScore > 70 ? '#991b1b' : (ex.vulnerabilityScore > 40 ? '#b45309' : '#166534')}; font-size:13.5px;">${toFaDigits(ex.vulnerabilityScore)} از ۱۰۰</strong> (${ex.vulnerabilityLabel})
+                            </span>
+                        </div>
+                        <div class="cl-posture-meta-wrap">
+                            <div class="cl-meta-item">
+                                <span class="cl-trajectory-badge tr-${ex.trajectory}">
+                                    <span>${ex.trajectoryText}</span>
+                                </span>
+                            </div>
+                            <div class="cl-meta-item" title="سطح قطعیت داده‌های ثبتی و میدانی">
+                                <span>🛡️</span>
+                                <span>اعتبار داده: ${ex.confidence}</span>
+                            </div>
+                            <div class="cl-meta-item" style="background:#fefbf5; border-color:#e4d3ba; color:#7a5a22;">
+                                <span>📍</span>
+                                <span>مسئول اقدام: ${ex.leadUnit}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. THE 4 INTEGRATED PILLARS MATRIX (KPIs + RESOURCE GAPs) -->
+                    <div class="cl-pillars-grid">
+                        
+                        <!-- PILLAR 1: جمعیت و خانوار -->
+                        <div class="cl-pillar-card">
+                            <div class="cl-pillar-head">
+                                <span class="cl-pillar-title">👥 جامعه هدف و جمعیت</span>
+                                <span class="cl-pillar-tag">ثبات سکونت</span>
+                            </div>
+                            <div>
+                                <div class="cl-pillar-hero-num" id="kpiPop">
+                                    ${toFaDigits(ex.popNum)}
+                                    <span style="font-size:12px; font-weight:700; color:#6b5a49;">نفر</span>
+                                </div>
+                                <div class="cl-pillar-subtext" id="kpiPopSub">
+                                    ${ex.popSub}
+                                </div>
+                            </div>
+                            <div class="cl-gap-box">
+                                <div style="display:flex; justify-content:space-between; font-size:11px; font-weight:800; color:#2c2217;">
+                                    <span>🏠 خانوار ساکن:</span>
+                                    <strong id="kpiFam">${toFaDigits(ex.famNum)}</strong>
+                                </div>
+                                <div style="font-size:10px; color:#786653;" id="kpiFamSub">
+                                    ${ex.famSub}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PILLAR 2: تراز مالی و سرمایه‌گذاری -->
+                        <div class="cl-pillar-card">
+                            <div class="cl-pillar-head">
+                                <span class="cl-pillar-title">💰 تراز سرمایه‌گذاری و بودجه</span>
+                                <span class="cl-pillar-tag">تحقق ${toFaDigits(ex.financial.fundedPct)}٪</span>
+                            </div>
+                            <div>
+                                <div class="cl-pillar-hero-num" style="color:#0f5132;">
+                                    ${ex.financial.funded}
+                                    <span style="font-size:11px; font-weight:700; color:#406554;">از ${ex.financial.budgetTotal}</span>
+                                </div>
+                                <div class="cl-pillar-subtext" style="color:#842029;">
+                                    ⚠️ شکاف تأمین مالی: <strong>${ex.financial.gap}</strong> (${toFaDigits(ex.financial.gapPct)}٪ کسری)
+                                </div>
+                            </div>
+                            <div class="cl-gap-box">
+                                <div class="cl-gap-track" title="تأمین‌شده: ${toFaDigits(ex.financial.fundedPct)}٪ | کسری: ${toFaDigits(ex.financial.gapPct)}٪">
+                                    <div class="cl-gap-covered" style="width: ${ex.financial.fundedPct}%;"></div>
+                                    <div class="cl-gap-deficit" style="width: ${ex.financial.gapPct}%;"></div>
+                                </div>
+                                <div class="cl-gap-legend">
+                                    <span class="leg-cov">✓ تأمین: ${ex.financial.funded}</span>
+                                    <span class="leg-def">✗ کسری: ${ex.financial.gap}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PILLAR 3: پوشش معیشت و کرامت انسانی -->
+                        <div class="cl-pillar-card">
+                            <div class="cl-pillar-head">
+                                <span class="cl-pillar-title">🤝 پوشش معیشت و توانمندسازی</span>
+                                <span class="cl-pillar-tag">پوشش ${toFaDigits(ex.livelihood.coveredPct)}٪</span>
+                            </div>
+                            <div>
+                                <div class="cl-pillar-hero-num" style="color:#1d4ed8;">
+                                    ${ex.livelihood.covered}
+                                    <span style="font-size:11px; font-weight:700; color:#3b5998;">از ${ex.livelihood.targetTotal}</span>
+                                </div>
+                                <div class="cl-pillar-subtext" style="color:#b91c1c;">
+                                    ⏳ در نوبت حمایت فوری: <strong>${ex.livelihood.gap}</strong>
+                                </div>
+                            </div>
+                            <div class="cl-gap-box">
+                                <div class="cl-gap-track" title="تحت پوشش: ${toFaDigits(ex.livelihood.coveredPct)}٪ | در نوبت: ${toFaDigits(ex.livelihood.gapPct)}٪">
+                                    <div class="cl-gap-covered" style="width: ${ex.livelihood.coveredPct}%;"></div>
+                                    <div class="cl-gap-deficit" style="width: ${ex.livelihood.gapPct}%;"></div>
+                                </div>
+                                <div class="cl-gap-legend">
+                                    <span class="leg-cov">✓ تحت پوشش: ${ex.livelihood.covered}</span>
+                                    <span class="leg-def">✗ در نوبت: ${ex.livelihood.gap}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PILLAR 4: زیرساخت حیاتی، آب و آموزش -->
+                        <div class="cl-pillar-card">
+                            <div class="cl-pillar-head">
+                                <span class="cl-pillar-title">🏫 زیرساخت، آب و مدارس</span>
+                                <span class="cl-pillar-tag">پایداری ${toFaDigits(ex.infrastructure.coveredPct)}٪</span>
+                            </div>
+                            <div>
+                                <div class="cl-pillar-hero-num" style="color:#92400e;">
+                                    ${toFaDigits(ex.infrastructure.status)}
+                                    <span style="font-size:11px; font-weight:700; color:#78350f;">شاخص ثبات</span>
+                                </div>
+                                <div class="cl-pillar-subtext">
+                                    ${ex.infrastructure.subtext}
+                                </div>
+                            </div>
+                            <div class="cl-gap-box">
+                                <div class="cl-gap-track" title="پایدار: ${toFaDigits(ex.infrastructure.coveredPct)}٪ | کسری: ${toFaDigits(ex.infrastructure.gapPct)}٪">
+                                    <div class="cl-gap-covered" style="width: ${ex.infrastructure.coveredPct}%;"></div>
+                                    <div class="cl-gap-deficit" style="width: ${ex.infrastructure.gapPct}%;"></div>
+                                </div>
+                                <div class="cl-gap-legend">
+                                    <span class="leg-cov">✓ خدمات استاندارد</span>
+                                    <span class="leg-def">✗ کسری: ${toFaDigits(ex.infrastructure.gapPct)}٪</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- 3. STRATEGIC ANALYSIS & 90-DAY DIRECTIVE -->
+                    <div class="cl-analysis-grid">
+                        
+                        <!-- BOTTLENECK CARD -->
+                        <div class="cl-analysis-card card-bottleneck">
+                            <div class="cl-card-header">
+                                <div class="cl-card-title">
+                                    <span>⚠️</span>
+                                    <span>گلوگاه عملیاتی و ریسک مداخله (Critical Bottleneck)</span>
+                                </div>
+                                <span class="cl-card-badge">عامل انسداد پیشرفت</span>
+                            </div>
+                            <p class="cl-card-body-text">
+                                <strong>${ex.bottleneckTitle}:</strong> ${ex.bottleneckDesc}
+                            </p>
+                            <div class="cl-card-impact-box">
+                                <div class="cl-impact-row">
+                                    <span class="cl-impact-label">🚨 پیامد احتمالی در صورت عدم مداخله:</span>
+                                    <span class="cl-impact-val" style="color:#991b1b;">${ex.bottleneckImpact}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ACTION DIRECTIVE CARD -->
+                        <div class="cl-analysis-card card-action">
+                            <div class="cl-card-header">
+                                <div class="cl-card-title">
+                                    <span>🎯</span>
+                                    <span>فرمان عملیاتی و مایلستون ۹۰ روزه (Tactical Milestone)</span>
+                                </div>
+                                <span class="cl-card-badge">مصوب هیئت راهبری</span>
+                            </div>
+                            <p class="cl-card-body-text">
+                                <strong>${ex.actionTitle}:</strong> ${ex.actionDesc}
+                            </p>
+                            <div class="cl-card-impact-box">
+                                <div class="cl-impact-row">
+                                    <span class="cl-impact-label">👤 کارگروه متولی:</span>
+                                    <span class="cl-impact-val">${ex.actionOwner}</span>
+                                </div>
+                                <div class="cl-impact-row">
+                                    <span class="cl-impact-label">📅 افق زمانی تحویل (Deadline):</span>
+                                    <span class="cl-impact-val" style="color:#15803d; font-weight:800;">${ex.actionDeadline}</span>
+                                </div>
+                                <div class="cl-impact-row">
+                                    <span class="cl-impact-label">💵 برآورد بودجه فاز جاری:</span>
+                                    <span class="cl-impact-val" style="color:#b45309; font-weight:800;">${ex.actionBudget}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </section>
+                `;
             }
 
             function renderExecutiveDashboard(v) {
@@ -22290,161 +23048,13 @@ addEventListener('resize', layout); layout();
                     return isNaN(n) ? null : n;
                 }
 
-                // 2. Update 4 Hero KPI Cards
-                const kPop = document.getElementById('kpiPop');
-                if (kPop) {
-                    const popNum = parseFaNumber(data.pop);
-                    if (popNum !== null && popNum > 0 && typeof animateValue === 'function') {
-                        kPop.textContent = '۰';
-                        animateValue(kPop, 0, popNum, 1000);
-                    } else {
-                        kPop.textContent = data.pop || '—';
-                    }
-                }
-
-                const kPopSub = document.getElementById('kpiPopSub');
-                if (kPopSub) kPopSub.textContent = data.popSub;
-
-                const kFam = document.getElementById('kpiFam');
-                if (kFam) {
-                    const famNum = parseFaNumber(data.fam);
-                    if (famNum !== null && famNum > 0 && typeof animateValue === 'function') {
-                        kFam.textContent = '۰';
-                        animateValue(kFam, 0, famNum, 1000);
-                    } else {
-                        kFam.textContent = data.fam || '—';
-                    }
-                }
-
-                const kFamSub = document.getElementById('kpiFamSub');
-                if (kFamSub) kFamSub.textContent = data.famSub;
-
-                const kDis = document.getElementById('kpiDisabled');
-                if (kDis) kDis.textContent = data.disabled;
-
-                const kDisSub = document.getElementById('kpiDisabledSub');
-                if (kDisSub) kDisSub.textContent = data.disabledSub;
-
-                const kEmp = document.getElementById('kpiEmp');
-                if (kEmp) kEmp.textContent = data.emp;
-
-                const kEmpSub = document.getElementById('kpiEmpSub');
-                if (kEmpSub) kEmpSub.textContent = data.empSub;
-
-                // 3. Render Accordions & Content
+// [KPI logic relocated after cockpit mount]
+                                // 3. Render Accordions & Content
                 const container = document.getElementById('execTabContentContainer');
                 if (!container) return;
 
                 container.innerHTML = `
-                    <!-- 1. C-LEVEL EXECUTIVE BRIEF BANNER -->
-                    ${(() => {
-                        const intel = getVillageExecutiveIntelligence(v, data);
-                        return `
-                        <div class="executive-brief-banner">
-                            <div class="exec-brief-top">
-                                <div class="exec-brief-title-wrap">
-                                    <span class="exec-badge-pill">⚡ خلاصه راهبردی C-Level</span>
-                                    <span class="exec-urgency-badge ${intel.urgencyClass}">
-                                        <span>●</span> ${intel.urgencyText}
-                                    </span>
-                                    <span style="font-size:11px; color:#786958; font-weight:700;">سطح اطمینان داده: ${intel.confidence}</span>
-                                </div>
-                                <div style="font-size:11px; color:#8c6d3d; font-weight:700;">
-                                    📅 افق پایش: فصل جاری ۱۴۰۳
-                                </div>
-                            </div>
-                            <div class="exec-brief-grid">
-                                <div class="brief-col-card">
-                                    <div class="brief-col-label">
-                                        <span>📌</span> وضعیت کلان و پایداری
-                                    </div>
-                                    <div class="brief-col-val">${intel.statusOverview}</div>
-                                </div>
-                                <div class="brief-col-card" style="border-right: 3px solid #dc2626;">
-                                    <div class="brief-col-label" style="color:#b91c1c;">
-                                        <span>⚠️</span> گلوگاه اصلی مداخله
-                                    </div>
-                                    <div class="brief-col-val" style="color:#991b1b;">${intel.bottleneck}</div>
-                                </div>
-                                <div class="brief-col-card" style="border-right: 3px solid #16a34a;">
-                                    <div class="brief-col-label" style="color:#15803d;">
-                                        <span>🎯</span> اقدام راهبردی اولویت‌دار
-                                    </div>
-                                    <div class="brief-col-val" style="color:#166534;">${intel.strategicAction}</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 2. C-LEVEL RESOURCE GAP MATRIX (GAP BARS) -->
-                        <div class="exec-gap-panel">
-                            <div class="exec-gap-head">
-                                <div>
-                                    <h3 class="exec-gap-title">
-                                        <span>📊</span> ماتریس برآورد منابع و شکاف نیازها (GAP Analysis)
-                                    </h3>
-                                    <div class="exec-gap-sub">
-                                        نسبت تأمین منابع تا امروز در مقایسه با شکاف باقیمانده تا نقطه هدف استاندارد
-                                    </div>
-                                </div>
-                                <div style="display:flex; align-items:center; gap:12px; font-size:11px; font-weight:700;">
-                                    <span style="display:flex; align-items:center; gap:4px; color:#047857;">
-                                        <span style="display:inline-block; width:10px; height:10px; background:#10b981; border-radius:2px;"></span> تأمین‌شده
-                                    </span>
-                                    <span style="display:flex; align-items:center; gap:4px; color:#b91c1c;">
-                                        <span style="display:inline-block; width:10px; height:10px; background:#ef4444; border-radius:2px;"></span> شکاف و کسری
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="gap-bars-grid">
-                                <!-- GAP 1: اعتبارات عمرانی و زیرساخت -->
-                                <div class="gap-metric-card">
-                                    <div class="gap-card-top">
-                                        <span class="gap-card-title">💰 ${intel.gapBudget.title}</span>
-                                        <span class="gap-card-pct" style="color:${intel.gapBudget.coveredPct >= 70 ? '#047857' : '#b45309'};">${intel.gapBudget.coveredPct}٪</span>
-                                    </div>
-                                    <div class="gap-track" title="تأمین: ${intel.gapBudget.coveredPct}٪ | کسری: ${intel.gapBudget.deficitPct}٪">
-                                        <div class="gap-fill-covered" style="width: ${intel.gapBudget.coveredPct}%;"></div>
-                                        <div class="gap-fill-deficit" style="width: ${intel.gapBudget.deficitPct}%;"></div>
-                                    </div>
-                                    <div class="gap-legend">
-                                        <span class="gap-covered-text">✓ ${intel.gapBudget.coveredText}</span>
-                                        <span class="gap-deficit-text">✗ ${intel.gapBudget.deficitText}</span>
-                                    </div>
-                                </div>
-                                <!-- GAP 2: پوشش معیشت و محرومیت‌زدایی -->
-                                <div class="gap-metric-card">
-                                    <div class="gap-card-top">
-                                        <span class="gap-card-title">🤝 ${intel.gapLivelihood.title}</span>
-                                        <span class="gap-card-pct" style="color:${intel.gapLivelihood.coveredPct >= 70 ? '#047857' : '#b45309'};">${intel.gapLivelihood.coveredPct}٪</span>
-                                    </div>
-                                    <div class="gap-track" title="تأمین: ${intel.gapLivelihood.coveredPct}٪ | کسری: ${intel.gapLivelihood.deficitPct}٪">
-                                        <div class="gap-fill-covered" style="width: ${intel.gapLivelihood.coveredPct}%;"></div>
-                                        <div class="gap-fill-deficit" style="width: ${intel.gapLivelihood.deficitPct}%;"></div>
-                                    </div>
-                                    <div class="gap-legend">
-                                        <span class="gap-covered-text">✓ ${intel.gapLivelihood.coveredText}</span>
-                                        <span class="gap-deficit-text">✗ ${intel.gapLivelihood.deficitText}</span>
-                                    </div>
-                                </div>
-                                <!-- GAP 3: زیرساخت آموزشی و مدارس -->
-                                <div class="gap-metric-card">
-                                    <div class="gap-card-top">
-                                        <span class="gap-card-title">🏫 ${intel.gapEducation.title}</span>
-                                        <span class="gap-card-pct" style="color:${intel.gapEducation.coveredPct >= 70 ? '#047857' : '#b45309'};">${intel.gapEducation.coveredPct}٪</span>
-                                    </div>
-                                    <div class="gap-track" title="تأمین: ${intel.gapEducation.coveredPct}٪ | کسری: ${intel.gapEducation.deficitPct}٪">
-                                        <div class="gap-fill-covered" style="width: ${intel.gapEducation.coveredPct}%;"></div>
-                                        <div class="gap-fill-deficit" style="width: ${intel.gapEducation.deficitPct}%;"></div>
-                                    </div>
-                                    <div class="gap-legend">
-                                        <span class="gap-covered-text">✓ ${intel.gapEducation.coveredText}</span>
-                                        <span class="gap-deficit-text">✗ ${intel.gapEducation.deficitText}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        `;
-                    })()}
+                    ${renderCLevelCockpitHtml(v, data)}
 
                     <!-- 3-CHAPTER DOSSIER NAVIGATION (وضعیت، خدمات، حمایت) -->
                     <div class="dossier-chapters-nav" id="dossierChaptersNav">
@@ -22683,6 +23293,29 @@ addEventListener('resize', layout); layout();
                         </div>
                     </div>
                 `;
+
+                // 2. Animate Hero KPIs in C-Level Cockpit
+                try {
+                    const ex = getCLevelExecutiveData(v, data);
+                    const kPop = document.getElementById('kpiPop');
+                    if (kPop) {
+                        const popNum = parseFaNumber(ex.popNum);
+                        if (popNum !== null && popNum > 0 && typeof animateValue === 'function') {
+                            kPop.innerHTML = '۰ <span style="font-size:12px; font-weight:700; color:#6b5a49;">نفر</span>';
+                            let startTimestamp = null;
+                            const step = (ts) => {
+                                if (!startTimestamp) startTimestamp = ts;
+                                const p = Math.min((ts - startTimestamp) / 800, 1);
+                                const curr = Math.floor(p * popNum);
+                                kPop.innerHTML = toFaDigits(curr.toLocaleString('fa-IR')) + ' <span style="font-size:12px; font-weight:700; color:#6b5a49;">نفر</span>';
+                                if (p < 1) requestAnimationFrame(step);
+                            };
+                            requestAnimationFrame(step);
+                        }
+                    }
+                } catch(e) { console.warn('KPI anim error', e); }
+
+
 
                 // Expand / Collapse all button handlers
                 const btnOpenAll = document.getElementById('btnOpenAllAccs');
