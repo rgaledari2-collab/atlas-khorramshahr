@@ -22795,7 +22795,7 @@ addEventListener('resize', layout); layout();
                             </div>
                             <div>
                                 <div class="cl-pillar-hero-num">
-                                    <span id="cockpitPopVal">۰</span>
+                                    <span id="cockpitPopVal">${toFaDigits(ex.popNum)}</span>
                                     <span style="font-size:13px; font-weight:800; color:#6b5a49; margin-right:4px;">نفر</span>
                                 </div>
                                 <div class="cl-pillar-subtext" id="kpiPopSub">
@@ -22805,7 +22805,7 @@ addEventListener('resize', layout); layout();
                             <div class="cl-gap-box">
                                 <div style="display:flex; justify-content:space-between; font-size:11px; font-weight:800; color:#2c2217;">
                                     <span>🏠 خانوار ساکن:</span>
-                                    <strong><span id="cockpitFamVal">۰</span> خانوار</strong>
+                                    <strong><span id="cockpitFamVal">${toFaDigits(ex.famNum)}</span> خانوار</strong>
                                 </div>
                                 <div style="font-size:10px; color:#786653;" id="kpiFamSub">
                                     ${ex.famSub}
@@ -23253,28 +23253,62 @@ addEventListener('resize', layout); layout();
                     </div>
                 `;
 
-                // 2. Animate Hero KPIs in C-Level Cockpit
+                // =============================================================
+                // SMOOTH LIVE ODOMETER ANIMATION FOR POPULATION AND HOUSEHOLDS
+                // =============================================================
                 try {
-                    const ex = getCLevelExecutiveData(v, data);
-                    const kPop = document.getElementById('kpiPop');
-                    if (kPop) {
-                        const popNum = parseFaNumber(ex.popNum);
-                        if (popNum !== null && popNum > 0 && typeof animateValue === 'function') {
-                            kPop.innerHTML = '۰ <span style="font-size:12px; font-weight:700; color:#6b5a49;">نفر</span>';
-                            let startTimestamp = null;
-                            const step = (ts) => {
-                                if (!startTimestamp) startTimestamp = ts;
-                                const p = Math.min((ts - startTimestamp) / 800, 1);
-                                const curr = Math.floor(p * popNum);
-                                kPop.innerHTML = toFaDigits(curr.toLocaleString('fa-IR')) + ' <span style="font-size:12px; font-weight:700; color:#6b5a49;">نفر</span>';
-                                if (p < 1) requestAnimationFrame(step);
-                            };
-                            requestAnimationFrame(step);
-                        }
+                    const exData = getCLevelExecutiveData(v, data);
+                    const popNum = parseFaNumber(exData.popNum);
+                    const famNum = parseFaNumber(exData.famNum);
+
+                    // Animate Population
+                    const popEl = document.getElementById('cockpitPopVal');
+                    if (popEl && popNum !== null && popNum > 0) {
+                        popEl.textContent = '۰';
+                        let startTime = null;
+                        const duration = 1100;
+                        const animatePop = (timestamp) => {
+                            if (!startTime) startTime = timestamp;
+                            const progress = Math.min((timestamp - startTime) / duration, 1);
+                            const ease = 1 - Math.pow(1 - progress, 3);
+                            const current = Math.floor(ease * popNum);
+                            popEl.textContent = toFaDigits(current.toLocaleString('fa-IR'));
+                            if (progress < 1) {
+                                requestAnimationFrame(animatePop);
+                            } else {
+                                popEl.textContent = toFaDigits(popNum.toLocaleString('fa-IR'));
+                            }
+                        };
+                        requestAnimationFrame(animatePop);
+                    } else if (popEl) {
+                        popEl.textContent = toFaDigits(exData.popNum);
                     }
-                } catch(e) { console.warn('KPI anim error', e); }
 
-
+                    // Animate Households
+                    const famEl = document.getElementById('cockpitFamVal');
+                    if (famEl && famNum !== null && famNum > 0) {
+                        famEl.textContent = '۰';
+                        let startTimeFam = null;
+                        const durationFam = 950;
+                        const animateFam = (timestamp) => {
+                            if (!startTimeFam) startTimeFam = timestamp;
+                            const progress = Math.min((timestamp - startTimeFam) / durationFam, 1);
+                            const ease = 1 - Math.pow(1 - progress, 3);
+                            const current = Math.floor(ease * famNum);
+                            famEl.textContent = toFaDigits(current.toLocaleString('fa-IR'));
+                            if (progress < 1) {
+                                requestAnimationFrame(animateFam);
+                            } else {
+                                famEl.textContent = toFaDigits(famNum.toLocaleString('fa-IR'));
+                            }
+                        };
+                        requestAnimationFrame(animateFam);
+                    } else if (famEl) {
+                        famEl.textContent = toFaDigits(exData.famNum);
+                    }
+                } catch (e) {
+                    console.warn('Odometer count-up error:', e);
+                }
 
                 // Expand / Collapse all button handlers
                 const btnOpenAll = document.getElementById('btnOpenAllAccs');
