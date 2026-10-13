@@ -8128,6 +8128,128 @@ header {
     }
 }
 
+
+/* =========================================================================
+   TRUE FULLSCREEN IMMERSIVE DOSSIER FOR #statsDialog
+   ========================================================================= */
+dialog#statsDialog,
+#statsDialog {
+    position: fixed !important;
+    inset: 0 !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-width: 100vw !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+    z-index: 9999 !important;
+    display: none !important;
+    flex-direction: column !important;
+}
+
+dialog#statsDialog[open],
+#statsDialog[open] {
+    display: flex !important;
+    animation: statsFullscreenFadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+    transform: none !important;
+}
+
+@keyframes statsFullscreenFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.995);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+dialog#statsDialog::backdrop {
+    background: rgba(14, 10, 7, 0.85) !important;
+}
+
+/* Dialog Head spans 100% width cleanly */
+#statsDialog .dialog-head {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 16px 32px !important;
+    border-radius: 0 !important;
+    border-bottom: 2px solid #dfd5c4 !important;
+    flex-shrink: 0 !important;
+}
+
+/* Dialog Body occupies 100% remaining viewport height */
+#statsDialog .dialog-body {
+    flex: 1 1 0% !important;
+    height: calc(100vh - 78px) !important;
+    height: calc(100dvh - 78px) !important;
+    max-height: calc(100dvh - 78px) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    background: #fdfbf7 !important;
+}
+
+#statsDialog .exec-dossier-layout {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: row !important;
+    overflow: hidden !important;
+}
+
+#statsDialog .exec-sidebar {
+    width: 340px !important;
+    flex-shrink: 0 !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    overflow-y: auto !important;
+    border-left: 1.5px solid #dfd2be !important;
+    padding: 24px 20px !important;
+    background: #fdf8f0 !important;
+}
+
+#statsDialog .exec-main-content {
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    overflow-y: auto !important;
+    padding: 28px 36px 48px !important;
+}
+
+@media (max-width: 900px) {
+    #statsDialog .dialog-head {
+        padding: 12px 16px !important;
+    }
+    #statsDialog .exec-dossier-layout {
+        flex-direction: column !important;
+    }
+    #statsDialog .exec-sidebar {
+        width: 100% !important;
+        height: auto !important;
+        max-height: 280px !important;
+        border-left: none !important;
+        border-bottom: 1.5px solid #dfd2be !important;
+        padding: 16px !important;
+    }
+    #statsDialog .exec-main-content {
+        padding: 16px !important;
+    }
+}
+
 </style>
 
 </head>
