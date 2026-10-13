@@ -21168,15 +21168,50 @@ addEventListener('resize', layout); layout();
                 const sArea = document.getElementById('sideArea');
                 if (sArea) sArea.textContent = data.area;
 
+                // Helper to safely parse Persian/Arabic formatted numbers
+                function parseFaNumber(val) {
+                    if (!val || val === '—' || val === '-') return null;
+                    const str = String(val)
+                        .replace(/[۰٠]/g, '0')
+                        .replace(/[۱١]/g, '1')
+                        .replace(/[۲٢]/g, '2')
+                        .replace(/[۳٣]/g, '3')
+                        .replace(/[۴٤]/g, '4')
+                        .replace(/[۵٥]/g, '5')
+                        .replace(/[۶٦]/g, '6')
+                        .replace(/[۷٧]/g, '7')
+                        .replace(/[۸٨]/g, '8')
+                        .replace(/[۹٩]/g, '9')
+                        .replace(/[^\d]/g, '');
+                    const n = parseInt(str, 10);
+                    return isNaN(n) ? null : n;
+                }
+
                 // 2. Update 4 Hero KPI Cards
                 const kPop = document.getElementById('kpiPop');
-        if (kPop) { kPop.textContent = '0'; if(typeof animateValue === 'function') animateValue(kPop, 0, parseInt(String(data.pop).replace(/,/g,'').replace(/\D/g,'')) || 0, 1500); else kPop.textContent = data.pop; }
+                if (kPop) {
+                    const popNum = parseFaNumber(data.pop);
+                    if (popNum !== null && popNum > 0 && typeof animateValue === 'function') {
+                        kPop.textContent = '۰';
+                        animateValue(kPop, 0, popNum, 1000);
+                    } else {
+                        kPop.textContent = data.pop || '—';
+                    }
+                }
 
                 const kPopSub = document.getElementById('kpiPopSub');
                 if (kPopSub) kPopSub.textContent = data.popSub;
 
                 const kFam = document.getElementById('kpiFam');
-        if (kFam) { kFam.textContent = '0'; if(typeof animateValue === 'function') animateValue(kFam, 0, parseInt(String(data.fam).replace(/,/g,'').replace(/\D/g,'')) || 0, 1500); else kFam.textContent = data.fam; }
+                if (kFam) {
+                    const famNum = parseFaNumber(data.fam);
+                    if (famNum !== null && famNum > 0 && typeof animateValue === 'function') {
+                        kFam.textContent = '۰';
+                        animateValue(kFam, 0, famNum, 1000);
+                    } else {
+                        kFam.textContent = data.fam || '—';
+                    }
+                }
 
                 const kFamSub = document.getElementById('kpiFamSub');
                 if (kFamSub) kFamSub.textContent = data.famSub;
