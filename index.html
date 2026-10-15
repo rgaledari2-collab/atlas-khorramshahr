@@ -4102,6 +4102,114 @@ mark.search-match-hl {
     100% { transform: scale(1.35); opacity: 0; }
 }
 
+/* Land-use spot ring / footprint */
+.aerial-poi-spot-ring {
+    position: absolute;
+    inset: -6px;
+    border-radius: 30px;
+    border: 1.5px dashed currentColor;
+    opacity: 0.55;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.aerial-poi:hover .aerial-poi-spot-ring {
+    inset: -10px;
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+/* Color Themes for Aerial POI Zoning */
+.aerial-poi.poi-color-purple {
+    background: rgba(30, 14, 48, 0.94);
+    border: 1.5px solid #a855f7;
+    color: #c084fc;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.75), 0 0 16px rgba(168, 85, 247, 0.45);
+}
+.aerial-poi.poi-color-purple .aerial-poi-pulse {
+    border-color: #c084fc;
+}
+.aerial-poi.poi-color-purple:hover {
+    background: rgba(45, 18, 75, 0.98);
+    border-color: #d8b4fe;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.9), 0 0 24px rgba(192, 132, 252, 0.75);
+}
+
+.aerial-poi.poi-color-orange {
+    background: rgba(45, 20, 8, 0.94);
+    border: 1.5px solid #f97316;
+    color: #fb923c;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.75), 0 0 16px rgba(249, 115, 22, 0.45);
+}
+.aerial-poi.poi-color-orange .aerial-poi-pulse {
+    border-color: #fb923c;
+}
+.aerial-poi.poi-color-orange:hover {
+    background: rgba(65, 28, 12, 0.98);
+    border-color: #fed7aa;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.9), 0 0 24px rgba(251, 146, 60, 0.75);
+}
+
+.aerial-poi.poi-color-green {
+    background: rgba(12, 36, 18, 0.94);
+    border: 1.5px solid #22c55e;
+    color: #4ade80;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.75), 0 0 16px rgba(34, 197, 94, 0.45);
+}
+.aerial-poi.poi-color-green .aerial-poi-pulse {
+    border-color: #4ade80;
+}
+.aerial-poi.poi-color-green:hover {
+    background: rgba(16, 52, 26, 0.98);
+    border-color: #bbf7d0;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.9), 0 0 24px rgba(74, 222, 128, 0.75);
+}
+
+.aerial-poi.poi-color-red {
+    background: rgba(45, 12, 12, 0.94);
+    border: 1.5px solid #ef4444;
+    color: #f87171;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.75), 0 0 16px rgba(239, 68, 68, 0.45);
+}
+.aerial-poi.poi-color-red .aerial-poi-pulse {
+    border-color: #f87171;
+}
+.aerial-poi.poi-color-red:hover {
+    background: rgba(65, 18, 18, 0.98);
+    border-color: #fecaca;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.9), 0 0 24px rgba(248, 113, 113, 0.75);
+}
+
+.aerial-poi.poi-color-yellow {
+    background: rgba(45, 38, 8, 0.94);
+    border: 1.5px solid #eab308;
+    color: #facc15;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.75), 0 0 16px rgba(234, 179, 8, 0.45);
+}
+.aerial-poi.poi-color-yellow .aerial-poi-pulse {
+    border-color: #facc15;
+}
+.aerial-poi.poi-color-yellow:hover {
+    background: rgba(65, 52, 12, 0.98);
+    border-color: #fde047;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.9), 0 0 24px rgba(250, 204, 21, 0.75);
+}
+
+.aerial-poi.poi-color-blue {
+    background: rgba(12, 28, 55, 0.94);
+    border: 1.5px solid #3b82f6;
+    color: #93c5fd;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.75), 0 0 16px rgba(59, 130, 246, 0.45);
+}
+.aerial-poi.poi-color-blue .aerial-poi-pulse {
+    border-color: #60a5fa;
+}
+.aerial-poi.poi-color-blue:hover {
+    background: rgba(18, 42, 85, 0.98);
+    border-color: #bfdbfe;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.9), 0 0 24px rgba(96, 165, 250, 0.75);
+}
+
 /* Map Controls */
 .village-map-controls {
     position: absolute;
@@ -9987,58 +10095,7 @@ dialog#statsDialog::backdrop {
     border-radius: 6px;
 }
 
-/* --- 7. KEYBOARD SHORTCUTS CHEAT SHEET --- */
-.shortcuts-dialog {
-    width: 90vw;
-    max-width: 540px;
-    border-radius: 20px;
-    background: #ffffff;
-    border: 1px solid #e5dacb;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-    padding: 24px;
-    direction: rtl;
-    text-align: right;
-    font-family: inherit;
-}
 
-.shortcuts-dialog::backdrop {
-    background: rgba(30, 20, 10, 0.65);
-    backdrop-filter: blur(5px);
-}
-
-.shortcuts-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 18px;
-}
-
-.shortcut-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px 12px;
-    border-radius: 10px;
-    background: #fbf8f3;
-}
-
-.shortcut-keys {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.key-cap {
-    background: #ffffff;
-    border: 1px solid #d9c8b4;
-    border-bottom: 2px solid #b8a690;
-    padding: 3px 8px;
-    border-radius: 6px;
-    font-size: 11.5px;
-    font-weight: 900;
-    color: #1e140a;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-}
 
 
 
@@ -10816,33 +10873,7 @@ dialog#statsDialog::backdrop {
                             <img id="villageSatelliteImg" src="./image_0.webp" alt="نقشه ماهواره‌ای اختصاصی روستا" class="village-satellite-img" />
                             
                             <!-- Interactive POIs directly positioned on the user map -->
-                            <div class="village-aerial-overlay" id="villageAerialOverlay">
-                                <div class="aerial-poi poi-school" style="top: 48%; left: 50%;" data-poi="school" title="دبستان معراج پل نو (۴۲۰ دانش‌آموز)">
-                                    <span class="aerial-poi-dot">🏫</span>
-                                    <span class="aerial-poi-label">دبستان معراج (۴۲۰ دانش‌آموز)</span>
-                                    <span class="aerial-poi-pulse"></span>
-                                </div>
-                                <div class="aerial-poi poi-health" style="top: 40%; left: 34%;" data-poi="health" title="خانه بهداشت و مرکز سلامت پل نو">
-                                    <span class="aerial-poi-dot">🏥</span>
-                                    <span class="aerial-poi-label">خانه بهداشت روستایی</span>
-                                    <span class="aerial-poi-pulse"></span>
-                                </div>
-                                <div class="aerial-poi poi-marker" style="top: 58%; left: 84%;" data-poi="marker" title="موقعیت شاخص نشانه‌گذاری‌شده در نقشه پل نو">
-                                    <span class="aerial-poi-dot">📍</span>
-                                    <span class="aerial-poi-label">موقعیت شاخص روستا</span>
-                                    <span class="aerial-poi-pulse"></span>
-                                </div>
-                                <div class="aerial-poi poi-road" style="bottom: 12%; left: 45%;" data-poi="road" title="محور مواصلاتی شلمچه - خرمشهر">
-                                    <span class="aerial-poi-dot">🛣️</span>
-                                    <span class="aerial-poi-label">محور مواصلاتی شلمچه</span>
-                                    <span class="aerial-poi-pulse"></span>
-                                </div>
-                                <div class="aerial-poi poi-canal" style="top: 18%; left: 24%;" data-poi="canal" title="کانال آبرسانی و اراضی کشاورزی">
-                                    <span class="aerial-poi-dot">🌊</span>
-                                    <span class="aerial-poi-label">کانال آبرسانی</span>
-                                    <span class="aerial-poi-pulse"></span>
-                                </div>
-                            </div>
+                            <div class="village-aerial-overlay" id="villageAerialOverlay"></div>
                         </div>
                     </div>
 
@@ -11606,8 +11637,8 @@ dialog#statsDialog::backdrop {
                 { id: 'maslavi-2', name: 'مصلاوی ۲', cat: 'village', x: 0.845, y: 0.615, data: { pop: '—', fam: '—', stats: [['وضعیت', 'در انتظار ثبت آمار میدانی'], ['شناسنامه', 'خالی']] } },
                 { id: 'shahrak-sadat', name: 'شهرک سادات', cat: 'village', x: 0.860, y: 0.565, data: { pop: '—', fam: '—', stats: [['وضعیت', 'در انتظار ثبت آمار میدانی'], ['شناسنامه', 'خالی']] } },
                 { id: 'soureh', name: 'سوره', cat: 'village', x: 0.690, y: 0.755, data: { pop: '۴,۱۷۵', fam: '۱,۰۵۱', stats: [['شنوایی', 47], ['جسمی‌حرکتی', 92], ['بینایی', 44], ['ذهنی', 98], ['روانی', 15], ['صوت و گفتار', 2]] } },
-                { id: 'sarhaniyeh-sofla', name: 'سرحانیه سفلی', cat: 'village', x: 0.855, y: 0.725, data: { pop: '—', fam: '—', stats: [['وضعیت', 'در انتظار ثبت آمار میدانی'], ['شناسنامه', 'خالی']] } },
-                { id: 'sarhaniyeh-olya', name: 'سرحانیه علیا', cat: 'village', x: 0.885, y: 0.785, data: { pop: '—', fam: '—', stats: [['وضعیت', 'در انتظار ثبت آمار میدانی'], ['شناسنامه', 'خالی']] } },
+                { id: 'sarhaniyeh-sofla', name: 'سرحانیه سفلی', cat: 'village', x: 0.855, y: 0.725, data: { pop: '۲,۱۰۰', fam: '۵۲۰', stats: [['جمعیت', '۲,۱۰۰ نفر'], ['خانوار', '۵۲۰ خانوار']] } },
+                { id: 'sarhaniyeh-olya', name: 'سرحانیه اولیا', cat: 'village', x: 0.885, y: 0.785, data: { pop: '۱,۷۵۰', fam: '۴۳۰', stats: [['جمعیت', '۱,۷۵۰ نفر'], ['خانوار', '۴۳۰ خانوار']] } },
                 { id: 'jadideh', name: 'جدیده', cat: 'village', x: 0.760, y: 0.770, data: { pop: '۵,۶۰۷', fam: '۱,۲۳۷', stats: [['دانش‌آموزان', 306], ['ایتام', 11], ['کم‌برخوردار', 49], ['مدارس', 1], ['مرکز جامع سلامت', 1], ['خانه بهداشت', 1]] } },
                 { id: 'darband-sharqi', name: 'دربند شرقی', cat: 'village', x: 0.678, y: 0.852, data: { pop: '۷۱۴', fam: '۲۱۱', stats: [['ایتام', 2], ['کم‌برخوردار', 26], ['مدرسه', 'فاقد مدرسه مستقل']] } },
                 { id: 'darband-gharbi', name: 'دربند غربی', cat: 'village', x: 0.742, y: 0.872, data: { pop: '۲,۷۵۵', fam: '۶۸۱', stats: [['دانش‌آموزان', 177], ['ایتام', 11], ['کم‌برخوردار', 50], ['مدارس', 1], ['خانه بهداشت', 1]] } },
@@ -26713,7 +26744,9 @@ addEventListener('resize', layout); layout();
             { id: 'jadideh', name: 'جدیده', defaultImg: './jadideh_map.webp', fallback: './jadideh_map.webp', desc: 'حومه شرقی · نخلستان‌ها' },
             { id: 'darband-gharbi', name: 'دربند غربی', defaultImg: './darband-gharbi_map_web.webp', fallback: './darband-gharbi_map.webp', desc: 'حومه غربی · کانون سکونتگاهی' },
             { id: 'darband-sharqi', name: 'دربند شرقی', defaultImg: './darband-sharqi_map_web.webp', fallback: './darband-sharqi_map.webp', desc: 'حومه غربی · همجوار دربند غربی' },
-            { id: 'shahrak-sevvom', name: 'شهرک سوم', defaultImg: './shahrak-sevvom_map_web.webp', fallback: './shahrak-sevvom_map.webp', desc: 'محور مواصلاتی شلمچه · حومه غربی' }
+            { id: 'shahrak-sevvom', name: 'شهرک سوم', defaultImg: './shahrak-sevvom_map_web.webp', fallback: './shahrak-sevvom_map.webp', desc: 'محور مواصلاتی شلمچه · حومه غربی' },
+            { id: 'sarhaniyeh-olya', name: 'سرحانیه اولیا', defaultImg: './sarhaniyeh-olya_map_web.webp', fallback: './sarhaniyeh-olya_map.webp', desc: 'حومه شرقی · کانون سکونتگاهی و نخلستان‌ها' },
+            { id: 'sarhaniyeh-sofla', name: 'سرحانیه سفلی', defaultImg: './sarhaniyeh-sofla_map_web.webp', fallback: './sarhaniyeh-sofla_map.webp', desc: 'حومه شرقی · حوزه ساحلی و اروندرود' }
         ];
 
         const villageMapRegistry = {
@@ -26729,12 +26762,14 @@ addEventListener('resize', layout); layout();
                 chipSchool: '🎒 دبستان حُر بن ریاحی (۹۴ دانش‌آموز)',
                 statsDesc: 'جمعیت: ۱,۸۷۴ نفر · ۵۹۲ خانوار · ۷ یتیم · ۲۲ خانوار کم‌برخوردار',
                 statsHtml: '<div class="v-metric-row"><span class="m-label">👥 جمعیت کل:</span><span class="m-val highlight">۱,۸۷۴ نفر (۵۹۲ خانوار)</span></div>',
-                servDesc: 'خانه بهداشت ۲۰۰ متری، دهیاری ۲۰۰ متری و خانه عالم ۳۰۰ متری',
-                servHtml: '<div class="v-metric-row"><span class="m-label">🏥 بهداشت:</span><span class="m-val">خانه بهداشت فعال (۵۹۲ خانوار)</span></div>',
+                servDesc: 'خانه بهداشت، دهیاری، مدرسه حر بن ریاحی، حسینیه و موکب حضرت علی‌اکبر (ع)',
+                servHtml: '<div class="v-metric-row"><span class="m-label">🏥 خدمات:</span><span class="m-val">اماکن بهداشتی، آموزشی و مذهبی فعال</span></div>',
                 pois: [
-                    { top: '35%', left: '42%', label: 'دبستان حُر بن ریاحی (۹۴ محصل)', icon: '🏫', type: 'school' },
-                    { top: '55%', left: '60%', label: 'خانه بهداشت فعال (۲۰۰ متر)', icon: '🏥', type: 'health' },
-                    { top: '65%', left: '30%', label: 'دهیاری و خانه عالم', icon: '🏛️', type: 'gov' }
+                    { top: '7.7%', left: '59.4%', label: 'موکب و زائرسرا حضرت علی اکبر (ع)', icon: '🚩', type: 'culture', color: 'yellow' },
+                    { top: '53.9%', left: '71.3%', label: 'حسینیه', icon: '🕌', type: 'culture', color: 'red' },
+                    { top: '55.5%', left: '46.5%', label: 'دهیاری پل نو', icon: '🏛️', type: 'gov', color: 'purple' },
+                    { top: '50.0%', left: '52.5%', label: 'خانه بهداشت پل نو', icon: '🏥', type: 'health', color: 'green' },
+                    { top: '70.0%', left: '65.0%', label: 'مدرسه حر بن ریاحی', icon: '🏫', type: 'school', color: 'orange' }
                 ]
             },
             'ariz': {
@@ -26749,11 +26784,12 @@ addEventListener('resize', layout); layout();
                 chipSchool: '🎒 دبستان امام رضایی‌ها (۲۴ دانش‌آموز)',
                 statsDesc: 'جمعیت: ۲۸۱ نفر · ۷۴ خانوار · ۱ یتیم · ۴ خانوار کم‌برخوردار',
                 statsHtml: '<div class="v-metric-row"><span class="m-label">👥 جمعیت کل:</span><span class="m-val highlight">۲۸۱ نفر (۷۴ خانوار)</span></div>',
-                servDesc: 'دبستان عرصه ۱,۲۰۰ متری، پوشش معیشتی ۴ خانوار کم‌برخوردار',
+                servDesc: 'مدرسه امام رضایی‌ها، استخرهای پرورش ماهی، مسجد امام حسن (ع)',
                 servHtml: '<div class="v-metric-row"><span class="m-label">🏫 آموزش:</span><span class="m-val">دبستان جمعیت امام رضایی‌ها</span></div>',
                 pois: [
-                    { top: '48%', left: '52%', label: 'دبستان جمعیت امام رضایی‌ها (۲۴ دانش‌آموز)', icon: '🏫', type: 'school' },
-                    { top: '60%', left: '38%', label: 'مسجد و مرکز فرهنگی روستا', icon: '🕌', type: 'culture' }
+                    { top: '71.4%', left: '80.0%', label: 'مدرسه امام رضایی‌ها', icon: '🏫', type: 'school', color: 'purple' },
+                    { top: '72.6%', left: '93.0%', label: 'استخرهای پرورش ماهی', icon: '🐟', type: 'economy', color: 'red' },
+                    { top: '86.6%', left: '86.6%', label: 'مسجد امام حسن (ع)', icon: '🕌', type: 'culture', color: 'green' }
                 ]
             },
             'jadideh': {
@@ -26770,11 +26806,7 @@ addEventListener('resize', layout); layout();
                 statsHtml: '<div class="v-metric-row"><span class="m-label">👥 جمعیت کل:</span><span class="m-val highlight">۵,۶۰۷ نفر (۱,۲۳۷ خانوار)</span></div>',
                 servDesc: 'مرکز جامع سلامت ۴۰۰ متری، خانه بهداشت و مرکز مثبت زندگی (۵۱۲ خانوار)',
                 servHtml: '<div class="v-metric-row"><span class="m-label">🏥 سلامت:</span><span class="m-val">مرکز جامع سلامت و خانه بهداشت</span></div>',
-                pois: [
-                    { top: '40%', left: '45%', label: 'مرکز جامع سلامت (۴۰۰ متر)', icon: '🏥', type: 'health' },
-                    { top: '50%', left: '60%', label: 'دبستان محسن بن علی (۳۰۶ محصل)', icon: '🏫', type: 'school' },
-                    { top: '65%', left: '35%', label: 'مرکز مثبت زندگی (۵۱۲ خانوار)', icon: '🤝', type: 'social' }
-                ]
+                pois: []
             },
             'darband-gharbi': {
                 img: './darband-gharbi_map_web.webp',
@@ -26788,12 +26820,13 @@ addEventListener('resize', layout); layout();
                 chipSchool: '🎒 دبستان مرزداران (۱۷۷ دانش‌آموز)',
                 statsDesc: 'جمعیت: ۲,۷۵۵ نفر · ۶۸۱ خانوار · ۱۱ یتیم · ۵۰ خانوار کم‌برخوردار',
                 statsHtml: '<div class="v-metric-row"><span class="m-label">👥 جمعیت کل:</span><span class="m-val highlight">۲,۷۵۵ نفر (۶۸۱ خانوار)</span></div>',
-                servDesc: 'خانه بهداشت ۲۰۰ متری، دبستان مرزداران، ۵۰ خانوار کم‌برخوردار',
-                servHtml: '<div class="v-metric-row"><span class="m-label">🏥 بهداشت:</span><span class="m-val">خانه بهداشت ۲۰۰ متری فعال</span></div>',
+                servDesc: 'خانه بهداشت دربند غربی، دبستان مرزداران، حسینیه امام حسن مجتبی (ع) و حسینیه عباسیه',
+                servHtml: '<div class="v-metric-row"><span class="m-label">🏥 خدمات:</span><span class="m-val">خانه بهداشت و اماکن آموزشی/مذهبی</span></div>',
                 pois: [
-                    { top: '42%', left: '50%', label: 'دبستان مرزداران (۱۷۷ دانش‌آموز)', icon: '🏫', type: 'school' },
-                    { top: '58%', left: '62%', label: 'خانه بهداشت ۲۰۰ متری (۶۸۱ خانوار)', icon: '🏥', type: 'health' },
-                    { top: '70%', left: '30%', label: 'مسجد امام جواد (ع) و حسینیه', icon: '🕌', type: 'culture' }
+                    { top: '37.1%', left: '59.7%', label: 'حسینیه امام حسن مجتبی (ع)', icon: '🕌', type: 'culture', color: 'purple' },
+                    { top: '49.9%', left: '68.2%', label: 'حسینیه عباسیه', icon: '🕌', type: 'culture', color: 'green' },
+                    { top: '54.2%', left: '48.2%', label: 'خانه بهداشت دربند غربی', icon: '🏥', type: 'health', color: 'red' },
+                    { top: '83.7%', left: '68.8%', label: 'مدرسه مرزداران', icon: '🏫', type: 'school', color: 'orange' }
                 ]
             },
             'darband-sharqi': {
@@ -26810,9 +26843,7 @@ addEventListener('resize', layout); layout();
                 statsHtml: '<div class="v-metric-row"><span class="m-label">👥 جمعیت کل:</span><span class="m-val highlight">۷۱۴ نفر (۲۱۱ خانوار)</span></div>',
                 servDesc: 'پوشش بهداشت دربند غربی، نیازمند احداث مدرسه مستقل',
                 servHtml: '<div class="v-metric-row"><span class="m-label">⚠️ آموزش:</span><span class="m-val">فاقد مدرسه مستقل</span></div>',
-                pois: [
-                    { top: '50%', left: '50%', label: 'حسینیه فاطمیه و کانون مذهبی', icon: '🕌', type: 'culture' }
-                ]
+                pois: []
             },
             'soureh': {
                 img: './soureh_map_web.webp',
@@ -26828,11 +26859,7 @@ addEventListener('resize', layout); layout();
                 statsHtml: '<div class="v-metric-row"><span class="m-label">👥 جمعیت کل:</span><span class="m-val highlight">۴,۱۷۵ نفر (۱,۰۵۱ خانوار)</span></div>',
                 servDesc: 'خانه بهداشت فعال، ۳ مدرسه، پایگاه مقاومت و تعاونی آبزی‌پروری',
                 servHtml: '<div class="v-metric-row"><span class="m-label">🏥 خدمات:</span><span class="m-val">خانه بهداشت فعال و پایگاه سلامت</span></div>',
-                pois: [
-                    { top: '38%', left: '48%', label: 'مجتمع آموزشی و مدارس سوره (۶۸۰ محصل)', icon: '🏫', type: 'school' },
-                    { top: '52%', left: '62%', label: 'خانه بهداشت فعال روستای سوره', icon: '🏥', type: 'health' },
-                    { top: '65%', left: '35%', label: 'دهیاری و شورای اسلامی سوره', icon: '🏛️', type: 'gov' }
-                ]
+                pois: []
             },
             'maslavi-1': {
                 img: './maslavi_map_web.webp',
@@ -26843,15 +26870,16 @@ addEventListener('resize', layout); layout();
                 sub: 'محور ارتباطی مصلاوی - حومه غربی',
                 chipPop: '👥 ۲,۰۶۳ نفر',
                 chipFam: '🏡 ۶۸۹ خانوار',
-                chipSchool: '🎒 دبستان‌های مصلاوی ۱ و ۲ (۲۶۴ دانش‌آموز)',
+                chipSchool: '🎒 دبستان شهدای مصلاوی (۲۶۴ دانش‌آموز)',
                 statsDesc: 'جمعیت: ۲,۰۶۳ نفر · ۶۸۹ خانوار · ۳ یتیم · ۱۳ خانوار کم‌برخوردار',
                 statsHtml: '<div class="v-metric-row"><span class="m-label">👥 جمعیت کل:</span><span class="m-val highlight">۲,۰۶۳ نفر (۶۸۹ خانوار)</span></div>',
-                servDesc: 'خانه بهداشت ۲۰۰ متری فعال، ۲ دبستان مستقل، خط آب غدیر',
-                servHtml: '<div class="v-metric-row"><span class="m-label">🏥 بهداشت:</span><span class="m-val">خانه بهداشت فعال (۶۸۹ خانوار)</span></div>',
+                servDesc: 'مدرسه شهدای مصلاوی، خانه بهداشت مصلاوی، موکب ام البنین (س) و موکب علی اصغر (ع)',
+                servHtml: '<div class="v-metric-row"><span class="m-label">🏥 خدمات و اماکن:</span><span class="m-val">مدرسه شهدا، خانه بهداشت و مواکب</span></div>',
                 pois: [
-                    { top: '42%', left: '46%', label: 'دبستان مصلاوی ۱ (۱۴۶ دانش‌آموز)', icon: '🏫', type: 'school' },
-                    { top: '55%', left: '60%', label: 'خانه بهداشت ۲۰۰ متری فعال', icon: '🏥', type: 'health' },
-                    { top: '68%', left: '38%', label: 'مسجد و حسینیه اهل‌بیت', icon: '🕌', type: 'culture' }
+                    { top: '39.7%', left: '11.2%', label: 'مدرسه شهدای مصلاوی', icon: '🏫', type: 'school', color: 'red' },
+                    { top: '32.9%', left: '12.5%', label: 'خانه بهداشت مصلاوی', icon: '🏥', type: 'health', color: 'green' },
+                    { top: '96.6%', left: '13.3%', label: 'موکب ام البنین (س)', icon: '🚩', type: 'culture', color: 'orange' },
+                    { top: '98.5%', left: '61.9%', label: 'موکب علی اصغر (ع)', icon: '🚩', type: 'culture', color: 'blue' }
                 ]
             },
             'maslavi-2': {
@@ -26868,9 +26896,7 @@ addEventListener('resize', layout); layout();
                 statsHtml: '<div class="v-metric-row"><span class="m-label">📍 موقعیت:</span><span class="m-val highlight">حوزه یکپارچه مصلاوی</span></div>',
                 servDesc: 'بهره‌مند از خدمات خانه بهداشت مصلاوی ۱ و دبستان شماره ۲',
                 servHtml: '<div class="v-metric-row"><span class="m-label">🏫 آموزش:</span><span class="m-val">دبستان مصلاوی ۲ (۱۱۸ دانش‌آموز)</span></div>',
-                pois: [
-                    { top: '48%', left: '52%', label: 'دبستان مصلاوی ۲ (۱۱۸ دانش‌آموز)', icon: '🏫', type: 'school' }
-                ]
+                pois: []
             },
             'sad-dastgah': {
                 img: './sad-dastgah_map_web.webp',
@@ -26886,11 +26912,7 @@ addEventListener('resize', layout); layout();
                 statsHtml: '<div class="v-metric-row"><span class="m-label">👥 جمعیت کل:</span><span class="m-val highlight">۸۸۲ نفر (۲۱۱ خانوار)</span></div>',
                 servDesc: 'قطب آموزشی با ۲ مدرسه، مسجد صاحب‌الزمان و ۲۱ خانوار کم‌برخوردار',
                 servHtml: '<div class="v-metric-row"><span class="m-label">🏫 قطب آموزشی:</span><span class="m-val">۶۹۵ دانش‌آموز (علویه و راهیان نور)</span></div>',
-                pois: [
-                    { top: '38%', left: '45%', label: 'دبستان علویه (۲۶۵ دانش‌آموز)', icon: '🏫', type: 'school' },
-                    { top: '48%', left: '55%', label: 'متوسطه اول راهیان نور (۴۳۰ دانش‌آموز)', icon: '🏫', type: 'school' },
-                    { top: '65%', left: '35%', label: 'مسجد صاحب‌الزمان و کانون فرهنگی', icon: '🕌', type: 'culture' }
-                ]
+                pois: []
             },
             'shahrak-sevvom': {
                 img: './shahrak-sevvom_map_web.webp',
@@ -26906,10 +26928,7 @@ addEventListener('resize', layout); layout();
                 statsHtml: '<div class="v-metric-row"><span class="m-label">👥 جمعیت کل:</span><span class="m-val highlight">۴۰۳ نفر (۱۳۴ خانوار)</span></div>',
                 servDesc: 'دبستان نوساز آل‌یاسین، پوشش ۱۰ خانوار کم‌برخوردار و ۶ یتیم',
                 servHtml: '<div class="v-metric-row"><span class="m-label">🏫 آموزش:</span><span class="m-val">دبستان آل‌یاسین (نوساز)</span></div>',
-                pois: [
-                    { top: '45%', left: '48%', label: 'دبستان نوساز آل‌یاسین', icon: '🏫', type: 'school' },
-                    { top: '60%', left: '35%', label: 'مسجد و کانون اهالی شهرک سوم', icon: '🕌', type: 'culture' }
-                ]
+                pois: []
             },
             'shahrak-3': {
                 img: './shahrak-sevvom_map_web.webp',
@@ -26925,9 +26944,7 @@ addEventListener('resize', layout); layout();
                 statsHtml: '<div class="v-metric-row"><span class="m-label">👥 جمعیت کل:</span><span class="m-val highlight">۴۰۳ نفر (۱۳۴ خانوار)</span></div>',
                 servDesc: 'دبستان نوساز آل‌یاسین، پوشش ۱۰ خانوار کم‌برخوردار و ۶ یتیم',
                 servHtml: '<div class="v-metric-row"><span class="m-label">🏫 آموزش:</span><span class="m-val">دبستان آل‌یاسین (نوساز)</span></div>',
-                pois: [
-                    { top: '45%', left: '48%', label: 'دبستان نوساز آل‌یاسین', icon: '🏫', type: 'school' }
-                ]
+                pois: []
             },
             'shahrak-sadat': {
                 img: './main_map_final.webp',
@@ -26944,8 +26961,43 @@ addEventListener('resize', layout); layout();
                 servDesc: 'حوزه پایش میدانی',
                 servHtml: '<div class="v-metric-row"><span class="m-label">🏛️ پایش:</span><span class="m-val">میدانی</span></div>',
                 pois: []
+            },
+            'sarhaniyeh-olya': {
+                img: './sarhaniyeh-olya_map_web.webp',
+                fallback: './sarhaniyeh-olya_map.webp',
+                badge: 'پایش هوایی شلمچه · نقشه تفصیلی سرحانیه اولیا',
+                kicker: '🛰️ نقشه هوایی ماهواره‌ای تفصیلی · سرحانیه اولیا',
+                name: 'سرحانیه اولیا',
+                sub: 'حومه شرقی خرمشهر · کانون سکونتگاهی و نخلستان‌ها',
+                chipPop: '👥 ۱,۷۵۰ نفر',
+                chipFam: '🏡 ۴۳۰ خانوار',
+                chipSchool: '🎒 پوشش آموزشی منطقه',
+                statsDesc: 'جمعیت: ۱,۷۵۰ نفر · ۴۳۰ خانوار · کانون جمعیتی نخلستان‌های شرقی',
+                statsHtml: '<div class="v-metric-row"><span class="m-label">👥 جمعیت کل:</span><span class="m-val highlight">۱,۷۵۰ نفر (۴۳۰ خانوار)</span></div>',
+                servDesc: 'احداث زهکش حاشیه نخلستان‌ها، احیای نخل‌ها و بهسازی معابر',
+                servHtml: '<div class="v-metric-row"><span class="m-label">🏛️ پایش:</span><span class="m-val">میدانی و خدمات</span></div>',
+                pois: []
+            },
+            'sarhaniyeh-sofla': {
+                img: './sarhaniyeh-sofla_map_web.webp',
+                fallback: './sarhaniyeh-sofla_map.webp',
+                badge: 'پایش هوایی شلمچه · نقشه تفصیلی سرحانیه سفلی',
+                kicker: '🛰️ نقشه هوایی ماهواره‌ای تفصیلی · سرحانیه سفلی',
+                name: 'سرحانیه سفلی',
+                sub: 'حومه شرقی خرمشهر · حوزه ساحلی و اروندرود',
+                chipPop: '👥 ۲,۱۰۰ نفر',
+                chipFam: '🏡 ۵۲۰ خانوار',
+                chipSchool: '🎒 پوشش آموزشی منطقه',
+                statsDesc: 'جمعیت: ۲,۱۰۰ نفر · ۵۲۰ خانوار · مجاورت نوار ساحلی اروندرود',
+                statsHtml: '<div class="v-metric-row"><span class="m-label">👥 جمعیت کل:</span><span class="m-val highlight">۲,۱۰۰ نفر (۵۲۰ خانوار)</span></div>',
+                servDesc: 'توسعه پایگاه سلامت روستایی و بهسازی معابر پس‌زدگی سیلاب',
+                servHtml: '<div class="v-metric-row"><span class="m-label">🏛️ پایش:</span><span class="m-val">میدانی و خدمات</span></div>',
+                pois: []
             }
         };
+
+        // Alias support for alternate naming
+        villageMapRegistry['sarhaniyeh-avval'] = villageMapRegistry['sarhaniyeh-olya'];
 
         function getActiveVillagePhoto(vid) {
             const custom = getCachedCustomPhoto(vid);
@@ -26998,23 +27050,31 @@ addEventListener('resize', layout); layout();
 
                 // Render interactive Aerial POIs
                 if (aerialOverlay) {
-                    aerialOverlay.style.display = 'block';
-                    aerialOverlay.innerHTML = reg.pois.map(p => {
-                        const posStyle = [
-                            p.top ? `top: ${p.top};` : '',
-                            p.bottom ? `bottom: ${p.bottom};` : '',
-                            p.left ? `left: ${p.left};` : '',
-                            p.right ? `right: ${p.right};` : ''
-                        ].filter(Boolean).join(' ');
+                    if (reg.pois && reg.pois.length > 0) {
+                        aerialOverlay.style.display = 'block';
+                        aerialOverlay.innerHTML = reg.pois.map(p => {
+                            const posStyle = [
+                                p.top ? `top: ${p.top};` : '',
+                                p.bottom ? `bottom: ${p.bottom};` : '',
+                                p.left ? `left: ${p.left};` : '',
+                                p.right ? `right: ${p.right};` : ''
+                            ].filter(Boolean).join(' ');
 
-                        return `
-                            <div class="aerial-poi poi-${p.type}" style="${posStyle}" data-poi="${p.type}" title="${p.label}">
-                                <span class="aerial-poi-dot">${p.icon}</span>
-                                <span class="aerial-poi-label">${p.label}</span>
-                                <span class="aerial-poi-pulse"></span>
-                            </div>
-                        `;
-                    }).join('');
+                            const colorClass = p.color ? `poi-color-${p.color}` : '';
+
+                            return `
+                                <div class="aerial-poi poi-${p.type} ${colorClass}" style="${posStyle}" data-poi="${p.type}" data-color="${p.color || ''}" title="${p.label}">
+                                    <span class="aerial-poi-spot-ring"></span>
+                                    <span class="aerial-poi-dot">${p.icon}</span>
+                                    <span class="aerial-poi-label">${p.label}</span>
+                                    <span class="aerial-poi-pulse"></span>
+                                </div>
+                            `;
+                        }).join('');
+                    } else {
+                        aerialOverlay.style.display = 'none';
+                        aerialOverlay.innerHTML = '';
+                    }
                 }
             } else {
                 // Fallback for other villages
@@ -27024,14 +27084,8 @@ addEventListener('resize', layout); layout();
                     satImg.alt = `نقشه روستای ${v.name}`;
                 }
                 if (aerialOverlay) {
-                    aerialOverlay.style.display = 'block';
-                    aerialOverlay.innerHTML = `
-                        <div class="aerial-poi poi-marker" style="top: 50%; left: 50%;" data-poi="marker" title="موقعیت روستای ${v.name}">
-                            <span class="aerial-poi-dot">📍</span>
-                            <span class="aerial-poi-label">موقعیت روستای ${v.name}</span>
-                            <span class="aerial-poi-pulse"></span>
-                        </div>
-                    `;
+                    aerialOverlay.style.display = 'none';
+                    aerialOverlay.innerHTML = '';
                 }
                 if (kicker) kicker.textContent = `شناسنامه و نقشه هوایی · روستای ${v.name}`;
                 if (vName) vName.textContent = v.name;
@@ -27479,19 +27533,8 @@ addEventListener('resize', layout); layout();
                     const poi = e.target.closest('.aerial-poi');
                     if (!poi) return;
                     e.stopPropagation();
-                    const pType = poi.getAttribute('data-poi');
-                    if (pType === 'school') {
-                        const stBtn = document.getElementById('statsButton');
-                        if (stBtn) stBtn.click();
-                    } else if (pType === 'health') {
-                        const svBtn = document.getElementById('servicesButton');
-                        if (svBtn) svBtn.click();
-                    } else {
-                        const lbl = poi.querySelector('.aerial-poi-label')?.textContent || '';
-                        if (typeof showSearchToast === 'function') {
-                            showSearchToast(`📍 ${lbl}`);
-                        }
-                    }
+                    // On-click opening disabled as requested by user
+                    return;
                 });
             }
         }
@@ -30304,22 +30347,11 @@ document.addEventListener('click', (e) => {
 
 
     // -------------------------------------------------------------
-    // 7. KEYBOARD SHORTCUTS CONTROLLER & MODAL
+    // 7. QUICK ACCESS KEYBOARD LISTENERS
     // -------------------------------------------------------------
-    window.openShortcutsDialog = function() {
-        const dlg = document.getElementById('keyboardShortcutsDialog');
-        if (dlg) dlg.showModal();
-    };
-
     document.addEventListener('keydown', function(e) {
         // Ignore if typing in input or textarea
         if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable)) return;
-
-        // '?' for Shortcuts Cheat Sheet
-        if (e.key === '?' || (e.key === '/' && e.shiftKey)) {
-            e.preventDefault();
-            window.openShortcutsDialog();
-        }
 
         // 'A' or 'a' for Approvals Workspace
         if (e.key === 'a' || e.key === 'A' || e.key === 'ش') {
@@ -30358,9 +30390,6 @@ document.addEventListener('click', (e) => {
             <button type="button" class="nav-action-btn" id="navBeforeAfterQuickBtn" onclick="window.openBeforeAfterModal()" title="مقایسه تصاویر قبل و بعد (کلید B)">
                 <span style="font-size:14px;">🎚️</span>
                 <span>قبل و بعد</span>
-            </button>
-            <button type="button" class="nav-action-btn" id="navShortcutsQuickBtn" onclick="window.openShortcutsDialog()" title="راهنمای کلیدهای میانبر (کلید ?)">
-                <span>⌨️</span>
             </button>
         `;
 
@@ -30802,8 +30831,7 @@ document.addEventListener('click', (e) => {
                     container.appendChild(pCard);
                     window.renderPriorityStack('villagePriorityStackMount');
                 }
-            };
-            
+
                 // --- NEW STATS ENHANCEMENTS ATTACHMENTS ---
                 // 6. Capability Checklist
                 if (!document.getElementById('villageCapabilityChecklistMount')) {
@@ -30852,8 +30880,9 @@ document.addEventListener('click', (e) => {
                     auditMount.innerHTML = window.renderFieldAuditTrail();
                     container.appendChild(auditMount);
                 }
+            };
         
-                console.log('✓ VibePrompt Senior Suite successfully mounted to village dossier lifecycle!');
+            console.log('✓ VibePrompt Senior Suite successfully mounted to village dossier lifecycle!');
         } else {
             setTimeout(hookDossierMount, 200);
         }
@@ -30921,45 +30950,6 @@ document.addEventListener('click', (e) => {
     </div>
 </dialog>
 
-<!-- 3. KEYBOARD SHORTCUTS CHEAT SHEET MODAL -->
-<dialog id="keyboardShortcutsDialog" class="shortcuts-dialog" aria-labelledby="shortcutsTitle">
-    <div style="display:flex; align-items:center; justify-content:space-between; padding-bottom:14px; border-bottom:1px solid #ebd9c4;">
-        <div style="display:flex; align-items:center; gap:8px;">
-            <span style="font-size:18px;">⌨️</span>
-            <h3 id="shortcutsTitle" style="font-size:15px; font-weight:900; margin:0; color:#1e140a;">راهنمای کلیدهای دسترسی سریع ( میانبرها )</h3>
-        </div>
-        <button type="button" class="dossier-back-btn" onclick="document.getElementById('keyboardShortcutsDialog').close();" style="padding:4px 10px; font-size:12px;">✕</button>
-    </div>
-    <div class="shortcuts-grid">
-        <div class="shortcut-row">
-            <span style="font-size:12.5px; font-weight:800; color:#3a2a1a;">جستجوی هوشمند در روستاها و GIS</span>
-            <div class="shortcut-keys"><span class="key-cap">Ctrl</span><span>+</span><span class="key-cap">K</span></div>
-        </div>
-        <div class="shortcut-row">
-            <span style="font-size:12.5px; font-weight:800; color:#3a2a1a;">کارتابل موافقت‌ها و ابلاغ اعتبارات</span>
-            <div class="shortcut-keys"><span class="key-cap">A</span></div>
-        </div>
-        <div class="shortcut-row">
-            <span style="font-size:12.5px; font-weight:800; color:#3a2a1a;">مقایسه تصاویر قبل و بعد مداخله</span>
-            <div class="shortcut-keys"><span class="key-cap">B</span></div>
-        </div>
-        <div class="shortcut-row">
-            <span style="font-size:12.5px; font-weight:800; color:#3a2a1a;">باز کردن کوکپیت راهبردی C-Level</span>
-            <div class="shortcut-keys"><span class="key-cap">C</span></div>
-        </div>
-        <div class="shortcut-row">
-            <span style="font-size:12.5px; font-weight:800; color:#3a2a1a;">سوئیچ لایه‌های نقشه هوایی</span>
-            <div class="shortcut-keys"><span class="key-cap">M</span></div>
-        </div>
-        <div class="shortcut-row">
-            <span style="font-size:12.5px; font-weight:800; color:#3a2a1a;">بستن پنجره‌ها و دیالوگ‌های باز</span>
-            <div class="shortcut-keys"><span class="key-cap">Esc</span></div>
-        </div>
-        <div class="shortcut-row">
-            <span style="font-size:12.5px; font-weight:800; color:#3a2a1a;">مشاهده مجدد این راهنما</span>
-            <div class="shortcut-keys"><span class="key-cap">?</span></div>
-        </div>
-    </div>
-</dialog>
+
 
 </body></html>
