@@ -26910,9 +26910,13 @@ addEventListener('resize', layout); layout();
                 chipSchool: '🎒 مدارس علویه و راهیان نور (۶۹۵ دانش‌آموز)',
                 statsDesc: 'جمعیت: ۸۸۲ نفر · ۲۱۱ خانوار · ۳ یتیم · ۲۱ خانوار کم‌برخوردار',
                 statsHtml: '<div class="v-metric-row"><span class="m-label">👥 جمعیت کل:</span><span class="m-val highlight">۸۸۲ نفر (۲۱۱ خانوار)</span></div>',
-                servDesc: 'قطب آموزشی با ۲ مدرسه، مسجد صاحب‌الزمان و ۲۱ خانوار کم‌برخوردار',
-                servHtml: '<div class="v-metric-row"><span class="m-label">🏫 قطب آموزشی:</span><span class="m-val">۶۹۵ دانش‌آموز (علویه و راهیان نور)</span></div>',
-                pois: []
+                servDesc: 'شرکت ثبت شناوران، مسجد صاحب‌الزمان (عج) و مدارس علویه - راهیان نور (۶۹۵ محصل)',
+                servHtml: '<div class="v-metric-row"><span class="m-label">🏛️ خدمات و اماکن:</span><span class="m-val">ثبت شناوران، مسجد و مجتمع آموزشی</span></div>',
+                pois: [
+                    { top: '80.0%', left: '89.5%', label: 'شرکت ثبت شناوران', icon: '⚓', type: 'economy', color: 'red' },
+                    { top: '51.0%', left: '52.5%', label: 'مسجد صاحب الزمان (عج)', icon: '🕌', type: 'culture', color: 'blue' },
+                    { top: '27.9%', left: '35.4%', label: 'مدرسه علویه - راهیان نور', icon: '🏫', type: 'school', color: 'orange' }
+                ]
             },
             'shahrak-sevvom': {
                 img: './shahrak-sevvom_map_web.webp',
@@ -29317,8 +29321,11 @@ document.addEventListener('click', (e) => {
             { title: 'دبستان مرزداران', sub: 'مدرسه ۱۷۷ نفره · دربند غربی', icon: '🏫', villageId: 'darband-gharbi' },
             { title: 'خانه بهداشت پل نو', sub: 'مرکز سلامت اولیه · کریدور مرزی', icon: '🏥', villageId: 'pol-now' },
             { title: 'مرکز جامع سلامت جدیده', sub: 'درمانگاه و بهداشت ۴۰۰ متری · جدیده', icon: '🏥', villageId: 'jadideh' },
-            { title: 'مخزن بتنی و شبکه آبرسانی غدیر', sub: 'تأسیسات آب شرب روستایی · سوره', icon: '💧', villageId: 'soureh' },
-            { title: 'مجتمع آموزشی راهیان نور', sub: 'قطب آموزشی ۶۹۵ نفره · صد دستگاه', icon: '🏫', villageId: 'sad-dastgah' }
+            { title: 'مدرسه شهدای مصلاوی', sub: 'دبستان ابتدایی · مصلاوی ۱', icon: '🏫', villageId: 'maslavi-1' },
+            { title: 'خانه بهداشت مصلاوی', sub: 'پایگاه سلامت و بهداشت · مصلاوی ۱', icon: '🏥', villageId: 'maslavi-1' },
+            { title: 'شرکت ثبت شناوران', sub: 'اداره بازرسی و ثبت شناورها · صد دستگاه', icon: '⚓', villageId: 'sad-dastgah' },
+            { title: 'مسجد صاحب الزمان (عج)', sub: 'مسجد ولیعصر منازل بندر · صد دستگاه', icon: '🕌', villageId: 'sad-dastgah' },
+            { title: 'مدرسه علویه - راهیان نور', sub: 'مجتمع آموزشی ۶۹۵ نفره · صد دستگاه', icon: '🏫', villageId: 'sad-dastgah' }
         ];
         gisPoints.forEach(p => {
             if (!q || p.title.toLowerCase().includes(q) || p.sub.toLowerCase().includes(q)) {
