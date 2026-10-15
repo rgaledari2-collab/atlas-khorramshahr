@@ -4210,6 +4210,21 @@ mark.search-match-hl {
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.9), 0 0 24px rgba(96, 165, 250, 0.75);
 }
 
+.aerial-poi.poi-color-brown {
+    background: rgba(45, 25, 12, 0.94);
+    border: 1.5px solid #b45309;
+    color: #fde68a;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.75), 0 0 16px rgba(180, 83, 9, 0.45);
+}
+.aerial-poi.poi-color-brown .aerial-poi-pulse {
+    border-color: #d97706;
+}
+.aerial-poi.poi-color-brown:hover {
+    background: rgba(65, 35, 18, 0.98);
+    border-color: #fef08a;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.9), 0 0 24px rgba(217, 119, 6, 0.75);
+}
+
 /* Map Controls */
 .village-map-controls {
     position: absolute;
@@ -26930,9 +26945,17 @@ addEventListener('resize', layout); layout();
                 chipSchool: '🎒 دبستان آل‌یاسین (تازه تأسیس)',
                 statsDesc: 'جمعیت: ۴۰۳ نفر · ۱۳۴ خانوار · ۶ یتیم · ۱۰ خانوار کم‌برخوردار',
                 statsHtml: '<div class="v-metric-row"><span class="m-label">👥 جمعیت کل:</span><span class="m-val highlight">۴۰۳ نفر (۱۳۴ خانوار)</span></div>',
-                servDesc: 'دبستان نوساز آل‌یاسین، پوشش ۱۰ خانوار کم‌برخوردار و ۶ یتیم',
-                servHtml: '<div class="v-metric-row"><span class="m-label">🏫 آموزش:</span><span class="m-val">دبستان آل‌یاسین (نوساز)</span></div>',
-                pois: []
+                servDesc: 'مسجد شهدای کربلا، مدرسه آل‌یاسین، زائرسراهای مشهدی‌ها و علی کعبی، پارکینگ اربعین و حسینیه‌ها',
+                servHtml: '<div class="v-metric-row"><span class="m-label">🏛️ زیرساخت‌ها:</span><span class="m-val">مسجد، مدرسه، ۲ زائرسرا، پارکینگ و ۲ حسینیه</span></div>',
+                pois: [
+                    { top: '67.3%', left: '45.1%', label: 'مسجد شهدای کربلا', icon: '🕌', type: 'culture', color: 'red' },
+                    { top: '40.8%', left: '51.7%', label: 'مدرسه آل یاسین', icon: '🏫', type: 'school', color: 'orange' },
+                    { top: '45.7%', left: '60.3%', label: 'زائرسرای مشهدی ها', icon: '🏕️', type: 'culture', color: 'yellow' },
+                    { top: '52.5%', left: '18.2%', label: 'حسینیه خانم عسکری', icon: '🚩', type: 'culture', color: 'green' },
+                    { top: '46.5%', left: '37.5%', label: 'پارکینگ زوار اربعین', icon: '🅿️', type: 'infra', color: 'purple' },
+                    { top: '50.5%', left: '66.7%', label: 'زائرسرا علی کعبی', icon: '🏠', type: 'culture', color: 'blue' },
+                    { top: '67.1%', left: '58.9%', label: 'حسینیه ام البنین (س)', icon: '🚩', type: 'culture', color: 'brown' }
+                ]
             },
             'shahrak-3': {
                 img: './shahrak-sevvom_map_web.webp',
@@ -26946,9 +26969,17 @@ addEventListener('resize', layout); layout();
                 chipSchool: '🎒 دبستان آل‌یاسین (تازه تأسیس)',
                 statsDesc: 'جمعیت: ۴۰۳ نفر · ۱۳۴ خانوار · ۶ یتیم · ۱۰ خانوار کم‌برخوردار',
                 statsHtml: '<div class="v-metric-row"><span class="m-label">👥 جمعیت کل:</span><span class="m-val highlight">۴۰۳ نفر (۱۳۴ خانوار)</span></div>',
-                servDesc: 'دبستان نوساز آل‌یاسین، پوشش ۱۰ خانوار کم‌برخوردار و ۶ یتیم',
-                servHtml: '<div class="v-metric-row"><span class="m-label">🏫 آموزش:</span><span class="m-val">دبستان آل‌یاسین (نوساز)</span></div>',
-                pois: []
+                servDesc: 'مسجد شهدای کربلا، مدرسه آل‌یاسین، زائرسراهای مشهدی‌ها و علی کعبی، پارکینگ اربعین و حسینیه‌ها',
+                servHtml: '<div class="v-metric-row"><span class="m-label">🏛️ زیرساخت‌ها:</span><span class="m-val">مسجد، مدرسه، ۲ زائرسرا، پارکینگ و ۲ حسینیه</span></div>',
+                pois: [
+                    { top: '67.3%', left: '45.1%', label: 'مسجد شهدای کربلا', icon: '🕌', type: 'culture', color: 'red' },
+                    { top: '40.8%', left: '51.7%', label: 'مدرسه آل یاسین', icon: '🏫', type: 'school', color: 'orange' },
+                    { top: '45.7%', left: '60.3%', label: 'زائرسرای مشهدی ها', icon: '🏕️', type: 'culture', color: 'yellow' },
+                    { top: '52.5%', left: '18.2%', label: 'حسینیه خانم عسکری', icon: '🚩', type: 'culture', color: 'green' },
+                    { top: '46.5%', left: '37.5%', label: 'پارکینگ زوار اربعین', icon: '🅿️', type: 'infra', color: 'purple' },
+                    { top: '50.5%', left: '66.7%', label: 'زائرسرا علی کعبی', icon: '🏠', type: 'culture', color: 'blue' },
+                    { top: '67.1%', left: '58.9%', label: 'حسینیه ام البنین (س)', icon: '🚩', type: 'culture', color: 'brown' }
+                ]
             },
             'shahrak-sadat': {
                 img: './main_map_final.webp',
@@ -29325,7 +29356,13 @@ document.addEventListener('click', (e) => {
             { title: 'خانه بهداشت مصلاوی', sub: 'پایگاه سلامت و بهداشت · مصلاوی ۱', icon: '🏥', villageId: 'maslavi-1' },
             { title: 'شرکت ثبت شناوران', sub: 'اداره بازرسی و ثبت شناورها · صد دستگاه', icon: '⚓', villageId: 'sad-dastgah' },
             { title: 'مسجد صاحب الزمان (عج)', sub: 'مسجد ولیعصر منازل بندر · صد دستگاه', icon: '🕌', villageId: 'sad-dastgah' },
-            { title: 'مدرسه علویه - راهیان نور', sub: 'مجتمع آموزشی ۶۹۵ نفره · صد دستگاه', icon: '🏫', villageId: 'sad-dastgah' }
+            { title: 'مسجد شهدای کربلا', sub: 'مسجد جامع و موکب زائرین · شهرک سوم', icon: '🕌', villageId: 'shahrak-sevvom' },
+            { title: 'مدرسه آل یاسین', sub: 'دبستان نوساز آل‌یاسین · شهرک سوم', icon: '🏫', villageId: 'shahrak-sevvom' },
+            { title: 'زائرسرای مشهدی ها', sub: 'مقر اسکان زائرین مشهد مقدس · شهرک سوم', icon: '🏕️', villageId: 'shahrak-sevvom' },
+            { title: 'حسینیه خانم عسکری', sub: 'مرکز فرهنگی و مذهبی بانوان · شهرک سوم', icon: '🚩', villageId: 'shahrak-sevvom' },
+            { title: 'پارکینگ زوار اربعین', sub: 'هاب توقفگاهی زائرین اربعین · شهرک سوم', icon: '🅿️', villageId: 'shahrak-sevvom' },
+            { title: 'زائرسرا علی کعبی', sub: 'مجتمع اقامتی و حسینیه · شهرک سوم', icon: '🏠', villageId: 'shahrak-sevvom' },
+            { title: 'حسینیه ام البنین (س)', sub: 'پایگاه عزاداری و موکب حسینی · شهرک سوم', icon: '🚩', villageId: 'shahrak-sevvom' }
         ];
         gisPoints.forEach(p => {
             if (!q || p.title.toLowerCase().includes(q) || p.sub.toLowerCase().includes(q)) {
