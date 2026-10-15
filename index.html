@@ -7756,46 +7756,6 @@ header {
     transform: translateY(-1px);
 }
 
-/* 2. Dual Audience Toggle Switch */
-.audience-toggle-pill {
-    display: inline-flex;
-    align-items: center;
-    background: rgba(18, 13, 9, 0.88);
-    border: 1px solid var(--parchment-border-gold);
-    border-radius: 30px;
-    padding: 2.5px;
-    gap: 3px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
-    flex-shrink: 0;
-}
-.audience-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 4px 11px;
-    border: none;
-    background: transparent;
-    color: #c9b9a6;
-    font-family: YekanBakh, 'IranYekan', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-}
-.audience-btn:hover {
-    color: #ffffff;
-}
-.audience-btn.active {
-    background: linear-gradient(135deg, var(--gold-warm), #a67324);
-    color: #1a1208;
-    font-weight: 900;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
-}
-.audience-btn svg {
-    flex-shrink: 0;
-}
 
 /* 3. Analysis Dropdown Menu */
 .analysis-dropdown-wrap {
@@ -8225,13 +8185,6 @@ header {
     .nav-actions {
         order: 2;
         gap: 4px !important;
-    }
-    .audience-toggle-pill {
-        padding: 2px;
-    }
-    .audience-btn {
-        padding: 3px 8px;
-        font-size: 10px;
     }
     .village-workspace {
         flex-direction: column !important;
@@ -10702,27 +10655,6 @@ dialog#statsDialog::backdrop {
             <span>فیلتر روستاها</span>
         </button>
 
-        <!-- 2. Dual Audience Toggle Switch (گزارش نهاد / روایت مردم) -->
-        <div class="audience-toggle-pill" id="audienceToggleWrap" role="group" aria-label="حالت مخاطب">
-            <button type="button" class="audience-btn active" id="audienceGovBtn" title="گزارش تحلیلی، جداول و آمار تفصیلی برای نهادها و حامیان">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <polyline points="14 2 14 8 20 8"></polyline>
-                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                </svg>
-                <span>گزارش نهاد</span>
-            </button>
-            <button type="button" class="audience-btn" id="audiencePeopleBtn" title="روایت ملموس، مستندات تصویری و داستان روستا برای مردم">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                </svg>
-                <span>روایت مردم</span>
-            </button>
-        </div>
 
         <!-- 3. Consolidated Analysis Tools Dropdown Menu -->
         <div class="analysis-dropdown-wrap" id="analysisDropdownWrap">
@@ -26819,9 +26751,16 @@ addEventListener('resize', layout); layout();
                 chipSchool: '🎒 دبستان محسن بن علی (۳۰۶ دانش‌آموز)',
                 statsDesc: 'جمعیت: ۵,۶۰۷ نفر · ۱,۲۳۷ خانوار · ۱۱ یتیم · ۴۹ خانوار کم‌برخوردار',
                 statsHtml: '<div class="v-metric-row"><span class="m-label">👥 جمعیت کل:</span><span class="m-val highlight">۵,۶۰۷ نفر (۱,۲۳۷ خانوار)</span></div>',
-                servDesc: 'مرکز جامع سلامت ۴۰۰ متری، خانه بهداشت و مرکز مثبت زندگی (۵۱۲ خانوار)',
-                servHtml: '<div class="v-metric-row"><span class="m-label">🏥 سلامت:</span><span class="m-val">مرکز جامع سلامت و خانه بهداشت</span></div>',
-                pois: []
+                servDesc: 'مرکز جامع سلامت امام حسین (ع)، خانه بهداشت، مرکز مثبت زندگی، دبستان محسن بن علی، باشگاه ورزشی و مسجد امیر المومنین (ع)',
+                servHtml: '<div class="v-metric-row"><span class="m-label">🏥 خدمات و اماکن:</span><span class="m-val">مرکز جامع سلامت، مثبت زندگی، خانه بهداشت، مدرسه و باشگاه</span></div>',
+                pois: [
+                    { top: '57.6%', left: '44.0%', label: 'مرکز مثبت زندگی', icon: '🤝', type: 'gov', color: 'red' },
+                    { top: '64.1%', left: '36.9%', label: 'باشگاه ورزشی جدیده', icon: '⚽', type: 'sports', color: 'green' },
+                    { top: '73.7%', left: '36.7%', label: 'مسجد امیر المومنین (ع)', icon: '🕌', type: 'culture', color: 'brown' },
+                    { top: '37.8%', left: '35.9%', label: 'خانه بهداشت جدیده', icon: '🏥', type: 'health', color: 'orange' },
+                    { top: '39.9%', left: '20.3%', label: 'مدرسه محسن بن علی', icon: '🏫', type: 'school', color: 'yellow' },
+                    { top: '31.1%', left: '77.1%', label: 'مرکز جامع سلامت امام حسین (ع)', icon: '🏥', type: 'health', color: 'blue' }
+                ]
             },
             'darband-gharbi': {
                 img: './darband-gharbi_map_web.webp',
@@ -29076,38 +29015,6 @@ document.addEventListener('click', (e) => {
         }
     });
 
-    // 2. Dual Audience Mode Toggle (گزارش نهاد / روایت مردم)
-    function initAudienceToggle() {
-        const govBtn = document.getElementById('audienceGovBtn');
-        const peopleBtn = document.getElementById('audiencePeopleBtn');
-        if (!govBtn || !peopleBtn) return;
-
-        function setAudienceMode(mode) {
-            if (mode === 'people') {
-                peopleBtn.classList.add('active');
-                govBtn.classList.remove('active');
-                document.body.classList.add('audience-people-mode');
-            } else {
-                govBtn.classList.add('active');
-                peopleBtn.classList.remove('active');
-                document.body.classList.remove('audience-people-mode');
-            }
-            try { localStorage.setItem('atlas_audience_mode', mode); } catch(e){}
-        }
-
-        govBtn.onclick = function() { setAudienceMode('gov'); };
-        peopleBtn.onclick = function() { setAudienceMode('people'); };
-
-        try {
-            const saved = localStorage.getItem('atlas_audience_mode');
-            if (saved) setAudienceMode(saved);
-        } catch(e){}
-    }
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initAudienceToggle);
-    } else {
-        initAudienceToggle();
-    }
 
     // 3. Three-Chapter Dossier Filtering (وضعیت، خدمات، حمایت)
     document.addEventListener('click', function(e) {
@@ -29350,8 +29257,12 @@ document.addEventListener('click', (e) => {
             { title: 'دبستان نوساز آل‌یاسین', sub: 'مدرسه ابتدایی · شهرک سوم', icon: '🏫', villageId: 'shahrak-sevvom' },
             { title: 'دبستان معراج پل نو', sub: 'مرکز آموزشی ۴۲۰ نفره · پل نو', icon: '🏫', villageId: 'pol-now' },
             { title: 'دبستان مرزداران', sub: 'مدرسه ۱۷۷ نفره · دربند غربی', icon: '🏫', villageId: 'darband-gharbi' },
-            { title: 'خانه بهداشت پل نو', sub: 'مرکز سلامت اولیه · کریدور مرزی', icon: '🏥', villageId: 'pol-now' },
-            { title: 'مرکز جامع سلامت جدیده', sub: 'درمانگاه و بهداشت ۴۰۰ متری · جدیده', icon: '🏥', villageId: 'jadideh' },
+            { title: 'مرکز جامع سلامت امام حسین (ع)', sub: 'درمانگاه و مرکز سلامت جامع ۴۰۰ متری · جدیده', icon: '🏥', villageId: 'jadideh' },
+            { title: 'مرکز مثبت زندگی جدیده', sub: 'مرکز خدمات بهزیستی و مددکاری · جدیده', icon: '🤝', villageId: 'jadideh' },
+            { title: 'باشگاه ورزشی جدیده', sub: 'مجتمع ورزشی و سالن ورزشی · جدیده', icon: '⚽', villageId: 'jadideh' },
+            { title: 'مسجد امیر المومنین (ع) جدیده', sub: 'مسجد و کانون فرهنگی مذهبی · جدیده', icon: '🕌', villageId: 'jadideh' },
+            { title: 'خانه بهداشت جدیده', sub: 'پایگاه بهداشت روستایی · جدیده', icon: '🏥', villageId: 'jadideh' },
+            { title: 'مدرسه محسن بن علی', sub: 'دبستان ابتدایی ۳۰۶ نفره · جدیده', icon: '🏫', villageId: 'jadideh' },
             { title: 'مدرسه شهدای مصلاوی', sub: 'دبستان ابتدایی · مصلاوی ۱', icon: '🏫', villageId: 'maslavi-1' },
             { title: 'خانه بهداشت مصلاوی', sub: 'پایگاه سلامت و بهداشت · مصلاوی ۱', icon: '🏥', villageId: 'maslavi-1' },
             { title: 'شرکت ثبت شناوران', sub: 'اداره بازرسی و ثبت شناورها · صد دستگاه', icon: '⚓', villageId: 'sad-dastgah' },
