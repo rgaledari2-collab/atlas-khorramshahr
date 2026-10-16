@@ -21856,9 +21856,15 @@ addEventListener('resize', layout); layout();
                         if (ph && (ph === qNorm || ph.startsWith(qNorm) || ph.includes(qNorm))) score += 110;
 
                         if (isDigitMatch) score += 95;
-                        if (g && g.includes(qNorm)) score += 65;
-                        if (f && f.includes(qNorm)) score += 55;
-                        if (item.type === 'person') score += 25; // boost direct person lookup
+                        if (g && g.includes(qNorm)) score += 75;
+                        if (f && f.includes(qNorm)) score += 65;
+                        if (item.type === 'person') score += 50; // boost direct person lookup
+                        if (item.personType === 'orphan' || item.badge === 'ایتام') {
+                            score += 120; // massive boost so orphan names always rank at the top
+                            if (qNorm === 'ایتام' || qNorm === 'یتیم' || qNorm.includes('یتیم') || qNorm.includes('ایتام')) {
+                                score += 200;
+                            }
+                        }
                         if (isPhoneticMatch) score -= 15; // slightly lower than exact hit
 
                         scored.push({ item, score });
@@ -22189,6 +22195,7 @@ addEventListener('resize', layout); layout();
                     dlg.setAttribute('open', '');
                 }
             }
+            window.openPersonDossier = openPersonDossier;
 
             // Copy National ID
             const copyNidBtn = document.getElementById('copyPdNidBtn');
@@ -29212,22 +29219,50 @@ document.addEventListener('click', (e) => {
         });
     }
 
-    // Also link the top header search input to open this palette
+    // Top header search input works natively with searchResultsDropdown (Direct orphan and village lookup)
     const topSearch = document.getElementById('smartSearchInput');
     if (topSearch) {
-        topSearch.addEventListener('focus', function(e) {
-            e.preventDefault();
-            topSearch.blur();
-            openCommandPalette();
-        });
-        topSearch.placeholder = 'جستجوی سریع هوشمند (Ctrl + K)...';
+        topSearch.placeholder = 'جستجوی نام یتیم، مددجو، روستا، کد ملی...';
     }
 
-    // Palette Search Engine: Queries Villages, GIS Points, and Support Records
+    // Palette Search Engine: Queries Orphans, Villages, GIS Points, and Support Records
     function renderPaletteResults(query) {
         if (!resultsContainer) return;
         const q = (query || '').trim().toLowerCase();
         currentResults = [];
+
+        // 0. Query Orphans & Beneficiaries from searchableData
+        const matchedPersons = [];
+        if (q && typeof searchableData !== 'undefined') {
+            searchableData.forEach(item => {
+                if (item.type === 'person') {
+                    const t = (item.title || '').toLowerCase();
+                    const g = (item.guardian || '').toLowerCase();
+                    const f = (item.father || '').toLowerCase();
+                    const nid = (item.nationalId || '').toLowerCase();
+                    const isOrphan = item.badge === 'ایتام' || item.personType === 'orphan';
+                    if (t.includes(q) || g.includes(q) || f.includes(q) || nid.includes(q) || (isOrphan && (q.includes('یتیم') || q.includes('ایتام')))) {
+                        matchedPersons.push({
+                            type: 'person',
+                            title: item.title,
+                            sub: (item.village ? item.village + ' · ' : '') + (item.guardian ? 'سرپرست: ' + item.guardian : '') + (item.nationalId ? ' · کدملی: ' + item.nationalId : ''),
+                            icon: isOrphan ? '👶' : '👤',
+                            badge: item.badge || (isOrphan ? 'ایتام' : 'مددجو'),
+                            badgeBg: isOrphan ? '#fee2e2' : '#f1f5f9',
+                            badgeColor: isOrphan ? '#b91c1c' : '#475569',
+                            isOrphan,
+                            action: () => {
+                                closeCommandPalette();
+                                if (typeof window.openPersonDossier === 'function') {
+                                    window.openPersonDossier(item);
+                                }
+                            }
+                        });
+                    }
+                }
+            });
+            matchedPersons.sort((a, b) => (b.isOrphan ? 1 : 0) - (a.isOrphan ? 1 : 0));
+        }
 
         // 1. Query Villages
         const matchedVillages = [];
@@ -29302,6 +29337,25 @@ document.addEventListener('click', (e) => {
         ].filter(a => !q || a.title.includes(q) || a.sub.includes(q));
 
         let htmlOut = '';
+
+        if (matchedPersons.length > 0) {
+            htmlOut += '<div class="cmd-group-label" style="color:#b91c1c;"><span>👶</span> پرونده‌های شناسایی‌شده ایتام و مددجویان (' + matchedPersons.length + ')</div>';
+            matchedPersons.slice(0, 10).forEach(item => {
+                const globalIdx = currentResults.length;
+                currentResults.push(item);
+                htmlOut += `
+                <div class="cmd-item-row ${globalIdx === 0 ? 'is-selected' : ''}" data-idx="${globalIdx}">
+                    <div class="cmd-item-main">
+                        <div class="cmd-item-icon" style="background:${item.badgeBg}; color:${item.badgeColor}; font-size:16px;">${item.icon}</div>
+                        <div>
+                            <div class="cmd-item-title">${item.title}</div>
+                            <div class="cmd-item-sub">${item.sub}</div>
+                        </div>
+                    </div>
+                    <span class="cmd-item-badge" style="background:${item.badgeBg}; color:${item.badgeColor};">${item.badge}</span>
+                </div>`;
+            });
+        }
 
         if (matchedVillages.length > 0) {
             htmlOut += '<div class="cmd-group-label"><span>🏡</span> روستاها و کانون‌های جمعیتی (' + matchedVillages.length + ')</div>';
