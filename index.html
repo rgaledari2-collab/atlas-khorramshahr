@@ -21859,6 +21859,8 @@ addEventListener('resize', layout); layout();
                         if (g && g.includes(qNorm)) score += 75;
                         if (f && f.includes(qNorm)) score += 65;
                         if (item.type === 'person') score += 50; // boost direct person lookup
+                        // [INVARIANT-LOCK: PERMANENT-ORPHAN-PRIORITY]
+                        // این بخش محافظت‌شده است: نام و مشخصات ایتام همواره در صدر نتایج جستجو
                         if (item.personType === 'orphan' || item.badge === 'ایتام') {
                             score += 120; // massive boost so orphan names always rank at the top
                             if (qNorm === 'ایتام' || qNorm === 'یتیم' || qNorm.includes('یتیم') || qNorm.includes('ایتام')) {
@@ -29219,7 +29221,8 @@ document.addEventListener('click', (e) => {
         });
     }
 
-    // Top header search input works natively with searchResultsDropdown (Direct orphan and village lookup)
+    // [INVARIANT-LOCK: DO NOT HIJACK SMART-SEARCH-INPUT]
+    // کادر جستجوی هدر باید همواره ورودی بومی و بدون مسدودسازی برای تایپ مستقیم باقی بماند
     const topSearch = document.getElementById('smartSearchInput');
     if (topSearch) {
         topSearch.placeholder = 'جستجوی نام یتیم، مددجو، روستا، کد ملی...';
