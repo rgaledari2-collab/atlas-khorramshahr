@@ -6456,6 +6456,68 @@ dialog#statsDialog::backdrop {
     margin: 0;
 }
 
+/* ── MODERN 4-TAB DASHBOARD ARCHITECTURE ───────────────────── */
+.stats-tabs-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f8f6f0;
+    padding: 6px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    border: 1px solid #e7dcce;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    box-shadow: 0 4px 14px rgba(20, 42, 41, 0.04);
+}
+.stats-tab-btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: #5c6e6a;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+}
+.stats-tab-btn:hover {
+    background: rgba(255, 255, 255, 0.8);
+    color: #142a29;
+}
+.stats-tab-btn.active {
+    background: #ffffff;
+    color: #142a29;
+    border-color: #c6a15b;
+    box-shadow: 0 2px 10px rgba(198, 161, 91, 0.18);
+    font-weight: 900;
+}
+.stats-tab-pane {
+    display: none;
+}
+.stats-tab-pane.active {
+    display: block;
+    animation: fadeInTabPane 0.22s ease forwards;
+}
+@keyframes fadeInTabPane {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* ── OFFICIAL A4 PRINT MEDIA STYLESHEET ────────────────────── */
 @media print {
     @page {
@@ -11145,58 +11207,21 @@ dialog#statsDialog::backdrop {
                         </div>
                     </div>
 
-                    <!-- Quick Table Navigation Index -->
-                    <div class="sidebar-table-nav">
-                        <div class="sidebar-table-nav-title">
-                            <span>📑</span>
-                            <span>دسترسی مستقیم به جداول</span>
+                    <!-- Field Passport Card -->
+                    <div class="sidebar-passport-card" style="margin-top:16px; background:#faf7f2; border:1px solid #e7dcce; border-radius:14px; padding:14px; font-size:11.5px; color:#5c6e6a; line-height:1.75; box-shadow:0 2px 8px rgba(0,0,0,0.02);">
+                        <div style="font-weight:900; color:#142a29; margin-bottom:6px; display:flex; align-items:center; gap:6px; font-size:12.5px;">
+                            <span style="color:#b45309;">📌</span>
+                            <span>شناسنامه میدانی آبادی</span>
                         </div>
-                        <button class="sidebar-table-nav-btn" data-target-acc="schools">
-                            <span>🏫 آمار مدارس و پایه‌ها</span>
-                            <span style="font-size:10px; color:#8c8273;">↓</span>
-                        </button>
-                        <button class="sidebar-table-nav-btn" data-target-acc="vulnerable">
-                            <span>🤝 پرونده‌های نیازمندان</span>
-                            <span style="font-size:10px; color:#8c8273;">↓</span>
-                        </button>
-                        <button class="sidebar-table-nav-btn" data-target-acc="health">
-                            <span>🏥 بهداشت و سلامت</span>
-                            <span style="font-size:10px; color:#8c8273;">↓</span>
-                        </button>
-                        <button class="sidebar-table-nav-btn" data-target-acc="jobs">
-                            <span>💼 اشتغال و زیرساخت</span>
-                            <span style="font-size:10px; color:#8c8273;">↓</span>
-                        </button>
+                        <div>اطلاعات این پرونده بر پایه آخرین سرشماری خانه به خانه، پایش میدانی قرارگاه، و داده‌های رسمی مدارس و خانه‌های بهداشت منطقه شلمچه تدوین و صحه‌گذاری شده است.</div>
+                        <div style="margin-top:10px; padding-top:8px; border-top:1px dashed #e2d5c3; display:flex; justify-content:space-between; align-items:center; font-size:11px;">
+                            <span style="color:#8c7e6c;">وضعیت صحه‌گذاری:</span>
+                            <span style="color:#15803d; font-weight:800; display:inline-flex; align-items:center; gap:4px;">
+                                <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:#10b981;"></span>
+                                تأیید میدانی
+                            </span>
+                        </div>
                     </div>
-
-                    <div class="sidebar-actions" style="margin-top:auto; display:flex; flex-direction:column; gap:8px;">
-                        
-                        <button class="sidebar-btn-secondary" id="sideCompareBtn">
-                            <span>📊</span>
-                            <span>مقایسه تطبیقی روستاها</span>
-                        </button>
-                    </div>
-        <div class="sidebar-priority-card" style="margin-top: 15px; border-radius: 20px;">
-            <div class="sidebar-priority-title" style="margin-bottom:10px;">
-                <span>🕸️ نمودار وضعیت زیرساخت‌ها</span>
-            </div>
-            <div class="radar-box">
-                <div class="radar-shape"></div>
-                <div class="radar-label rl-1">بهداشت</div>
-                <div class="radar-label rl-2">آموزش</div>
-                <div class="radar-label rl-3">آبرسانی</div>
-                <div class="radar-label rl-4">اشتغال</div>
-                <div class="radar-label rl-5">جاده</div>
-            </div>
-        </div>
-        
-        <div class="heatmap-container">
-            <div style="font-size:12px; font-weight:800; color:#475569;">گزارش توالی امدادرسانی (۱۲ ماه)</div>
-            <div class="heatmap-grid" id="aidHeatmap">
-                <!-- Dynamically filled or static demo -->
-            </div>
-        </div>
-    
                 </aside>
 
                 <!-- Main Executive Content -->
@@ -24768,245 +24793,274 @@ addEventListener('resize', layout); layout();
                 if (!container) return;
 
                 container.innerHTML = `
-                    ${renderCLevelCockpitHtml(v, data)}
-
-                    <!-- 3-CHAPTER DOSSIER NAVIGATION (وضعیت، خدمات، حمایت) -->
-                    <div class="dossier-chapters-nav" id="dossierChaptersNav">
-                        <button type="button" class="chapter-tab active" data-chapter="all">
-                            <span>📑</span>
-                            <span>همه فصل‌ها (جامع)</span>
+                    <!-- 4-TAB NAVIGATION BAR -->
+                    <div class="stats-tabs-bar" id="statsTabsBar">
+                        <button type="button" class="stats-tab-btn active" data-tab="statsPaneOverview">
+                            <span>📊</span>
+                            <span>نمای کلی و شاخص‌ها</span>
                         </button>
-                        <button type="button" class="chapter-tab" data-chapter="status">
-                            <span style="color:#c47920;">📊</span>
-                            <span>فصل ۱: وضعیت و جمعیت</span>
+                        <button type="button" class="stats-tab-btn" data-tab="statsPaneDemographics">
+                            <span>🎒</span>
+                            <span>جامعه و آموزش</span>
                         </button>
-                        <button type="button" class="chapter-tab" data-chapter="services">
-                            <span style="color:#1a7f78;">🏥</span>
-                            <span>فصل ۲: خدمات و زیرساخت</span>
+                        <button type="button" class="stats-tab-btn" data-tab="statsPaneWelfare">
+                            <span>🤝</span>
+                            <span>بانک پرونده‌ها و ایتام</span>
                         </button>
-                        <button type="button" class="chapter-tab" data-chapter="support">
-                            <span style="color:#963128;">🤝</span>
-                            <span>فصل ۳: حمایت و کرامت انسان</span>
+                        <button type="button" class="stats-tab-btn" data-tab="statsPaneActions">
+                            <span>🏗️</span>
+                            <span>اقدامات و پروژه‌ها</span>
                         </button>
-                    </div>
-                    <div class="dossier-search-bar-wrap">
-                        <div class="dossier-search-input-box">
-                            <span style="font-size:15px; color:#8c6823;">🔍</span>
-                            <input type="text" id="dossierLiveSearchInput" placeholder="جستجوی درجا در پرونده‌ها (نام مددجو، کد ملی، مدرسه، پایه تحصیلی، بیماری)..." aria-label="جستجوی درجا در پرونده‌ها">
-                            <button type="button" id="dossierClearSearchBtn" style="display:none; background:none; border:none; color:#8c7e6c; font-size:14px; cursor:pointer;" title="پاکسازی">✕</button>
-                        </div>
-                        <div class="dossier-toggle-actions">
-                            <button type="button" class="dossier-toggle-btn" id="dossierExpandAllBtn" title="باز کردن تمام جداول و بخش‌ها">⊞ گسترش همه</button>
-                            <button type="button" class="dossier-toggle-btn" id="dossierCollapseAllBtn" title="بستن تمام جداول">⊟ بستن همه</button>
-                        </div>
-                    </div>
-                    <!-- REGIONAL BENCHMARK COMPARATIVE STRIP (سنجش تحلیلی روستا در برابر میانگین منطقه) -->
-                    <div class="exec-benchmark-strip">
-                        <div style="display:flex; align-items:center; gap:10px;">
-                            <span style="font-size:22px;">📊</span>
-                            <div>
-                                <div style="font-weight:900; font-size:13.5px; color:#142a29;">سنجش آماری روستا در مقایسه با میانگین منطقه</div>
-                                <div style="font-size:11px; color:#637370;">مقایسه تحلیلی با میانگین ۱۹ روستای حوزه شلمچه (جمعیت، بعد خانوار، نرخ تکفل)</div>
-                            </div>
-                        </div>
-                        <div style="display:flex; align-items:center; gap:18px; flex-wrap:wrap;">
-                            <div class="benchmark-metric-box">
-                                <span class="benchmark-metric-label">وضعیت جمعیتی</span>
-                                <span class="benchmark-metric-val" style="color:#0284c7;">${parseInt(String(data.pop).replace(/[,،]/g, '')) >= 2200 ? '▲ پرجمعیت‌تر از میانگین' : '▼ کم‌جمعیت‌تر از میانگین'}</span>
-                            </div>
-                            <div class="benchmark-divider"></div>
-                            <div class="benchmark-metric-box">
-                                <span class="benchmark-metric-label">بُعد خانوار</span>
-                                <span class="benchmark-metric-val" style="color:#b45309;">${data.famSub || '۴.۰ نفر'}</span>
-                            </div>
-                            <div class="benchmark-divider"></div>
-                            <div class="benchmark-metric-box">
-                                <span class="benchmark-metric-label">پرونده‌های حمایتی</span>
-                                <span class="benchmark-metric-val" style="color:#b91c1c;">${data.disabled || '۰'} پرونده ثبت‌شده</span>
-                            </div>
-                            <div class="benchmark-divider"></div>
-                            <div class="benchmark-metric-box">
-                                <span class="benchmark-metric-label">فوریت مداخله</span>
-                                <span class="benchmark-metric-val" style="color:#15803d;">${data.priorityRank ? data.priorityRank.split(' ')[0] + ' ' + (data.priorityRank.split(' ')[1] || '') : 'تحت رصد'}</span>
-                            </div>
-                        </div>
                     </div>
 
-                    ${(villageSchoolDatasets[v.id] || (v.id === 'maslavi' ? villageSchoolDatasets['maslavi-1'] : null)) ? `
-                    <!-- EDUCATIONAL DEEP-DIVE & GRADE-BY-GRADE FUNNEL CHART -->
-                    <div class="school-stats-card">
-                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; padding-bottom:12px; border-bottom:1px solid #ebdcc5;">
-                            <div>
-                                <h3 style="margin:0; font-size:14.5px; font-weight:900; color:#142a29; display:flex; align-items:center; gap:8px;">
-                                    <span style="color:#15803d; font-size:18px;">🎓</span>
-                                    <span>تحلیل آماری هرم پایه‌های تحصیلی و مدارس (${(villageSchoolDatasets[v.id] || villageSchoolDatasets['maslavi-1']).schoolName})</span>
-                                </h3>
-                                <div style="font-size:11.5px; color:#6b7c78; margin-top:3px;">
-                                    مجموع: <strong>${(villageSchoolDatasets[v.id] || villageSchoolDatasets['maslavi-1']).total} دانش‌آموز</strong> · میانگین: ${(villageSchoolDatasets[v.id] || villageSchoolDatasets['maslavi-1']).avg} · بیشترین تراکم: <span style="color:#b45309; font-weight:800;">${(villageSchoolDatasets[v.id] || villageSchoolDatasets['maslavi-1']).peak}</span>
+                    <!-- TAB 1: نمای کلی و شاخص‌ها -->
+                    <div class="stats-tab-pane active" id="statsPaneOverview">
+                        ${renderCLevelCockpitHtml(v, data)}
+
+                        <!-- REGIONAL BENCHMARK COMPARATIVE STRIP (سنجش تحلیلی روستا در برابر میانگین منطقه) -->
+                        <div class="exec-benchmark-strip">
+                            <div style="display:flex; align-items:center; gap:10px;">
+                                <span style="font-size:22px;">📊</span>
+                                <div>
+                                    <div style="font-weight:900; font-size:13.5px; color:#142a29;">سنجش آماری روستا در مقایسه با میانگین منطقه</div>
+                                    <div style="font-size:11px; color:#637370;">مقایسه تحلیلی با میانگین ۱۹ روستای حوزه شلمچه (جمعیت، بعد خانوار، نرخ تکفل)</div>
                                 </div>
                             </div>
-                            <span style="background:#dcfce7; border:1px solid #86efac; color:#15803d; font-size:11px; font-weight:800; padding:4px 10px; border-radius:6px;">
-                                پوشش فعال تحصیلی
-                            </span>
-                        </div>
-                        <div class="school-grades-grid">
-                            ${(villageSchoolDatasets[v.id] || villageSchoolDatasets['maslavi-1']).grades.map(g => `
-                                <div class="grade-bar-card">
-                                    <div class="grade-bar-label">${g.label}</div>
-                                    <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
-                                        <div class="grade-bar-count">${g.count} <span style="font-size:11px; font-weight:600; color:#64748b;">نفر</span></div>
-                                        <div class="grade-bar-percent">${g.pct}</div>
-                                    </div>
-                                    <div class="grade-progress-track">
-                                        <div class="grade-progress-fill" style="width:${g.w}%;"></div>
-                                    </div>
+                            <div style="display:flex; align-items:center; gap:18px; flex-wrap:wrap;">
+                                <div class="benchmark-metric-box">
+                                    <span class="benchmark-metric-label">وضعیت جمعیتی</span>
+                                    <span class="benchmark-metric-val" style="color:#0284c7;">${parseInt(String(data.pop).replace(/[,،]/g, '')) >= 2200 ? '▲ پرجمعیت‌تر از میانگین' : '▼ کم‌جمعیت‌تر از میانگین'}</span>
                                 </div>
-                            `).join('')}
+                                <div class="benchmark-divider"></div>
+                                <div class="benchmark-metric-box">
+                                    <span class="benchmark-metric-label">بُعد خانوار</span>
+                                    <span class="benchmark-metric-val" style="color:#b45309;">${data.famSub || '۴.۰ نفر'}</span>
+                                </div>
+                                <div class="benchmark-divider"></div>
+                                <div class="benchmark-metric-box">
+                                    <span class="benchmark-metric-label">پرونده‌های حمایتی</span>
+                                    <span class="benchmark-metric-val" style="color:#b91c1c;">${data.disabled || '۰'} پرونده ثبت‌شده</span>
+                                </div>
+                                <div class="benchmark-divider"></div>
+                                <div class="benchmark-metric-box">
+                                    <span class="benchmark-metric-label">فوریت مداخله</span>
+                                    <span class="benchmark-metric-val" style="color:#15803d;">${data.priorityRank ? data.priorityRank.split(' ')[0] + ' ' + (data.priorityRank.split(' ')[1] || '') : 'تحت رصد'}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 0. EXECUTIVE STRATEGIC PERFORMANCE & PROGRESS BARS MATRIX -->
+                        <div class="exec-matrix-container">
+                            <div class="exec-matrix-header">
+                                <div>
+                                    <h3 class="exec-matrix-title">
+                                        <span style="color:#c6a15b; font-size:18px;">⚡</span>
+                                        <span>داشبورد وضعیت شاخص‌های راهبردی و ممیزی میدانی (${data.name})</span>
+                                    </h3>
+                                    <div class="exec-matrix-subtitle">پایش کمّی و وضعیت پوشش شاخص‌های ۶ گانه توسعه و خدمات روستایی با نوارهای پیشرفت بر اساس آخرین سرشماری میدانی</div>
+                                </div>
+                                <div style="display:flex; align-items:center; gap:8px;">
+                                    <span style="font-size:11.5px; font-weight:800; color:#173833; background:#faf5eb; border:1px solid #ebd9bf; padding:4px 10px; border-radius:8px;">
+                                        موقعیت: ${data.priorityRank}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="exec-indicators-grid">
+                                ${(data.indicators || []).map(ind => `
+                                    <div class="exec-indicator-card">
+                                        <div class="exec-indicator-top">
+                                            <span class="exec-indicator-title">${ind.title}</span>
+                                            <span class="exec-indicator-badge ${ind.statusCls}">${ind.status}</span>
+                                        </div>
+                                        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px;">
+                                            <span style="font-size:11px; color:#788885; font-weight:700;">ضریب تحقق / پوشش:</span>
+                                            <span class="exec-indicator-percent">${ind.percentFa}</span>
+                                        </div>
+                                        <div class="exec-progress-track">
+                                            <div class="exec-progress-fill ${ind.fillCls || (ind.percent >= 80 ? 'fill-emerald' : (ind.percent >= 60 ? 'fill-amber' : 'fill-rose'))}" style="width: ${ind.percent}%;"></div>
+                                        </div>
+                                        <div class="exec-indicator-desc">
+                                            <span>${ind.desc}</span>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
                         </div>
                     </div>
-                    ` : ''}
 
-                    <!-- 0. EXECUTIVE STRATEGIC PERFORMANCE & PROGRESS BARS MATRIX -->
-                    <div class="exec-matrix-container">
-                        <div class="exec-matrix-header">
-                            <div>
-                                <h3 class="exec-matrix-title">
-                                    <span style="color:#c6a15b; font-size:18px;">⚡</span>
-                                    <span>داشبورد وضعیت شاخص‌های راهبردی و ممیزی میدانی (${data.name})</span>
-                                </h3>
-                                <div class="exec-matrix-subtitle">پایش کمّی و وضعیت پوشش شاخص‌های ۶ گانه توسعه و خدمات روستایی با نوارهای پیشرفت بر اساس آخرین سرشماری میدانی</div>
-                            </div>
-                            <div style="display:flex; align-items:center; gap:8px;">
-                                <span style="font-size:11.5px; font-weight:800; color:#173833; background:#faf5eb; border:1px solid #ebd9bf; padding:4px 10px; border-radius:8px;">
-                                    موقعیت: ${data.priorityRank}
+                    <!-- TAB 2: جامعه و آموزش -->
+                    <div class="stats-tab-pane" id="statsPaneDemographics">
+                        ${(villageSchoolDatasets[v.id] || (v.id === 'maslavi' ? villageSchoolDatasets['maslavi-1'] : null)) ? `
+                        <!-- EDUCATIONAL DEEP-DIVE & GRADE-BY-GRADE FUNNEL CHART -->
+                        <div class="school-stats-card">
+                            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; padding-bottom:12px; border-bottom:1px solid #ebdcc5;">
+                                <div>
+                                    <h3 style="margin:0; font-size:14.5px; font-weight:900; color:#142a29; display:flex; align-items:center; gap:8px;">
+                                        <span style="color:#15803d; font-size:18px;">🎓</span>
+                                        <span>تحلیل آماری هرم پایه‌های تحصیلی و مدارس (${(villageSchoolDatasets[v.id] || villageSchoolDatasets['maslavi-1']).schoolName})</span>
+                                    </h3>
+                                    <div style="font-size:11.5px; color:#6b7c78; margin-top:3px;">
+                                        مجموع: <strong>${(villageSchoolDatasets[v.id] || villageSchoolDatasets['maslavi-1']).total} دانش‌آموز</strong> · میانگین: ${(villageSchoolDatasets[v.id] || villageSchoolDatasets['maslavi-1']).avg} · بیشترین تراکم: <span style="color:#b45309; font-weight:800;">${(villageSchoolDatasets[v.id] || villageSchoolDatasets['maslavi-1']).peak}</span>
+                                    </div>
+                                </div>
+                                <span style="background:#dcfce7; border:1px solid #86efac; color:#15803d; font-size:11px; font-weight:800; padding:4px 10px; border-radius:6px;">
+                                    پوشش فعال تحصیلی
                                 </span>
                             </div>
-                        </div>
-
-                        <div class="exec-indicators-grid">
-                            ${(data.indicators || []).map(ind => `
-                                <div class="exec-indicator-card">
-                                    <div class="exec-indicator-top">
-                                        <span class="exec-indicator-title">${ind.title}</span>
-                                        <span class="exec-indicator-badge ${ind.statusCls}">${ind.status}</span>
-                                    </div>
-                                    <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px;">
-                                        <span style="font-size:11px; color:#788885; font-weight:700;">ضریب تحقق / پوشش:</span>
-                                        <span class="exec-indicator-percent">${ind.percentFa}</span>
-                                    </div>
-                                    <div class="exec-progress-track">
-                                        <div class="exec-progress-fill ${ind.fillCls || (ind.percent >= 80 ? 'fill-emerald' : (ind.percent >= 60 ? 'fill-amber' : 'fill-rose'))}" style="width: ${ind.percent}%;"></div>
-                                    </div>
-                                    <div class="exec-indicator-desc">
-                                        <span>${ind.desc}</span>
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-
-                    <!-- 1. Dedicated Collapsible Tables Section (Closed by default per Senior Designer UX & Speed) -->
-                    <div style="background:#ffffff; border:1px solid #d9ccb4; border-radius:14px; padding:18px 20px; box-shadow:0 2px 12px rgba(0,0,0,0.03); margin-bottom:20px;">
-                        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid #ebdcc5;">
-                            <div>
-                                <h3 style="margin:0; font-size:15px; font-weight:900; color:#142a29; display:flex; align-items:center; gap:8px;">
-                                    <span style="color:#b45309;">📑</span>
-                                    <span>جداول تفصیلی، ممیزی و آمار میدانی (${data.name})</span>
-                                </h3>
-                                <div style="font-size:11.5px; color:#6b7c78; margin-top:3px;">بهینه‌سازی‌شده برای بارگذاری سریع داده‌های حجیم · جهت مشاهده سطرها، روی عنوان هر جدول کلیک کنید.</div>
-                            </div>
-                            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-                                <button id="btnExportTablesCsv" type="button" style="background:#f0fdf4; border:1px solid #86efac; color:#166534; font-weight:800; font-size:11px; padding:5px 12px; border-radius:8px; cursor:pointer; display:inline-flex; align-items:center; gap:5px; transition:all 0.15s ease;" title="دریافت فایل اکسل / CSV جداول آماری و پرونده‌ها">
-                                    <span>📊</span>
-                                    <span>خروجی اکسل (CSV)</span>
-                                </button>
-                                <button id="btnPrintDossierA4" type="button" style="background:#fefce8; border:1px solid #fde047; color:#854d0e; font-weight:800; font-size:11px; padding:5px 12px; border-radius:8px; cursor:pointer; display:inline-flex; align-items:center; gap:5px; transition:all 0.15s ease;" title="چاپ کارنامه آماری رسمی روستا">
-                                    <span>🖨️</span>
-                                    <span>چاپ کارنامه A4</span>
-                                </button>
-                                <button id="btnOpenAllAccs" type="button" style="background:#fdfcf9; border:1px solid #c6a15b; color:#142a29; font-weight:800; font-size:11px; padding:5px 12px; border-radius:8px; cursor:pointer; transition:all 0.15s ease;">⤢ باز کردن همه</button>
-                                <button id="btnCloseAllAccs" type="button" style="background:#fff; border:1px solid #d9ccb4; color:#5c6e6a; font-weight:700; font-size:11px; padding:5px 12px; border-radius:8px; cursor:pointer; transition:all 0.15s ease;">⤡ بستن همه</button>
-                            </div>
-                        </div>
-
-                        <!-- Real-time search across all table rows -->
-                        <div style="margin-bottom:14px;">
-                            <input type="text" id="liveTableSearch" placeholder="🔍 جستجوی سریع در نام، کدملی، شماره تلفن، مدرسه، آدرس..." style="width:100%; box-sizing:border-box; padding:9px 14px; border:1px solid #d9ccb4; border-radius:9px; font-size:12.5px; font-family:YekanBakh,sans-serif; background:#faf7f2; outline:none; transition:border-color 0.2s ease;">
-                        </div>
-
-                        <!-- Accordions Injected Here (Closed by default) -->
-                        <div id="villageAccordionsWrap">
-                            ${accordionsHtml}
-                        </div>
-                    </div>
-
-                    <!-- 2. Demographics, Age Pyramid & Field Priorities -->
-                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px;">
-                        <div class="exec-section" style="margin-bottom:0;">
-                            <div class="exec-section-header">
-                                <h4 class="exec-section-title">📊 ترکیب ساختار سنی و آموزشی</h4>
-                            </div>
-                            <div class="age-pyramid-grid">
-                                ${data.agePyramid.map(a => `
-                                    <div class="age-bracket-card">
-                                        <div class="age-bracket-percent">${a.percent}</div>
-                                        <div class="age-bracket-label">${a.label}</div>
-                                        <div class="age-bracket-count">${a.count}</div>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-
-                        <div class="exec-section" style="margin-bottom:0;">
-                            <div class="exec-section-header">
-                                <h4 class="exec-section-title">🎯 رادار نیازسنجی و فوریت‌های مداخله</h4>
-                            </div>
-                            <div style="display:flex; flex-direction:column; gap:10px;">
-                                <div style="background:#fef2f2; border:1px solid #fecaca; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
-                                    <span style="font-weight:800; font-size:12.5px; color:#b91c1c;">تقویت و پایداری فشار آب شرب</span>
-                                    <span class="sidebar-priority-pill p-high">اولویت فوری</span>
-                                </div>
-                                <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
-                                    <span style="font-weight:800; font-size:12.5px; color:#b45309;">توسعه کارگاه‌های مشاغل خرد بانوان</span>
-                                    <span class="sidebar-priority-pill p-med">در دست اقدام</span>
-                                </div>
-                                <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
-                                    <span style="font-weight:800; font-size:12.5px; color:#15803d;">پوشش تحصیلی و تجهیز مدارس</span>
-                                    <span class="sidebar-priority-pill p-good">تکمیل و تثبیت</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 3. Health & Disabilities Overview -->
-                    <div class="exec-section">
-                        <div class="exec-section-header">
-                            <h4 class="exec-section-title">♿ تفکیک آماری توان‌یابی و بهزیستی (${data.disabled} نفر)</h4>
-                        </div>
-                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
-                            <div>
-                                ${data.disabilities.map(d => `
-                                    <div class="disability-row">
-                                        <div class="disability-meta">
-                                            <span>${d.label}</span>
-                                            <span>${d.count} (${d.percent})</span>
+                            <div class="school-grades-grid">
+                                ${(villageSchoolDatasets[v.id] || villageSchoolDatasets['maslavi-1']).grades.map(g => `
+                                    <div class="grade-bar-card">
+                                        <div class="grade-bar-label">${g.label}</div>
+                                        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+                                            <div class="grade-bar-count">${g.count} <span style="font-size:11px; font-weight:600; color:#64748b;">نفر</span></div>
+                                            <div class="grade-bar-percent">${g.pct}</div>
                                         </div>
-                                        <div class="disability-track">
-                                            <div class="disability-fill" style="width:${d.percent};"></div>
+                                        <div class="grade-progress-track">
+                                            <div class="grade-progress-fill" style="width:${g.w}%;"></div>
                                         </div>
                                     </div>
                                 `).join('')}
                             </div>
-                            <div style="background:#faf7f2; border:1px solid #e5d8c3; border-radius:12px; padding:16px; display:flex; flex-direction:column; justify-content:center; gap:10px;">
-                                <div style="font-weight:800; color:#142a29; font-size:13px;">دسترسی به خدمات سلامت و فوریت‌های پزشکی</div>
-                                <div style="font-size:12px; color:#5c6e6a; line-height:1.8;">
-                                    • دسترسی در ساعات کاری: ۵ الی ۱۰ دقیقه تا خانه بهداشت منطقه با حضور بهورز مقیم.<br>
-                                    • خارج از ساعات کاری: ۱۵ الی ۲۵ دقیقه تا بیمارستان‌های ولیعصر (عج) و طالقانی خرمشهر تحت پوشش اورژانس ۱۱۵ پل‌نو.
+                        </div>
+                        ` : ''}
+
+                        <!-- 2. Demographics, Age Pyramid & Field Priorities -->
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px;">
+                            <div class="exec-section" style="margin-bottom:0;">
+                                <div class="exec-section-header">
+                                    <h4 class="exec-section-title">📊 ترکیب ساختار سنی و آموزشی</h4>
+                                </div>
+                                <div class="age-pyramid-grid">
+                                    ${data.agePyramid.map(a => `
+                                        <div class="age-bracket-card">
+                                            <div class="age-bracket-percent">${a.percent}</div>
+                                            <div class="age-bracket-label">${a.label}</div>
+                                            <div class="age-bracket-count">${a.count}</div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+
+                            <div class="exec-section" style="margin-bottom:0;">
+                                <div class="exec-section-header">
+                                    <h4 class="exec-section-title">🎯 رادار نیازسنجی و فوریت‌های مداخله</h4>
+                                </div>
+                                <div style="display:flex; flex-direction:column; gap:10px;">
+                                    <div style="background:#fef2f2; border:1px solid #fecaca; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+                                        <span style="font-weight:800; font-size:12.5px; color:#b91c1c;">تقویت و پایداری فشار آب شرب</span>
+                                        <span class="sidebar-priority-pill p-high">اولویت فوری</span>
+                                    </div>
+                                    <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+                                        <span style="font-weight:800; font-size:12.5px; color:#b45309;">توسعه کارگاه‌های مشاغل خرد بانوان</span>
+                                        <span class="sidebar-priority-pill p-med">در دست اقدام</span>
+                                    </div>
+                                    <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center;">
+                                        <span style="font-weight:800; font-size:12.5px; color:#15803d;">پوشش تحصیلی و تجهیز مدارس</span>
+                                        <span class="sidebar-priority-pill p-good">تکمیل و تثبیت</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- TAB 3: بانک پرونده‌ها و ایتام -->
+                    <div class="stats-tab-pane" id="statsPaneWelfare">
+                        <div class="dossier-search-bar-wrap">
+                            <div class="dossier-search-input-box">
+                                <span style="font-size:15px; color:#8c6823;">🔍</span>
+                                <input type="text" id="dossierLiveSearchInput" placeholder="جستجوی درجا در پرونده‌ها (نام مددجو، کد ملی، مدرسه، پایه تحصیلی، بیماری)..." aria-label="جستجوی درجا در پرونده‌ها">
+                                <button type="button" id="dossierClearSearchBtn" style="display:none; background:none; border:none; color:#8c7e6c; font-size:14px; cursor:pointer;" title="پاکسازی">✕</button>
+                            </div>
+                            <div class="dossier-toggle-actions">
+                                <button type="button" class="dossier-toggle-btn" id="dossierExpandAllBtn" title="باز کردن تمام جداول و بخش‌ها">⊞ گسترش همه</button>
+                                <button type="button" class="dossier-toggle-btn" id="dossierCollapseAllBtn" title="بستن تمام جداول">⊟ بستن همه</button>
+                            </div>
+                        </div>
+
+                        <!-- 3. Health & Disabilities Overview -->
+                        <div class="exec-section">
+                            <div class="exec-section-header">
+                                <h4 class="exec-section-title">♿ تفکیک آماری توان‌یابی و بهزیستی (${data.disabled} نفر)</h4>
+                            </div>
+                            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                                <div>
+                                    ${data.disabilities.map(d => `
+                                        <div class="disability-row">
+                                            <div class="disability-meta">
+                                                <span>${d.label}</span>
+                                                <span>${d.count} (${d.percent})</span>
+                                            </div>
+                                            <div class="disability-track">
+                                                <div class="disability-fill" style="width:${d.percent};"></div>
+                                            </div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                                <div style="background:#faf7f2; border:1px solid #e5d8c3; border-radius:12px; padding:16px; display:flex; flex-direction:column; justify-content:center; gap:10px;">
+                                    <div style="font-weight:800; color:#142a29; font-size:13px;">دسترسی به خدمات سلامت و فوریت‌های پزشکی</div>
+                                    <div style="font-size:12px; color:#5c6e6a; line-height:1.8;">
+                                        • دسترسی در ساعات کاری: ۵ الی ۱۰ دقیقه تا خانه بهداشت منطقه با حضور بهورز مقیم.<br>
+                                        • خارج از ساعات کاری: ۱۵ الی ۲۵ دقیقه تا بیمارستان‌های ولیعصر (عج) و طالقانی خرمشهر تحت پوشش اورژانس ۱۱۵ پل‌نو.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 1. Dedicated Collapsible Tables Section (Closed by default per Senior Designer UX & Speed) -->
+                        <div style="background:#ffffff; border:1px solid #d9ccb4; border-radius:14px; padding:18px 20px; box-shadow:0 2px 12px rgba(0,0,0,0.03); margin-top:20px;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid #ebdcc5;">
+                                <div>
+                                    <h3 style="margin:0; font-size:15px; font-weight:900; color:#142a29; display:flex; align-items:center; gap:8px;">
+                                        <span style="color:#b45309;">📑</span>
+                                        <span>جداول تفصیلی، ممیزی و آمار میدانی (${data.name})</span>
+                                    </h3>
+                                    <div style="font-size:11.5px; color:#6b7c78; margin-top:3px;">بهینه‌سازی‌شده برای بارگذاری سریع داده‌های حجیم · جهت مشاهده سطرها، روی عنوان هر جدول کلیک کنید.</div>
+                                </div>
+                                <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                                    <button id="btnExportTablesCsv" type="button" style="background:#f0fdf4; border:1px solid #86efac; color:#166534; font-weight:800; font-size:11px; padding:5px 12px; border-radius:8px; cursor:pointer; display:inline-flex; align-items:center; gap:5px; transition:all 0.15s ease;" title="دریافت فایل اکسل / CSV جداول آماری و پرونده‌ها">
+                                        <span>📊</span>
+                                        <span>خروجی اکسل (CSV)</span>
+                                    </button>
+                                    <button id="btnPrintDossierA4" type="button" style="background:#fefce8; border:1px solid #fde047; color:#854d0e; font-weight:800; font-size:11px; padding:5px 12px; border-radius:8px; cursor:pointer; display:inline-flex; align-items:center; gap:5px; transition:all 0.15s ease;" title="چاپ کارنامه آماری رسمی روستا">
+                                        <span>🖨️</span>
+                                        <span>چاپ کارنامه A4</span>
+                                    </button>
+                                    <button id="btnOpenAllAccs" type="button" style="background:#fdfcf9; border:1px solid #c6a15b; color:#142a29; font-weight:800; font-size:11px; padding:5px 12px; border-radius:8px; cursor:pointer; transition:all 0.15s ease;">⤢ باز کردن همه</button>
+                                    <button id="btnCloseAllAccs" type="button" style="background:#fff; border:1px solid #d9ccb4; color:#5c6e6a; font-weight:700; font-size:11px; padding:5px 12px; border-radius:8px; cursor:pointer; transition:all 0.15s ease;">⤡ بستن همه</button>
+                                </div>
+                            </div>
+
+                            <!-- Real-time search across all table rows -->
+                            <div style="margin-bottom:14px;">
+                                <input type="text" id="liveTableSearch" placeholder="🔍 جستجوی سریع در نام، کدملی، شماره تلفن، مدرسه، آدرس..." style="width:100%; box-sizing:border-box; padding:9px 14px; border:1px solid #d9ccb4; border-radius:9px; font-size:12.5px; font-family:YekanBakh,sans-serif; background:#faf7f2; outline:none; transition:border-color 0.2s ease;">
+                            </div>
+
+                            <!-- Accordions Injected Here (Closed by default) -->
+                            <div id="villageAccordionsWrap">
+                                ${accordionsHtml}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 4: اقدامات و پروژه‌ها -->
+                    <div class="stats-tab-pane" id="statsPaneActions">
+                        <div id="villageTimelineMount"></div>
+                        <div id="villageProjectsMount" style="margin-top:20px;"></div>
                     </div>
                 `;
+
+                // Bind 4-Tab Navigation Clicks
+                container.querySelectorAll('.stats-tab-btn').forEach(btn => {
+                    btn.onclick = () => {
+                        const targetId = btn.getAttribute('data-tab');
+                        container.querySelectorAll('.stats-tab-btn').forEach(b => b.classList.remove('active'));
+                        container.querySelectorAll('.stats-tab-pane').forEach(p => p.classList.remove('active'));
+                        btn.classList.add('active');
+                        const targetPane = document.getElementById(targetId);
+                        if (targetPane) targetPane.classList.add('active');
+                    };
+                });
 
                 // =============================================================
                 // SMOOTH LIVE ODOMETER ANIMATION FOR POPULATION AND HOUSEHOLDS
@@ -25073,16 +25127,16 @@ addEventListener('resize', layout); layout();
                 if (isEmptyVillage && typeof window.renderDashedEmptyState === 'function') {
                     const emptyMount = document.createElement('div');
                     emptyMount.innerHTML = window.renderDashedEmptyState(v, data);
-                    const chaptersNav = document.getElementById('dossierChaptersNav');
-                    if (chaptersNav && chaptersNav.parentNode) {
-                        chaptersNav.parentNode.insertBefore(emptyMount, chaptersNav);
+                    const tabsBar = document.getElementById('statsTabsBar');
+                    if (tabsBar && tabsBar.parentNode) {
+                        tabsBar.parentNode.insertBefore(emptyMount, tabsBar);
                     }
                 } else if (isPeopleMode && typeof window.renderScrollytellingNarrative === 'function') {
                     const scrollyMount = document.createElement('div');
                     scrollyMount.innerHTML = window.renderScrollytellingNarrative(v, data);
-                    const chaptersNav = document.getElementById('dossierChaptersNav');
-                    if (chaptersNav && chaptersNav.parentNode) {
-                        chaptersNav.parentNode.insertBefore(scrollyMount, chaptersNav);
+                    const tabsBar = document.getElementById('statsTabsBar');
+                    if (tabsBar && tabsBar.parentNode) {
+                        tabsBar.parentNode.insertBefore(scrollyMount, tabsBar);
                     }
                 }
 
@@ -28121,8 +28175,8 @@ document.addEventListener('click', (e) => {
 
     // Render Timeline Block
     function renderVillageTimeline(villageId) {
-        const container = document.getElementById('execTabContentContainer');
-        if (!container) return;
+        const mount = document.getElementById('villageTimelineMount') || document.getElementById('execTabContentContainer');
+        if (!mount) return;
         
         // Remove existing timeline if any
         const existing = document.getElementById('villageOperationalTimeline');
@@ -28157,8 +28211,8 @@ document.addEventListener('click', (e) => {
             </div>
         `;
 
-        // Append to container
-        container.insertAdjacentHTML('beforeend', timelineHtml);
+        // Append to mount
+        mount.insertAdjacentHTML('beforeend', timelineHtml);
     }
 
     // Update Live Badges on Category Chips
@@ -28461,14 +28515,14 @@ document.addEventListener('click', (e) => {
                 }
 
                 // Append the 4 strategic sections into tab container
-                const container = document.getElementById('execTabContentContainer');
-                if (container) {
+                const mount = document.getElementById('villageProjectsMount') || document.getElementById('execTabContentContainer');
+                if (mount) {
                     // Remove old strategic block if any
-                    const oldBlocks = container.querySelectorAll('.strategic-cat-section');
+                    const oldBlocks = document.querySelectorAll('.strategic-cat-section');
                     oldBlocks.forEach(b => b.remove());
 
                     const sectionsHtml = buildStrategicSectionsHtml(v.id);
-                    container.insertAdjacentHTML('beforeend', sectionsHtml);
+                    mount.insertAdjacentHTML('beforeend', sectionsHtml);
                 }
             };
             console.log('Strategic Field Sections successfully integrated!');
@@ -30797,107 +30851,8 @@ document.addEventListener('click', (e) => {
     };
 
     function hookDossierMount() {
-        if (typeof renderExecutiveDashboard === 'function') {
-            const prevRender = renderExecutiveDashboard;
-            renderExecutiveDashboard = function(v) {
-                prevRender(v);
-                
-                const container = document.getElementById('execTabContentContainer');
-                if (!container) return;
-
-                // 1. Inject Anomaly Pulse Strip at top (if not already present)
-                if (!document.getElementById('anomalyPulseStripModule')) {
-                    const anomalyWrap = document.createElement('div');
-                    anomalyWrap.innerHTML = window.renderAnomalyPulseStrip();
-                    container.insertBefore(anomalyWrap.firstElementChild, container.firstChild);
-                }
-
-                // 2. Inject Before/After Slider Card (if not already present)
-                if (!document.getElementById('villageBeforeAfterMount')) {
-                    const baCard = document.createElement('div');
-                    baCard.id = 'villageBeforeAfterMount';
-                    container.appendChild(baCard);
-                    window.renderBeforeAfterModule('villageBeforeAfterMount');
-                }
-
-                // 3. Inject Contribution Rhythm Calendar (if not already present)
-                if (!document.getElementById('villageRhythmMount')) {
-                    const rhythmCard = document.createElement('div');
-                    rhythmCard.id = 'villageRhythmMount';
-                    container.appendChild(rhythmCard);
-                    window.renderContributionRhythm('villageRhythmMount');
-                }
-
-                // 4. Inject Oral History with Margin Notes (if not already present)
-                if (!document.getElementById('villageOralHistoryMount')) {
-                    const oralCard = document.createElement('div');
-                    oralCard.id = 'villageOralHistoryMount';
-                    oralCard.innerHTML = window.renderOralHistoryArticle();
-                    container.appendChild(oralCard);
-                }
-
-                // 5. Inject Priority Stack (if not already present)
-                if (!document.getElementById('villagePriorityStackMount')) {
-                    const pCard = document.createElement('div');
-                    pCard.id = 'villagePriorityStackMount';
-                    container.appendChild(pCard);
-                    window.renderPriorityStack('villagePriorityStackMount');
-                }
-
-                // --- NEW STATS ENHANCEMENTS ATTACHMENTS ---
-                // 6. Capability Checklist
-                if (!document.getElementById('villageCapabilityChecklistMount')) {
-                    const capMount = document.createElement('div');
-                    capMount.id = 'villageCapabilityChecklistMount';
-                    capMount.innerHTML = window.renderCapabilityChecklist();
-                    container.appendChild(capMount);
-                }
-
-                // 7. Regional Benchmark Bars
-                if (!document.getElementById('villageBenchmarkBarsMount')) {
-                    const benchMount = document.createElement('div');
-                    benchMount.id = 'villageBenchmarkBarsMount';
-                    benchMount.innerHTML = window.renderRegionalBenchmarkBars();
-                    container.appendChild(benchMount);
-                }
-
-                // 8. Target vs Actual Milestones
-                if (!document.getElementById('villageMilestonesMount')) {
-                    const mileMount = document.createElement('div');
-                    mileMount.id = 'villageMilestonesMount';
-                    mileMount.innerHTML = window.renderTargetVsActualMilestones();
-                    container.appendChild(mileMount);
-                }
-
-                // 9. Needs Assessment Breakdown
-                if (!document.getElementById('villageNeedsAssessmentMount')) {
-                    const needsMount = document.createElement('div');
-                    needsMount.id = 'villageNeedsAssessmentMount';
-                    needsMount.innerHTML = window.renderNeedsAssessmentBreakdown();
-                    container.appendChild(needsMount);
-                }
-
-                // 10. Voxel Land Use Map
-                if (!document.getElementById('villageLandUseMount')) {
-                    const landMount = document.createElement('div');
-                    landMount.id = 'villageLandUseMount';
-                    landMount.innerHTML = window.renderLandUseVoxel();
-                    container.appendChild(landMount);
-                }
-
-                // 11. Field Audit Trail Strip
-                if (!document.getElementById('villageFieldAuditMount')) {
-                    const auditMount = document.createElement('div');
-                    auditMount.id = 'villageFieldAuditMount';
-                    auditMount.innerHTML = window.renderFieldAuditTrail();
-                    container.appendChild(auditMount);
-                }
-            };
-        
-            console.log('✓ VibePrompt Senior Suite successfully mounted to village dossier lifecycle!');
-        } else {
-            setTimeout(hookDossierMount, 200);
-        }
+        // Disabled experimental clutter injection cards per user mandate to streamline statsDialog
+        console.log('✓ StatsDialog experimental clutter cards successfully disabled');
     }
 
     if (document.readyState === 'loading') {
