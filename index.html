@@ -5124,7 +5124,8 @@ body {
 header {
     background: linear-gradient(180deg, rgba(8, 16, 15, 0.95) 0%, rgba(8, 16, 15, 0.75) 70%, transparent 100%) !important;
 }
-.brand {
+header .brand {
+    margin-top: 14px !important;
     filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.8)) !important;
 }
 .search-input-inner {
@@ -30412,61 +30413,6 @@ document.addEventListener('click', (e) => {
     };
 
 
-    // -------------------------------------------------------------
-    // 7. QUICK ACCESS KEYBOARD LISTENERS
-    // -------------------------------------------------------------
-    document.addEventListener('keydown', function(e) {
-        // Ignore if typing in input or textarea
-        if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable)) return;
-
-        // 'A' or 'a' for Approvals Workspace
-        if (e.key === 'a' || e.key === 'A' || e.key === 'ش') {
-            e.preventDefault();
-            window.openApprovalsWorkspace();
-        }
-
-        // 'B' or 'b' for Before / After
-        if (e.key === 'b' || e.key === 'B' || e.key === 'ذ') {
-            e.preventDefault();
-            window.openBeforeAfterModal();
-        }
-    });
-
-
-    // -------------------------------------------------------------
-    // 8. HEADER INJECTION: ADD ACCESS BUTTONS TO NAVBAR
-    // -------------------------------------------------------------
-    function injectHeaderQuickButtons() {
-        const analysisWrap = document.getElementById('analysisDropdownWrap');
-        if (!analysisWrap) return;
-
-        // Check if quick buttons already injected
-        if (document.getElementById('navApprovalsQuickBtn')) return;
-
-        const wrap = document.createElement('div');
-        wrap.style.display = 'flex';
-        wrap.style.alignItems = 'center';
-        wrap.style.gap = '6px';
-        wrap.innerHTML = `
-            <button type="button" class="nav-action-btn" id="navApprovalsQuickBtn" onclick="window.openApprovalsWorkspace()" title="کارتابل موافقت‌ها و ابلاغ اعتبار (کلید A)">
-                <span style="font-size:14px;">⚡</span>
-                <span>کارتابل موافقت‌ها</span>
-                <span style="background:#fef3c7; color:#92400e; font-size:10px; font-weight:800; padding:1px 6px; border-radius:100px;">۳</span>
-            </button>
-            <button type="button" class="nav-action-btn" id="navBeforeAfterQuickBtn" onclick="window.openBeforeAfterModal()" title="مقایسه تصاویر قبل و بعد (کلید B)">
-                <span style="font-size:14px;">🎚️</span>
-                <span>قبل و بعد</span>
-            </button>
-        `;
-
-        analysisWrap.parentNode.insertBefore(wrap, analysisWrap);
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', injectHeaderQuickButtons);
-    } else {
-        injectHeaderQuickButtons();
-    }
 
     
     // -------------------------------------------------------------
@@ -30867,55 +30813,6 @@ document.addEventListener('click', (e) => {
 </script>
 
 
-<!-- ========================================================================= -->
-<!-- VIBEPROMPTS ADVANCED MASTER SUITE MODALS & DIALOGS                        -->
-<!-- ========================================================================= -->
-
-<!-- 1. APPROVALS WORKSPACE MODAL (کارتابل موافقت‌ها و ابلاغ اعتبارات) -->
-<dialog id="approvalsDialog" class="approvals-dialog" aria-labelledby="approvalsModalTitle">
-    <div class="approvals-layout">
-        <!-- Queue List -->
-        <div class="approvals-queue-pane">
-            <div class="approvals-queue-head">
-                <div class="approvals-queue-title-row">
-                    <div class="approvals-queue-title">
-                        <span>⚡</span>
-                        <span id="approvalsModalTitle">کارتابل موافقت‌ها و ابلاغ اعتبار</span>
-                    </div>
-                    <span class="approvals-pending-badge" id="approvalsPendingCounter">۳ در انتظار</span>
-                </div>
-                <div class="approvals-filters-row">
-                    <button type="button" class="approvals-filter-chip active" data-filter="all">همه (۵)</button>
-                    <button type="button" class="approvals-filter-chip" data-filter="pending">در انتظار (۳)</button>
-                    <button type="button" class="approvals-filter-chip" data-filter="approved">تأیید شده (۱)</button>
-                    <button type="button" class="approvals-filter-chip" data-filter="rejected">عودت / رد (۱)</button>
-                </div>
-            </div>
-            <div class="approvals-requests-list" id="approvalsQueueContainer">
-                <!-- Dynamically populated via JS -->
-            </div>
-        </div>
-
-        <!-- Detail Drawer -->
-        <div class="approvals-detail-pane" id="approvalsDetailDrawer">
-            <!-- Dynamically populated via JS -->
-        </div>
-    </div>
-</dialog>
-
-<!-- 2. BEFORE / AFTER FULL-SCREEN MODAL -->
-<dialog id="beforeAfterDialog" class="approvals-dialog" style="max-width:960px; height:auto; max-height:90vh; padding:24px;" aria-labelledby="baModalTitle">
-    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;">
-        <div style="display:flex; align-items:center; gap:8px;">
-            <span style="font-size:20px;">🎚️</span>
-            <h3 id="baModalTitle" style="font-size:16px; font-weight:900; margin:0; color:#1e140a;">مقایسه هوایی و میدانی قبل و بعد از مداخله جهادی</h3>
-        </div>
-        <button type="button" class="dossier-back-btn" onclick="document.getElementById('beforeAfterDialog').close();" style="padding:6px 14px;">✕ بستن</button>
-    </div>
-    <div id="beforeAfterModalContainer">
-        <!-- Injected via JS -->
-    </div>
-</dialog>
 
 
 
