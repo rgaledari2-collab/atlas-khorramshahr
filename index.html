@@ -8094,7 +8094,8 @@ header {
 
 /* Dominant Card (آمار و شناسنامه) */
 .v-side-card.is-dominant {
-    flex: 1.45 !important;
+    flex: 0 0 auto !important;
+    min-height: fit-content !important;
     border: 1.8px solid rgba(198, 146, 59, 0.55) !important;
     background: linear-gradient(145deg, rgba(32, 23, 16, 0.95) 0%, rgba(20, 14, 10, 0.97) 100%) !important;
     box-shadow: 0 14px 38px rgba(0, 0, 0, 0.65), 0 0 24px var(--bronze-glow), inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
@@ -8160,7 +8161,9 @@ header {
 
 /* Secondary Card (خدمات و پروژه‌ها) */
 .v-side-card.is-secondary {
-    flex: 0.85 !important;
+    flex: 0 0 auto !important;
+    min-height: fit-content !important;
+    overflow: visible !important;
     border: 1px solid rgba(255, 255, 255, 0.12) !important;
     background: linear-gradient(145deg, rgba(22, 16, 12, 0.88) 0%, rgba(16, 11, 8, 0.92) 100%) !important;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
@@ -8536,7 +8539,7 @@ dialog#statsDialog::backdrop {
 
 
 /* =========================================================================
-   SERVICES & INFRASTRUCTURE DOSSIER DIALOG (#servicesDialog)
+   SERVICES & INFRASTRUCTURE DOSSIER DIALOG (#servicesDialog) - LIGHT THEME
    ========================================================================= */
 dialog#servicesDialog,
 #servicesDialog {
@@ -8548,10 +8551,10 @@ dialog#servicesDialog,
     height: min(92vh, 880px) !important;
     max-height: 92vh !important;
     border-radius: 20px !important;
-    background: #0b1816 !important;
-    color: #e2e8f0 !important;
-    border: 1px solid rgba(237, 211, 149, 0.35) !important;
-    box-shadow: 0 35px 100px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+    background: #fdfbf7 !important;
+    color: #142a29 !important;
+    border: 1.5px solid #dfd5c4 !important;
+    box-shadow: 0 35px 100px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(0, 0, 0, 0.05) !important;
     display: none !important;
     flex-direction: column !important;
     overflow: hidden !important;
@@ -8568,7 +8571,7 @@ dialog#servicesDialog[open],
 }
 
 dialog#servicesDialog::backdrop {
-    background: rgba(4, 12, 11, 0.85) !important;
+    background: rgba(14, 24, 22, 0.6) !important;
     backdrop-filter: blur(8px) !important;
     -webkit-backdrop-filter: blur(8px) !important;
 }
@@ -8579,8 +8582,8 @@ dialog#servicesDialog::backdrop {
 }
 
 .services-dialog-head {
-    background: linear-gradient(135deg, #132b27 0%, #0c1a18 100%);
-    border-bottom: 1px solid rgba(237, 211, 149, 0.25);
+    background: linear-gradient(135deg, #ffffff 0%, #faf6ee 100%) !important;
+    border-bottom: 1.5px solid #dfd5c4 !important;
     padding: 16px 24px;
     display: flex;
     justify-content: space-between;
@@ -8601,13 +8604,13 @@ dialog#servicesDialog::backdrop {
     gap: 8px;
     font-size: 12px;
     font-weight: 700;
-    color: #c6a15b;
+    color: #8a6d3b;
 }
 
 .kicker-badge {
-    background: rgba(237, 211, 149, 0.15);
-    border: 1px solid rgba(237, 211, 149, 0.35);
-    color: #edd395;
+    background: #f5eedf !important;
+    border: 1px solid #dcd0bc !important;
+    color: #8a6d3b !important;
     padding: 2px 8px;
     border-radius: 4px;
     font-size: 11px;
@@ -8618,13 +8621,13 @@ dialog#servicesDialog::backdrop {
     margin: 0;
     font-size: 20px;
     font-weight: 800;
-    color: #ffffff;
+    color: #142a29 !important;
 }
 
 .services-village-badge {
-    background: rgba(16, 185, 129, 0.15);
-    border: 1px solid rgba(16, 185, 129, 0.35);
-    color: #34d399;
+    background: #ecfdf5 !important;
+    border: 1px solid #a7f3d0 !important;
+    color: #047857 !important;
     padding: 3px 10px;
     border-radius: 20px;
     font-size: 11.5px;
@@ -8640,23 +8643,24 @@ dialog#servicesDialog::backdrop {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(237, 211, 149, 0.25);
+    background: #ffffff !important;
+    border: 1px solid #dcd0bc !important;
     padding: 6px 12px;
     border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
 .switcher-label {
     font-size: 12px;
-    color: #94a3b8;
+    color: #64748b;
     font-weight: 600;
     white-space: nowrap;
 }
 
 .services-switcher-select {
-    background: #112824;
-    color: #edd395;
-    border: 1px solid rgba(237, 211, 149, 0.4);
+    background: #fdfbf7 !important;
+    color: #142a29 !important;
+    border: 1px solid #d9ccb4 !important;
     border-radius: 6px;
     padding: 4px 10px;
     font-family: inherit;
@@ -8672,11 +8676,34 @@ dialog#servicesDialog::backdrop {
     gap: 10px;
 }
 
+.services-head-left .dossier-back-btn {
+    background: #ffffff !important;
+    border: 1px solid #dcd0bc !important;
+    color: #142a29 !important;
+    font-weight: 700 !important;
+}
+
+.services-head-left .dossier-back-btn:hover {
+    background: #f5eedf !important;
+    border-color: #b45309 !important;
+    color: #b45309 !important;
+}
+
+.services-head-left .close {
+    background: rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+    color: #142a29 !important;
+}
+
+.services-head-left .close:hover {
+    background: rgba(0, 0, 0, 0.1) !important;
+}
+
 .services-dialog-body {
     flex: 1;
     overflow-y: auto;
     padding: 20px 24px 30px;
-    background: #091514;
+    background: #fdfbf7 !important;
     display: flex;
     flex-direction: column;
     gap: 18px;
@@ -8690,18 +8717,20 @@ dialog#servicesDialog::backdrop {
 }
 
 .serv-kpi-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #ffffff !important;
+    border: 1px solid #ebdcc5 !important;
     border-radius: 14px;
     padding: 14px 16px;
     position: relative;
     overflow: hidden;
-    transition: transform 0.2s, border-color 0.2s;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03) !important;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .serv-kpi-card:hover {
     transform: translateY(-2px);
-    border-color: rgba(237, 211, 149, 0.4);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.07) !important;
+    border-color: #dcd0bc !important;
 }
 
 .serv-kpi-card::before {
@@ -8710,13 +8739,13 @@ dialog#servicesDialog::backdrop {
     top: 0;
     right: 0;
     left: 0;
-    height: 3px;
+    height: 3.5px;
 }
 
-.kpi-gold::before { background: linear-gradient(90deg, #d4af37, #edd395); }
-.kpi-emerald::before { background: linear-gradient(90deg, #059669, #10b981); }
-.kpi-amber::before { background: linear-gradient(90deg, #d97706, #f59e0b); }
-.kpi-blue::before { background: linear-gradient(90deg, #0284c7, #38bdf8); }
+.kpi-gold::before { background: linear-gradient(90deg, #d97706, #f59e0b) !important; }
+.kpi-emerald::before { background: linear-gradient(90deg, #059669, #10b981) !important; }
+.kpi-amber::before { background: linear-gradient(90deg, #0284c7, #38bdf8) !important; }
+.kpi-blue::before { background: linear-gradient(90deg, #4f46e5, #818cf8) !important; }
 
 .serv-kpi-top {
     display: flex;
@@ -8732,33 +8761,38 @@ dialog#servicesDialog::backdrop {
 .serv-kpi-label {
     font-size: 12px;
     font-weight: 700;
-    color: #94a3b8;
+    color: #64748b !important;
 }
 
 .serv-kpi-val {
     font-size: 20px;
     font-weight: 900;
-    color: #ffffff;
+    color: #142a29 !important;
     margin-bottom: 4px;
 }
 
+.kpi-gold .serv-kpi-val { color: #b45309 !important; }
+.kpi-emerald .serv-kpi-val { color: #047857 !important; }
+.kpi-amber .serv-kpi-val { color: #0369a1 !important; }
+.kpi-blue .serv-kpi-val { color: #3730a3 !important; }
+
 .serv-kpi-sub {
     font-size: 11px;
-    color: #cbd5e1;
+    color: #64748b !important;
 }
 
 /* Tabs Bar */
 .services-tabs-bar {
     display: flex;
     gap: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1.5px solid #dfd5c4 !important;
     padding-bottom: 12px;
 }
 
 .serv-tab-btn {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #94a3b8;
+    background: #f5eedf !important;
+    border: 1px solid #dfd5c4 !important;
+    color: #64748b !important;
     padding: 8px 18px;
     border-radius: 10px;
     font-family: inherit;
@@ -8772,19 +8806,21 @@ dialog#servicesDialog::backdrop {
 }
 
 .serv-tab-btn:hover {
-    background: rgba(255, 255, 255, 0.08);
-    color: #fff;
+    background: #ffffff !important;
+    color: #142a29 !important;
 }
 
 .serv-tab-btn.active {
-    background: rgba(237, 211, 149, 0.15);
-    border-color: #edd395;
-    color: #edd395;
+    background: #ffffff !important;
+    border: 1.5px solid #b45309 !important;
+    color: #b45309 !important;
+    font-weight: 800 !important;
+    box-shadow: 0 3px 10px rgba(180, 83, 9, 0.1) !important;
 }
 
 .serv-tab-count {
-    background: rgba(237, 211, 149, 0.25);
-    color: #edd395;
+    background: #fef3c7 !important;
+    color: #b45309 !important;
     font-size: 11px;
     font-weight: 800;
     padding: 2px 7px;
@@ -8800,20 +8836,21 @@ dialog#servicesDialog::backdrop {
 }
 
 .serv-event-item {
-    background: rgba(255, 255, 255, 0.025);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: #ffffff !important;
+    border: 1px solid #ebdcc5 !important;
     border-radius: 10px;
     padding: 10px 12px;
     display: flex;
     align-items: center;
     gap: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02) !important;
 }
 
 .event-icon {
     font-size: 20px;
     width: 36px;
     height: 36px;
-    background: rgba(255, 255, 255, 0.05);
+    background: #f5eedf !important;
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -8829,12 +8866,12 @@ dialog#servicesDialog::backdrop {
 
 .event-info strong {
     font-size: 12.5px;
-    color: #fff;
+    color: #142a29 !important;
 }
 
 .event-info small {
     font-size: 11px;
-    color: #94a3b8;
+    color: #64748b !important;
     margin-top: 2px;
 }
 
@@ -8845,9 +8882,9 @@ dialog#servicesDialog::backdrop {
     border-radius: 6px;
 }
 
-.tag-purple { background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4); }
-.tag-green { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
-.tag-red { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
+.tag-purple { background: #faf5ff !important; color: #7e22ce !important; border: 1px solid #e9d5ff !important; }
+.tag-green { background: #ecfdf5 !important; color: #047857 !important; border: 1px solid #a7f3d0 !important; }
+.tag-red { background: #fef2f2 !important; color: #b91c1c !important; border: 1px solid #fecaca !important; }
 
 /* Controls Bar */
 .serv-controls-bar {
@@ -8866,9 +8903,9 @@ dialog#servicesDialog::backdrop {
 }
 
 .serv-cat-chip {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #94a3b8;
+    background: #ffffff !important;
+    border: 1px solid #d9ccb4 !important;
+    color: #475569 !important;
     padding: 5px 12px;
     border-radius: 20px;
     font-family: inherit;
@@ -8876,52 +8913,59 @@ dialog#servicesDialog::backdrop {
     font-weight: 700;
     cursor: pointer;
     transition: all 0.15s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 .serv-cat-chip:hover {
-    background: rgba(255, 255, 255, 0.08);
-    color: #fff;
+    background: #f5eedf !important;
+    color: #142a29 !important;
 }
 
 .serv-cat-chip.active {
-    background: #edd395;
-    border-color: #edd395;
-    color: #0b1a18;
-    font-weight: 800;
+    background: #142a29 !important;
+    border-color: #142a29 !important;
+    color: #edd395 !important;
+    font-weight: 800 !important;
 }
 
 .serv-search-box {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: #ffffff !important;
+    border: 1px solid #d9ccb4 !important;
     border-radius: 10px;
     padding: 6px 12px;
     flex: 1;
     max-width: 360px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.serv-search-box svg {
+    color: #94a3b8;
 }
 
 .serv-search-box input {
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #fff;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    color: #142a29 !important;
     font-family: inherit;
     font-size: 12.5px;
     width: 100%;
 }
 
 .serv-search-box input::placeholder {
-    color: #64748b;
+    color: #94a3b8 !important;
 }
 
 /* Beneficiaries Table */
 .serv-table-wrapper {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #ffffff !important;
+    border: 1px solid #ebdcc5 !important;
     border-radius: 14px;
     overflow-x: auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02) !important;
 }
 
 .serv-table {
@@ -8932,13 +8976,13 @@ dialog#servicesDialog::backdrop {
 }
 
 .serv-table thead tr {
-    background: rgba(255, 255, 255, 0.04);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: #faf6ee !important;
+    border-bottom: 1.5px solid #ebdcc5 !important;
 }
 
 .serv-table th {
     padding: 12px 14px;
-    color: #edd395;
+    color: #475569 !important;
     font-weight: 800;
     font-size: 12px;
     white-space: nowrap;
@@ -8946,12 +8990,12 @@ dialog#servicesDialog::backdrop {
 
 .serv-table td {
     padding: 12px 14px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    color: #e2e8f0;
+    border-bottom: 1px solid #ebdcc5 !important;
+    color: #1e293b !important;
 }
 
 .serv-table tbody tr:hover td {
-    background: rgba(255, 255, 255, 0.035);
+    background: #faf7f2 !important;
 }
 
 /* Infrastructure Grid */
@@ -8962,10 +9006,11 @@ dialog#servicesDialog::backdrop {
 }
 
 .infra-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #ffffff !important;
+    border: 1px solid #ebdcc5 !important;
     border-radius: 14px;
     padding: 18px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02) !important;
 }
 
 .infra-card-header {
@@ -8973,7 +9018,7 @@ dialog#servicesDialog::backdrop {
     align-items: center;
     gap: 10px;
     margin-bottom: 14px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid #ebdcc5 !important;
     padding-bottom: 10px;
 }
 
@@ -8985,12 +9030,12 @@ dialog#servicesDialog::backdrop {
     margin: 0;
     font-size: 14px;
     font-weight: 800;
-    color: #edd395;
+    color: #142a29 !important;
 }
 
 .infra-card-header small {
     font-size: 11px;
-    color: #94a3b8;
+    color: #64748b !important;
 }
 
 .infra-item {
@@ -8999,7 +9044,7 @@ dialog#servicesDialog::backdrop {
 
 .infra-item strong {
     font-size: 12px;
-    color: #38bdf8;
+    color: #0284c7 !important;
     display: block;
     margin-bottom: 4px;
 }
@@ -9008,7 +9053,59 @@ dialog#servicesDialog::backdrop {
     margin: 0;
     font-size: 12px;
     line-height: 1.8;
-    color: #cbd5e1;
+    color: #475569 !important;
+}
+
+/* Modal Stacking & Z-Index Guarantee: Person Dossier opens above Services Dialog */
+dialog#personDossierDialog,
+#personDossierDialog {
+    z-index: 10005 !important;
+    position: fixed !important;
+    inset: 0 !important;
+    margin: auto !important;
+}
+
+dialog#personDossierDialog::backdrop {
+    z-index: 10004 !important;
+    background: rgba(14, 24, 22, 0.75) !important;
+    backdrop-filter: blur(8px) !important;
+}
+
+/* Card 2 Secondary & Compact Pills Fix (No Clipping/Under-lap) */
+.v-side-card.is-secondary {
+    flex: 1 0 auto !important;
+    min-height: fit-content !important;
+    overflow: visible !important;
+    padding: 12px 14px !important;
+}
+
+.v-metrics-list.secondary-metrics {
+    padding: 8px 10px !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    margin: 4px 0 !important;
+}
+
+.v-metric-compact-pills {
+    display: flex !important;
+    gap: 6px !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 2px 0 !important;
+}
+
+.compact-status-pill {
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    padding: 4px 8px !important;
+    border-radius: 6px !important;
+    white-space: nowrap !important;
+    line-height: 1.3 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    box-sizing: border-box !important;
 }
 
 @media (max-width: 900px) {
@@ -22486,6 +22583,7 @@ addEventListener('resize', layout); layout();
     "village": "عریض"
   }
 ];
+            window.searchableData = searchableData;
             let currentSearchCategory = 'all';
             let activeHighlightedIndex = -1;
             let currentSelectedPerson = null;
@@ -31934,37 +32032,44 @@ document.addEventListener('click', (e) => {
                 count++;
 
                 const servicesPills = hh.services.map(s => {
-                    let color = '#d97706';
-                    let bg = 'rgba(217,119,6,0.15)';
-                    let border = 'rgba(217,119,6,0.3)';
-                    if (s.serviceCategory === 'health') { color = '#34d399'; bg = 'rgba(16,185,129,0.15)'; border = 'rgba(16,185,129,0.3)'; }
-                    else if (s.serviceCategory === 'meat') { color = '#f87171'; bg = 'rgba(239,68,68,0.15)'; border = 'rgba(239,68,68,0.3)'; }
+                    let color = '#b45309';
+                    let bg = '#fef3c7';
+                    let border = '#fde68a';
+                    if (s.serviceCategory === 'health') {
+                        color = '#047857';
+                        bg = '#ecfdf5';
+                        border = '#a7f3d0';
+                    } else if (s.serviceCategory === 'meat') {
+                        color = '#b91c1c';
+                        bg = '#fef2f2';
+                        border = '#fecaca';
+                    }
 
                     const dateFa = toFa(s.date || '');
-                    return `<span style="background:${bg}; color:${color}; border:1px solid ${border}; font-size:10.5px; font-weight:700; padding:2px 7px; border-radius:4px; margin-left:3px; display:inline-block; margin-bottom:3px;" title="${s.valFormatted}">✓ ${s.title} (${dateFa})</span>`;
+                    return `<span style="background:${bg}; color:${color}; border:1px solid ${border}; font-size:10px; font-weight:700; padding:2px 7px; border-radius:5px; margin-left:3px; display:inline-block; margin-bottom:3px;" title="${s.valFormatted}">✓ ${s.title} (${dateFa})</span>`;
                 }).join('') || '<span style="color:#64748b; font-size:11px;">در نوبت تخصیص</span>';
 
                 const kidsBadges = hh.children.map(c => `
-                    <span style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); padding:2px 6px; border-radius:4px; font-size:10.5px; color:#e2e8f0; margin-left:2px; display:inline-block; margin-bottom:2px;" title="${c.fatherName ? 'فرزند ' + c.fatherName : ''} · ${c.education}">
-                        🧒 ${c.name} (${toFa(c.age)} ساله)
-                    </span>
-                `).join('') || '<span style="color:#64748b; font-size:11px;">—</span>';
+                    <button type="button" class="view-child-dossier-btn" data-child-name="${c.name}" style="background:#f1f5f9; border:1px solid #cbd5e1; padding:2px 7px; border-radius:6px; font-size:10.5px; color:#1e293b; margin-left:3px; display:inline-flex; align-items:center; gap:3px; margin-bottom:3px; cursor:pointer; font-family:inherit; transition:all 0.15s ease;" title="${c.fatherName ? 'فرزند ' + c.fatherName : ''} · ${c.education || ''} (مشاهده شناسنامه فردی ↗)">
+                        🧒 ${c.name} (${toFa(c.age)} ساله) ↗
+                    </button>
+                `).join('') || '<span style="color:#94a3b8; font-size:11px;">—</span>';
 
                 return `
-                    <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.15s ease;">
-                        <td style="padding:12px; font-size:11.5px; font-weight:700; color:#94a3b8; text-align:center;">${toFa(idx + 1)}</td>
+                    <tr style="border-bottom:1px solid #ebdcc5; transition:background 0.15s ease;">
+                        <td style="padding:12px; font-size:11.5px; font-weight:700; color:#64748b; text-align:center;">${toFa(idx + 1)}</td>
                         <td style="padding:12px;">
-                            <div style="font-weight:800; font-size:13.5px; color:#ffffff;">${hh.guardianName}</div>
-                            <div style="font-size:11px; color:#94a3b8; margin-top:3px;">
+                            <div class="view-guardian-name" data-hh-id="${hh.id}" style="font-weight:800; font-size:13.5px; color:#142a29; cursor:pointer; display:inline-block;" title="مشاهده شناسنامه سرپرست">${hh.guardianName}</div>
+                            <div style="font-size:11px; color:#64748b; margin-top:3px;">
                                 ${hh.guardianAge ? toFa(hh.guardianAge) + ' ساله · ' : ''}📍 ${hh.address || hh.villageName}
                             </div>
                         </td>
                         <td style="padding:12px;">
-                            <div style="font-size:12px; color:#edd395; font-weight:700; font-family:monospace;">${hh.guardianNid ? toFa(hh.guardianNid) : '—'}</div>
-                            <div style="font-size:11px; color:#94a3b8; margin-top:2px; direction:ltr; text-align:right;">${hh.phone ? toFa(hh.phone) : '—'}</div>
+                            <div style="font-size:12px; color:#1e293b; font-weight:700; font-family:monospace;">${hh.guardianNid ? toFa(hh.guardianNid) : '—'}</div>
+                            <div style="font-size:11px; color:#64748b; margin-top:2px; direction:ltr; text-align:right;">${hh.phone ? toFa(hh.phone) : '—'}</div>
                         </td>
                         <td style="padding:12px; max-width:240px;">
-                            <div style="margin-bottom:3px; font-size:11px; color:#cbd5e1; font-weight:700;">
+                            <div style="margin-bottom:4px; font-size:11px; color:#475569; font-weight:700;">
                                 ${toFa(hh.children.length)} فرزند / یتیم تحت پوشش:
                             </div>
                             <div style="display:flex; flex-wrap:wrap; gap:2px;">
@@ -31972,21 +32077,24 @@ document.addEventListener('click', (e) => {
                             </div>
                         </td>
                         <td style="padding:12px;">
-                            <div style="display:flex; flex-wrap:wrap; gap:3px;">
-                                <span class="search-badge-orphan" style="font-size:10.5px; padding:2px 7px;">ایتام</span>
-                                <span class="search-badge-priority" style="font-size:10.5px; padding:2px 7px;">معیشتی</span>
+                            <div style="display:flex; flex-wrap:wrap; gap:3px; margin-bottom:5px;">
+                                <span class="search-badge-orphan" style="font-size:10px; padding:2px 7px; background:#fef3c7; color:#b45309; border:1px solid #fde68a;">ایتام</span>
+                                <span class="search-badge-priority" style="font-size:10px; padding:2px 7px; background:#ecfdf5; color:#047857; border:1px solid #a7f3d0;">معیشتی</span>
+                            </div>
+                            <div style="display:flex; flex-wrap:wrap; gap:2px;">
+                                ${servicesPills}
                             </div>
                         </td>
-                        <td style="padding:12px; font-size:12.5px; font-weight:800; color:#f59e0b; text-align:left; white-space:nowrap; direction:ltr;">
+                        <td style="padding:12px; font-size:12.5px; font-weight:800; color:#b45309; text-align:left; white-space:nowrap; direction:ltr;">
                             ${hh.totalValFormatted}
                         </td>
                         <td style="padding:12px; text-align:center;">
-                            <span style="background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.35); color:#34d399; font-size:11px; font-weight:700; padding:3px 8px; border-radius:6px; display:inline-block;">
+                            <span style="background:#ecfdf5; border:1px solid #a7f3d0; color:#047857; font-size:11px; font-weight:700; padding:3px 8px; border-radius:6px; display:inline-block;">
                                 تحویل شده ✓
                             </span>
                         </td>
                         <td style="padding:12px; text-align:center;">
-                            <button type="button" class="view-hh-dossier-btn" data-hh-id="${hh.id}" style="background:linear-gradient(135deg, #1c3835, #0f2421); color:#edd395; border:1px solid rgba(237,211,149,0.4); padding:5px 10px; border-radius:6px; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit; transition:all 0.15s ease; white-space:nowrap;">
+                            <button type="button" class="view-hh-dossier-btn" data-hh-id="${hh.id}" style="background:#f5eedf; color:#8a6d3b; border:1.5px solid #d9ccb4; padding:5px 12px; border-radius:6px; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit; transition:all 0.15s ease; white-space:nowrap; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
                                 شناسنامه ↗
                             </button>
                         </td>
@@ -31999,15 +32107,15 @@ document.addEventListener('click', (e) => {
                 const vName = isAll ? 'منطقه' : (villageNamesMap[currentVillageId] || currentVillageId);
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="8" style="text-align:center; padding:45px 20px; color:#94a3b8;">
+                        <td colspan="8" style="text-align:center; padding:45px 20px; color:#64748b;">
                             <div style="font-size:32px; margin-bottom:10px;">📋</div>
-                            <div style="font-size:14px; font-weight:800; color:#edd395; margin-bottom:6px;">
+                            <div style="font-size:14px; font-weight:800; color:#142a29; margin-bottom:6px;">
                                 هنوز رکوردی در اکسل اول برای روستای ${vName} درج نشده است
                             </div>
-                            <div style="font-size:12px; color:#cbd5e1; max-width:480px; margin:0 auto 16px; line-height:1.8;">
+                            <div style="font-size:12px; color:#475569; max-width:480px; margin:0 auto 16px; line-height:1.8;">
                                 با بارگذاری فایل‌های اکسل تکمیلی، اطلاعات خدمات و مددجویان این روستا بلافاصله در این کارپوشه قرار خواهد گرفت.
                             </div>
-                            <button type="button" id="btnShowAllFromEmpty" style="background:rgba(237,211,149,0.15); border:1px solid #edd395; color:#edd395; padding:6px 16px; border-radius:8px; font-family:inherit; font-size:12px; font-weight:700; cursor:pointer;">
+                            <button type="button" id="btnShowAllFromEmpty" style="background:#f5eedf; border:1.5px solid #d9ccb4; color:#142a29; padding:6px 16px; border-radius:8px; font-family:inherit; font-size:12px; font-weight:700; cursor:pointer;">
                                 مشاهده کارنامه خدمات سایر روستاهای منطقه ←
                             </button>
                         </td>
@@ -32020,7 +32128,7 @@ document.addEventListener('click', (e) => {
             } else if (!rowsHtml) {
                 tableBody.innerHTML = `
                     <tr>
-                        <td colspan="8" style="text-align:center; padding:35px; color:#94a3b8; font-size:13px;">
+                        <td colspan="8" style="text-align:center; padding:35px; color:#64748b; font-size:13px;">
                             موردی با فیلتر یا عبارت جست‌وجوی مدنظر در این روستا یافت نشد.
                         </td>
                     </tr>
@@ -32029,14 +32137,18 @@ document.addEventListener('click', (e) => {
                 tableBody.innerHTML = rowsHtml;
             }
 
-            // Bind click to open person dossier
-            tableBody.querySelectorAll('.view-hh-dossier-btn').forEach(btn => {
-                btn.onclick = () => {
-                    const hhId = btn.getAttribute('data-hh-id');
-                    const hh = servicesData.find(h => h.id === hhId);
-                    if (!hh) return;
-                    const p = window.searchableData.find(item => item.title === hh.guardianName) || {
+            // Helper to open guardian dossier
+            const openGuardian = (hhId) => {
+                const hh = servicesData.find(h => h.id === hhId);
+                if (!hh) return;
+                let p = null;
+                if (Array.isArray(window.searchableData)) {
+                    p = window.searchableData.find(item => item.type === 'person' && (item.title === hh.guardianName || (hh.guardianNid && item.nationalId === hh.guardianNid)));
+                }
+                if (!p) {
+                    p = {
                         type: 'person',
+                        personType: 'guardian',
                         title: hh.guardianName,
                         badge: 'سرپرست خانوار',
                         village: hh.villageName,
@@ -32047,7 +32159,37 @@ document.addEventListener('click', (e) => {
                         totalVal: hh.totalValFormatted,
                         children: hh.children
                     };
-                    if (typeof window.openPersonDossier === 'function') {
+                }
+                if (typeof window.openPersonDossier === 'function') {
+                    window.openPersonDossier(p);
+                }
+            };
+
+            // Bind click to open person dossier (button & name)
+            tableBody.querySelectorAll('.view-hh-dossier-btn').forEach(btn => {
+                btn.onclick = (e) => {
+                    e.stopPropagation();
+                    openGuardian(btn.getAttribute('data-hh-id'));
+                };
+            });
+            tableBody.querySelectorAll('.view-guardian-name').forEach(el => {
+                el.onclick = (e) => {
+                    e.stopPropagation();
+                    openGuardian(el.getAttribute('data-hh-id'));
+                };
+            });
+
+            // Bind click to open child/orphan dossier directly
+            tableBody.querySelectorAll('.view-child-dossier-btn').forEach(btn => {
+                btn.onclick = (e) => {
+                    e.stopPropagation();
+                    const childName = btn.getAttribute('data-child-name');
+                    if (!childName) return;
+                    let p = null;
+                    if (Array.isArray(window.searchableData)) {
+                        p = window.searchableData.find(item => item.type === 'person' && item.title === childName);
+                    }
+                    if (p && typeof window.openPersonDossier === 'function') {
                         window.openPersonDossier(p);
                     }
                 };
