@@ -6544,9 +6544,9 @@ dialog#statsDialog::backdrop {
     border-radius: 14px;
     margin-bottom: 20px;
     border: 1px solid #e7dcce;
-    position: sticky;
-    top: 0;
-    z-index: 20;
+    position: relative !important;
+    top: auto !important;
+    z-index: 2 !important;
     box-shadow: 0 4px 14px rgba(20, 42, 41, 0.04);
 }
 .stats-tab-btn {
@@ -24237,6 +24237,10 @@ addEventListener('resize', layout); layout();
                         try {
                             if (!statsDlg.open) statsDlg.showModal();
                             statsDlg.scrollTop = 0;
+                            const mainContent = statsDlg.querySelector('.exec-main-content');
+                            if (mainContent) mainContent.scrollTop = 0;
+                            const sidebar = statsDlg.querySelector('.exec-sidebar');
+                            if (sidebar) sidebar.scrollTop = 0;
                         } catch (err) {
                             statsDlg.setAttribute('open', '');
                         }
@@ -25896,6 +25900,8 @@ addEventListener('resize', layout); layout();
             function renderExecutiveDashboard(v) {
                 const data = getVillageData(v);
                 const accordionsHtml = getVillageAccordions(v.id, data.name);
+                const mainContentEl = document.querySelector('#statsDialog .exec-main-content');
+                if (mainContentEl) mainContentEl.scrollTop = 0;
                 
                 // 1. Update Title and Sidebar
                 const titleEl = document.getElementById('statsTitle');
@@ -26146,6 +26152,8 @@ addEventListener('resize', layout); layout();
                         btn.classList.add('active');
                         const targetPane = document.getElementById(targetId);
                         if (targetPane) targetPane.classList.add('active');
+                        const mainContent = document.querySelector('#statsDialog .exec-main-content');
+                        if (mainContent) mainContent.scrollTop = 0;
                     };
                 });
 
@@ -27649,6 +27657,10 @@ addEventListener('resize', layout); layout();
                         try {
                             if (!statsDlg.open) statsDlg.showModal();
                             statsDlg.scrollTop = 0;
+                            const mainContent = statsDlg.querySelector('.exec-main-content');
+                            if (mainContent) mainContent.scrollTop = 0;
+                            const sidebar = statsDlg.querySelector('.exec-sidebar');
+                            if (sidebar) sidebar.scrollTop = 0;
                         } catch (e) {
                             statsDlg.setAttribute('open', '');
                         }
