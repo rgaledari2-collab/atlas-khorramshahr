@@ -7739,7 +7739,6 @@ header {
 }
 
 dialog#statsDialog,
-dialog#servicesDialog,
 dialog#compareDialog {
     background: linear-gradient(145deg, rgba(247, 242, 231, 0.94) 0%, rgba(239, 230, 215, 0.96) 100%) !important;
     backdrop-filter: blur(36px) saturate(150%) !important;
@@ -7750,7 +7749,6 @@ dialog#compareDialog {
 }
 
 dialog#statsDialog[open],
-dialog#servicesDialog[open],
 dialog#compareDialog[open] {
     animation: statsSubtleOpen 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
     transform-origin: center center !important;
@@ -7758,7 +7756,6 @@ dialog#compareDialog[open] {
 }
 
 dialog#statsDialog[open]::backdrop,
-dialog#servicesDialog[open]::backdrop,
 dialog#compareDialog[open]::backdrop {
     animation: statsBackdropFadeIn 0.32s ease-out forwards !important;
 }
@@ -8537,6 +8534,488 @@ dialog#statsDialog::backdrop {
 
 
 
+
+/* =========================================================================
+   SERVICES & INFRASTRUCTURE DOSSIER DIALOG (#servicesDialog)
+   ========================================================================= */
+dialog#servicesDialog,
+#servicesDialog {
+    position: fixed !important;
+    inset: 0 !important;
+    margin: auto !important;
+    width: min(1320px, 96vw) !important;
+    max-width: 1320px !important;
+    height: min(92vh, 880px) !important;
+    max-height: 92vh !important;
+    border-radius: 20px !important;
+    background: #0b1816 !important;
+    color: #e2e8f0 !important;
+    border: 1px solid rgba(237, 211, 149, 0.35) !important;
+    box-shadow: 0 35px 100px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+    display: none !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    z-index: 9999 !important;
+    padding: 0 !important;
+    direction: rtl !important;
+    font-family: YekanBakh, Tahoma, sans-serif !important;
+}
+
+dialog#servicesDialog[open],
+#servicesDialog[open] {
+    display: flex !important;
+    animation: servModalIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+dialog#servicesDialog::backdrop {
+    background: rgba(4, 12, 11, 0.85) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+}
+
+@keyframes servModalIn {
+    from { opacity: 0; transform: scale(0.98) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.services-dialog-head {
+    background: linear-gradient(135deg, #132b27 0%, #0c1a18 100%);
+    border-bottom: 1px solid rgba(237, 211, 149, 0.25);
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    flex-shrink: 0;
+}
+
+.services-head-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.services-head-kicker {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #c6a15b;
+}
+
+.kicker-badge {
+    background: rgba(237, 211, 149, 0.15);
+    border: 1px solid rgba(237, 211, 149, 0.35);
+    color: #edd395;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.services-head-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.services-village-badge {
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    color: #34d399;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 700;
+}
+
+.services-head-center {
+    display: flex;
+    align-items: center;
+}
+
+.services-switcher-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(237, 211, 149, 0.25);
+    padding: 6px 12px;
+    border-radius: 10px;
+}
+
+.switcher-label {
+    font-size: 12px;
+    color: #94a3b8;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.services-switcher-select {
+    background: #112824;
+    color: #edd395;
+    border: 1px solid rgba(237, 211, 149, 0.4);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+}
+
+.services-head-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.services-dialog-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 24px 30px;
+    background: #091514;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* KPI Grid */
+.services-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.serv-kpi-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 14px 16px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.serv-kpi-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(237, 211, 149, 0.4);
+}
+
+.serv-kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 3px;
+}
+
+.kpi-gold::before { background: linear-gradient(90deg, #d4af37, #edd395); }
+.kpi-emerald::before { background: linear-gradient(90deg, #059669, #10b981); }
+.kpi-amber::before { background: linear-gradient(90deg, #d97706, #f59e0b); }
+.kpi-blue::before { background: linear-gradient(90deg, #0284c7, #38bdf8); }
+
+.serv-kpi-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.serv-kpi-icon {
+    font-size: 16px;
+}
+
+.serv-kpi-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #94a3b8;
+}
+
+.serv-kpi-val {
+    font-size: 20px;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 4px;
+}
+
+.serv-kpi-sub {
+    font-size: 11px;
+    color: #cbd5e1;
+}
+
+/* Tabs Bar */
+.services-tabs-bar {
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 12px;
+}
+
+.serv-tab-btn {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+    padding: 8px 18px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.serv-tab-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+}
+
+.serv-tab-btn.active {
+    background: rgba(237, 211, 149, 0.15);
+    border-color: #edd395;
+    color: #edd395;
+}
+
+.serv-tab-count {
+    background: rgba(237, 211, 149, 0.25);
+    color: #edd395;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 10px;
+}
+
+/* Events Strip */
+.serv-events-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.serv-event-item {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.event-icon {
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.event-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.event-info strong {
+    font-size: 12.5px;
+    color: #fff;
+}
+
+.event-info small {
+    font-size: 11px;
+    color: #94a3b8;
+    margin-top: 2px;
+}
+
+.event-tag {
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+
+.tag-purple { background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4); }
+.tag-green { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
+.tag-red { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
+
+/* Controls Bar */
+.serv-controls-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.serv-category-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.serv-cat-chip {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-family: inherit;
+    font-size: 11.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.serv-cat-chip:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+}
+
+.serv-cat-chip.active {
+    background: #edd395;
+    border-color: #edd395;
+    color: #0b1a18;
+    font-weight: 800;
+}
+
+.serv-search-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 6px 12px;
+    flex: 1;
+    max-width: 360px;
+}
+
+.serv-search-box input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-family: inherit;
+    font-size: 12.5px;
+    width: 100%;
+}
+
+.serv-search-box input::placeholder {
+    color: #64748b;
+}
+
+/* Beneficiaries Table */
+.serv-table-wrapper {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    overflow-x: auto;
+}
+
+.serv-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    text-align: right;
+}
+
+.serv-table thead tr {
+    background: rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.serv-table th {
+    padding: 12px 14px;
+    color: #edd395;
+    font-weight: 800;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.serv-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #e2e8f0;
+}
+
+.serv-table tbody tr:hover td {
+    background: rgba(255, 255, 255, 0.035);
+}
+
+/* Infrastructure Grid */
+.infra-content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+}
+
+.infra-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 18px;
+}
+
+.infra-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 10px;
+}
+
+.infra-icon {
+    font-size: 22px;
+}
+
+.infra-card-header h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 800;
+    color: #edd395;
+}
+
+.infra-card-header small {
+    font-size: 11px;
+    color: #94a3b8;
+}
+
+.infra-item {
+    margin-bottom: 12px;
+}
+
+.infra-item strong {
+    font-size: 12px;
+    color: #38bdf8;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.infra-item p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.8;
+    color: #cbd5e1;
+}
+
+@media (max-width: 900px) {
+    .services-kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .serv-controls-bar { flex-direction: column; align-items: stretch; }
+    .serv-search-box { max-width: 100%; }
+}
 
 /* =========================================================================
    MASTER C-SUITE COMMAND COCKPIT & STRATEGIC INTELLIGENCE (UNIFIED ARCHITECTURE)
@@ -10863,18 +11342,7 @@ dialog#statsDialog::backdrop {
             <span>فیلتر روستاها</span>
         </button>
 
-        <!-- 2. Services Registry Direct Header Button -->
-        <button class="nav-action-btn" id="topServicesRegistryBtn" type="button" title="سامانه جامع کارنامه و خدمات اهداشده منطقه (۷۵ خانوار)" style="background:rgba(217,119,6,0.12); border-color:rgba(217,119,6,0.35); color:#d97706; display:inline-flex; align-items:center; gap:6px;">
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                <line x1="12" y1="22.08" x2="12" y2="12"></line>
-            </svg>
-            <span>کارنامه خدمات</span>
-        </button>
-
-
-        <!-- 3. Consolidated Analysis Tools Dropdown Menu -->
+        <!-- 2. Consolidated Analysis Tools Dropdown Menu -->
         <div class="analysis-dropdown-wrap" id="analysisDropdownWrap">
             <button type="button" class="nav-action-btn analysis-menu-trigger" id="analysisMenuBtn" aria-haspopup="true" aria-expanded="false" title="ابزارهای تخصصی تحلیل، تصمیم‌یار و مقایسه">
                 <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
@@ -10947,21 +11415,6 @@ dialog#statsDialog::backdrop {
                     <span class="gis-layers-active-count" id="gisActiveCount">۰</span>
                 </button>
 
-                <div class="analysis-menu-divider"></div>
-
-                <button class="analysis-menu-item" id="servicesRegistryBtn" type="button" title="سامانه جامع کارنامه و خدمات اهداشده منطقه">
-                    <div class="menu-item-icon" style="background:rgba(217,119,6,0.15); color:#d97706; border:1px solid rgba(217,119,6,0.3); border-radius:8px; display:flex; align-items:center; justify-content:center;">
-                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                        </svg>
-                    </div>
-                    <div class="menu-item-text">
-                        <strong>کارنامه و خدمات اهداشده</strong>
-                        <small>پایش خدمات دندانپزشکی، معیشت و قربانی (۷۵ خانوار)</small>
-                    </div>
-                </button>
 
                 <button class="analysis-menu-item" id="regionalSummaryBtn" type="button" title="شناسنامه و گزارش تجمیعی ۱۲ روستای منطقه">
                     <div class="menu-item-icon icon-summary">
@@ -11299,112 +11752,6 @@ dialog#statsDialog::backdrop {
         </div>
     </dialog>
 
-    <!-- SERVICES & AID REGISTRY MODAL (سامانه جامع کارنامه و خدمات اهداشده منطقه پلاک یک) -->
-    <dialog id="servicesRegistryDialog" class="services-registry-dialog" style="border:none; padding:0; background:transparent; max-width:1150px; width:95vw; border-radius:20px; box-shadow:0 30px 90px rgba(0,0,0,0.85); outline:none;">
-        <div style="background:#ffffff; border:1px solid #ebdcc5; border-radius:20px; overflow:hidden; color:#142a29; font-family:YekanBakh,sans-serif; display:flex; flex-direction:column; max-height:90vh;">
-            <!-- Dialog Header -->
-            <div style="background:linear-gradient(135deg, #142a29 0%, #1e3a37 100%); padding:18px 24px; display:flex; justify-content:space-between; align-items:center; color:#fff; border-bottom:1px solid #c6a15b;">
-                <div style="display:flex; align-items:center; gap:12px;">
-                    <div style="width:42px; height:42px; border-radius:12px; background:linear-gradient(135deg, #c6a15b, #9e7836); display:flex; align-items:center; justify-content:center; font-size:22px; color:#0b1a18; border:1px solid #edd395;">
-                        📦
-                    </div>
-                    <div>
-                        <h2 style="margin:0; font-size:17px; font-weight:900; color:#fff;">سامانه کارنامه و خدمات اهداشده منطقه شلمچه</h2>
-                        <div style="font-size:11.5px; color:#cbd5e1; margin-top:2px;">پایش ریالی و مویرگی خدمات دندانپزشکی، بسته‌های ارزاق سلامت و گوشت گرم قربانی · ۷۵ خانوار تحت پوشش</div>
-                    </div>
-                </div>
-                <button id="closeServicesDialogBtn" type="button" style="background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25); color:#fff; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:16px;">
-                    ✕
-                </button>
-            </div>
-
-            <!-- Body -->
-            <div style="padding:18px 24px; overflow-y:auto; flex:1;">
-                <!-- 4 KPI Hero Cards -->
-                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:12px; margin-bottom:18px;">
-                    <div style="background:#faf7f2; border:1px solid #ebdcc5; border-radius:12px; padding:12px 16px;">
-                        <span style="font-size:11px; font-weight:700; color:#788885; display:block;">ارزش کل خدمات اهداشده</span>
-                        <div style="font-size:18px; font-weight:900; color:#b45309; margin-top:2px;">۲,۲۶۴,۰۰۰,۰۰۰ <small style="font-size:11px;">ریال</small></div>
-                        <div style="font-size:10.5px; color:#6b7c78; margin-top:2px;">معادل ۲۲۶.۴ میلیون تومان</div>
-                    </div>
-                    <div style="background:#faf7f2; border:1px solid #ebdcc5; border-radius:12px; padding:12px 16px;">
-                        <span style="font-size:11px; font-weight:700; color:#788885; display:block;">خانوارهای بهره‌مند</span>
-                        <div style="font-size:18px; font-weight:900; color:#0284c7; margin-top:2px;">۷۵ <small style="font-size:11px;">خانوار</small></div>
-                        <div style="font-size:10.5px; color:#6b7c78; margin-top:2px;">دارای شناسنامه و پرونده فعال</div>
-                    </div>
-                    <div style="background:#faf7f2; border:1px solid #ebdcc5; border-radius:12px; padding:12px 16px;">
-                        <span style="font-size:11px; font-weight:700; color:#788885; display:block;">ایتام و افراد تحت تکفل</span>
-                        <div style="font-size:18px; font-weight:900; color:#15803d; margin-top:2px;">۱۶۲ <small style="font-size:11px;">نفر</small></div>
-                        <div style="font-size:10.5px; color:#6b7c78; margin-top:2px;">فرزندان و اعضای خانواده</div>
-                    </div>
-                    <div style="background:#faf7f2; border:1px solid #ebdcc5; border-radius:12px; padding:12px 16px;">
-                        <span style="font-size:11px; font-weight:700; color:#788885; display:block;">پوشش جغرافیایی</span>
-                        <div style="font-size:18px; font-weight:900; color:#142a29; margin-top:2px;">۱۱ <small style="font-size:11px;">روستا</small></div>
-                        <div style="font-size:10.5px; color:#6b7c78; margin-top:2px;">کل حوزه نوار مرزی شلمچه</div>
-                    </div>
-                </div>
-
-                <!-- Filter Toolbar -->
-                <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; margin-bottom:14px; background:#faf7f2; border:1px solid #ebdcc5; padding:10px 14px; border-radius:12px;">
-                    <div style="display:flex; align-items:center; gap:8px; flex:1; min-width:260px;">
-                        <span style="font-size:14px; color:#8c7e6c;">🔍</span>
-                        <input type="text" id="servicesSearchInput" placeholder="جستجو بر اساس نام سرپرست، فرزند، کدملی، تلفن یا خدمت..." style="width:100%; padding:7px 10px; border:1px solid #d9ccb4; border-radius:8px; font-size:12px; font-family:inherit; outline:none; background:#fff;">
-                    </div>
-                    <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-                        <select id="servicesVillageFilter" style="padding:7px 10px; border:1px solid #d9ccb4; border-radius:8px; font-size:12px; font-family:inherit; background:#fff; color:#142a29; outline:none; cursor:pointer;">
-                            <option value="all">📍 همه روستاها (۱۱ آبادی)</option>
-                            <option value="soureh">سوره</option>
-                            <option value="darband-gharbi">دربند غربی</option>
-                            <option value="darband-sharqi">دربند شرقی</option>
-                            <option value="jadideh">جدیده</option>
-                            <option value="sad-dastgah">صد دستگاه</option>
-                            <option value="sarhaniyeh-olya">سرحانیه علیا</option>
-                            <option value="sarhaniyeh-sofla">سرحانیه سفلی</option>
-                            <option value="shahrak-sadat">شهرک سادات</option>
-                            <option value="shahrak-sevvom">شهرک سوم</option>
-                            <option value="pol-now">پل نو</option>
-                            <option value="maslavi-1">مصلاوی</option>
-                            <option value="ariz">عریض</option>
-                        </select>
-                        <div style="display:flex; gap:4px;">
-                            <button type="button" class="services-cat-chip clean-filter-chip active" data-cat="all">همه خدمات</button>
-                            <button type="button" class="services-cat-chip clean-filter-chip" data-cat="health">🦷 دندانپزشکی</button>
-                            <button type="button" class="services-cat-chip clean-filter-chip" data-cat="food">🍱 ارزاق سلامت</button>
-                            <button type="button" class="services-cat-chip clean-filter-chip" data-cat="meat">🥩 گوشت قربانی</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Table -->
-                <div style="border:1px solid #ebdcc5; border-radius:12px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.02);">
-                    <div style="overflow-x:auto;">
-                        <table style="width:100%; border-collapse:collapse; text-align:right;">
-                            <thead>
-                                <tr style="background:#faf7f2; border-bottom:1px solid #ebdcc5; font-size:11.5px; color:#5c6e6a; font-weight:800;">
-                                    <th style="padding:10px 12px; width:45px; text-align:center;">ردیف</th>
-                                    <th style="padding:10px 12px;">سرپرست خانوار</th>
-                                    <th style="padding:10px 12px;">ایتام و افراد تحت تکفل</th>
-                                    <th style="padding:10px 12px; width:110px;">روستا</th>
-                                    <th style="padding:10px 12px;">سوابق خدمات دریافتی</th>
-                                    <th style="padding:10px 12px; width:170px; text-align:left;">سرجمع ارزش خدمات</th>
-                                    <th style="padding:10px 12px; width:100px; text-align:center;">پرونده</th>
-                                </tr>
-                            </thead>
-                            <tbody id="servicesTableBody">
-                                <!-- Rendered dynamically -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Dialog Footer -->
-            <div style="background:#faf7f2; border-top:1px solid #ebdcc5; padding:10px 24px; display:flex; justify-content:space-between; align-items:center; font-size:11.5px; color:#6b7c78;">
-                <div>نمایش فیلترشده: <strong id="servicesFilteredCount" style="color:#142a29;">۷۵ خانوار</strong></div>
-                <div>قرارگاه جهادی امام‌رضایی‌ها · منطقه پلاک یک شلمچه</div>
-            </div>
-        </div>
-    </dialog>
 
         <dialog id="statsDialog" aria-labelledby="statsTitle">
         <div class="dialog-head">
@@ -11519,7 +11866,236 @@ dialog#statsDialog::backdrop {
             </div>
         </div>
     </dialog>
-    <dialog id="servicesDialog" aria-labelledby="servicesTitle"><div class="dialog-cover"></div><div class="dialog-head"><h2 id="servicesTitle">خدمات و پروژه‌های روستا</h2><div style="display:flex; align-items:center; gap:10px;"><button type="button" class="dossier-back-btn" data-action="close-dialog"><span>← بازگشت به روستا</span></button><button class="close" aria-label="بستن خدمات">×</button></div></div><div class="dialog-body"><div class="empty"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M9 39V15l15-7 15 7v24H9zm11 0V28h8v11M24 14v10m-5-5h10"/></svg><h3>در حال تکمیل</h3><p>فهرست خدمات ارائه‌شده در سوره<br>پس از تکمیل اطلاعات نمایش داده می‌شود.</p></div><section class="regional"><span class="region-label">اطلاعات مرجع · کل منطقه</span><h3>دسترسی به سلامت</h3><p class="muted">شرح مراکز موجود منطقه؛ این موارد گزارش عملکرد مجموعه در سوره نیستند.</p><div class="health"><article><h4>مراکز جامع سلامت</h4><p>جدیده و امام حسین؛ پزشک ثابت در مرکز و پزشک چرخشی در خانه‌های بهداشت.</p></article><article><h4>خدمات و مراقبت‌ها</h4><p>بهداشت خانواده، واکسیناسیون، دهان و دندان، تغذیه، سلامت روان و خدمات پزشک و داروخانه.</p></article><article><h4>دسترسی در ساعات کاری</h4><p>طبق گزارش، حداکثر ۱۰ دقیقه تا خانهٔ بهداشت برای دورترین روستاهای ذکرشده.</p></article><article><h4>خارج از ساعات کاری</h4><p>طبق گزارش، ۲۰ تا ۳۰ دقیقه تا بیمارستان شهر؛ نبود خدمات شبانه‌روزی از چالش‌های منطقه است.</p></article></div><div class="dialog-logo"><img src="./logo_clean.png" alt="امام‌رضایی‌ها"></div><p class="source">منبع: «خدمات درمانی و فعالیت.pdf» · تاریخ گزارش مشخص نشده است.</p></section></div></dialog>
+    <dialog id="servicesDialog" aria-labelledby="servicesTitle">
+        <!-- Header -->
+        <div class="services-dialog-head">
+            <div class="services-head-right">
+                <div class="services-head-kicker">
+                    <span class="kicker-badge">۰۲ · فرعی</span>
+                    <span>کارپوشه اقدامات · خدمات، زیرساخت و پروژه‌ها</span>
+                </div>
+                <div style="display:flex; align-items:center; gap:12px; margin-top:4px; flex-wrap:wrap;">
+                    <h2 id="servicesTitle" class="services-head-title">خدمات و پروژه‌های روستا</h2>
+                    <span id="servicesVillageBadge" class="services-village-badge">📍 پلاک ۱ ایران</span>
+                </div>
+            </div>
+
+            <div class="services-head-center">
+                <div class="services-switcher-wrap">
+                    <span class="switcher-label">انتخاب روستا:</span>
+                    <select id="servicesVillageSelect" class="services-switcher-select" title="تغییر روستای مورد پایش">
+                        <!-- Populated by JS -->
+                    </select>
+                </div>
+            </div>
+
+            <div class="services-head-left">
+                <button type="button" class="dossier-back-btn" data-action="close-dialog" id="backToVillageFromServicesBtn" title="بازگشت به نقشه روستا">
+                    <span>← بازگشت به روستا</span>
+                </button>
+                <button class="close" id="closeServicesDialogBtn" aria-label="بستن خدمات">×</button>
+            </div>
+        </div>
+
+        <!-- Body -->
+        <div class="services-dialog-body">
+            <!-- 4 Top Executive KPI Metric Cards -->
+            <div class="services-kpi-grid">
+                <div class="serv-kpi-card kpi-gold">
+                    <div class="serv-kpi-top">
+                        <span class="serv-kpi-icon">💎</span>
+                        <span class="serv-kpi-label">مجموع ارزش ریالی خدمات</span>
+                    </div>
+                    <div class="serv-kpi-val" id="servKpiTotalVal">۰ ریال</div>
+                    <div class="serv-kpi-sub" id="servKpiTotalToman">معادل ۰ تومان</div>
+                </div>
+
+                <div class="serv-kpi-card kpi-emerald">
+                    <div class="serv-kpi-top">
+                        <span class="serv-kpi-icon">🏡</span>
+                        <span class="serv-kpi-label">خانوارهای تحت پوشش</span>
+                    </div>
+                    <div class="serv-kpi-val" id="servKpiHouseholds">۰ خانوار</div>
+                    <div class="serv-kpi-sub" id="servKpiHhSub">دارای شناسنامه حمایتی فعال</div>
+                </div>
+
+                <div class="serv-kpi-card kpi-amber">
+                    <div class="serv-kpi-top">
+                        <span class="serv-kpi-icon">🧒</span>
+                        <span class="serv-kpi-label">فرزندان و ایتام تحت تکفل</span>
+                    </div>
+                    <div class="serv-kpi-val" id="servKpiChildren">۰ نفر</div>
+                    <div class="serv-kpi-sub" id="servKpiChildrenSub">ثبت‌شده در طرح حامی ایتام</div>
+                </div>
+
+                <div class="serv-kpi-card kpi-blue">
+                    <div class="serv-kpi-top">
+                        <span class="serv-kpi-icon">📦</span>
+                        <span class="serv-kpi-label">رویدادها و سرفصل‌های خدمت</span>
+                    </div>
+                    <div class="serv-kpi-val" id="servKpiEventsCount">۴ رویداد</div>
+                    <div class="serv-kpi-sub">دندانپزشکی، معیشت، قربانی ۱ و ۲</div>
+                </div>
+            </div>
+
+            <!-- Navigation Tabs Bar -->
+            <div class="services-tabs-bar">
+                <button type="button" class="serv-tab-btn active" id="servTabBtnAid" data-tab="aid">
+                    <span>📦 سبد خدمات، اقلام توزیع‌شده و لیست خانوارها</span>
+                    <span class="serv-tab-count" id="servTabAidCount">۰</span>
+                </button>
+                <button type="button" class="serv-tab-btn" id="servTabBtnInfra" data-tab="infra">
+                    <span>🏗️ زیرساخت‌های دسترسی، بهداشت و پروژه‌ها</span>
+                </button>
+            </div>
+
+            <!-- TAB 1: Services & Beneficiaries -->
+            <div class="serv-tab-pane active" id="servTabPaneAid">
+                <!-- Events Strip -->
+                <div class="serv-events-strip">
+                    <div class="serv-event-item">
+                        <div class="event-icon">🦷</div>
+                        <div class="event-info">
+                            <strong>پویش لبخند دندانپزشکی</strong>
+                            <small>۲۷ تا ۲۹ فروردین · معاینه، ترمیم و فیشور</small>
+                        </div>
+                        <span class="event-tag tag-purple">درمانی</span>
+                    </div>
+                    <div class="serv-event-item">
+                        <div class="event-icon">🥗</div>
+                        <div class="event-info">
+                            <strong>بسته معیشتی و سلامت (ارزاق)</strong>
+                            <small>۱۶ اردیبهشت · ۵۵ میلیون ریال سرانه خانوار</small>
+                        </div>
+                        <span class="event-tag tag-green">معیشتی</span>
+                    </div>
+                    <div class="serv-event-item">
+                        <div class="event-icon">🥩</div>
+                        <div class="event-info">
+                            <strong>توزیع گوشت گرم (قربانی نوبت ۱)</strong>
+                            <small>۱۷ اردیبهشت · ۱۱ میلیون ریال هر سهم</small>
+                        </div>
+                        <span class="event-tag tag-red">قربانی</span>
+                    </div>
+                    <div class="serv-event-item">
+                        <div class="event-icon">🥩</div>
+                        <div class="event-info">
+                            <strong>توزیع گوشت گرم (قربانی نوبت ۲)</strong>
+                            <small>۳۱ اردیبهشت · ۱۱ میلیون ریال هر سهم</small>
+                        </div>
+                        <span class="event-tag tag-red">قربانی</span>
+                    </div>
+                </div>
+
+                <!-- Controls Bar: Category Filter Chips + Live Village Search -->
+                <div class="serv-controls-bar">
+                    <div class="serv-category-chips" id="servCatFilterChips">
+                        <button type="button" class="serv-cat-chip active" data-cat="all">همه رسته‌ها</button>
+                        <button type="button" class="serv-cat-chip" data-cat="orphan">ایتام</button>
+                        <button type="button" class="serv-cat-chip" data-cat="food">معیشتی و سلامت</button>
+                        <button type="button" class="serv-cat-chip" data-cat="health">درمانی و دندانپزشکی</button>
+                        <button type="button" class="serv-cat-chip" data-cat="meat">قربانی</button>
+                        <button type="button" class="serv-cat-chip" data-cat="public">عمومی</button>
+                        <button type="button" class="serv-cat-chip" data-cat="other">سایر</button>
+                    </div>
+
+                    <div class="serv-search-box">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="text" id="servVillageSearchInput" placeholder="جستجوی نام سرپرست، فرزند، کد ملی یا شماره همراه..." autocomplete="off">
+                    </div>
+                </div>
+
+                <!-- Table Container -->
+                <div class="serv-table-wrapper" id="servTableWrapper">
+                    <table class="serv-table">
+                        <thead>
+                            <tr>
+                                <th style="width:45px; text-align:center;">#</th>
+                                <th>سرپرست خانوار</th>
+                                <th>کد ملی و تماس</th>
+                                <th>فرزندان و ایتام تحت تکفل</th>
+                                <th>رسته‌ها و تگ‌ها</th>
+                                <th>ارزش خدمات دریافتی</th>
+                                <th style="text-align:center;">وضعیت</th>
+                                <th style="text-align:center; width:110px;">اقدام</th>
+                            </tr>
+                        </thead>
+                        <tbody id="servVillageTableBody">
+                            <!-- Injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- TAB 2: Infrastructure, Health & Projects -->
+            <div class="serv-tab-pane" id="servTabPaneInfra" style="display:none;">
+                <div class="infra-content-grid">
+                    <div class="infra-card">
+                        <div class="infra-card-header">
+                            <span class="infra-icon">🏥</span>
+                            <div>
+                                <h4>دسترسی به مراکز بهداشتی و درمانی</h4>
+                                <small>شبکه بهداشت و درمان منطقه خرمشهر و شلمچه</small>
+                            </div>
+                        </div>
+                        <div class="infra-card-body">
+                            <div class="infra-item">
+                                <strong>مراکز جامع سلامت:</strong>
+                                <p>مرکز جامع سلامت جدیده و مرکز جامع سلامت امام حسین (ع)؛ حضور پزشک عمومی ثابت در مرکز و پزشک چرخشی در خانه‌های بهداشت تابعه.</p>
+                            </div>
+                            <div class="infra-item">
+                                <strong>بسته‌های مراقبت و خدمات:</strong>
+                                <p>بهداشت خانواده، واکسیناسیون نوزادان، سلامت دهان و دندان، مشاوره تغذیه، سلامت روان، ویزیت پزشک و تحویل اقلام دارویی اساسی.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="infra-card">
+                        <div class="infra-card-header">
+                            <span class="infra-icon">⏱️</span>
+                            <div>
+                                <h4>شاخص‌های زمانی دسترسی در منطقه</h4>
+                                <small>پایش میدانی زمان‌بندی امداد و انتقال</small>
+                            </div>
+                        </div>
+                        <div class="infra-card-body">
+                            <div class="infra-item">
+                                <strong>در ساعات اداری و کاری:</strong>
+                                <p>حداکثر ۱۰ دقیقه تا نزدیک‌ترین خانهٔ بهداشت برای دورترین خانه‌های روستایی حوزه پلاک یک.</p>
+                            </div>
+                            <div class="infra-item">
+                                <strong>خارج از ساعات کاری و اورژانس:</strong>
+                                <p>۲۰ الی ۳۰ دقیقه تا بیمارستان ولیعصر (عج) خرمشهر؛ چالش کمبود خدمات شبانه‌روزی در محور روستایی از مهم‌ترین اولویت‌های منطقه است.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="infra-card">
+                        <div class="infra-card-header">
+                            <span class="infra-icon">💧</span>
+                            <div>
+                                <h4>انشعابات و زیرساخت‌های پایدار</h4>
+                                <small>وضعیت شبکه آب شرب، بهسازی معابر و دهیاری</small>
+                            </div>
+                        </div>
+                        <div class="infra-card-body">
+                            <div class="infra-item">
+                                <strong>شبکه آب و پایداری خط:</strong>
+                                <p>پایش خطوط لوله انتقال، مخازن آب شرب و بررسی نقاط افت فشار در روستا.</p>
+                            </div>
+                            <div class="infra-item">
+                                <strong>پروژه‌های توانمندسازی و عمران:</strong>
+                                <p>طرح‌های مشترک جمعیت امام‌رضایی‌ها، دهیاری و خیرین محلی در حوزه تجهیز مدارس، توزیع ارزاق و ارتقای بهداشت محیط.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </dialog>
 
 <!-- Comparison Matrix Dialog -->
 <dialog id="compareDialog" aria-labelledby="compareTitle">
@@ -31192,36 +31768,164 @@ document.addEventListener('click', (e) => {
         };
     }
 
-    // 3. Render and handle Services Registry Dialog
-    function initServicesDialog() {
-        const dlg = document.getElementById('servicesRegistryDialog');
+    // 3. Render and handle Village Services & Projects Dialog (#servicesDialog)
+    function initVillageServicesDialog() {
+        const dlg = document.getElementById('servicesDialog');
         if (!dlg) return;
 
-        const tableBody = document.getElementById('servicesTableBody');
-        const searchInput = document.getElementById('servicesSearchInput');
-        const villageSelect = document.getElementById('servicesVillageFilter');
-        const catFilterChips = document.querySelectorAll('.services-cat-chip');
+        const tableBody = document.getElementById('servVillageTableBody');
+        const searchInput = document.getElementById('servVillageSearchInput');
+        const villageSelect = document.getElementById('servicesVillageSelect');
+        const catFilterChips = document.querySelectorAll('#servCatFilterChips .serv-cat-chip');
         const closeBtn = document.getElementById('closeServicesDialogBtn');
+        const backBtn = document.getElementById('backToVillageFromServicesBtn');
+        const tabAidBtn = document.getElementById('servTabBtnAid');
+        const tabInfraBtn = document.getElementById('servTabBtnInfra');
+        const tabPaneAid = document.getElementById('servTabPaneAid');
+        const tabPaneInfra = document.getElementById('servTabPaneInfra');
 
+        let currentVillageId = 'soureh';
         let activeCat = 'all';
 
-        function renderRows() {
+        const villageNamesMap = {
+            'soureh': 'سوره',
+            'darband-gharbi': 'دربند غربی',
+            'darband-sharqi': 'دربند شرقی',
+            'jadideh': 'جدیده',
+            'sad-dastgah': 'صد دستگاه',
+            'sarhaniyeh-olya': 'سرحانیه علیا',
+            'sarhaniyeh-sofla': 'سرحانیه سفلی',
+            'shahrak-sadat': 'شهرک سادات',
+            'shahrak-sevvom': 'شهرک سوم',
+            'pol-now': 'پل نو',
+            'maslavi-1': 'مصلاوی ۱',
+            'ariz': 'عریض'
+        };
+
+        // Populate village dropdown
+        if (villageSelect) {
+            const villageCounts = {};
+            servicesData.forEach(h => {
+                villageCounts[h.villageId] = (villageCounts[h.villageId] || 0) + 1;
+            });
+
+            const sortedVids = Object.keys(villageNamesMap).sort((a, b) => (villageCounts[b] || 0) - (villageCounts[a] || 0));
+
+            let optionsHtml = sortedVids.map(vid => {
+                const count = villageCounts[vid] || 0;
+                const vName = villageNamesMap[vid];
+                return `<option value="${vid}">روستای ${vName} (${toFa(count)} خانوار)</option>`;
+            }).join('');
+
+            optionsHtml += `<option value="all">🌐 تجمیعی: کل روستاهای منطقه پلاک ۱ (${toFa(servicesData.length)} خانوار)</option>`;
+            villageSelect.innerHTML = optionsHtml;
+
+            villageSelect.addEventListener('change', (e) => {
+                renderVillageServices(e.target.value);
+            });
+        }
+
+        // Tab Switching
+        if (tabAidBtn && tabInfraBtn) {
+            tabAidBtn.onclick = () => {
+                tabAidBtn.classList.add('active');
+                tabInfraBtn.classList.remove('active');
+                if (tabPaneAid) tabPaneAid.style.display = 'block';
+                if (tabPaneInfra) tabPaneInfra.style.display = 'none';
+            };
+            tabInfraBtn.onclick = () => {
+                tabInfraBtn.classList.add('active');
+                tabAidBtn.classList.remove('active');
+                if (tabPaneAid) tabPaneAid.style.display = 'none';
+                if (tabPaneInfra) tabPaneInfra.style.display = 'block';
+            };
+        }
+
+        function renderVillageServices(targetVid) {
+            currentVillageId = targetVid || 'soureh';
+
+            if (villageSelect && villageSelect.value !== currentVillageId) {
+                villageSelect.value = currentVillageId;
+            }
+
+            const isAll = currentVillageId === 'all';
+            const vName = isAll ? 'منطقه مرزی شلمچه' : (villageNamesMap[currentVillageId] || currentVillageId);
+
+            // Filter households for this village
+            const vHouseholds = isAll ? servicesData : servicesData.filter(h => h.villageId === currentVillageId);
+
+            // Calculate KPIs
+            const totalValNum = vHouseholds.reduce((acc, h) => {
+                return acc + h.services.reduce((sAcc, s) => {
+                    const n = parseInt((s.val || '').replace(/[\/,\s]/g, ''), 10) || 0;
+                    return sAcc + n;
+                }, 0);
+            }, 0);
+
+            const totalKids = vHouseholds.reduce((acc, h) => acc + (h.children?.length || 0), 0);
+
+            const distinctEvents = new Set();
+            vHouseholds.forEach(h => {
+                h.services.forEach(s => distinctEvents.add(s.title || s.desc));
+            });
+
+            // Update Header
+            const titleEl = document.getElementById('servicesTitle');
+            const badgeEl = document.getElementById('servicesVillageBadge');
+            if (titleEl) {
+                titleEl.textContent = isAll ? 'کارنامه تجمیعی خدمات و اقدامات منطقه' : `خدمات و اقدامات روستای ${vName}`;
+            }
+            if (badgeEl) {
+                badgeEl.textContent = isAll ? `📍 ۱۱ روستا · ${toFa(vHouseholds.length)} خانوار تحت پوشش` : `📍 ${vName} · ${toFa(vHouseholds.length)} خانوار تحت پوشش`;
+            }
+
+            // Update KPI Cards
+            const kpiValEl = document.getElementById('servKpiTotalVal');
+            const kpiTomanEl = document.getElementById('servKpiTotalToman');
+            const kpiHhEl = document.getElementById('servKpiHouseholds');
+            const kpiHhSubEl = document.getElementById('servKpiHhSub');
+            const kpiKidsEl = document.getElementById('servKpiChildren');
+            const kpiKidsSubEl = document.getElementById('servKpiChildrenSub');
+            const kpiEventsEl = document.getElementById('servKpiEventsCount');
+            const tabAidCountEl = document.getElementById('servTabAidCount');
+
+            if (kpiValEl) kpiValEl.innerHTML = `${totalValNum.toLocaleString('fa-IR')} <small style="font-size:12px; font-weight:600;">ریال</small>`;
+            if (kpiTomanEl) {
+                const toman = Math.round(totalValNum / 10);
+                kpiTomanEl.textContent = `معادل ${toman.toLocaleString('fa-IR')} تومان`;
+            }
+            if (kpiHhEl) kpiHhEl.textContent = `${toFa(vHouseholds.length)} خانوار`;
+            if (kpiHhSubEl) kpiHhSubEl.textContent = isAll ? 'کل خانوارهای ثبت‌شده' : `ساکن روستای ${vName}`;
+            if (kpiKidsEl) kpiKidsEl.textContent = `${toFa(totalKids)} نفر`;
+            if (kpiKidsSubEl) kpiKidsSubEl.textContent = `فرزندان و ایتام تحت تکفل`;
+            if (kpiEventsEl) kpiEventsEl.textContent = `${toFa(distinctEvents.size || 4)} سرفصل`;
+            if (tabAidCountEl) tabAidCountEl.textContent = toFa(vHouseholds.length);
+
+            // Render Table Rows
+            renderTableRows(vHouseholds);
+        }
+
+        function renderTableRows(vHouseholds) {
             if (!tableBody) return;
             const q = (searchInput ? searchInput.value : '').trim().toLowerCase();
-            const selVillage = villageSelect ? villageSelect.value : 'all';
 
             let count = 0;
-            const rowsHtml = servicesData.map((hh, idx) => {
-                // Filter village
-                if (selVillage !== 'all' && hh.villageId !== selVillage) return '';
-
-                // Filter category
+            const rowsHtml = vHouseholds.map((hh, idx) => {
+                // Category Filter
                 if (activeCat !== 'all') {
-                    const hasCat = hh.services.some(s => s.serviceCategory === activeCat);
-                    if (!hasCat) return '';
+                    if (activeCat === 'orphan') {
+                        if (!hh.children || hh.children.length === 0) return '';
+                    } else if (activeCat === 'public') {
+                        // public tag
+                    } else if (activeCat === 'other') {
+                        // other tag
+                    } else {
+                        const hasCat = hh.services.some(s => s.serviceCategory === activeCat);
+                        if (!hasCat) return '';
+                    }
                 }
 
-                // Filter search
+                // Search Filter
                 if (q) {
                     const text = `${hh.guardianName} ${hh.guardianNid || ''} ${hh.phone || ''} ${hh.villageName} ${hh.children.map(c => c.name).join(' ')} ${hh.services.map(s => s.desc).join(' ')}`.toLowerCase();
                     if (!text.includes(q)) return '';
@@ -31231,52 +31935,99 @@ document.addEventListener('click', (e) => {
 
                 const servicesPills = hh.services.map(s => {
                     let color = '#d97706';
-                    let bg = '#fef3c7';
-                    if (s.serviceCategory === 'health') { color = '#059669'; bg = '#d1fae5'; }
-                    else if (s.serviceCategory === 'meat') { color = '#dc2626'; bg = '#fee2e2'; }
+                    let bg = 'rgba(217,119,6,0.15)';
+                    let border = 'rgba(217,119,6,0.3)';
+                    if (s.serviceCategory === 'health') { color = '#34d399'; bg = 'rgba(16,185,129,0.15)'; border = 'rgba(16,185,129,0.3)'; }
+                    else if (s.serviceCategory === 'meat') { color = '#f87171'; bg = 'rgba(239,68,68,0.15)'; border = 'rgba(239,68,68,0.3)'; }
 
-                    return `<span style="background:${bg}; color:${color}; font-size:10.5px; font-weight:700; padding:2px 6px; border-radius:4px; margin-left:3px; display:inline-block; margin-bottom:2px;" title="${s.valFormatted}">${s.title} (${s.date.split('/')[1] + '/' + s.date.split('/')[2]})</span>`;
-                }).join('') || '<span style="color:#94a3b8; font-size:11px;">در نوبت تخصیص</span>';
+                    const dateFa = toFa(s.date || '');
+                    return `<span style="background:${bg}; color:${color}; border:1px solid ${border}; font-size:10.5px; font-weight:700; padding:2px 7px; border-radius:4px; margin-left:3px; display:inline-block; margin-bottom:3px;" title="${s.valFormatted}">✓ ${s.title} (${dateFa})</span>`;
+                }).join('') || '<span style="color:#64748b; font-size:11px;">در نوبت تخصیص</span>';
 
-                const childrenStr = hh.children.map(c => c.name).join('، ') || '—';
+                const kidsBadges = hh.children.map(c => `
+                    <span style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); padding:2px 6px; border-radius:4px; font-size:10.5px; color:#e2e8f0; margin-left:2px; display:inline-block; margin-bottom:2px;" title="${c.fatherName ? 'فرزند ' + c.fatherName : ''} · ${c.education}">
+                        🧒 ${c.name} (${toFa(c.age)} ساله)
+                    </span>
+                `).join('') || '<span style="color:#64748b; font-size:11px;">—</span>';
 
                 return `
-                    <tr style="border-bottom:1px solid #ebdcc5; transition:background 0.15s ease;">
-                        <td style="padding:10px 12px; font-size:12px; font-weight:700; color:#5c6e6a; text-align:center;">${toFa(idx + 1)}</td>
-                        <td style="padding:10px 12px;">
-                            <div style="font-weight:800; font-size:13px; color:#142a29;">${hh.guardianName}</div>
-                            <div style="font-size:11px; color:#6b7c78; margin-top:2px;">کدملی: ${hh.guardianNid ? toFa(hh.guardianNid) : '—'} · تماس: ${hh.phone ? toFa(hh.phone) : '—'}</div>
-                        </td>
-                        <td style="padding:10px 12px; font-size:12px; color:#142a29;">
-                            <div style="font-weight:700;">${childrenStr}</div>
-                            <div style="font-size:10.5px; color:#8c7e6c; margin-top:1px;">تعداد ایتام: ${toFa(hh.children.length)} فرزند</div>
-                        </td>
-                        <td style="padding:10px 12px; font-size:12px;">
-                            <span style="background:#faf7f2; border:1px solid #d9ccb4; padding:3px 8px; border-radius:6px; font-weight:700; color:#142a29;">
-                                📍 ${hh.villageName}
-                            </span>
-                        </td>
-                        <td style="padding:10px 12px;">
-                            <div style="display:flex; flex-wrap:wrap; gap:3px;">
-                                ${servicesPills}
+                    <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.15s ease;">
+                        <td style="padding:12px; font-size:11.5px; font-weight:700; color:#94a3b8; text-align:center;">${toFa(idx + 1)}</td>
+                        <td style="padding:12px;">
+                            <div style="font-weight:800; font-size:13.5px; color:#ffffff;">${hh.guardianName}</div>
+                            <div style="font-size:11px; color:#94a3b8; margin-top:3px;">
+                                ${hh.guardianAge ? toFa(hh.guardianAge) + ' ساله · ' : ''}📍 ${hh.address || hh.villageName}
                             </div>
                         </td>
-                        <td style="padding:10px 12px; font-size:12px; font-weight:900; color:#b45309; text-align:left; white-space:nowrap;">
+                        <td style="padding:12px;">
+                            <div style="font-size:12px; color:#edd395; font-weight:700; font-family:monospace;">${hh.guardianNid ? toFa(hh.guardianNid) : '—'}</div>
+                            <div style="font-size:11px; color:#94a3b8; margin-top:2px; direction:ltr; text-align:right;">${hh.phone ? toFa(hh.phone) : '—'}</div>
+                        </td>
+                        <td style="padding:12px; max-width:240px;">
+                            <div style="margin-bottom:3px; font-size:11px; color:#cbd5e1; font-weight:700;">
+                                ${toFa(hh.children.length)} فرزند / یتیم تحت پوشش:
+                            </div>
+                            <div style="display:flex; flex-wrap:wrap; gap:2px;">
+                                ${kidsBadges}
+                            </div>
+                        </td>
+                        <td style="padding:12px;">
+                            <div style="display:flex; flex-wrap:wrap; gap:3px;">
+                                <span class="search-badge-orphan" style="font-size:10.5px; padding:2px 7px;">ایتام</span>
+                                <span class="search-badge-priority" style="font-size:10.5px; padding:2px 7px;">معیشتی</span>
+                            </div>
+                        </td>
+                        <td style="padding:12px; font-size:12.5px; font-weight:800; color:#f59e0b; text-align:left; white-space:nowrap; direction:ltr;">
                             ${hh.totalValFormatted}
                         </td>
-                        <td style="padding:10px 12px; text-align:center;">
-                            <button type="button" class="view-hh-dossier-btn" data-hh-id="${hh.id}" style="background:#142a29; color:#edd395; border:1px solid #c6a15b; padding:4px 10px; border-radius:6px; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit; transition:all 0.15s ease;">
-                                مشاهده پرونده ↗
+                        <td style="padding:12px; text-align:center;">
+                            <span style="background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.35); color:#34d399; font-size:11px; font-weight:700; padding:3px 8px; border-radius:6px; display:inline-block;">
+                                تحویل شده ✓
+                            </span>
+                        </td>
+                        <td style="padding:12px; text-align:center;">
+                            <button type="button" class="view-hh-dossier-btn" data-hh-id="${hh.id}" style="background:linear-gradient(135deg, #1c3835, #0f2421); color:#edd395; border:1px solid rgba(237,211,149,0.4); padding:5px 10px; border-radius:6px; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit; transition:all 0.15s ease; white-space:nowrap;">
+                                شناسنامه ↗
                             </button>
                         </td>
                     </tr>
                 `;
             }).join('');
 
-            tableBody.innerHTML = rowsHtml || '<tr><td colspan="7" style="text-align:center; padding:30px; color:#8c7e6c;">موردی با این مشخصات یافت نشد.</td></tr>';
-
-            const countEl = document.getElementById('servicesFilteredCount');
-            if (countEl) countEl.textContent = toFa(count) + ' خانوار';
+            if (vHouseholds.length === 0) {
+                const isAll = currentVillageId === 'all';
+                const vName = isAll ? 'منطقه' : (villageNamesMap[currentVillageId] || currentVillageId);
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="8" style="text-align:center; padding:45px 20px; color:#94a3b8;">
+                            <div style="font-size:32px; margin-bottom:10px;">📋</div>
+                            <div style="font-size:14px; font-weight:800; color:#edd395; margin-bottom:6px;">
+                                هنوز رکوردی در اکسل اول برای روستای ${vName} درج نشده است
+                            </div>
+                            <div style="font-size:12px; color:#cbd5e1; max-width:480px; margin:0 auto 16px; line-height:1.8;">
+                                با بارگذاری فایل‌های اکسل تکمیلی، اطلاعات خدمات و مددجویان این روستا بلافاصله در این کارپوشه قرار خواهد گرفت.
+                            </div>
+                            <button type="button" id="btnShowAllFromEmpty" style="background:rgba(237,211,149,0.15); border:1px solid #edd395; color:#edd395; padding:6px 16px; border-radius:8px; font-family:inherit; font-size:12px; font-weight:700; cursor:pointer;">
+                                مشاهده کارنامه خدمات سایر روستاهای منطقه ←
+                            </button>
+                        </td>
+                    </tr>
+                `;
+                const btnShow = document.getElementById('btnShowAllFromEmpty');
+                if (btnShow) {
+                    btnShow.onclick = () => renderVillageServices('all');
+                }
+            } else if (!rowsHtml) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="8" style="text-align:center; padding:35px; color:#94a3b8; font-size:13px;">
+                            موردی با فیلتر یا عبارت جست‌وجوی مدنظر در این روستا یافت نشد.
+                        </td>
+                    </tr>
+                `;
+            } else {
+                tableBody.innerHTML = rowsHtml;
+            }
 
             // Bind click to open person dossier
             tableBody.querySelectorAll('.view-hh-dossier-btn').forEach(btn => {
@@ -31284,7 +32035,6 @@ document.addEventListener('click', (e) => {
                     const hhId = btn.getAttribute('data-hh-id');
                     const hh = servicesData.find(h => h.id === hhId);
                     if (!hh) return;
-                    // Find person in searchableData or construct
                     const p = window.searchableData.find(item => item.title === hh.guardianName) || {
                         type: 'person',
                         title: hh.guardianName,
@@ -31304,44 +32054,125 @@ document.addEventListener('click', (e) => {
             });
         }
 
-        if (searchInput) searchInput.addEventListener('input', renderRows);
-        if (villageSelect) villageSelect.addEventListener('change', renderRows);
+        // Live search & filters
+        if (searchInput) {
+            searchInput.addEventListener('input', () => {
+                const isAll = currentVillageId === 'all';
+                const vHouseholds = isAll ? servicesData : servicesData.filter(h => h.villageId === currentVillageId);
+                renderTableRows(vHouseholds);
+            });
+        }
 
         catFilterChips.forEach(chip => {
             chip.addEventListener('click', () => {
                 catFilterChips.forEach(c => c.classList.remove('active'));
                 chip.classList.add('active');
                 activeCat = chip.getAttribute('data-cat') || 'all';
-                renderRows();
+                const isAll = currentVillageId === 'all';
+                const vHouseholds = isAll ? servicesData : servicesData.filter(h => h.villageId === currentVillageId);
+                renderTableRows(vHouseholds);
             });
         });
 
+        // Close handlers
         if (closeBtn) {
             closeBtn.onclick = () => dlg.close();
         }
+        if (backBtn) {
+            backBtn.onclick = () => dlg.close();
+        }
 
-        // Open Dialog trigger
-        window.openServicesRegistryDialog = function() {
+        // Global openVillageServices method
+        window.openVillageServices = function(vid) {
+            let target = vid;
+            if (!target) {
+                target = window._currentVillageViewing?.id || window.activeLocation?.id || 'soureh';
+            }
             if (typeof dlg.showModal === 'function') {
                 if (!dlg.open) dlg.showModal();
             } else {
                 dlg.setAttribute('open', '');
             }
-            renderRows();
+            dlg.scrollTop = 0;
+            renderVillageServices(target);
         };
 
-        // Bind top navigation buttons
-        const topBtn = document.getElementById('topServicesRegistryBtn');
-        const menuBtn = document.getElementById('servicesRegistryBtn');
-        if (topBtn) topBtn.onclick = window.openServicesRegistryDialog;
-        if (menuBtn) menuBtn.onclick = window.openServicesRegistryDialog;
+        // Wire #servicesButton
+        const servBtn = document.getElementById('servicesButton');
+        if (servBtn) {
+            servBtn.onclick = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const cur = window._currentVillageViewing || window.activeLocation || { id: 'soureh' };
+                window.openVillageServices(cur.id);
+            };
+        }
+
+        // Update Card 2 in village sidebar dynamically
+        function updateSidebarServicesCard(vid) {
+            if (!vid) return;
+            const vHouseholds = servicesData.filter(h => h.villageId === vid);
+            const servDesc = document.getElementById('servicesChoiceDesc');
+            const servPreview = document.getElementById('servicesMetricsPreview');
+
+            if (vHouseholds.length > 0) {
+                const totalValNum = vHouseholds.reduce((acc, h) => {
+                    return acc + h.services.reduce((sAcc, s) => {
+                        const n = parseInt((s.val || '').replace(/[\/,\s]/g, ''), 10) || 0;
+                        return sAcc + n;
+                    }, 0);
+                }, 0);
+                const totalKids = vHouseholds.reduce((acc, h) => acc + (h.children?.length || 0), 0);
+                const toman = Math.round(totalValNum / 10000000);
+                const tomanStr = toman > 0 ? toFa(toman) + ' م.تومان' : toFa(Math.round(totalValNum / 10000)) + ' تومان';
+
+                if (servDesc) {
+                    servDesc.textContent = `ارزش خدمات: ${tomanStr} · ${toFa(vHouseholds.length)} خانوار تحت پوشش · ${toFa(totalKids)} یتیم`;
+                }
+                if (servPreview) {
+                    servPreview.innerHTML = `
+                        <div class="v-metric-compact-pills">
+                            <span class="compact-status-pill pill-aid" style="background:rgba(217,119,6,0.18); color:#f59e0b; border:1px solid rgba(217,119,6,0.4);">📦 خدمات: ${tomanStr}</span>
+                            <span class="compact-status-pill pill-health" style="background:rgba(16,185,129,0.18); color:#34d399; border:1px solid rgba(16,185,129,0.4);">👥 ${toFa(vHouseholds.length)} خانوار</span>
+                            <span class="compact-status-pill pill-water" style="background:rgba(56,189,248,0.18); color:#38bdf8; border:1px solid rgba(56,189,248,0.4);">🧒 ${toFa(totalKids)} یتیم</span>
+                        </div>
+                    `;
+                }
+            } else {
+                if (servDesc) {
+                    servDesc.textContent = 'خدمات، دسترسی‌ها و زیرساخت‌های پایش‌شده';
+                }
+                if (servPreview) {
+                    servPreview.innerHTML = `
+                        <div class="v-metric-compact-pills">
+                            <span class="compact-status-pill pill-aid">📦 در نوبت پایش</span>
+                            <span class="compact-status-pill pill-health">بهداشت: فعال</span>
+                            <span class="compact-status-pill pill-water">آب: خط پایدار</span>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        // Listen for village changes
+        const observer = new MutationObserver(() => {
+            const cur = window._currentVillageViewing || window.activeLocation;
+            if (cur && cur.id) updateSidebarServicesCard(cur.id);
+        });
+        const vNameEl = document.getElementById('villageName');
+        if (vNameEl) {
+            observer.observe(vNameEl, { childList: true, characterData: true, subtree: true });
+        }
+        // Also initial update
+        const initCur = window._currentVillageViewing || window.activeLocation;
+        if (initCur && initCur.id) updateSidebarServicesCard(initCur.id);
     }
 
     // Initialize when ready
     function initModule() {
         integrateSearchableServices();
         hookDossierServices();
-        initServicesDialog();
+        initVillageServicesDialog();
     }
 
     if (document.readyState === 'loading') {
