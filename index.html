@@ -10863,6 +10863,16 @@ dialog#statsDialog::backdrop {
             <span>فیلتر روستاها</span>
         </button>
 
+        <!-- 2. Services Registry Direct Header Button -->
+        <button class="nav-action-btn" id="topServicesRegistryBtn" type="button" title="سامانه جامع کارنامه و خدمات اهداشده منطقه (۷۵ خانوار)" style="background:rgba(217,119,6,0.12); border-color:rgba(217,119,6,0.35); color:#d97706; display:inline-flex; align-items:center; gap:6px;">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+            <span>کارنامه خدمات</span>
+        </button>
+
 
         <!-- 3. Consolidated Analysis Tools Dropdown Menu -->
         <div class="analysis-dropdown-wrap" id="analysisDropdownWrap">
@@ -10938,6 +10948,20 @@ dialog#statsDialog::backdrop {
                 </button>
 
                 <div class="analysis-menu-divider"></div>
+
+                <button class="analysis-menu-item" id="servicesRegistryBtn" type="button" title="سامانه جامع کارنامه و خدمات اهداشده منطقه">
+                    <div class="menu-item-icon" style="background:rgba(217,119,6,0.15); color:#d97706; border:1px solid rgba(217,119,6,0.3); border-radius:8px; display:flex; align-items:center; justify-content:center;">
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                        </svg>
+                    </div>
+                    <div class="menu-item-text">
+                        <strong>کارنامه و خدمات اهداشده</strong>
+                        <small>پایش خدمات دندانپزشکی، معیشت و قربانی (۷۵ خانوار)</small>
+                    </div>
+                </button>
 
                 <button class="analysis-menu-item" id="regionalSummaryBtn" type="button" title="شناسنامه و گزارش تجمیعی ۱۲ روستای منطقه">
                     <div class="menu-item-icon icon-summary">
@@ -11251,6 +11275,11 @@ dialog#statsDialog::backdrop {
                     </p>
                 </div>
 
+                <!-- Services & Aid History Card -->
+                <div id="pdServicesContainer" style="background:rgba(255,255,255,0.03); border:1px solid rgba(237,211,149,0.25); border-radius:12px; padding:14px; margin-bottom:18px;">
+                    <!-- Filled dynamically by openPersonDossier -->
+                </div>
+
                 <!-- Action Buttons Footer -->
                 <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; border-top:1px solid rgba(255,255,255,0.08); padding-top:16px;">
                     <button type="button" id="pdViewInVillageBtn" style="flex:1; min-width:200px; padding:10px 16px; background:linear-gradient(135deg, #c6a15b 0%, #9e7836 100%); color:#0b1a18; font-weight:800; font-size:13px; border:1px solid #edd395; border-radius:10px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; transition:all 0.15s ease;">
@@ -11266,6 +11295,113 @@ dialog#statsDialog::backdrop {
                         <span>کپی خلاصه</span>
                     </button>
                 </div>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- SERVICES & AID REGISTRY MODAL (سامانه جامع کارنامه و خدمات اهداشده منطقه پلاک یک) -->
+    <dialog id="servicesRegistryDialog" class="services-registry-dialog" style="border:none; padding:0; background:transparent; max-width:1150px; width:95vw; border-radius:20px; box-shadow:0 30px 90px rgba(0,0,0,0.85); outline:none;">
+        <div style="background:#ffffff; border:1px solid #ebdcc5; border-radius:20px; overflow:hidden; color:#142a29; font-family:YekanBakh,sans-serif; display:flex; flex-direction:column; max-height:90vh;">
+            <!-- Dialog Header -->
+            <div style="background:linear-gradient(135deg, #142a29 0%, #1e3a37 100%); padding:18px 24px; display:flex; justify-content:space-between; align-items:center; color:#fff; border-bottom:1px solid #c6a15b;">
+                <div style="display:flex; align-items:center; gap:12px;">
+                    <div style="width:42px; height:42px; border-radius:12px; background:linear-gradient(135deg, #c6a15b, #9e7836); display:flex; align-items:center; justify-content:center; font-size:22px; color:#0b1a18; border:1px solid #edd395;">
+                        📦
+                    </div>
+                    <div>
+                        <h2 style="margin:0; font-size:17px; font-weight:900; color:#fff;">سامانه کارنامه و خدمات اهداشده منطقه شلمچه</h2>
+                        <div style="font-size:11.5px; color:#cbd5e1; margin-top:2px;">پایش ریالی و مویرگی خدمات دندانپزشکی، بسته‌های ارزاق سلامت و گوشت گرم قربانی · ۷۵ خانوار تحت پوشش</div>
+                    </div>
+                </div>
+                <button id="closeServicesDialogBtn" type="button" style="background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25); color:#fff; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:16px;">
+                    ✕
+                </button>
+            </div>
+
+            <!-- Body -->
+            <div style="padding:18px 24px; overflow-y:auto; flex:1;">
+                <!-- 4 KPI Hero Cards -->
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:12px; margin-bottom:18px;">
+                    <div style="background:#faf7f2; border:1px solid #ebdcc5; border-radius:12px; padding:12px 16px;">
+                        <span style="font-size:11px; font-weight:700; color:#788885; display:block;">ارزش کل خدمات اهداشده</span>
+                        <div style="font-size:18px; font-weight:900; color:#b45309; margin-top:2px;">۲,۲۶۴,۰۰۰,۰۰۰ <small style="font-size:11px;">ریال</small></div>
+                        <div style="font-size:10.5px; color:#6b7c78; margin-top:2px;">معادل ۲۲۶.۴ میلیون تومان</div>
+                    </div>
+                    <div style="background:#faf7f2; border:1px solid #ebdcc5; border-radius:12px; padding:12px 16px;">
+                        <span style="font-size:11px; font-weight:700; color:#788885; display:block;">خانوارهای بهره‌مند</span>
+                        <div style="font-size:18px; font-weight:900; color:#0284c7; margin-top:2px;">۷۵ <small style="font-size:11px;">خانوار</small></div>
+                        <div style="font-size:10.5px; color:#6b7c78; margin-top:2px;">دارای شناسنامه و پرونده فعال</div>
+                    </div>
+                    <div style="background:#faf7f2; border:1px solid #ebdcc5; border-radius:12px; padding:12px 16px;">
+                        <span style="font-size:11px; font-weight:700; color:#788885; display:block;">ایتام و افراد تحت تکفل</span>
+                        <div style="font-size:18px; font-weight:900; color:#15803d; margin-top:2px;">۱۶۲ <small style="font-size:11px;">نفر</small></div>
+                        <div style="font-size:10.5px; color:#6b7c78; margin-top:2px;">فرزندان و اعضای خانواده</div>
+                    </div>
+                    <div style="background:#faf7f2; border:1px solid #ebdcc5; border-radius:12px; padding:12px 16px;">
+                        <span style="font-size:11px; font-weight:700; color:#788885; display:block;">پوشش جغرافیایی</span>
+                        <div style="font-size:18px; font-weight:900; color:#142a29; margin-top:2px;">۱۱ <small style="font-size:11px;">روستا</small></div>
+                        <div style="font-size:10.5px; color:#6b7c78; margin-top:2px;">کل حوزه نوار مرزی شلمچه</div>
+                    </div>
+                </div>
+
+                <!-- Filter Toolbar -->
+                <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; margin-bottom:14px; background:#faf7f2; border:1px solid #ebdcc5; padding:10px 14px; border-radius:12px;">
+                    <div style="display:flex; align-items:center; gap:8px; flex:1; min-width:260px;">
+                        <span style="font-size:14px; color:#8c7e6c;">🔍</span>
+                        <input type="text" id="servicesSearchInput" placeholder="جستجو بر اساس نام سرپرست، فرزند، کدملی، تلفن یا خدمت..." style="width:100%; padding:7px 10px; border:1px solid #d9ccb4; border-radius:8px; font-size:12px; font-family:inherit; outline:none; background:#fff;">
+                    </div>
+                    <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                        <select id="servicesVillageFilter" style="padding:7px 10px; border:1px solid #d9ccb4; border-radius:8px; font-size:12px; font-family:inherit; background:#fff; color:#142a29; outline:none; cursor:pointer;">
+                            <option value="all">📍 همه روستاها (۱۱ آبادی)</option>
+                            <option value="soureh">سوره</option>
+                            <option value="darband-gharbi">دربند غربی</option>
+                            <option value="darband-sharqi">دربند شرقی</option>
+                            <option value="jadideh">جدیده</option>
+                            <option value="sad-dastgah">صد دستگاه</option>
+                            <option value="sarhaniyeh-olya">سرحانیه علیا</option>
+                            <option value="sarhaniyeh-sofla">سرحانیه سفلی</option>
+                            <option value="shahrak-sadat">شهرک سادات</option>
+                            <option value="shahrak-sevvom">شهرک سوم</option>
+                            <option value="pol-now">پل نو</option>
+                            <option value="maslavi-1">مصلاوی</option>
+                            <option value="ariz">عریض</option>
+                        </select>
+                        <div style="display:flex; gap:4px;">
+                            <button type="button" class="services-cat-chip clean-filter-chip active" data-cat="all">همه خدمات</button>
+                            <button type="button" class="services-cat-chip clean-filter-chip" data-cat="health">🦷 دندانپزشکی</button>
+                            <button type="button" class="services-cat-chip clean-filter-chip" data-cat="food">🍱 ارزاق سلامت</button>
+                            <button type="button" class="services-cat-chip clean-filter-chip" data-cat="meat">🥩 گوشت قربانی</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div style="border:1px solid #ebdcc5; border-radius:12px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,0.02);">
+                    <div style="overflow-x:auto;">
+                        <table style="width:100%; border-collapse:collapse; text-align:right;">
+                            <thead>
+                                <tr style="background:#faf7f2; border-bottom:1px solid #ebdcc5; font-size:11.5px; color:#5c6e6a; font-weight:800;">
+                                    <th style="padding:10px 12px; width:45px; text-align:center;">ردیف</th>
+                                    <th style="padding:10px 12px;">سرپرست خانوار</th>
+                                    <th style="padding:10px 12px;">ایتام و افراد تحت تکفل</th>
+                                    <th style="padding:10px 12px; width:110px;">روستا</th>
+                                    <th style="padding:10px 12px;">سوابق خدمات دریافتی</th>
+                                    <th style="padding:10px 12px; width:170px; text-align:left;">سرجمع ارزش خدمات</th>
+                                    <th style="padding:10px 12px; width:100px; text-align:center;">پرونده</th>
+                                </tr>
+                            </thead>
+                            <tbody id="servicesTableBody">
+                                <!-- Rendered dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Dialog Footer -->
+            <div style="background:#faf7f2; border-top:1px solid #ebdcc5; padding:10px 24px; display:flex; justify-content:space-between; align-items:center; font-size:11.5px; color:#6b7c78;">
+                <div>نمایش فیلترشده: <strong id="servicesFilteredCount" style="color:#142a29;">۷۵ خانوار</strong></div>
+                <div>قرارگاه جهادی امام‌رضایی‌ها · منطقه پلاک یک شلمچه</div>
             </div>
         </div>
     </dialog>
@@ -30882,5 +31018,338 @@ document.addEventListener('click', (e) => {
 
 
 
+
+
+<script id="services-registry-module">
+(function() {
+    'use strict';
+
+    const servicesData = [{"id":"hh-1","rowNum":1,"guardianName":"صدیقه زباری","guardianAge":"","guardianNid":"181621234","phone":"9356466599","address":"صد دستگاه – منازل بندر -ردیف 4 – پلاک 10","villageId":"sad-dastgah","villageName":"صد دستگاه","totalValRaw":"11/000/000","totalValFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت دوم)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"دنیا عریضاوی","fatherName":"هاشم","nationalId":"1820612635","age":"19","education":"دانشجو","school":"—","health":"سالم","lastName":"عریضاوی"}]},{"id":"hh-2","rowNum":2,"guardianName":"زهرا مطوری","guardianAge":"57","guardianNid":"1816212344","phone":"9337318902","address":"سوره – درب بندر – خ موسی بن جعفر (ع)","villageId":"soureh","villageName":"سوره","totalValRaw":"66/000/000","totalValFormatted":"۶۶٬۰۰۰٬۰۰۰ ریال (۶٬۶۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"},{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت اول)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"معصومه صنگور","fatherName":"عبدالحسین","nationalId":"1820516555","age":"14","education":"هشتم","school":"کمیل","health":"سالم","lastName":"صنگور"}]},{"id":"hh-3","rowNum":3,"guardianName":"شیرین دوارجی","guardianAge":"","guardianNid":"1828346721","phone":"9330735636","address":"روستای دربند غربی","villageId":"darband-gharbi","villageName":"دربند غربی","totalValRaw":"66/000/000","totalValFormatted":"۶۶٬۰۰۰٬۰۰۰ ریال (۶٬۶۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/00","status":"تحویل شده ✓","valFormatted":"۵٬۵۰۰٬۰۰۰ ریال (۵۵۰٬۰۰۰ تومان)"},{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت اول)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"عباس مچاسبه معیل","fatherName":"محمد","nationalId":"1940714974","age":"25","education":"معلول","school":"—","health":"سالم","lastName":"مچاسبه معیل"},{"name":"حسین مچاسبه معیل","fatherName":"محمد","nationalId":"1820812421","age":"15","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"مچاسبه معیل"}]},{"id":"hh-4","rowNum":4,"guardianName":"سلوا سلیمانی","guardianAge":"56","guardianNid":"18248533","phone":"9374103605","address":"سوره درب فعلیه – سه راهی","villageId":"soureh","villageName":"سوره","totalValRaw":"66/000/000","totalValFormatted":"۶۶٬۰۰۰٬۰۰۰ ریال (۶٬۶۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"},{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت دوم)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"سجاد سلیمانی","fatherName":"هادی","nationalId":"1820806774","age":"13","education":"هفتم","school":"کمیل","health":"سالم","lastName":"سلیمانی"}]},{"id":"hh-5","rowNum":5,"guardianName":"فریده غانمی پور","guardianAge":"55","guardianNid":"1828247413","phone":"9383467763","address":"سوره کوچک – خ روبروی تعاونی – روبروی مصلاوی","villageId":"soureh","villageName":"سوره","totalValRaw":"66/000/000","totalValFormatted":"۶۶٬۰۰۰٬۰۰۰ ریال (۶٬۶۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"},{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت دوم)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"امید خلیلی صالحی","fatherName":"خسرو","nationalId":"1820692167","age":"17","education":"دهم","school":"شهر","health":"سالم","lastName":"خلیلی صالحی"}]},{"id":"hh-6","rowNum":6,"guardianName":"حمیده دوارجی نژاد","guardianAge":"","guardianNid":"1829633759","phone":"9398739202-9165862732","address":"دربند غربی – ابتدای روستا – جنب دکل ایرانسل – جنب خیابان ابن سلیم","villageId":"darband-gharbi","villageName":"دربند غربی","totalValRaw":"11/000/000","totalValFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت اول)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"آرزو دوارجی","fatherName":"محمد","nationalId":"1820422143","age":"24","education":"دیپلم","school":"—","health":"سالم","lastName":"دوارجی"}]},{"id":"hh-7","rowNum":7,"guardianName":"نصره حنعالی","guardianAge":"","guardianNid":"1828201995","phone":"9379486292","address":"دربند غربی – اروند کنار 4 – پشت کوچه شهید پارسیان – منزل آخر","villageId":"darband-gharbi","villageName":"دربند غربی","totalValRaw":"11/000/000","totalValFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت دوم)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"یوسف حنعالی","fatherName":"هادی","nationalId":"1746068442","age":"15","education":"هفتم","school":"شهر","health":"سالم","lastName":"حنعالی"},{"name":"اسما حنعالی","fatherName":"هادی","nationalId":"1820870847","age":"12","education":"هشتم","school":"شهر","health":"سالم","lastName":"حنعالی"}]},{"id":"hh-8","rowNum":8,"guardianName":"بسنه یوسف کنعانی","guardianAge":"","guardianNid":"1828469459","phone":"9358837631","address":"جدیده – نبش بوستان 11 – خ اصلی","villageId":"jadideh","villageName":"جدیده","totalValRaw":"11/000/000","totalValFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت دوم)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"آلا سلیمانی","fatherName":"حسین","nationalId":"1820759733","age":"15","education":"نهم","school":"راهیان نور","health":"سالم","lastName":"سلیمانی"}]},{"id":"hh-9","rowNum":9,"guardianName":"زهرا عوده زاده","guardianAge":"","guardianNid":"1850019088","phone":"9398819464","address":"دربند غربی – نرسیده به راه آهن","villageId":"darband-gharbi","villageName":"دربند غربی","totalValRaw":"66/000/000","totalValFormatted":"۶۶٬۰۰۰٬۰۰۰ ریال (۶٬۶۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"},{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت دوم)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"مجتبی فلاحیه پور","fatherName":"مصطفی","nationalId":"111133734","age":"17","education":"دوازدهم","school":"شهر","health":"سالم","lastName":"فلاحیه پور"}]},{"id":"hh-10","rowNum":10,"guardianName":"سمیه سلیمانی","guardianAge":"","guardianNid":"1090318480","phone":"9307879842","address":"صد دستگاه – پشت مدرسه راهیان نور – پلاک 1","villageId":"sad-dastgah","villageName":"صد دستگاه","totalValRaw":"11/000/000","totalValFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت دوم)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"مرام طیبی","fatherName":"احمد","nationalId":"1820699374","age":"17","education":"یازدهم","school":"شهدای شمخانی","health":"سالم","lastName":"طیبی"}]},{"id":"hh-11","rowNum":11,"guardianName":"علیه غانمی","guardianAge":"","guardianNid":"1815401281","phone":"9016909673-9337247944","address":"جدیده – خ بندر اصلی – فرعی دوم – جنب منزل سید صادق","villageId":"jadideh","villageName":"جدیده","totalValRaw":"66/000/000","totalValFormatted":"۶۶٬۰۰۰٬۰۰۰ ریال (۶٬۶۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"},{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت اول)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"مسلم هیولی","fatherName":"عبدالله","nationalId":"1810198267","age":"32","education":"تحصیل عمومی","school":"—","health":"معلول ذهنی","lastName":"هیولی"}]},{"id":"hh-12","rowNum":12,"guardianName":"عقیله صالحی","guardianAge":"45","guardianNid":"1820437922","phone":"9385898231-9366494396","address":"سوره– روبروی انبار حقانی – خ امام حسن عسکری (ع)","villageId":"soureh","villageName":"سوره","totalValRaw":"106/000/000","totalValFormatted":"۱۰۶٬۰۰۰٬۰۰۰ ریال (۱۰٬۶۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"health","title":"رویداد دندانپزشکی و سلامت دهان","desc":"معاینه","date":"۱۴۰۳/۰۲/۱۰","val":"40/000/000","status":"تحویل شده ✓","valFormatted":"۴۰٬۰۰۰٬۰۰۰ ریال (۴٬۰۰۰٬۰۰۰ تومان)"},{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"},{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت دوم)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"ام البنین صالحی اصل نژاد","fatherName":"حاتم","nationalId":"1820828867","age":"13","education":"هشتم","school":"راهیان نور","health":"سالم","lastName":"صالحی اصل نژاد"},{"name":"شهلا صالحی اصل نژاد","fatherName":"حاتم","nationalId":"1820709388","age":"متاهل","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"صالحی اصل نژاد"},{"name":"عباس صالحی اصل نژاد","fatherName":"حاتم","nationalId":"1820915956","age":"11","education":"تحصیل عمومی","school":"ترک تحصیل","health":"سالم","lastName":"صالحی اصل نژاد"}]},{"id":"hh-13","rowNum":13,"guardianName":"خدیجه حمدی","guardianAge":"","guardianNid":"1820437922","phone":"9393954264-9011344510","address":"جدیده – خ بوستان 2","villageId":"jadideh","villageName":"جدیده","totalValRaw":"11/000/000","totalValFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت دوم)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"حسن دست گذار","fatherName":"شجاع","nationalId":"1748238221","age":"10","education":"چهارم","school":"محسن بن علی","health":"سالم","lastName":"دست گذار"},{"name":"ستایش دست گذار","fatherName":"شجاع","nationalId":"1747054666","age":"13","education":"هفتم","school":"شهر","health":"سالم","lastName":"دست گذار"},{"name":"حسین دست گذار","fatherName":"شجاع","nationalId":"1746280980","age":"15","education":"نهم","school":"شهر","health":"سالم","lastName":"دست گذار"},{"name":"زهرا دست گذار","fatherName":"شجاع","nationalId":"1745395751","age":"18","education":"هشتم","school":"ترک تحصیل","health":"سالم","lastName":"دست گذار"}]},{"id":"hh-14","rowNum":14,"guardianName":"ملکه عنبی (عمه)","guardianAge":"","guardianNid":"1820514536","phone":"9165764199-9168107791","address":"صد دستگاه – منازل اداره بندر – پلاک 9","villageId":"sad-dastgah","villageName":"صد دستگاه","totalValRaw":"11/000/000","totalValFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت دوم)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"رسول عنبی","fatherName":"جاسم","nationalId":"1811448712","age":"17","education":"دهم","school":"شهر","health":"سالم","lastName":"عنبی"}]},{"id":"hh-15","rowNum":15,"guardianName":"نادیا موسوی","guardianAge":"","guardianNid":"1951156201","phone":"9370508733","address":"دربند غربی – خ سادات – داخل حسینیه مزرعاویان","villageId":"darband-gharbi","villageName":"دربند غربی","totalValRaw":"11/000/000","totalValFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت دوم)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"سید امیرحسین موسوی","fatherName":"سید جاسم","nationalId":"1820760774","age":"15","education":"نهم","school":"شهر","health":"سالم","lastName":"موسوی"}]},{"id":"hh-16","rowNum":16,"guardianName":"مریم غزلی","guardianAge":"","guardianNid":"1750389290","phone":"9367633073","address":"جدیده – سمت راست خ پاسداران – کوچه یاسمن – پ 47","villageId":"jadideh","villageName":"جدیده","totalValRaw":"11/000/000","totalValFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت دوم)","desc":"گوشت","date":"1405/02/21","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"منتظر سلیمانی","fatherName":"ناجی","nationalId":"182077125","age":"16","education":"دهم","school":"کمیل","health":"سالم","lastName":"سلیمانی"}]},{"id":"hh-17","rowNum":17,"guardianName":"تسواهن عمرانی ((مادربزرگ)","guardianAge":"62","guardianNid":"1829623321","phone":"9165977682-","address":"سوره – جنب حسینیه سید علی – خ مقاومت 2","villageId":"soureh","villageName":"سوره","totalValRaw":"66/000/000","totalValFormatted":"۶۶٬۰۰۰٬۰۰۰ ریال (۶٬۶۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"},{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت دوم)","desc":"گوشت","date":"1405/02/21","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"زهرا رابحی","fatherName":"حسین","nationalId":"1811302335","age":"16","education":"هفتم","school":"راهیان نور","health":"سالم","lastName":"رابحی"},{"name":"محمد رابحی","fatherName":"حسین","nationalId":"1811302300","age":"16","education":"هفتم","school":"شهر","health":"سالم","lastName":"رابحی"},{"name":"علی رابحی","fatherName":"حسین","nationalId":"1811079741","age":"17","education":"ترک تحصیل","school":"—","health":"سالم","lastName":"رابحی"}]},{"id":"hh-18","rowNum":18,"guardianName":"وفیه عموری","guardianAge":"","guardianNid":"1828201944","phone":"9017924493-9396827230","address":"دربند غربی – جنب مسجد امام جواد (ع) - خ یاس","villageId":"darband-gharbi","villageName":"دربند غربی","totalValRaw":"11/000/000","totalValFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت دوم)","desc":"گوشت","date":"1405/02/21","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"فاطمه غانمی","fatherName":"جاسم","nationalId":"182390276","age":"25","education":"دانشجو","school":"—","health":"سالم","lastName":"غانمی"}]},{"id":"hh-19","rowNum":19,"guardianName":"صبریه سکینی پور","guardianAge":"42","guardianNid":"3071243596","phone":"9051226088","address":"سوره - روبروی مدرسه رزمندگان","villageId":"soureh","villageName":"سوره","totalValRaw":"66/000/000","totalValFormatted":"۶۶٬۰۰۰٬۰۰۰ ریال (۶٬۶۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"},{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت اول)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"رقیه قزاوی","fatherName":"جبار","nationalId":"1821140461","age":"5","education":"پیش","school":"—","health":"سالم","lastName":"قزاوی"},{"name":"هاجر قزاوی","fatherName":"جبار","nationalId":"1821080671","age":"6","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"قزاوی"},{"name":"کاظم قزاوی","fatherName":"جبار","nationalId":"1820678857","age":"16","education":"سوم","school":"ترک تحصیل","health":"سالم","lastName":"قزاوی"}]},{"id":"hh-20","rowNum":20,"guardianName":"امیره ابراهیم رضاگاه","guardianAge":"","guardianNid":"1829658727","phone":"9398110403-9371472652","address":"جدیده – بوستان 7 – فرعی اول – درب قهوه ای","villageId":"jadideh","villageName":"جدیده","totalValRaw":"66/000/000","totalValFormatted":"۶۶٬۰۰۰٬۰۰۰ ریال (۶٬۶۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"},{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت دوم)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"فاطمه حمید","fatherName":"حسن","nationalId":"6850254898","age":"12","education":"پنجم","school":"محسن بن علی","health":"سالم","lastName":"حمید"},{"name":"وسام حمید","fatherName":"حسن","nationalId":"6850327501","age":"8","education":"اول","school":"مرزداران","health":"سالم","lastName":"حمید"}]},{"id":"hh-21","rowNum":21,"guardianName":"امل عیدان","guardianAge":"","guardianNid":"1744233829","phone":"9398471534","address":"جدیده – بوستان 6","villageId":"jadideh","villageName":"جدیده","totalValRaw":"66/000/000","totalValFormatted":"۶۶٬۰۰۰٬۰۰۰ ریال (۶٬۶۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"},{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت دوم)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"مریم عیدانی","fatherName":"حسن","nationalId":"182078088","age":"15","education":"نهم","school":"راهیان نور","health":"سالم","lastName":"عیدانی"},{"name":"زهرا عیدانی","fatherName":"حسن","nationalId":"1820934039","age":"12","education":"چهرم","school":"علویه","health":"سالم","lastName":"عیدانی"},{"name":"زینب عیدانی","fatherName":"حسن","nationalId":"1820691446","age":"17","education":"یازدهم","school":"شهدای شمخانی","health":"سالم","lastName":"عیدانی"}]},{"id":"hh-22","rowNum":22,"guardianName":"لیلا بنی مالچی","guardianAge":"40","guardianNid":"1820108041","phone":"9388010423","address":"جدیده بوستان 7","villageId":"jadideh","villageName":"جدیده","totalValRaw":"161/000/000","totalValFormatted":"۱۶۱٬۰۰۰٬۰۰۰ ریال (۱۶٬۱۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"health","title":"رویداد دندانپزشکی و سلامت دهان","desc":"معاینه - فیشور سیلانت - ترمیم 2 فرزند","date":"۱۴۰۳/۰۲/۱۰","val":"95/000/000","status":"تحویل شده ✓","valFormatted":"۹۵٬۰۰۰٬۰۰۰ ریال (۹٬۵۰۰٬۰۰۰ تومان)"},{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"},{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت دوم)","desc":"قربانی","date":"1405/03/06","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"رقیه بنی مالچی","fatherName":"عادل","nationalId":"1820642399","age":"17","education":"دوازدهم","school":"شهدای شمخانی","health":"سالم","lastName":"بنی مالچی"},{"name":"سنا بنی مالچی","fatherName":"عادل","nationalId":"1820703118","age":"16","education":"یازدهم","school":"شهدای شمخانی","health":"سالم","lastName":"بنی مالچی"},{"name":"حسین بنی مالچی","fatherName":"عادل","nationalId":"1820804860","age":"14","education":"هشتم","school":"کمیل","health":"حلق و بینی","lastName":"بنی مالچی"},{"name":"ریحانه بنی مالچی","fatherName":"عادل","nationalId":"1820939790","age":"11","education":"پنجم","school":"محسن بن علی","health":"دندان","lastName":"بنی مالچی"},{"name":"عباس بنی مالچی","fatherName":"عادل","nationalId":"1821114590","age":"6","education":"پیش","school":"—","health":"دندان","lastName":"بنی مالچی"}]},{"id":"hh-23","rowNum":23,"guardianName":"ابتسام ادگیان پور","guardianAge":"35","guardianNid":"2150095084","phone":"9386529928","address":"سوره - خ شلمچه 4","villageId":"soureh","villageName":"سوره","totalValRaw":"89/000/000","totalValFormatted":"۸۹٬۰۰۰٬۰۰۰ ریال (۸٬۹۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"health","title":"رویداد دندانپزشکی و سلامت دهان","desc":"معاینه - فیشور سیلانت","date":"۱۴۰۳/۰۲/۱۰","val":"34/000/000","status":"تحویل شده ✓","valFormatted":"۳۴٬۰۰۰٬۰۰۰ ریال (۳٬۴۰۰٬۰۰۰ تومان)"},{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"}],"children":[{"name":"زهرا ادی","fatherName":"اسماعیل","nationalId":"1821037960","age":"8","education":"دوم","school":"شهدای شلمچه","health":"دندان","lastName":"ادی"},{"name":"محمد سعید ادی","fatherName":"اسماعیل","nationalId":"1820837629","age":"13","education":"هفتم","school":"شهر","health":"سالم","lastName":"ادی"},{"name":"الینا ادی","fatherName":"اسماعیل","nationalId":"—","age":"14","education":"نهم","school":"راهیان نور","health":"سالم","lastName":"ادی"}]},{"id":"hh-24","rowNum":24,"guardianName":"فاطمه غزلی","guardianAge":"","guardianNid":"1820165574","phone":"9388501897","address":"سرحانیه - خیابان شهید بازلی - انتهای خیابان","villageId":"sarhaniyeh-olya","villageName":"سرحانیه علیا","totalValRaw":"176/000/000","totalValFormatted":"۱۷۶٬۰۰۰٬۰۰۰ ریال (۱۷٬۶۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"health","title":"رویداد دندانپزشکی و سلامت دهان","desc":"معاینه - فیشور - ترمیم 4 فرزند","date":"۱۴۰۳/۰۲/۱۰","val":"110/000/000","status":"تحویل شده ✓","valFormatted":"۱۱۰٬۰۰۰٬۰۰۰ ریال (۱۱٬۰۰۰٬۰۰۰ تومان)"},{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"},{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت اول)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"نرگس غزلاوی","fatherName":"محمد","nationalId":"1820814823","age":"13","education":"هفتم","school":"راهیان نور","health":"سالم","lastName":"غزلاوی"},{"name":"نگین غزلاوی","fatherName":"محمد","nationalId":"1820931277","age":"11","education":"چهارم","school":"راهیان نور","health":"سالم","lastName":"غزلاوی"},{"name":"نسرین غزلاوی","fatherName":"محمد","nationalId":"1821011325","age":"10","education":"سوم","school":"علویه","health":"آلرژی پوستی","lastName":"غزلاوی"},{"name":"بنین غزلاوی","fatherName":"محمد","nationalId":"1821148606","age":"5","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"غزلاوی"}]},{"id":"hh-25","rowNum":25,"guardianName":"آسیه ربیعی","guardianAge":"","guardianNid":"18613336421","phone":"9014418026","address":"سرحانیه - خیابان شهید بازلی - انتهای خیابان","villageId":"sarhaniyeh-olya","villageName":"سرحانیه علیا","totalValRaw":"72/000/000","totalValFormatted":"۷۲٬۰۰۰٬۰۰۰ ریال (۷٬۲۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"health","title":"رویداد دندانپزشکی و سلامت دهان","desc":"معاینه 2 فرزند","date":"۱۴۰۳/۰۲/۱۰","val":"8/000/000","status":"تحویل شده ✓","valFormatted":"۸٬۰۰۰٬۰۰۰ ریال (۸۰۰٬۰۰۰ تومان)"},{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"},{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت اول)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"ستاره علی زاده","fatherName":"حسین","nationalId":"1820761703","age":"15","education":"نهم","school":"علویه","health":"سالم","lastName":"علی زاده"},{"name":"ستایش علی زاده","fatherName":"حسین","nationalId":"1820949710","age":"10","education":"چهارم","school":"راهیان نور","health":"سالم","lastName":"علی زاده"},{"name":"نیایش علی زاده","fatherName":"حسین","nationalId":"1821098838","age":"7","education":"اول","school":"راهیان نور","health":"سالم","lastName":"علی زاده"}]},{"id":"hh-26","rowNum":26,"guardianName":"کفایه جبرزاده","guardianAge":"","guardianNid":"1900068273","phone":"9059419289","address":"سرحانیه - خیابان شهید بازلی - انتهای خیابان","villageId":"sarhaniyeh-olya","villageName":"سرحانیه علیا","totalValRaw":"66/000/000","totalValFormatted":"۶۶٬۰۰۰٬۰۰۰ ریال (۶٬۶۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"},{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت اول)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"حسین مالچی","fatherName":"رحیم","nationalId":"1820724891","age":"15","education":"نهم","school":"شهر","health":"سالم","lastName":"مالچی"},{"name":"محسن مالچی","fatherName":"رحیم","nationalId":"1820775496","age":"11","education":"پنجم","school":"شهر","health":"سالم","lastName":"مالچی"},{"name":"ریحانه مالچی","fatherName":"رحیم","nationalId":"1821034996","age":"7","education":"اول","school":"شهر","health":"سالم","lastName":"مالچی"}]},{"id":"hh-27","rowNum":27,"guardianName":"قسمت شریفی","guardianAge":"","guardianNid":"1820102335","phone":"9051975634","address":"سرحانیه - خیابان شهید بازلی - انتهای خیابان","villageId":"sarhaniyeh-olya","villageName":"سرحانیه علیا","totalValRaw":"66/000/000","totalValFormatted":"۶۶٬۰۰۰٬۰۰۰ ریال (۶٬۶۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"},{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت اول)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"مهدی غزلی","fatherName":"صالح","nationalId":"1820887685","age":"23","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"غزلی"},{"name":"میلاد غزلی","fatherName":"صالح","nationalId":"1820930084*","age":"10","education":"چهارم","school":"زینبیه","health":"سالم","lastName":"غزلی"}]},{"id":"hh-28","rowNum":28,"guardianName":"معصومه باوی","guardianAge":"","guardianNid":"1740059654","phone":"9043783474","address":"سرحانیه - خیابان شهید بازلی - انتهای خیابان","villageId":"sarhaniyeh-olya","villageName":"سرحانیه علیا","totalValRaw":"11/000/000","totalValFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت اول)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"عقیل میهوله زاده","fatherName":"محمد","nationalId":"1820762300","age":"15","education":"نهم","school":"—","health":"سالم","lastName":"میهوله زاده"},{"name":"توفیق میهوله زاده","fatherName":"محمد","nationalId":"182869644","age":"13","education":"ششم","school":"—","health":"سالم","lastName":"میهوله زاده"},{"name":"عباس میهوله زاده","fatherName":"محمد","nationalId":"1821129393","age":"5","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"میهوله زاده"},{"name":"طاهر میهوله زاده","fatherName":"محمد","nationalId":"1821030397","age":"8","education":"سوم","school":"—","health":"سالم","lastName":"میهوله زاده"}]},{"id":"hh-29","rowNum":29,"guardianName":"فاطمه","guardianAge":"","guardianNid":"1828098353","phone":"","address":"سرحانیه - خیابان شهید بازلی - انتهای خیابان","villageId":"sarhaniyeh-olya","villageName":"سرحانیه علیا","totalValRaw":"66/000/000","totalValFormatted":"۶۶٬۰۰۰٬۰۰۰ ریال (۶٬۶۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"},{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت اول)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"نازنین عباسی","fatherName":"سعید","nationalId":"1820931935","age":"11","education":"سوم","school":"علویه","health":"سالم","lastName":"عباسی"},{"name":"میترا عباسی","fatherName":"سعید","nationalId":"1820990397","age":"12","education":"دوم","school":"علویه","health":"سالم","lastName":"عباسی"}]},{"id":"hh-30","rowNum":30,"guardianName":"عزیزه سلیمانی","guardianAge":"","guardianNid":"1820077446","phone":"9380988376","address":"سرحانیه - خیابان شهید بازلی - انتهای خیابان","villageId":"sarhaniyeh-olya","villageName":"سرحانیه علیا","totalValRaw":"11/000/000","totalValFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت اول)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"عباس عبیداوی","fatherName":"حسن","nationalId":"1745523499","age":"17","education":"دهم","school":"—","health":"سالم","lastName":"عبیداوی"},{"name":"مصطفی عبیداوی","fatherName":"حسن","nationalId":"1747517755","age":"11","education":"چهارم","school":"دهخدا","health":"سالم","lastName":"عبیداوی"}]},{"id":"hh-31","rowNum":31,"guardianName":"فاطمه مجدمی","guardianAge":"","guardianNid":"1951007689","phone":"9384718691","address":"سرحانیه - خیابان شهید بازلی - انتهای خیابان","villageId":"sarhaniyeh-olya","villageName":"سرحانیه علیا","totalValRaw":"11/000/000","totalValFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت اول)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"علی حسن..زاده","fatherName":"عادل","nationalId":"1820819441","age":"18","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"حسن..زاده"},{"name":"غزل حسن..زاده","fatherName":"عادل","nationalId":"1811075045","age":"16","education":"دهم","school":"شهر","health":"سالم","lastName":"حسن..زاده"},{"name":"نادیا حسن..زاده","fatherName":"عادل","nationalId":"1810912660","age":"17","education":"یازدهم","school":"شهر","health":"سالم","lastName":"حسن..زاده"}]},{"id":"hh-32","rowNum":32,"guardianName":"زکیه یوسفی","guardianAge":"","guardianNid":"1828464627","phone":"9367934757","address":"سرحانیه - خیابان شهید بازلی - انتهای خیابان","villageId":"sarhaniyeh-olya","villageName":"سرحانیه علیا","totalValRaw":"66/000/000","totalValFormatted":"۶۶٬۰۰۰٬۰۰۰ ریال (۶٬۶۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"},{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت اول)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"مهدی رامش","fatherName":"خالد","nationalId":"2285328567","age":"17","education":"یازدهم","school":"—","health":"سالم","lastName":"رامش"},{"name":"علی رامش","fatherName":"خالد","nationalId":"2284524702","age":"15","education":"ترک تحصیل","school":"—","health":"ریه","lastName":"رامش"}]},{"id":"hh-33","rowNum":33,"guardianName":"امیره غزلی","guardianAge":"","guardianNid":"1820084418","phone":"","address":"سرحانیه - خیابان شهید بازلی - انتهای خیابان","villageId":"sarhaniyeh-olya","villageName":"سرحانیه علیا","totalValRaw":"66/000/000","totalValFormatted":"۶۶٬۰۰۰٬۰۰۰ ریال (۶٬۶۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"},{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت اول)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"کریم غزلی","fatherName":"منصور","nationalId":"1820524256","age":"23","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"غزلی"},{"name":"فرید غزلی","fatherName":"منصور","nationalId":"1820536327","age":"20","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"غزلی"},{"name":"حسین غزلی","fatherName":"منصور","nationalId":"1820624234","age":"19","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"غزلی"},{"name":"حسن غزلی","fatherName":"منصور","nationalId":"1820865061","age":"12","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"غزلی"},{"name":"فاطمه غزلی","fatherName":"منصور","nationalId":"1820988562","age":"11","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"غزلی"},{"name":"عباس غزلی","fatherName":"منصور","nationalId":"شناسنامه ندارد","age":"6","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"غزلی"}]},{"id":"hh-34","rowNum":34,"guardianName":"خدیجه رابحی","guardianAge":"","guardianNid":"1900189488","phone":"9052811974","address":"شهرک سادات - ابوجدیع 1","villageId":"shahrak-sadat","villageName":"شهرک سادات","totalValRaw":"12/000/000","totalValFormatted":"۱۲٬۰۰۰٬۰۰۰ ریال (۱٬۲۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت دوم)","desc":"گوشت","date":"1405/03/06","val":"12/000/000","status":"تحویل شده ✓","valFormatted":"۱۲٬۰۰۰٬۰۰۰ ریال (۱٬۲۰۰٬۰۰۰ تومان)"}],"children":[{"name":"دانیال رابحی","fatherName":"ابراهیم","nationalId":"1800720217","age":"16","education":"تحصیل عمومی","school":"—","health":"مجرای/ادرار","lastName":"رابحی"},{"name":"حسین رابحی","fatherName":"ابراهیم","nationalId":"1821007786","age":"9","education":"سوم","school":"امیدان امام","health":"سالم","lastName":"رابحی"},{"name":"محمد امبن رابحی","fatherName":"ابراهیم","nationalId":"1821090373","age":"8","education":"دوم","school":"امیدان امام","health":"سالم","lastName":"رابحی"}]},{"id":"hh-35","rowNum":35,"guardianName":"ابتسام هاشمیان زاده","guardianAge":"","guardianNid":"1898395446","phone":"9160381673","address":"شهرک سادات - ابوجدیع 4","villageId":"shahrak-sadat","villageName":"شهرک سادات","totalValRaw":"12/000/000","totalValFormatted":"۱۲٬۰۰۰٬۰۰۰ ریال (۱٬۲۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت دوم)","desc":"گوشت","date":"1405/03/06","val":"12/000/000","status":"تحویل شده ✓","valFormatted":"۱۲٬۰۰۰٬۰۰۰ ریال (۱٬۲۰۰٬۰۰۰ تومان)"}],"children":[{"name":"سید عباس هاشمیان زاده","fatherName":"سید اکبر","nationalId":"1820456481","age":"24","education":"سرباز","school":"—","health":"سالم","lastName":"هاشمیان زاده"},{"name":"سید عبدالله هاشمیان زاده","fatherName":"سید اکبر","nationalId":"1820631192","age":"17","education":"دوازدهم","school":"شهر","health":"سالم","lastName":"هاشمیان زاده"},{"name":"سید نصرالله هاشمیان زاده","fatherName":"سید اکبر","nationalId":"1820869628","age":"12","education":"ششم","school":"شهر","health":"سالم","lastName":"هاشمیان زاده"}]},{"id":"hh-36","rowNum":36,"guardianName":"هاشمیه هاشمیان زاده","guardianAge":"","guardianNid":"6629869729","phone":"9167302821","address":"شهرک سادات - ابوجدیع 4","villageId":"shahrak-sadat","villageName":"شهرک سادات","totalValRaw":"12/000/000","totalValFormatted":"۱۲٬۰۰۰٬۰۰۰ ریال (۱٬۲۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت دوم)","desc":"گوشت","date":"1405/03/06","val":"12/000/000","status":"تحویل شده ✓","valFormatted":"۱۲٬۰۰۰٬۰۰۰ ریال (۱٬۲۰۰٬۰۰۰ تومان)"}],"children":[{"name":"سیده الهه هاشمیان زاده","fatherName":"سید محسن","nationalId":"1820641155","age":"18","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"هاشمیان زاده"},{"name":"سیده ام البنین هاشمیان زاده","fatherName":"سید محسن","nationalId":"1820853616","age":"13","education":"هفتم","school":"راهیان نور","health":"سالم","lastName":"هاشمیان زاده"},{"name":"سید علی هاشمیان زاده","fatherName":"سید محسن","nationalId":"1821040171","age":"8","education":"معلول شنوایی","school":"—","health":"سالم","lastName":"هاشمیان زاده"}]},{"id":"hh-37","rowNum":37,"guardianName":"فاطمه هاشمی اصل عرب","guardianAge":"","guardianNid":"1829906232","phone":"9106434870","address":"شهرک سادات - ابوجدیع 7","villageId":"shahrak-sadat","villageName":"شهرک سادات","totalValRaw":"12/000/000","totalValFormatted":"۱۲٬۰۰۰٬۰۰۰ ریال (۱٬۲۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت دوم)","desc":"گوشت","date":"1405/03/06","val":"12/000/000","status":"تحویل شده ✓","valFormatted":"۱۲٬۰۰۰٬۰۰۰ ریال (۱٬۲۰۰٬۰۰۰ تومان)"}],"children":[{"name":"سید مرتضی هاشمی اصل عرب","fatherName":"محمد علی","nationalId":"—","age":"17","education":"هشتم","school":"—","health":"سالم","lastName":"هاشمی اصل عرب"},{"name":"سید خلیل هاشمی اصل عرب","fatherName":"محمد علی","nationalId":"—","age":"13","education":"هفتم","school":"شهر","health":"سالم","lastName":"هاشمی اصل عرب"},{"name":"سید مهدی هاشمی اصل عرب","fatherName":"محمد علی","nationalId":"—","age":"11","education":"پنجم (اوتیسم)","school":"—","health":"سالم","lastName":"هاشمی اصل عرب"}]},{"id":"hh-38","rowNum":38,"guardianName":"غیده عسکری","guardianAge":"","guardianNid":"610998177","phone":"91633090377","address":"شهرک سوم","villageId":"shahrak-sevvom","villageName":"شهرک سوم","totalValRaw":"55/000/000","totalValFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"}],"children":[]},{"id":"hh-39","rowNum":39,"guardianName":"حکیمه نواصر","guardianAge":"","guardianNid":"1820379043","phone":"9373461729","address":"شهرک سوم","villageId":"shahrak-sevvom","villageName":"شهرک سوم","totalValRaw":"—","totalValFormatted":"—","services":[],"children":[{"name":"عبدالقادر عالعلی","fatherName":"خالد","nationalId":"1820999191","age":"9","education":"سوم","school":"امام/سجاد","health":"بینی","lastName":"عالعلی"}]},{"id":"hh-40","rowNum":40,"guardianName":"حلاف بروایه","guardianAge":"","guardianNid":"1987700465","phone":"9362647789","address":"شهرک سوم","villageId":"shahrak-sevvom","villageName":"شهرک سوم","totalValRaw":"—","totalValFormatted":"—","services":[],"children":[{"name":"هاشم حلاف/بروایه","fatherName":"علی","nationalId":"1820834654","age":"14","education":"ششم","school":"شهید/بهنام","health":"*1","lastName":"حلاف/بروایه"},{"name":"حسین حلاف/بروایه","fatherName":"علی","nationalId":"7060201734","age":"5","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"حلاف/بروایه"}]},{"id":"hh-41","rowNum":41,"guardianName":"حسین چیغانی","guardianAge":"","guardianNid":"1829643746","phone":"9362528030","address":"شهرک سوم","villageId":"shahrak-sevvom","villageName":"شهرک سوم","totalValRaw":"55/000/000","totalValFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"}],"children":[{"name":"محمد/جواد غانمی","fatherName":"علی","nationalId":"1820899551","age":"10","education":"چهارم","school":"انقلاب","health":"دندان","lastName":"غانمی"},{"name":"محسن غانمی","fatherName":"علی","nationalId":"1820990850","age":"9","education":"سوم","school":"انقلاب","health":"دندان","lastName":"غانمی"}]},{"id":"hh-42","rowNum":42,"guardianName":"امیره عبید پور","guardianAge":"41","guardianNid":"1829568485","phone":"9039970537","address":"جدیده – بوستان 9 – کوچه کوکب","villageId":"jadideh","villageName":"جدیده","totalValRaw":"—","totalValFormatted":"—","services":[],"children":[{"name":"سید کاظم هلالات","fatherName":"سید عادل","nationalId":"1821147332","age":"5","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"هلالات"},{"name":"سیده محدثه هلالات","fatherName":"سید عادل","nationalId":"1821230401","age":"2","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"هلالات"}]},{"id":"hh-43","rowNum":43,"guardianName":"شیخه سلمانی","guardianAge":"50","guardianNid":"","phone":"9169342612","address":"سوره – خ شلمچه 1 – کوچه بهار 1","villageId":"soureh","villageName":"سوره","totalValRaw":"—","totalValFormatted":"—","services":[],"children":[{"name":"اسما حمدی","fatherName":"مهدی","nationalId":"1820941329","age":"10","education":"چهارم","school":"شهدای شلمچه","health":"حلق و بینی","lastName":"حمدی"},{"name":"شیرین حمدی","fatherName":"مهدی","nationalId":"1820778584","age":"14","education":"ترک تحصیل","school":"—","health":"سالم","lastName":"حمدی"},{"name":"علی حمدی","fatherName":"مهدی","nationalId":"1820662691","age":"18","education":"دهم","school":"ترک تحصیل","health":"فشار خون مادر","lastName":"حمدی"}]},{"id":"hh-44","rowNum":44,"guardianName":"سیده لیلا محمودی فرحانی","guardianAge":"36","guardianNid":"1820021203","phone":"9363945859-9373387409","address":"دربند شرقی – انتهای جاده سمت راست – جنب حسینیه فاطمیه","villageId":"darband-sharqi","villageName":"دربند شرقی","totalValRaw":"—","totalValFormatted":"—","services":[],"children":[{"name":"حیدر علی محمدی صفایی","fatherName":"عدنان","nationalId":"6850331061","age":"7","education":"اول","school":"—","health":"سالم","lastName":"محمدی صفایی"},{"name":"علی اکبر محمدی صفایی","fatherName":"عدنان","nationalId":"6850220373","age":"12","education":"اول","school":"ترک تحصیل","health":"سالم","lastName":"محمدی صفایی"}]},{"id":"hh-45","rowNum":45,"guardianName":"شکریه صالحی","guardianAge":"42","guardianNid":"1829557254","phone":"9057113066","address":"شهرک سوم","villageId":"shahrak-sevvom","villageName":"شهرک سوم","totalValRaw":"55/000/000","totalValFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"}],"children":[{"name":"فاطمه کعبی اصل سوره","fatherName":"محمد","nationalId":"1820512908","age":"21","education":"نهم","school":"—","health":"سالم","lastName":"کعبی اصل سوره"},{"name":"علی کعبی اصل سوره","fatherName":"محمد","nationalId":"1820581799","age":"19","education":"ششم","school":"ترک تحصیل","health":"قلب - آسم","lastName":"کعبی اصل سوره"},{"name":"امیرحسین کعبی اصل سوره","fatherName":"محمد","nationalId":"1820807010","age":"14","education":"هشتم","school":"شهر","health":"کم خونی","lastName":"کعبی اصل سوره"},{"name":"حسن کعبی اصل سوره","fatherName":"محمد","nationalId":"1821132610","age":"6","education":"پیش","school":"انقلاب اسلامی","health":"سالم","lastName":"کعبی اصل سوره"}]},{"id":"hh-46","rowNum":46,"guardianName":"عالیه شامیان","guardianAge":"44","guardianNid":"1881653633","phone":"9394935498","address":"شهرک سوم","villageId":"shahrak-sevvom","villageName":"شهرک سوم","totalValRaw":"55/000/000","totalValFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"}],"children":[{"name":"بیان شامیان نژاد","fatherName":"علی","nationalId":"—","age":"11","education":"پنجم","school":"شهر","health":"سالم","lastName":"شامیان نژاد"},{"name":"فردوس شامیان نژاد","fatherName":"علی","nationalId":"—","age":"9","education":"سوم","school":"شهر","health":"سالم","lastName":"شامیان نژاد"}]},{"id":"hh-47","rowNum":47,"guardianName":"فاطمه حمدی","guardianAge":"","guardianNid":"","phone":"9169150416-09040301215","address":"جدیده – گلستان 1 – فرعی دوم سمت راست","villageId":"jadideh","villageName":"جدیده","totalValRaw":"—","totalValFormatted":"—","services":[],"children":[{"name":"کرار حمدی","fatherName":"احمد","nationalId":"1820848647","age":"12","education":"ششم","school":"رزمندگان","health":"عفونت شکم","lastName":"حمدی"}]},{"id":"hh-48","rowNum":48,"guardianName":"رباب علقمی","guardianAge":"40","guardianNid":"","phone":"9032705243","address":"دربند غربی – خ شهید مدنی – کوچه ائمه 3","villageId":"darband-gharbi","villageName":"دربند غربی","totalValRaw":"—","totalValFormatted":"—","services":[],"children":[{"name":"سید عرفان سید عرفان","fatherName":"سید سالم","nationalId":"182053631","age":"8","education":"دوم","school":"مرزداران","health":"کم خونی سیکل","lastName":"سید عرفان"},{"name":"سید احمد سید احمد","fatherName":"سید سالم","nationalId":"1820965791","age":"10","education":"چهارم","school":"مرزداران","health":"کم خونی سیکل","lastName":"سید احمد"},{"name":"سیده ندا سیده ندا","fatherName":"سید سالم","nationalId":"1820767108","age":"9","education":"نهم","school":"شهر","health":"کم خونی سیکل","lastName":"سیده ندا"},{"name":"سیده هدی سیده هدی","fatherName":"سید سالم","nationalId":"1820600211","age":"18","education":"کنکوری","school":"—","health":"کم خونی سیکل","lastName":"سیده هدی"}]},{"id":"hh-44","rowNum":44,"guardianName":"سیده اقدس مفتی عریض","guardianAge":"44","guardianNid":"1728293628","phone":"907679273","address":"روستای عریض - معراج 2","villageId":"ariz","villageName":"عریض","totalValRaw":"—","totalValFormatted":"—","services":[],"children":[{"name":"مریم عریضاوی","fatherName":"عبدالامام","nationalId":"1820939261","age":"11","education":"پنجم","school":"امام رضایی ها","health":"سالم","lastName":"عریضاوی"},{"name":"عباس عریضاوی","fatherName":"عبدالامام","nationalId":"1820797929","age":"14","education":"هشتم","school":"ترک تحصیل","health":"سالم","lastName":"عریضاوی"}]},{"id":"hh-45","rowNum":45,"guardianName":"جواهر سلیمانی","guardianAge":"30","guardianNid":"1829567251","phone":"9309552337","address":"پل نو - ولایت 5 - روبروی حسینیه","villageId":"pol-now","villageName":"پل نو","totalValRaw":"—","totalValFormatted":"—","services":[],"children":[{"name":"کرار سلیمانی","fatherName":"سعید","nationalId":"1821068858","age":"7","education":"اول","school":"حر بن ریاحی","health":"سالم","lastName":"سلیمانی"},{"name":"علی سلیمانی","fatherName":"سعید","nationalId":"1820778851","age":"14","education":"هفتم","school":"ترک تحصیل","health":"سالم","lastName":"سلیمانی"}]},{"id":"hh-46","rowNum":46,"guardianName":"حسین براجعه (عمو)","guardianAge":"22","guardianNid":"1740457722","phone":"9377646690","address":"سرحانیه 2 - خ ولی عصر - کوچه انقلاب 2","villageId":"sarhaniyeh-sofla","villageName":"سرحانیه سفلی","totalValRaw":"—","totalValFormatted":"—","services":[],"children":[{"name":"اسرا براجعه","fatherName":"ناصر","nationalId":"1820978801","age":"9","education":"دوم","school":"زینبیه","health":"کلیه - چشم","lastName":"براجعه"}]},{"id":"hh-47","rowNum":47,"guardianName":"فاطمه غزلی","guardianAge":"53","guardianNid":"","phone":"9331522544","address":"پل نو - شهرک اول - خ دوم","villageId":"pol-now","villageName":"پل نو","totalValRaw":"—","totalValFormatted":"—","services":[],"children":[{"name":"مهدی غزلی","fatherName":"رحیم","nationalId":"1820587444","age":"19","education":"بزرگسالان","school":"شهر","health":"سالم","lastName":"غزلی"}]},{"id":"hh-48","rowNum":48,"guardianName":"خدیجه عموری","guardianAge":"42","guardianNid":"2093060078","phone":"9301593749","address":"دربند غربی - خ مدنی - کوچه ائمه 2","villageId":"darband-gharbi","villageName":"دربند غربی","totalValRaw":"—","totalValFormatted":"—","services":[],"children":[{"name":"کریم خالدی","fatherName":"علی","nationalId":"1820538613","age":"19","education":"دیپلم","school":"—","health":"سالم","lastName":"خالدی"},{"name":"رضا خالدی","fatherName":"علی","nationalId":"1820630609","age":"17","education":"دوازدهم","school":"شهر","health":"سالم","lastName":"خالدی"},{"name":"مرتضی خالدی","fatherName":"علی","nationalId":"1820861538","age":"12","education":"هفتم","school":"شهر","health":"سالم","lastName":"خالدی"}]},{"id":"hh-49","rowNum":49,"guardianName":"الهام عتیبی نژاد","guardianAge":"47","guardianNid":"4268867317","phone":"9055185538","address":"سوره - شلمچه 4","villageId":"soureh","villageName":"سوره","totalValRaw":"55/000/000","totalValFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"}],"children":[{"name":"آتنا رابحی","fatherName":"عزیز","nationalId":"1820967697","age":"10","education":"چهارم","school":"شهدای شلمچه","health":"سالم","lastName":"رابحی"},{"name":"محمدرضا رابحی","fatherName":"عزیز","nationalId":"1820789527","age":"12","education":"هفتم","school":"ترک تحصیل","health":"سالم","lastName":"رابحی"}]},{"id":"hh-50","rowNum":50,"guardianName":"بتول عتیقه زاده","guardianAge":"42","guardianNid":"1829453793","phone":"9395761396","address":"دربند غربی - کوچه سادات - جنب حسینیه موسوی","villageId":"darband-gharbi","villageName":"دربند غربی","totalValRaw":"—","totalValFormatted":"—","services":[],"children":[{"name":"آمنه عتیقه زاده","fatherName":"احمد","nationalId":"1820727003","age":"15","education":"دهم","school":"شهدای شمخانی","health":"سالم","lastName":"عتیقه زاده"}]},{"id":"hh-51","rowNum":51,"guardianName":"محبوبه غزلاوی","guardianAge":"38","guardianNid":"1828089532","phone":"9045539687","address":"مصلاوی 1 - بهار 2","villageId":"maslavi-1","villageName":"مصلاوی ۱","totalValRaw":"—","totalValFormatted":"—","services":[],"children":[{"name":"علی اکبر غزلی","fatherName":"حسین","nationalId":"1820904806","age":"11","education":"ششم","school":"انقلاب اسلامی","health":"سالم","lastName":"غزلی"},{"name":"کوثر غزلی","fatherName":"حسین","nationalId":"1820677230","age":"17","education":"یازدهم","school":"شهدای شمخانی","health":"سالم","lastName":"غزلی"},{"name":"ایناس غزلی","fatherName":"حسین","nationalId":"1820456544","age":"23","education":"دیپلم","school":"—","health":"سالم","lastName":"غزلی"}]},{"id":"hh-52","rowNum":52,"guardianName":"سکینه هجر","guardianAge":"38","guardianNid":"2432947703","phone":"9380591304","address":"پل نو - جاده شلمچه - پشت مدرسه انقلاب اسلامی","villageId":"pol-now","villageName":"پل نو","totalValRaw":"93/000/000","totalValFormatted":"۹۳٬۰۰۰٬۰۰۰ ریال (۹٬۳۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"health","title":"رویداد دندانپزشکی و سلامت دهان","desc":"معاینه 2 فرزند و فیشور سیلانت","date":"۱۴۰۳/۰۲/۱۰","val":"38/000/000","status":"تحویل شده ✓","valFormatted":"۳۸٬۰۰۰٬۰۰۰ ریال (۳٬۸۰۰٬۰۰۰ تومان)"},{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"}],"children":[{"name":"ثریا حساوی نژاد","fatherName":"احمد","nationalId":"1821091531","age":"7","education":"اول","school":"شهدای شلمچه","health":"سالم","lastName":"حساوی نژاد"},{"name":"سلما حساوی نژاد","fatherName":"احمد","nationalId":"182118273","age":"4","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"حساوی نژاد"}]},{"id":"hh-53","rowNum":53,"guardianName":"هیفاء سلیمانی","guardianAge":"34","guardianNid":"1820100405","phone":"9398303973","address":"پل نو - خیابان اصلی - ولایت 7","villageId":"pol-now","villageName":"پل نو","totalValRaw":"—","totalValFormatted":"—","services":[],"children":[{"name":"رقیه سلیمانی","fatherName":"حمید","nationalId":"1748594818","age":"10","education":"چهارم","school":"شهدای شلمچه","health":"سالم","lastName":"سلیمانی"},{"name":"معصومه سلیمانی","fatherName":"حمید","nationalId":"1748029673","age":"11","education":"پنجم","school":"شهدای شلمچه","health":"آلرژی پوستی","lastName":"سلیمانی"}]},{"id":"hh-54","rowNum":54,"guardianName":"فضیله طاها رضاگاهی","guardianAge":"53","guardianNid":"1828045926","phone":"9375259384","address":"جدیده بوستان 6","villageId":"jadideh","villageName":"جدیده","totalValRaw":"—","totalValFormatted":"—","services":[],"children":[{"name":"آیه مرحج غانمی","fatherName":"حنون","nationalId":"1820733785","age":"15","education":"دهم","school":"شهدای شمخانی","health":"سالم","lastName":"مرحج غانمی"}]},{"id":"hh-55","rowNum":55,"guardianName":"خدیجه مناحی اصل","guardianAge":"35","guardianNid":"1940090822","phone":"9160968052","address":"سوره - خ فتح المبین - روبروی کوچه آزادی 5","villageId":"soureh","villageName":"سوره","totalValRaw":"—","totalValFormatted":"—","services":[],"children":[{"name":"یاسمین اصل محمودی سوره","fatherName":"طالب","nationalId":"1820490335","age":"23","education":"دانشجو","school":"—","health":"سالم","lastName":"اصل محمودی سوره"},{"name":"بتول اصل محمودی سوره","fatherName":"طالب","nationalId":"1820723720","age":"16","education":"دهم","school":"شهدای شمخانی","health":"سالم","lastName":"اصل محمودی سوره"},{"name":"ریحانه اصل محمودی سوره","fatherName":"طالب","nationalId":"1821068459","age":"7","education":"اول","school":"شهید مطیری","health":"دندان","lastName":"اصل محمودی سوره"}]},{"id":"hh-56","rowNum":56,"guardianName":"جنان هجری","guardianAge":"43","guardianNid":"1820415821","phone":"9330347946","address":"جاده شلمچه - شلمچه 9 - فدک 2","villageId":"soureh","villageName":"سوره","totalValRaw":"—","totalValFormatted":"—","services":[],"children":[{"name":"ازهار هجری","fatherName":"معید","nationalId":"1820699587","age":"17","education":"یازدهم","school":"شهدای شمخانی","health":"سالم","lastName":"هجری"}]},{"id":"hh-57","rowNum":57,"guardianName":"حیات ظریفیان سکینی","guardianAge":"44","guardianNid":"6629558170","phone":"9333122217","address":"سرحایه سفلی - خیابان ولیعصر","villageId":"sarhaniyeh-sofla","villageName":"سرحانیه سفلی","totalValRaw":"—","totalValFormatted":"—","services":[],"children":[{"name":"مهدی سکینی","fatherName":"عبدالرضا","nationalId":"1820726940","age":"16","education":"دهم","school":"رسالت","health":"چشم","lastName":"سکینی"}]},{"id":"hh-58","rowNum":58,"guardianName":"سمیره عیدانی پور","guardianAge":"","guardianNid":"","phone":"9373988324","address":"پل نو – جاده شلمچه – خ ساحلی فداک 3 منزل چهارم","villageId":"pol-now","villageName":"پل نو","totalValRaw":"55/000/000","totalValFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"}],"children":[{"name":"فاطمه فرحانی معموری","fatherName":"محمد جواد","nationalId":"1820592316","age":"—","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"فرحانی معموری"}]},{"id":"hh-59","rowNum":59,"guardianName":"کوثر فحل","guardianAge":"","guardianNid":"","phone":"9014035625","address":"سوره – روبروی جاده قطار - فدک 3- منزل سوم","villageId":"soureh","villageName":"سوره","totalValRaw":"55/000/000","totalValFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"}],"children":[{"name":"حسن خضرایی منش","fatherName":"مهدی","nationalId":"1820964590","age":"—","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"خضرایی منش"}]},{"id":"hh-60","rowNum":60,"guardianName":"ماجده فحل","guardianAge":"","guardianNid":"","phone":"9337572561","address":"سوره – شلمچه 4 – جنب حسینیه زینبیه","villageId":"soureh","villageName":"سوره","totalValRaw":"55/000/000","totalValFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"}],"children":[{"name":"عدنان علقمی زاده","fatherName":"یاسین","nationalId":"1820760332","age":"—","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"علقمی زاده"}]},{"id":"hh-61","rowNum":61,"guardianName":"فضیله شمخانی","guardianAge":"","guardianNid":"","phone":"","address":"سوره – خ رزمندگان 3 – روبروی مدرسه رزمندگان","villageId":"soureh","villageName":"سوره","totalValRaw":"55/000/000","totalValFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"}],"children":[{"name":"فایزه باوی پور","fatherName":"عبدالرحیم","nationalId":"1744476853","age":"—","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"باوی پور"},{"name":"هیفاء باوی پور","fatherName":"عبدالرحیم","nationalId":"1743786557","age":"—","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"باوی پور"},{"name":"فاطمه باوی پور","fatherName":"عبدالرحیم","nationalId":"1743468490","age":"—","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"باوی پور"},{"name":"مائده باوی پور","fatherName":"عبدالرحیم","nationalId":"1746119985","age":"—","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"باوی پور"}]},{"id":"hh-62","rowNum":62,"guardianName":"صدیقه سلیمانی","guardianAge":"","guardianNid":"","phone":"9167328876","address":"سوره – خ فرعی 2 سمت راست – پلاک 230","villageId":"soureh","villageName":"سوره","totalValRaw":"55/000/000","totalValFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"food","title":"ارزاق سلامت و بسته معیشتی","desc":"ارزاق","date":"1405/02/16","val":"55/000/000","status":"تحویل شده ✓","valFormatted":"۵۵٬۰۰۰٬۰۰۰ ریال (۵٬۵۰۰٬۰۰۰ تومان)"}],"children":[{"name":"حسن حمدی","fatherName":"فالح","nationalId":"1820648753","age":"—","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"حمدی"},{"name":"تهانی حمدی","fatherName":"فالح","nationalId":"1820708535","age":"—","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"حمدی"}]},{"id":"hh-63","rowNum":63,"guardianName":"بصیره غزلاوی","guardianAge":"","guardianNid":"","phone":"9045946402","address":"جدیده – بوستان 8 – سمت چپ خانه اول","villageId":"jadideh","villageName":"جدیده","totalValRaw":"—","totalValFormatted":"—","services":[],"children":[{"name":"ام البنین حمدی","fatherName":"عبدالزهرا","nationalId":"7060053336","age":"—","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"حمدی"}]},{"id":"hh-64","rowNum":64,"guardianName":"بشری عیاشی","guardianAge":"60","guardianNid":"عراقی","phone":"93837114502","address":"پل نو ولایت 6","villageId":"pol-now","villageName":"پل نو","totalValRaw":"11/000/000","totalValFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت اول)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"حامد عیاشی","fatherName":"حسین","nationalId":"1820568210","age":"22","education":"دوم","school":"ترک تحصیل","health":"سالم","lastName":"عیاشی"},{"name":"ستار عیاشی","fatherName":"حسین","nationalId":"1820823865","age":"12","education":"ششم","school":"حر بن ریاحی","health":"سالم","lastName":"عیاشی"},{"name":"جابر عیاشی","fatherName":"حسین","nationalId":"1820645061","age":"18","education":"چهارم","school":"ترک تحصیل","health":"سالم","lastName":"عیاشی"}]},{"id":"hh-65","rowNum":65,"guardianName":"شهین نیسی","guardianAge":"48","guardianNid":"1827931371","phone":"9046602553","address":"پل نو - بعد از مدرسه - کوچه معلم","villageId":"pol-now","villageName":"پل نو","totalValRaw":"11/000/000","totalValFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت اول)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"مهدی سگر","fatherName":"علی","nationalId":"1820695271","age":"17","education":"یازدهم","school":"شهر","health":"سالم","lastName":"سگر"},{"name":"فاطمه سگر","fatherName":"علی","nationalId":"1820753654","age":"15","education":"نهم","school":"علویه","health":"سالم","lastName":"سگر"},{"name":"محسن سگر","fatherName":"علی","nationalId":"1820960730","age":"10","education":"چهارم","school":"انقلاب اسلامی","health":"سالم","lastName":"سگر"}]},{"id":"hh-66","rowNum":66,"guardianName":"شکریه سکینی","guardianAge":"50","guardianNid":"عراقی","phone":"9387715130","address":"پل نو خین 4","villageId":"pol-now","villageName":"پل نو","totalValRaw":"11/000/000","totalValFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت اول)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"علی سلیمانی","fatherName":"سلیمانی","nationalId":"*","age":"25","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"سلیمانی"},{"name":"حسن سلیمانی","fatherName":"سلیمانی","nationalId":"*","age":"25","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"سلیمانی"},{"name":"حسین سلیمانی","fatherName":"سلیمانی","nationalId":"1820529193","age":"25","education":"تحصیل عمومی","school":"—","health":"دیالیزی","lastName":"سلیمانی"},{"name":"الهام سلیمانی","fatherName":"سلیمانی","nationalId":"1820562131","age":"20","education":"تحصیل عمومی","school":"—","health":"سالم","lastName":"سلیمانی"}]},{"id":"hh-67","rowNum":67,"guardianName":"خیریه شرفی","guardianAge":"46","guardianNid":"","phone":"9035516842","address":"دربند شرقی 8","villageId":"darband-sharqi","villageName":"دربند شرقی","totalValRaw":"11/000/000","totalValFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت اول)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"سهیل شرفی","fatherName":"منصور","nationalId":"1820489701","age":"22","education":"دانشگاه (مدیریت)","school":"آزاد ترم 2","health":"پیوند قلب","lastName":"شرفی"}]},{"id":"hh-68","rowNum":68,"guardianName":"نادیه غزلاوی","guardianAge":"38","guardianNid":"1829947540","phone":"9384114357","address":"سرحانیه اول - 18 متری - خیابان شهدای 12 -آخر","villageId":"sarhaniyeh-olya","villageName":"سرحانیه علیا","totalValRaw":"11/000/000","totalValFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)","services":[{"serviceCategory":"meat","title":"گوشت گرم و قربانی (نوبت اول)","desc":"گوشت","date":"1405/02/31","val":"11/000/000","status":"تحویل شده ✓","valFormatted":"۱۱٬۰۰۰٬۰۰۰ ریال (۱٬۱۰۰٬۰۰۰ تومان)"}],"children":[{"name":"سجاد هلالی","fatherName":"هاچم","nationalId":"1747826391","age":"16","education":"دهم","school":"شهر","health":"عمل لوزه-کم خون","lastName":"هلالی"},{"name":"ابوالفضل هلالی","fatherName":"هاچم","nationalId":"1820657027","age":"11","education":"پنجم","school":"شهر","health":"کم خونی","lastName":"هلالی"}]},{"id":"hh-69","rowNum":69,"guardianName":"مجیده ناصری","guardianAge":"46","guardianNid":"1751545938","phone":"9035854662","address":"سرحانیه - دوم - خیابان رسول اکرم - جنب حسینیه فاطمیه","villageId":"sarhaniyeh-sofla","villageName":"سرحانیه سفلی","totalValRaw":"—","totalValFormatted":"—","services":[],"children":[{"name":"ام البنین سلمانی","fatherName":"محمد","nationalId":"1746592850","age":"14","education":"هفتم","school":"ترک تحصیل","health":"کم خونی","lastName":"سلمانی"},{"name":"زهرا سلمانی","fatherName":"محمد","nationalId":"1820840603","age":"13","education":"هفتم","school":"راهیان نور","health":"روماتیسم","lastName":"سلمانی"},{"name":"عاطفه سلمانی","fatherName":"محمد","nationalId":"182953513","age":"10","education":"چهارم","school":"زینبیه","health":"کم خونی","lastName":"سلمانی"}]},{"id":"hh-70","rowNum":70,"guardianName":"سکینه ناصری","guardianAge":"55","guardianNid":"1750634597","phone":"9045005635","address":"مصلاوی بهار 7","villageId":"maslavi-1","villageName":"مصلاوی ۱","totalValRaw":"—","totalValFormatted":"—","services":[],"children":[{"name":"فاطمه ناصری","fatherName":"علی","nationalId":"1820851729","age":"14","education":"هشتم","school":"راهیان نور","health":"کلیه","lastName":"ناصری"},{"name":"زهرا ناصری","fatherName":"علی","nationalId":"1820967891","age":"11","education":"پنجم","school":"شهدای مصلاوی","health":"سالم","lastName":"ناصری"}]}];
+    window.servicesRegistryData = servicesData;
+
+    // Helper to format Persian digits
+    function toFa(n) {
+        if (n === null || n === undefined) return '—';
+        return String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+    }
+
+    // 1. Enrich & inject into searchableData
+    function integrateSearchableServices() {
+        if (!Array.isArray(window.searchableData)) return;
+
+        servicesData.forEach(hh => {
+            // Index Guardian
+            const existingGuardian = window.searchableData.find(item => 
+                item.type === 'person' && (item.title === hh.guardianName || (hh.guardianNid && item.nationalId === hh.guardianNid))
+            );
+
+            const guardianObj = existingGuardian || {
+                type: 'person',
+                personType: 'guardian',
+                title: hh.guardianName,
+                subtitle: `${hh.villageName} · سرپرست خانوار (${hh.children.length} فرزند) · کدملی: ${hh.guardianNid || 'ثبت نشده'}`,
+                target: hh.villageId,
+                section: 'stats',
+                badge: 'سرپرست خانوار',
+                guardian: hh.guardianName,
+                nationalId: hh.guardianNid,
+                phone: hh.phone,
+                village: hh.villageName,
+                address: hh.address
+            };
+
+            guardianObj.services = hh.services;
+            guardianObj.totalVal = hh.totalValFormatted;
+            guardianObj.children = hh.children;
+            guardianObj.householdId = hh.id;
+            guardianObj.categories = ['سرپرست خانوار', 'ایتام', 'معیشتی'];
+            guardianObj.keyword = `${hh.guardianName} ${hh.guardianNid || ''} ${hh.phone || ''} ${hh.villageName} ${hh.address || ''} سرپرست خانوار ایتام ${hh.children.map(c => c.name).join(' ')} ${hh.services.map(s => s.desc).join(' ')}`;
+
+            if (!existingGuardian) {
+                window.searchableData.push(guardianObj);
+            }
+
+            // Index Children (Orphans)
+            hh.children.forEach(child => {
+                const existingChild = window.searchableData.find(item => 
+                    item.type === 'person' && (item.title === child.name || (child.nationalId && child.nationalId !== '—' && item.nationalId === child.nationalId))
+                );
+
+                const childObj = existingChild || {
+                    type: 'person',
+                    personType: 'orphan',
+                    title: child.name,
+                    subtitle: `${hh.villageName} · سرپرست: ${hh.guardianName} · فرزند ${child.fatherName} · کدملی: ${child.nationalId}`,
+                    target: hh.villageId,
+                    section: 'stats',
+                    badge: 'ایتام',
+                    guardian: hh.guardianName,
+                    father: child.fatherName,
+                    nationalId: child.nationalId,
+                    phone: hh.phone,
+                    village: hh.villageName,
+                    address: hh.address
+                };
+
+                childObj.age = child.age;
+                childObj.education = child.education;
+                childObj.school = child.school;
+                childObj.health = child.health;
+                childObj.services = hh.services;
+                childObj.totalVal = hh.totalValFormatted;
+                childObj.householdId = hh.id;
+                childObj.categories = ['ایتام', child.education || 'دانش‌آموز', child.health !== 'سالم' ? 'بیمار خاص/توان‌یاب' : 'سلامت کامل'];
+                childObj.keyword = `${child.name} ${child.nationalId || ''} ${child.fatherName || ''} ${hh.guardianName} ${hh.phone || ''} ${hh.villageName} ${hh.address || ''} ${child.school || ''} ${child.health || ''} یتیم ایتام دانش‌آموز`;
+
+                if (!existingChild) {
+                    window.searchableData.push(childObj);
+                }
+            });
+        });
+
+        console.log('✓ Services Registry integrated into searchableData. Total indexed items:', window.searchableData.length);
+    }
+
+    // 2. Enhance openPersonDossier with Service History Card
+    function hookDossierServices() {
+        if (typeof window.openPersonDossier !== 'function') return;
+        const origOpen = window.openPersonDossier;
+
+        window.openPersonDossier = function(p) {
+            origOpen(p);
+
+            // Populate services section
+            const servicesContainer = document.getElementById('pdServicesContainer');
+            if (!servicesContainer) return;
+
+            const services = p.services || [];
+            const totalVal = p.totalVal || '—';
+
+            if (services.length > 0) {
+                servicesContainer.innerHTML = `
+                    <div style="font-size:13px; font-weight:800; color:#edd395; margin-bottom:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <span style="font-size:18px;">📦</span>
+                            <span>شناسنامه و سوابق خدمات اهداشده به خانوار</span>
+                        </div>
+                        <span style="background:rgba(217,119,6,0.2); border:1px solid rgba(217,119,6,0.45); color:#f59e0b; padding:3px 10px; border-radius:6px; font-size:11.5px; font-weight:800;">
+                            مجموع دریافتی: ${totalVal}
+                        </span>
+                    </div>
+
+                    <div style="display:flex; flex-direction:column; gap:8px;">
+                        ${services.map(s => {
+                            let badgeCls = 'background:rgba(217,119,6,0.15); border:1px solid rgba(217,119,6,0.3); color:#d97706;';
+                            let icon = '🍱';
+                            if (s.serviceCategory === 'health') {
+                                badgeCls = 'background:rgba(5,150,105,0.15); border:1px solid rgba(5,150,105,0.3); color:#10b981;';
+                                icon = '🦷';
+                            } else if (s.serviceCategory === 'meat') {
+                                badgeCls = 'background:rgba(185,28,28,0.15); border:1px solid rgba(185,28,28,0.3); color:#f87171;';
+                                icon = '🥩';
+                            }
+
+                            return `
+                                <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                                    <div style="display:flex; align-items:center; gap:10px;">
+                                        <span style="font-size:16px;">${icon}</span>
+                                        <div>
+                                            <div style="font-size:12.5px; font-weight:800; color:#fff;">${s.title}</div>
+                                            <div style="font-size:11px; color:#cbd5e1; margin-top:2px;">شرح: ${s.desc} · تاریخ: ${s.date}</div>
+                                        </div>
+                                    </div>
+                                    <div style="display:flex; align-items:center; gap:10px;">
+                                        <div style="font-size:12px; font-weight:800; color:#edd395;">${s.valFormatted}</div>
+                                        <span style="padding:2px 8px; border-radius:5px; font-size:10.5px; font-weight:700; ${badgeCls}">
+                                            ${s.status}
+                                        </span>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+
+                    ${Array.isArray(p.children) && p.children.length > 0 ? `
+                        <div style="margin-top:14px; padding-top:12px; border-top:1px dashed rgba(255,255,255,0.1);">
+                            <div style="font-size:11.5px; font-weight:700; color:#cbd5e1; margin-bottom:6px;">فرزندان و ایتام تحت تکفل این خانوار (${toFa(p.children.length)} فرزند):</div>
+                            <div style="display:flex; flex-wrap:wrap; gap:6px;">
+                                ${p.children.map(c => `
+                                    <span style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); padding:3px 8px; border-radius:6px; font-size:11px; color:#f1f5f9;">
+                                        👶 ${c.name} (${c.age} ساله · ${c.education})
+                                    </span>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                `;
+            } else {
+                servicesContainer.innerHTML = `
+                    <div style="font-size:12px; color:#94a3b8; text-align:center; padding:12px 6px;">
+                        ℹ️ تاکنون خدمت مشخصی برای این پرونده در سامانه ثبت نشده است (در انتظار ممیزی و تخصیص سهمیه رویدادهای آتی).
+                    </div>
+                `;
+            }
+        };
+    }
+
+    // 3. Render and handle Services Registry Dialog
+    function initServicesDialog() {
+        const dlg = document.getElementById('servicesRegistryDialog');
+        if (!dlg) return;
+
+        const tableBody = document.getElementById('servicesTableBody');
+        const searchInput = document.getElementById('servicesSearchInput');
+        const villageSelect = document.getElementById('servicesVillageFilter');
+        const catFilterChips = document.querySelectorAll('.services-cat-chip');
+        const closeBtn = document.getElementById('closeServicesDialogBtn');
+
+        let activeCat = 'all';
+
+        function renderRows() {
+            if (!tableBody) return;
+            const q = (searchInput ? searchInput.value : '').trim().toLowerCase();
+            const selVillage = villageSelect ? villageSelect.value : 'all';
+
+            let count = 0;
+            const rowsHtml = servicesData.map((hh, idx) => {
+                // Filter village
+                if (selVillage !== 'all' && hh.villageId !== selVillage) return '';
+
+                // Filter category
+                if (activeCat !== 'all') {
+                    const hasCat = hh.services.some(s => s.serviceCategory === activeCat);
+                    if (!hasCat) return '';
+                }
+
+                // Filter search
+                if (q) {
+                    const text = `${hh.guardianName} ${hh.guardianNid || ''} ${hh.phone || ''} ${hh.villageName} ${hh.children.map(c => c.name).join(' ')} ${hh.services.map(s => s.desc).join(' ')}`.toLowerCase();
+                    if (!text.includes(q)) return '';
+                }
+
+                count++;
+
+                const servicesPills = hh.services.map(s => {
+                    let color = '#d97706';
+                    let bg = '#fef3c7';
+                    if (s.serviceCategory === 'health') { color = '#059669'; bg = '#d1fae5'; }
+                    else if (s.serviceCategory === 'meat') { color = '#dc2626'; bg = '#fee2e2'; }
+
+                    return `<span style="background:${bg}; color:${color}; font-size:10.5px; font-weight:700; padding:2px 6px; border-radius:4px; margin-left:3px; display:inline-block; margin-bottom:2px;" title="${s.valFormatted}">${s.title} (${s.date.split('/')[1] + '/' + s.date.split('/')[2]})</span>`;
+                }).join('') || '<span style="color:#94a3b8; font-size:11px;">در نوبت تخصیص</span>';
+
+                const childrenStr = hh.children.map(c => c.name).join('، ') || '—';
+
+                return `
+                    <tr style="border-bottom:1px solid #ebdcc5; transition:background 0.15s ease;">
+                        <td style="padding:10px 12px; font-size:12px; font-weight:700; color:#5c6e6a; text-align:center;">${toFa(idx + 1)}</td>
+                        <td style="padding:10px 12px;">
+                            <div style="font-weight:800; font-size:13px; color:#142a29;">${hh.guardianName}</div>
+                            <div style="font-size:11px; color:#6b7c78; margin-top:2px;">کدملی: ${hh.guardianNid ? toFa(hh.guardianNid) : '—'} · تماس: ${hh.phone ? toFa(hh.phone) : '—'}</div>
+                        </td>
+                        <td style="padding:10px 12px; font-size:12px; color:#142a29;">
+                            <div style="font-weight:700;">${childrenStr}</div>
+                            <div style="font-size:10.5px; color:#8c7e6c; margin-top:1px;">تعداد ایتام: ${toFa(hh.children.length)} فرزند</div>
+                        </td>
+                        <td style="padding:10px 12px; font-size:12px;">
+                            <span style="background:#faf7f2; border:1px solid #d9ccb4; padding:3px 8px; border-radius:6px; font-weight:700; color:#142a29;">
+                                📍 ${hh.villageName}
+                            </span>
+                        </td>
+                        <td style="padding:10px 12px;">
+                            <div style="display:flex; flex-wrap:wrap; gap:3px;">
+                                ${servicesPills}
+                            </div>
+                        </td>
+                        <td style="padding:10px 12px; font-size:12px; font-weight:900; color:#b45309; text-align:left; white-space:nowrap;">
+                            ${hh.totalValFormatted}
+                        </td>
+                        <td style="padding:10px 12px; text-align:center;">
+                            <button type="button" class="view-hh-dossier-btn" data-hh-id="${hh.id}" style="background:#142a29; color:#edd395; border:1px solid #c6a15b; padding:4px 10px; border-radius:6px; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit; transition:all 0.15s ease;">
+                                مشاهده پرونده ↗
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            tableBody.innerHTML = rowsHtml || '<tr><td colspan="7" style="text-align:center; padding:30px; color:#8c7e6c;">موردی با این مشخصات یافت نشد.</td></tr>';
+
+            const countEl = document.getElementById('servicesFilteredCount');
+            if (countEl) countEl.textContent = toFa(count) + ' خانوار';
+
+            // Bind click to open person dossier
+            tableBody.querySelectorAll('.view-hh-dossier-btn').forEach(btn => {
+                btn.onclick = () => {
+                    const hhId = btn.getAttribute('data-hh-id');
+                    const hh = servicesData.find(h => h.id === hhId);
+                    if (!hh) return;
+                    // Find person in searchableData or construct
+                    const p = window.searchableData.find(item => item.title === hh.guardianName) || {
+                        type: 'person',
+                        title: hh.guardianName,
+                        badge: 'سرپرست خانوار',
+                        village: hh.villageName,
+                        nationalId: hh.guardianNid,
+                        phone: hh.phone,
+                        address: hh.address,
+                        services: hh.services,
+                        totalVal: hh.totalValFormatted,
+                        children: hh.children
+                    };
+                    if (typeof window.openPersonDossier === 'function') {
+                        window.openPersonDossier(p);
+                    }
+                };
+            });
+        }
+
+        if (searchInput) searchInput.addEventListener('input', renderRows);
+        if (villageSelect) villageSelect.addEventListener('change', renderRows);
+
+        catFilterChips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                catFilterChips.forEach(c => c.classList.remove('active'));
+                chip.classList.add('active');
+                activeCat = chip.getAttribute('data-cat') || 'all';
+                renderRows();
+            });
+        });
+
+        if (closeBtn) {
+            closeBtn.onclick = () => dlg.close();
+        }
+
+        // Open Dialog trigger
+        window.openServicesRegistryDialog = function() {
+            if (typeof dlg.showModal === 'function') {
+                if (!dlg.open) dlg.showModal();
+            } else {
+                dlg.setAttribute('open', '');
+            }
+            renderRows();
+        };
+
+        // Bind top navigation buttons
+        const topBtn = document.getElementById('topServicesRegistryBtn');
+        const menuBtn = document.getElementById('servicesRegistryBtn');
+        if (topBtn) topBtn.onclick = window.openServicesRegistryDialog;
+        if (menuBtn) menuBtn.onclick = window.openServicesRegistryDialog;
+    }
+
+    // Initialize when ready
+    function initModule() {
+        integrateSearchableServices();
+        hookDossierServices();
+        initServicesDialog();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initModule);
+    } else {
+        setTimeout(initModule, 100);
+    }
+})();
+</script>
 
 </body></html>
