@@ -16911,6 +16911,10 @@ const emptyStatsHtml = `<div class="dos-content-grid" id="stats-content-8" class
                 btn.innerHTML = `<div class="pin-dot"></div><span>${v.name}</span>`;
                 btn.addEventListener('click', (e) => {
                     e.stopPropagation();
+                    if (v.id === 'complex-fatemeh' || v.id === 'mojtama-fatemeh-zahra') {
+                        window.location.href = 'mojtama-fatemeh/index.html';
+                        return;
+                    }
                     enter(v);
                 });
                 if (phase !== 'map') {
@@ -17075,6 +17079,10 @@ const emptyStatsHtml = `<div class="dos-content-grid" id="stats-content-8" class
             }
             function enter(v) {
                 if (phase !== 'map') return;
+                if (v && (v.id === 'complex-fatemeh' || v.id === 'mojtama-fatemeh-zahra')) {
+                    window.location.href = 'mojtama-fatemeh/index.html';
+                    return;
+                }
                 activeLocation = v;
                 if (portalName) portalName.textContent = v.name;
                 if (villageName) villageName.textContent = v.name;
@@ -17454,11 +17462,11 @@ addEventListener('resize', layout); layout();
   {
     "type": "village",
     "title": "مجتمع فاطمه الزهرا (س)",
-    "subtitle": "مرکز خدمات اجتماعی، توانمندسازی و اسکان جهادی",
-    "target": "mojtama-fatemeh-zahra",
+    "subtitle": "سامانه معرفی جامع، نقشه سینمایی و فضاهای مجتمع (ورود مستقیم)",
+    "target": "complex-fatemeh",
     "section": "stats",
-    "keyword": "مجتمع فاطمه الزهرا جهادی اسکان توانمندسازی",
-    "badge": "خدماتی",
+    "keyword": "مجتمع فاطمه الزهرا جهادی اسکان توانمندسازی معرفی نقشه سینمایی",
+    "badge": "سایت اختصاصی",
     "village": "شلمچه"
   },
   {
@@ -23195,6 +23203,10 @@ addEventListener('resize', layout); layout();
 
             function selectSearchItem(item) {
                 if (!item) return;
+                if (item.target === 'complex-fatemeh' || item.target === 'mojtama-fatemeh-zahra' || (item.title && item.title.includes('فاطمه الزهرا'))) {
+                    window.location.href = 'mojtama-fatemeh/index.html';
+                    return;
+                }
                 if (searchDropdown) {
                     searchDropdown.classList.remove('active');
                     searchDropdown.innerHTML = '';
@@ -24250,8 +24262,16 @@ addEventListener('resize', layout); layout();
 
             // High-Speed Direct Navigation to Village & Executive Stats Dialog
             function navigateToVillage(villageId, sectionToOpen, keywordToSearch) {
+                if (villageId === 'complex-fatemeh' || villageId === 'mojtama-fatemeh-zahra') {
+                    window.location.href = 'mojtama-fatemeh/index.html';
+                    return;
+                }
                 const targetObj = resolveVillageObject(villageId);
                 if (!targetObj) return;
+                if (targetObj.id === 'complex-fatemeh' || targetObj.id === 'mojtama-fatemeh-zahra') {
+                    window.location.href = 'mojtama-fatemeh/index.html';
+                    return;
+                } 
 
                 // Cancel flight animation timers to prevent lag
                 if (typeof timer !== 'undefined') clearTimeout(timer);
