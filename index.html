@@ -13172,7 +13172,7 @@ dialog#personDossierDialog::backdrop {
                         <span class="serv-kpi-label">رویدادها و سرفصل‌های خدمت</span>
                     </div>
                     <div class="serv-kpi-val" id="servKpiEventsCount">۴ رویداد</div>
-                    <div class="serv-kpi-sub">دندانپزشکی، معیشت، قربانی ۱ و ۲</div>
+                    <div class="serv-kpi-sub">دندانپزشکی، معیشت، قربانی مناسبتی ۱ و ۲</div>
                 </div>
             </div>
 
@@ -13210,18 +13210,18 @@ dialog#personDossierDialog::backdrop {
                     <div class="serv-event-item">
                         <div class="event-icon">🥩</div>
                         <div class="event-info">
-                            <strong>توزیع گوشت گرم (قربانی نوبت ۱)</strong>
+                            <strong>توزیع گوشت گرم (قربانی مناسبتی نوبت ۱)</strong>
                             <small>۱۷ اردیبهشت · ۱۱ میلیون ریال هر سهم</small>
                         </div>
-                        <span class="event-tag tag-red">قربانی</span>
+                        <span class="event-tag tag-red">قربانی مناسبتی</span>
                     </div>
                     <div class="serv-event-item">
                         <div class="event-icon">🥩</div>
                         <div class="event-info">
-                            <strong>توزیع گوشت گرم (قربانی نوبت ۲)</strong>
+                            <strong>توزیع گوشت گرم (قربانی مناسبتی نوبت ۲)</strong>
                             <small>۳۱ اردیبهشت · ۱۱ میلیون ریال هر سهم</small>
                         </div>
-                        <span class="event-tag tag-red">قربانی</span>
+                        <span class="event-tag tag-red">قربانی مناسبتی</span>
                     </div>
                 </div>
 
@@ -13231,9 +13231,9 @@ dialog#personDossierDialog::backdrop {
                         <button type="button" class="serv-cat-chip active" data-cat="all">🌐 همه اقدامات و خدمات <span class="chip-badge" style="opacity:0.75; font-size:10px;">(۱۷۶)</span></button>
                         <button type="button" class="serv-cat-chip" data-cat="sports">⚽ رویداد کاپیتان - ورزشی <span class="chip-badge" style="opacity:0.75; font-size:10px;">(۱۲)</span></button>
                         <button type="button" class="serv-cat-chip" data-cat="childbirth">👶 طرح لبخند مادری - فرزندآوری <span class="chip-badge" style="opacity:0.75; font-size:10px;">(۱۴)</span></button>
-                        <button type="button" class="serv-cat-chip" data-cat="dowry">💍 طرح پیوند آسمانی - جهیزیه <span class="chip-badge" style="opacity:0.75; font-size:10px;">(۲۵)</span></button>
+                        <button type="button" class="serv-cat-chip" data-cat="dowry">💍 رویداد مطلع عشق <span class="chip-badge" style="opacity:0.75; font-size:10px;">(۲۵)</span></button>
                         <button type="button" class="serv-cat-chip" data-cat="food">🥗 رزمایش معیشت و سلامت <span class="chip-badge" style="opacity:0.75; font-size:10px;">(۸۶)</span></button>
-                        <button type="button" class="serv-cat-chip" data-cat="meat">🥩 نذورات قربانی <span class="chip-badge" style="opacity:0.75; font-size:10px;">(۵۹)</span></button>
+                        <button type="button" class="serv-cat-chip" data-cat="meat">🥩 قربانی مناسبتی <span class="chip-badge" style="opacity:0.75; font-size:10px;">(۵۹)</span></button>
                         <button type="button" class="serv-cat-chip" data-cat="health">🦷 پویش لبخند دندانپزشکی <span class="chip-badge" style="opacity:0.75; font-size:10px;">(۶)</span></button>
                         <button type="button" class="serv-cat-chip" data-cat="orphan">🧒 خانواده‌های دارای فرزند / ایتام <span class="chip-badge" style="opacity:0.75; font-size:10px;">(۱۴۷)</span></button>
                     </div>
@@ -18101,11 +18101,17 @@ const emptyStatsHtml = `<div class="dos-content-grid" id="stats-content-8" class
                 btn.className = 'pin ' + pinClass;
                 btn.style.left = (v.x * 100) + '%';
                 btn.style.top = (v.y * 100) + '%';
-                btn.setAttribute('aria-label', 'ورود به ' + v.name);
+                btn.setAttribute('aria-label', (v.id === 'yadman-shalamcheh' || v.id === 'yadman-khein') ? v.name : ('ورود به ' + v.name));
                 btn.setAttribute('data-id', v.id);
                 btn.innerHTML = `<div class="pin-dot"></div><span>${v.name}</span>`;
+                if (v.id === 'yadman-shalamcheh' || v.id === 'yadman-khein') {
+                    btn.style.cursor = 'default';
+                }
                 btn.addEventListener('click', (e) => {
                     e.stopPropagation();
+                    if (v.id === 'yadman-shalamcheh' || v.id === 'yadman-khein') {
+                        return;
+                    }
                     if (v.id === 'complex-fatemeh' || v.id === 'mojtama-fatemeh-zahra') {
                         window.location.href = 'mojtama-fatemeh/index.html';
                         return;
@@ -18274,6 +18280,7 @@ const emptyStatsHtml = `<div class="dos-content-grid" id="stats-content-8" class
             }
             function enter(v) {
                 if (phase !== 'map') return;
+                if (v && (v.id === 'yadman-shalamcheh' || v.id === 'yadman-khein')) return;
                 if (v && (v.id === 'complex-fatemeh' || v.id === 'mojtama-fatemeh-zahra')) {
                     window.location.href = 'mojtama-fatemeh/index.html';
                     return;
@@ -18356,6 +18363,7 @@ const emptyStatsHtml = `<div class="dos-content-grid" id="stats-content-8" class
         // =========================================================================
         function switchToVillage(villageId) {
             if (!villageId) return;
+            if (villageId === 'yadman-shalamcheh' || villageId === 'yadman-khein') return;
             const list = window.villages || [];
             let v = list.find(x => x.id === villageId);
             if (!v && typeof villageMapRegistry !== 'undefined' && villageMapRegistry[villageId]) {
@@ -24470,6 +24478,18 @@ addEventListener('resize', layout); layout();
 
             function selectSearchItem(item) {
                 if (!item) return;
+                if (item.target === 'yadman-shalamcheh' || item.target === 'yadman-khein') {
+                    if (searchDropdown) {
+                        searchDropdown.classList.remove('active');
+                        searchDropdown.innerHTML = '';
+                    }
+                    if (searchInput) {
+                        searchInput.value = '';
+                        searchInput.blur();
+                    }
+                    if (clearSearchBtn) clearSearchBtn.style.display = 'none';
+                    return;
+                }
                 if (item.target === 'complex-fatemeh' || item.target === 'mojtama-fatemeh-zahra' || (item.title && item.title.includes('فاطمه الزهرا'))) {
                     window.location.href = 'mojtama-fatemeh/index.html';
                     return;
@@ -25529,6 +25549,7 @@ addEventListener('resize', layout); layout();
 
             // High-Speed Direct Navigation to Village & Executive Stats Dialog
             function navigateToVillage(villageId, sectionToOpen, keywordToSearch) {
+                if (villageId === 'yadman-shalamcheh' || villageId === 'yadman-khein') return;
                 if (villageId === 'complex-fatemeh' || villageId === 'mojtama-fatemeh-zahra') {
                     window.location.href = 'mojtama-fatemeh/index.html';
                     return;
@@ -31212,10 +31233,15 @@ document.addEventListener('click', (e) => {
         if (descEl) descEl.textContent = pt.desc;
 
         if (actionBtn) {
-            actionBtn.onclick = function() {
-                tooltip.classList.remove('is-active');
-                openTargetVillageDossier(pt.villageId, pt.villageName);
-            };
+            if (pt.villageId === 'yadman-shalamcheh' || pt.villageId === 'yadman-khein') {
+                actionBtn.style.display = 'none';
+            } else {
+                actionBtn.style.display = '';
+                actionBtn.onclick = function() {
+                    tooltip.classList.remove('is-active');
+                    openTargetVillageDossier(pt.villageId, pt.villageName);
+                };
+            }
         }
 
         // Position tooltip nicely near center or click
@@ -31228,6 +31254,7 @@ document.addEventListener('click', (e) => {
     }
 
     function openTargetVillageDossier(villageId, villageName) {
+        if (villageId === 'yadman-shalamcheh' || villageId === 'yadman-khein') return;
         if (typeof villages !== 'undefined') {
             const vObj = villages.find(x => x.id === villageId);
             if (vObj && typeof enter === 'function') {
@@ -33364,7 +33391,7 @@ document.addEventListener('click', (e) => {
                 : isChildbirth
                 ? `${hh.villageName} · متقاضی طرح جوانی جمعیت (همسر: ${hh.spouseName || '—'})${hh.guardianNid ? ' · کدملی: ' + hh.guardianNid : ''}`
                 : isDowry
-                ? `${hh.villageName} · متقاضی جهیزیه و ازدواج آسان (همسر: ${hh.spouseName || '—'})${hh.guardianNid ? ' · کدملی: ' + hh.guardianNid : ''}`
+                ? `${hh.villageName} · متقاضی رویداد مطلع عشق (همسر: ${hh.spouseName || '—'})${hh.guardianNid ? ' · کدملی: ' + hh.guardianNid : ''}`
                 : `${hh.villageName} · سرپرست خانوار (${(hh.children || []).length} فرزند) · کدملی: ${hh.guardianNid || 'ثبت نشده'}`;
 
             const guardianObj = existingGuardian || {
@@ -33374,7 +33401,7 @@ document.addEventListener('click', (e) => {
                 subtitle: guardianSubtitle,
                 target: hh.villageId,
                 section: 'stats',
-                badge: isSports ? 'رویداد کاپیتان' : isChildbirth ? 'جوانی جمعیت' : isDowry ? 'جهیزیه و ازدواج' : 'سرپرست خانوار',
+                badge: isSports ? 'رویداد کاپیتان' : isChildbirth ? 'جوانی جمعیت' : isDowry ? 'رویداد مطلع عشق' : 'سرپرست خانوار',
                 guardian: hh.guardianName,
                 father: hh.guardianFather || '—',
                 nationalId: hh.guardianNid,
@@ -33394,7 +33421,7 @@ document.addEventListener('click', (e) => {
                 guardianObj.subtitle = guardianSubtitle;
             } else if (isDowry) {
                 guardianObj.personType = 'bride';
-                guardianObj.badge = 'جهیزیه و ازدواج';
+                guardianObj.badge = 'رویداد مطلع عشق';
                 guardianObj.subtitle = guardianSubtitle;
             } else if (!existingGuardian) {
                 guardianObj.badge = 'سرپرست خانوار';
@@ -33420,7 +33447,7 @@ document.addEventListener('click', (e) => {
                     hh.spouseNid,
                     isSports ? 'کاپیتان ورزش فوتبال توپ لباس' : '',
                     isChildbirth ? 'فرزند نوزاد مادر جوانی جمعیت' : '',
-                    isDowry ? 'جهیزیه ازدواج عروس داماد' : '',
+                    isDowry ? 'رویداد مطلع عشق جهیزیه ازدواج عروس داماد' : '',
                     (hh.children || []).map(c => c.name).join(' ')
                 ].filter(Boolean).join(' ');
 
@@ -33806,7 +33833,7 @@ document.addEventListener('click', (e) => {
                                     <span class="search-badge-orphan" style="font-size:10px; padding:2px 7px; background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0;">لبخند مادری</span>
                                 ` : isDowry ? `
                                     <span class="search-badge-priority" style="font-size:10px; padding:2px 7px; background:#fdf2f8; color:#be185d; border:1px solid #fbcfe8;">💍 ازدواج آسان</span>
-                                    <span class="search-badge-orphan" style="font-size:10px; padding:2px 7px; background:#fff1f2; color:#e11d48; border:1px solid #fecdd3;">جهیزیه</span>
+                                    <span class="search-badge-orphan" style="font-size:10px; padding:2px 7px; background:#fff1f2; color:#e11d48; border:1px solid #fecdd3;">رویداد مطلع عشق</span>
                                 ` : `
                                     <span class="search-badge-orphan" style="font-size:10px; padding:2px 7px; background:#fef3c7; color:#b45309; border:1px solid #fde68a;">ایتام</span>
                                     <span class="search-badge-priority" style="font-size:10px; padding:2px 7px; background:#ecfdf5; color:#047857; border:1px solid #a7f3d0;">معیشتی</span>
