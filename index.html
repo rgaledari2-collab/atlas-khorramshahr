@@ -5906,7 +5906,7 @@ dialog#statsDialog::backdrop {
 
 
 /* =========================================================================
-   PERFORMANCE REPORTS & LIVE PDF VIEWER (تک‌رنگ تیره و لیکویید گلس لوکس)
+   PERFORMANCE REPORTS & FULLSCREEN PDF.JS VIEWER (تک‌رنگ تیره و لیکویید گلس لوکس تمام‌صفحه)
    ========================================================================= */
 
 dialog#reportsModal,
@@ -5958,7 +5958,7 @@ dialog#reportsModal::backdrop,
     text-align: right !important;
 }
 
-/* 1. Dark Liquid Glass Header */
+/* Reports Header */
 .reports-dialog-header {
     background: linear-gradient(135deg, rgba(16, 38, 35, 0.92) 0%, rgba(9, 23, 21, 0.96) 100%);
     color: #ffffff;
@@ -5990,212 +5990,204 @@ dialog#reportsModal::backdrop,
     background: rgba(237, 211, 149, 0.12);
     border: 1px solid rgba(237, 211, 149, 0.38);
     color: #edd395;
-    padding: 3px 11px;
-    border-radius: 20px;
     font-size: 11px;
     font-weight: 800;
-    direction: rtl !important;
-    text-align: right !important;
+    padding: 3px 12px;
+    border-radius: 999px;
+    letter-spacing: 0.3px;
 }
 
 .reports-badge-dot {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #10b981;
-    box-shadow: 0 0 8px #10b981;
-    flex-shrink: 0;
+    background: #edd395;
+    box-shadow: 0 0 8px #edd395;
 }
 
 .reports-header-title {
-    margin: 4px 0 0 0;
+    margin: 4px 0 0;
     font-size: 21px;
     font-weight: 900;
     color: #ffffff;
     display: flex;
     align-items: center;
-    justify-content: flex-start !important;
     gap: 10px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
     direction: rtl !important;
     text-align: right !important;
-    width: 100%;
 }
 
 .reports-header-subtitle {
-    margin: 4px 0 0 0;
-    font-size: 12px;
-    color: #94a3b8;
+    margin: 4px 0 0;
+    font-size: 12.5px;
+    color: rgba(241, 245, 249, 0.75);
     line-height: 1.6;
+    max-width: 780px;
     direction: rtl !important;
     text-align: right !important;
-    width: 100%;
 }
 
 .reports-close-btn {
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background: rgba(237, 211, 149, 0.12);
-    border: 1.2px solid rgba(237, 211, 149, 0.38);
+    border: 1.5px solid rgba(237, 211, 149, 0.35);
     color: #edd395;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 800;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s ease;
+    transition: all 0.22s ease;
     flex-shrink: 0;
 }
 
 .reports-close-btn:hover {
     background: #edd395;
-    color: #0b1a18;
-    transform: scale(1.08);
-    box-shadow: 0 6px 16px rgba(237, 211, 149, 0.35);
+    color: #0d211d;
+    transform: rotate(90deg) scale(1.08);
+    box-shadow: 0 0 16px rgba(237, 211, 149, 0.5);
 }
 
-/* 2. Body Grid with Liquid Glass Cards */
+/* Reports Body */
 .reports-dialog-body {
     flex: 1;
     overflow-y: auto;
-    overflow-x: hidden;
-    padding: 26px 28px;
-    background: radial-gradient(circle at top right, rgba(20, 48, 44, 0.45) 0%, rgba(6, 16, 15, 0.96) 100%);
+    padding: 28px;
+    background: radial-gradient(circle at 50% 0%, rgba(20, 48, 44, 0.45) 0%, rgba(8, 20, 18, 0.98) 75%);
     direction: rtl !important;
-    text-align: right !important;
 }
 
 .reports-books-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-    gap: 22px;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 24px;
     direction: rtl !important;
-    text-align: right !important;
 }
 
-/* Liquid Glass Book Card */
+/* Book Frame Card */
 .book-frame-card {
-    background: linear-gradient(145deg, rgba(16, 38, 35, 0.85) 0%, rgba(10, 24, 22, 0.92) 100%);
+    background: rgba(16, 38, 35, 0.85);
     border: 1.5px solid rgba(237, 211, 149, 0.22);
-    border-radius: 18px;
-    padding: 16px;
+    border-radius: 16px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(16px);
-    transition: all 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
     cursor: pointer;
-    position: relative;
-    overflow: hidden;
     direction: rtl !important;
     text-align: right !important;
 }
 
 .book-frame-card:hover {
-    transform: translateY(-6px);
-    border-color: #edd395;
-    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.75), 0 0 24px rgba(237, 211, 149, 0.22);
+    transform: translateY(-7px) scale(1.015);
+    border-color: rgba(237, 211, 149, 0.7);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65), 0 0 25px rgba(237, 211, 149, 0.28);
 }
 
 .book-cover-wrap {
     position: relative;
     width: 100%;
-    aspect-ratio: 1 / 1;
-    border-radius: 12px;
+    aspect-ratio: 1 / 1.38;
+    background: #081614;
     overflow: hidden;
-    background: #061211;
-    border: 1px solid rgba(237, 211, 149, 0.18);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
-    transition: transform 0.25s ease;
-}
-
-.book-frame-card:hover .book-cover-wrap {
-    transform: scale(1.02);
 }
 
 .book-cover-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center top;
+    transition: transform 0.4s ease;
     display: block;
-    transition: filter 0.25s ease;
+}
+
+.book-frame-card:hover .book-cover-img {
+    transform: scale(1.05);
 }
 
 .book-cover-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 35%, rgba(6, 17, 16, 0.92) 100%);
-    opacity: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(6, 17, 15, 0.92) 100%);
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
     display: flex;
     align-items: flex-end;
     justify-content: center;
     padding: 16px;
-    transition: opacity 0.25s ease;
 }
 
 .book-frame-card:hover .book-cover-overlay {
     opacity: 1;
+    background: linear-gradient(180deg, rgba(8, 20, 18, 0.3) 0%, rgba(6, 17, 15, 0.96) 100%);
 }
 
 .book-cover-view-badge {
-    background: #edd395;
-    color: #0b1a18;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 7px 16px;
-    border-radius: 20px;
     display: inline-flex;
     align-items: center;
-    gap: 7px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
-    direction: rtl !important;
+    gap: 6px;
+    background: rgba(237, 211, 149, 0.95);
+    color: #0b1c19;
+    font-size: 11px;
+    font-weight: 900;
+    padding: 6px 14px;
+    border-radius: 999px;
+    transform: translateY(6px);
+    opacity: 0;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+.book-frame-card:hover .book-cover-view-badge {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .book-info-wrap {
+    padding: 16px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start !important;
-    gap: 6px;
     flex: 1;
+    gap: 6px;
     direction: rtl !important;
     text-align: right !important;
-    width: 100%;
 }
 
 .book-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
+    align-self: flex-start;
     font-size: 10.5px;
     font-weight: 800;
-    padding: 3px 9px;
-    border-radius: 6px;
-    width: fit-content;
-    direction: rtl !important;
-    text-align: right !important;
-    align-self: flex-start !important;
-    border: 1px solid rgba(237, 211, 149, 0.3);
-    background: rgba(237, 211, 149, 0.1);
     color: #edd395;
+    background: rgba(237, 211, 149, 0.1);
+    border: 1px solid rgba(237, 211, 149, 0.28);
+    padding: 2px 8px;
+    border-radius: 6px;
 }
 
 .book-title {
-    margin: 0;
-    font-size: 14.5px;
-    font-weight: 900;
+    margin: 2px 0 0;
+    font-size: 14px;
+    font-weight: 800;
     color: #ffffff;
-    line-height: 1.45;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     direction: rtl !important;
     text-align: right !important;
-    width: 100%;
 }
 
 .book-subtitle {
     margin: 0;
-    font-size: 11.5px;
-    color: #94a3b8;
+    font-size: 11px;
+    color: rgba(241, 245, 249, 0.65);
     line-height: 1.6;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -6203,189 +6195,175 @@ dialog#reportsModal::backdrop,
     overflow: hidden;
     direction: rtl !important;
     text-align: right !important;
-    width: 100%;
 }
 
-/* Card Action Footer with Live View & Download */
 .book-card-footer {
+    padding: 10px 14px 14px;
+    border-top: 1px solid rgba(237, 211, 149, 0.14);
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 8px;
-    padding-top: 10px;
-    border-top: 1px dashed rgba(237, 211, 149, 0.2);
-    margin-top: auto;
     direction: rtl !important;
-    text-align: right !important;
-    width: 100%;
 }
 
 .book-live-view-btn {
-    background: linear-gradient(135deg, #183e38 0%, #112d28 100%);
-    color: #edd395;
-    border: 1px solid #c5a059;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 11px;
-    font-weight: 800;
-    font-family: inherit;
-    cursor: pointer;
+    flex: 1;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    transition: all 0.2s ease;
-    direction: rtl !important;
-    flex: 1;
     justify-content: center;
+    gap: 6px;
+    background: linear-gradient(135deg, rgba(237, 211, 149, 0.18) 0%, rgba(200, 168, 98, 0.1) 100%);
+    border: 1px solid rgba(237, 211, 149, 0.38);
+    color: #f1f5f9;
+    font-family: inherit;
+    font-size: 11.5px;
+    font-weight: 800;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 .book-live-view-btn:hover {
     background: #edd395;
     color: #0b1a18;
+    border-color: #edd395;
     box-shadow: 0 4px 14px rgba(237, 211, 149, 0.35);
 }
 
 .book-download-btn {
-    background: rgba(237, 211, 149, 0.1);
-    color: #f1f5f9;
-    border: 1px solid rgba(237, 211, 149, 0.35);
-    padding: 6px 10px;
-    border-radius: 8px;
-    font-size: 11px;
-    font-weight: 700;
-    font-family: inherit;
-    cursor: pointer;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 4px;
-    transition: all 0.2s ease;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: #edd395;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 8px 11px;
+    border-radius: 8px;
     text-decoration: none;
-    direction: rtl !important;
-    white-space: nowrap;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
 }
 
 .book-download-btn:hover {
-    background: rgba(237, 211, 149, 0.25);
+    background: rgba(237, 211, 149, 0.2);
     border-color: #edd395;
     color: #ffffff;
+    transform: translateY(-2px);
 }
 
-/* 3. Dark Liquid Glass Footer */
 .reports-dialog-footer {
-    background: linear-gradient(180deg, rgba(12, 28, 25, 0.95) 0%, rgba(7, 18, 16, 0.98) 100%);
-    border-top: 1px solid rgba(237, 211, 149, 0.2);
-    padding: 12px 24px;
+    background: linear-gradient(135deg, rgba(10, 24, 22, 0.95) 0%, rgba(6, 16, 14, 0.98) 100%);
+    padding: 16px 28px;
+    border-top: 1px solid rgba(237, 211, 149, 0.18);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
     flex-shrink: 0;
     direction: rtl !important;
-    text-align: right !important;
 }
 
 .reports-footer-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 11.5px;
-    color: #edd395;
+    font-size: 12px;
     font-weight: 800;
-    background: rgba(237, 211, 149, 0.1);
-    border: 1px solid rgba(237, 211, 149, 0.25);
-    padding: 4px 12px;
-    border-radius: 20px;
+    color: #edd395;
+    letter-spacing: 0.2px;
 }
 
 .reports-footer-btn {
     background: rgba(237, 211, 149, 0.12);
-    color: #edd395;
-    border: 1px solid rgba(237, 211, 149, 0.38);
-    padding: 7px 18px;
-    border-radius: 8px;
+    border: 1px solid rgba(237, 211, 149, 0.35);
+    color: #f1f5f9;
     font-family: inherit;
     font-size: 12px;
     font-weight: 800;
+    padding: 8px 18px;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s ease;
-    direction: rtl !important;
 }
 
 .reports-footer-btn:hover {
     background: #edd395;
-    color: #0b1a18;
+    color: #081614;
 }
 
 /* =========================================================================
-   LIVE IN-APP PDF VIEWER MODAL (پنجره آنلاین و لایو مطالعه کتابچه‌ها)
+   FULLSCREEN PDF.JS VIEWER DIALOG (تمام‌صفحه با استایل تیره و فوق‌سریع)
    ========================================================================= */
 
 dialog#pdfViewerModal,
 #pdfViewerModal {
     position: fixed !important;
     inset: 0 !important;
-    margin: auto !important;
-    width: min(1440px, 96vw) !important;
-    max-width: 1440px !important;
-    height: min(94vh, 920px) !important;
-    max-height: 94vh !important;
-    border-radius: 22px !important;
-    background: rgba(8, 20, 18, 0.96) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    border-radius: 0 !important;
+    border: none !important;
+    background: #06110f !important;
     color: #f1f5f9 !important;
-    border: 1.5px solid rgba(237, 211, 149, 0.35) !important;
-    backdrop-filter: blur(32px) saturate(200%) !important;
-    -webkit-backdrop-filter: blur(32px) saturate(200%) !important;
-    box-shadow: 0 40px 120px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
     display: none !important;
     flex-direction: column !important;
     overflow: hidden !important;
-    z-index: 10000 !important;
-    padding: 0 !important;
+    z-index: 99999 !important;
     direction: rtl !important;
+    text-align: right !important;
     font-family: YekanBakh, Tahoma, sans-serif !important;
 }
 
 dialog#pdfViewerModal[open],
 #pdfViewerModal[open] {
     display: flex !important;
-    animation: modalScaleUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: none !important;
 }
 
 dialog#pdfViewerModal::backdrop,
 #pdfViewerModal::backdrop {
-    background: rgba(3, 10, 9, 0.88) !important;
-    backdrop-filter: blur(18px) !important;
-    -webkit-backdrop-filter: blur(18px) !important;
+    background: rgba(0, 0, 0, 0.95) !important;
+    backdrop-filter: blur(16px) !important;
 }
 
+.pdf-viewer-fullscreen-inner {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background: #06110f;
+}
+
+/* Fullscreen Header Toolbar */
 .pdf-viewer-header {
-    background: linear-gradient(135deg, rgba(16, 38, 35, 0.95) 0%, rgba(9, 23, 21, 0.98) 100%);
-    padding: 14px 24px;
-    border-bottom: 1px solid rgba(237, 211, 149, 0.25);
+    height: 60px;
+    background: linear-gradient(180deg, #112a25 0%, #081614 100%);
+    border-bottom: 1px solid rgba(237, 211, 149, 0.22);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
+    padding: 0 20px;
+    gap: 14px;
     flex-shrink: 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    z-index: 10;
     direction: rtl !important;
 }
 
-.pdf-viewer-title-box {
+.pdf-viewer-meta {
     display: flex;
     align-items: center;
     gap: 12px;
-    flex: 1;
-    min-width: 0;
-}
-
-.pdf-viewer-title {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 900;
-    color: #ffffff;
-    white-space: nowrap;
+    min-width: 220px;
+    max-width: 320px;
     overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .pdf-viewer-tag {
@@ -6397,54 +6375,134 @@ dialog#pdfViewerModal::backdrop,
     padding: 3px 10px;
     border-radius: 6px;
     white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.pdf-viewer-title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 800;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Center Toolbar (Page Navigation & Zoom) */
+.pdf-reader-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.pdf-nav-group,
+.pdf-zoom-group {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(16, 38, 35, 0.85);
+    border: 1px solid rgba(237, 211, 149, 0.25);
+    border-radius: 8px;
+    padding: 3px;
+    gap: 4px;
+}
+
+.pdf-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background: transparent;
+    border: 1px solid transparent;
+    color: #f1f5f9;
+    font-family: inherit;
+    font-size: 11.5px;
+    font-weight: 800;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.pdf-btn:hover:not(:disabled) {
+    background: rgba(237, 211, 149, 0.2);
+    color: #edd395;
+    border-color: rgba(237, 211, 149, 0.4);
+}
+
+.pdf-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.pdf-btn.icon-only {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    font-size: 14px;
+}
+
+.pdf-page-counter {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 8px;
+    font-size: 12px;
+    font-weight: 800;
+    color: #edd395;
+}
+
+.pdf-page-counter input {
+    width: 44px;
+    height: 26px;
+    background: rgba(8, 20, 18, 0.9);
+    border: 1px solid rgba(237, 211, 149, 0.4);
+    border-radius: 5px;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 800;
+    text-align: center;
+    outline: none;
+}
+
+.pdf-page-counter input:focus {
+    border-color: #edd395;
+    box-shadow: 0 0 8px rgba(237, 211, 149, 0.5);
+}
+
+.pdf-btn.zoom-level-btn {
+    min-width: 50px;
+    font-size: 11px;
+    color: #edd395;
+}
+
+.pdf-btn.download-accent {
+    background: linear-gradient(135deg, rgba(237, 211, 149, 0.2) 0%, rgba(200, 168, 98, 0.15) 100%);
+    border: 1px solid #edd395;
+    color: #edd395;
+    padding: 6px 14px;
+}
+
+.pdf-btn.download-accent:hover {
+    background: #edd395;
+    color: #0b1a18;
+    box-shadow: 0 0 16px rgba(237, 211, 149, 0.4);
 }
 
 .pdf-viewer-actions {
     display: flex;
     align-items: center;
     gap: 10px;
-    flex-shrink: 0;
 }
 
-.pdf-tool-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(237, 211, 149, 0.12);
-    border: 1px solid rgba(237, 211, 149, 0.35);
-    color: #f1f5f9;
-    font-family: inherit;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 6px 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.2s ease;
-}
-
-.pdf-tool-btn:hover {
-    background: #edd395;
-    color: #0b1a18;
-}
-
-.pdf-tool-btn.download-accent {
-    background: linear-gradient(135deg, #183e38 0%, #112d28 100%);
-    border-color: #c5a059;
-    color: #edd395;
-}
-
-.pdf-tool-btn.download-accent:hover {
-    background: #edd395;
-    color: #0b1a18;
-}
-
-.pdf-viewer-close-btn {
+.pdf-close-btn {
     width: 36px;
     height: 36px;
     border-radius: 50%;
     background: rgba(237, 211, 149, 0.12);
-    border: 1.2px solid rgba(237, 211, 149, 0.38);
+    border: 1.5px solid rgba(237, 211, 149, 0.38);
     color: #edd395;
     font-size: 16px;
     font-weight: 800;
@@ -6455,29 +6513,137 @@ dialog#pdfViewerModal::backdrop,
     transition: all 0.2s ease;
 }
 
-.pdf-viewer-close-btn:hover {
+.pdf-close-btn:hover {
     background: #edd395;
-    color: #0b1a18;
-    transform: scale(1.08);
+    color: #081614;
+    transform: rotate(90deg) scale(1.08);
 }
 
+/* Viewer Body & Canvas */
 .pdf-viewer-body {
     flex: 1;
-    width: 100%;
-    height: calc(100% - 64px);
-    background: #0d1716;
+    width: 100vw;
+    height: calc(100vh - 60px);
     position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 25%, #0e2420 0%, #040908 100%);
+}
+
+.pdf-canvas-container {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 24px 16px;
+    box-sizing: border-box;
+}
+
+.pdf-canvas-shadow-wrap {
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.85), 0 0 35px rgba(237, 211, 149, 0.12);
+    border-radius: 4px;
+    overflow: hidden;
+    background: #ffffff;
+    transition: transform 0.15s ease;
+}
+
+.pdf-canvas-shadow-wrap canvas {
+    display: block;
+}
+
+/* Loading Overlay */
+.pdf-loading-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 17, 15, 0.92);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    z-index: 20;
+    transition: opacity 0.25s ease;
+}
+
+.pdf-loading-spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid rgba(237, 211, 149, 0.2);
+    border-top-color: #edd395;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+.pdf-loading-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.pdf-progress-track {
+    width: 240px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
     overflow: hidden;
 }
 
-.pdf-viewer-frame {
-    width: 100%;
+.pdf-progress-bar {
+    width: 0%;
     height: 100%;
-    border: none;
-    display: block;
-    background: #0d1716;
+    background: linear-gradient(90deg, #c5a059 0%, #edd395 100%);
+    border-radius: 999px;
+    transition: width 0.15s ease;
 }
 
+.pdf-progress-text {
+    font-size: 11.5px;
+    color: rgba(241, 245, 249, 0.65);
+}
+
+/* Error Fallback Box */
+.pdf-error-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 17, 15, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    z-index: 20;
+    padding: 24px;
+    text-align: center;
+}
+
+.pdf-error-icon {
+    font-size: 40px;
+}
+
+.pdf-error-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 800;
+    color: #ef4444;
+}
+
+.pdf-error-desc {
+    margin: 0;
+    font-size: 13px;
+    color: #cbd5e1;
+    max-width: 400px;
+    line-height: 1.6;
+}
+
+.pdf-error-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+}
 </style>
 
 
@@ -12939,7 +13105,7 @@ dialog#personDossierDialog::backdrop {
                 </div>
             </div>
 
-            <!-- Footer Bar (Sentence removed per user request) -->
+            <!-- Footer Bar -->
             <div class="reports-dialog-footer" dir="rtl">
                 <div class="reports-footer-badge" dir="rtl">
                     <span>✦ ۵ عنوان کتابچه تخصصی و گزارش رسمی پلاک یک ایران</span>
@@ -12952,36 +13118,94 @@ dialog#personDossierDialog::backdrop {
     </dialog>
 
     <!-- =========================================================================
-         LIVE IN-APP PDF VIEWER MODAL (پنجره آنلاین و لایو مطالعه کتابچه‌ها)
+         FULLSCREEN PDF.JS VIEWER DIALOG (پنجره تمام‌صفحه مطالعه آنلاین با موتور موزیلا)
          ========================================================================= -->
     <dialog id="pdfViewerModal" class="pdf-viewer-dialog" dir="rtl" aria-labelledby="pdfViewerTitle">
-        <div class="reports-dialog-inner" dir="rtl">
-            <!-- Header Bar -->
-            <div class="pdf-viewer-header" dir="rtl">
-                <div class="pdf-viewer-title-box" dir="rtl">
-                    <span class="pdf-viewer-tag" id="pdfViewerTag">گزارش عملکرد</span>
+        <div class="pdf-viewer-fullscreen-inner" dir="rtl">
+            <!-- Fullscreen Header Toolbar -->
+            <header class="pdf-viewer-header" dir="rtl">
+                <div class="pdf-viewer-meta" dir="rtl">
+                    <span class="pdf-viewer-tag" id="pdfViewerTag">کتابچه تخصصی</span>
                     <h3 class="pdf-viewer-title" id="pdfViewerTitle">عنوان کتابچه</h3>
                 </div>
-                <div class="pdf-viewer-actions">
-                    <a id="pdfViewerDownloadBtn" href="" download class="pdf-tool-btn download-accent" title="دانلود مستقیم فایل PDF">
-                        <span>📥</span>
-                        <span>دانلود فایل PDF</span>
-                    </a>
-                    <button type="button" id="pdfViewerNewTabBtn" class="pdf-tool-btn" title="باز کردن در تب مستقل مرورگر">
-                        <span>تب مستقل</span>
-                        <span>↗</span>
-                    </button>
-                    <button type="button" class="pdf-viewer-close-btn" id="pdfViewerCloseBtn" title="بستن و بازگشت (Esc)">✕</button>
-                </div>
-            </div>
+                
+                <!-- Center Reader Navigation Controls -->
+                <div class="pdf-reader-toolbar" dir="rtl">
+                    <div class="pdf-nav-group" dir="rtl">
+                        <button type="button" class="pdf-btn" id="pdfPrevPageBtn" title="صفحه قبلی (کلید راست یا PageUp)">
+                            <span>◀</span>
+                            <span>قبلی</span>
+                        </button>
+                        <div class="pdf-page-counter" dir="rtl">
+                            <span>صفحه</span>
+                            <input type="number" id="pdfPageInput" min="1" value="1" title="شماره صفحه را وارد کرده و Enter بزنید" />
+                            <span>از</span>
+                            <span id="pdfTotalPages">--</span>
+                        </div>
+                        <button type="button" class="pdf-btn" id="pdfNextPageBtn" title="صفحه بعدی (کلید چپ یا PageDown)">
+                            <span>بعدی</span>
+                            <span>▶</span>
+                        </button>
+                    </div>
 
-            <!-- Viewer Body with Live Embedded PDF Iframe -->
-            <div class="pdf-viewer-body">
-                <iframe id="pdfViewerFrame" class="pdf-viewer-frame" src="" title="نمایشگر زنده PDF"></iframe>
-            </div>
+                    <div class="pdf-zoom-group" dir="rtl">
+                        <button type="button" class="pdf-btn icon-only" id="pdfZoomOutBtn" title="کوچک‌نمایی"><span>−</span></button>
+                        <button type="button" class="pdf-btn zoom-level-btn" id="pdfZoomResetBtn" title="بازنشانی اندازه">
+                            <span id="pdfZoomText">۱۰۰٪</span>
+                        </button>
+                        <button type="button" class="pdf-btn icon-only" id="pdfZoomInBtn" title="بزرگ‌نمایی"><span>+</span></button>
+                        <button type="button" class="pdf-btn" id="pdfFitWidthBtn" title="تطبیق با عرض صفحه">
+                            <span>عرض صفحه</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="pdf-viewer-actions" dir="rtl">
+                    <a id="pdfViewerDownloadBtn" href="" download class="pdf-btn download-accent" title="دانلود مستقیم فایل PDF">
+                        <span>📥</span>
+                        <span>دانلود</span>
+                    </a>
+                    <button type="button" id="pdfViewerNewTabBtn" class="pdf-btn" title="باز کردن مستقیم در تب مستقل مرورگر">
+                        <span>↗</span>
+                        <span>تب جدید</span>
+                    </button>
+                    <button type="button" class="pdf-close-btn" id="pdfViewerCloseBtn" title="بستن پنجره تمام‌صفحه (Esc)">✕</button>
+                </div>
+            </header>
+
+            <!-- Viewer Body -->
+            <main class="pdf-viewer-body" id="pdfViewerBody">
+                <!-- Loading Indicator Overlay -->
+                <div class="pdf-loading-overlay" id="pdfLoadingOverlay">
+                    <div class="pdf-loading-spinner"></div>
+                    <div class="pdf-loading-title" id="pdfLoadingTitle">در حال آماده‌سازی و لود فوق‌سریع سند...</div>
+                    <div class="pdf-progress-track">
+                        <div class="pdf-progress-bar" id="pdfProgressBar"></div>
+                    </div>
+                    <div class="pdf-progress-text" id="pdfProgressText">لطفاً چند لحظه شکیبا باشید</div>
+                </div>
+
+                <!-- Error Fallback Box -->
+                <div class="pdf-error-overlay" id="pdfErrorOverlay" style="display: none;">
+                    <div class="pdf-error-icon">⚠️</div>
+                    <h4 class="pdf-error-title">عدم امکان رندر مستقیم در این مرورگر</h4>
+                    <p class="pdf-error-desc">می‌توانید فایل سند را مستقیماً دانلود نموده یا در تب جدید مرورگر مشاهده فرمایید.</p>
+                    <div class="pdf-error-actions">
+                        <a id="pdfErrorDownloadBtn" href="" download class="pdf-btn download-accent">📥 دانلود مستقیم فایل PDF</a>
+                        <button type="button" id="pdfErrorNewTabBtn" class="pdf-btn">↗ باز کردن در تب جدید</button>
+                    </div>
+                </div>
+
+                <!-- Scrollable Canvas Viewport -->
+                <div class="pdf-canvas-container" id="pdfCanvasContainer">
+                    <div class="pdf-canvas-shadow-wrap" id="pdfCanvasWrap">
+                        <canvas id="pdfViewerCanvas"></canvas>
+                    </div>
+                </div>
+            </main>
         </div>
     </dialog>
-
 
 <!-- Comparison Matrix Dialog -->
 <dialog id="compareDialog" aria-labelledby="compareTitle">
@@ -13364,7 +13588,7 @@ dialog#personDossierDialog::backdrop {
                 { id: 'yadman-shalamcheh', name: 'یادمان شهدای شلمچه', cat: 'yadman', colorClass: 'is-pin-red', x: 0.023, y: 0.054, data: { pop: 'نقطه صفر مرزی', fam: 'محور عملیاتی', stats: [['موقعیت', 'مرز بین‌المللی شلمچه'], ['کاربری', 'زیارتگاهی و فرهنگی'], ['اهمیت', 'نماد مقاومت ملی'], ['زائران سالانه', '+۲,۰۰۰,۰۰۰ نفر']] } },
                 { id: 'yadman-khein', name: 'یادمان شهدای نهر خین', cat: 'yadman', colorClass: 'is-pin-red', x: 0.505, y: 0.756, data: { pop: 'خط مرزی اروند', fam: 'محور کربلای ۴ و ۵', stats: [['موقعیت', 'جزیره بوارین - نهر خین'], ['کاربری', 'یادمان دفاع مقدس'], ['اهمیت', 'معبر خط‌شکنان غواص'], ['وضعیت', 'زیارتی و رویدادی']] } },
                 { id: 'parking-arbaeen', name: 'پارکینگ بزرگ اربعین', cat: 'infra', colorClass: 'is-pin-orange', x: 0.249, y: 0.123, data: { pop: 'ظرفیت ۵۰,۰۰۰ خودرو', fam: 'پشتیبانی زائران', stats: [['مساحت', '۸۰ هکتار'], ['کاربری', 'پارکینگ و بارانداز'], ['دوره اوج', 'ایام اربعین حسینی'], ['امکانات', 'روشنایی، آب و امداد']] } },
-                { id: 'complex-fatemeh', name: 'مجتمع فاطمه الزهرا (س)', cat: 'infra', colorClass: 'is-pin-green', x: 0.602, y: 0.449, data: { pop: 'مرکز رفاهی-خدماتی', fam: 'اسکان اضطراری', stats: [['ظرفیت اسکان', '۱۰,۰۰۰ نفر شب'], ['امکانات', 'درمانگاه و مصلای بزرگ'], ['کاربری', 'خدمات‌رسانی مواکب'], ['وضعیت', 'آماده‌به‌خدمت']] } }
+                { id: 'complex-fatemeh', name: 'مجتمع فاطمه الزهرا (س)', cat: 'infra', colorClass: 'is-pin-green', x: 0.558, y: 0.426, data: { pop: 'مرکز رفاهی-خدماتی', fam: 'اسکان اضطراری', stats: [['ظرفیت اسکان', '۱۰,۰۰۰ نفر شب'], ['امکانات', 'درمانگاه و مصلای بزرگ'], ['کاربری', 'خدمات‌رسانی مواکب'], ['وضعیت', 'آماده‌به‌خدمت']] } }
             ];
 
             
@@ -30469,7 +30693,7 @@ document.addEventListener('click', (e) => {
         corridor: [
             { id: 'cor-shalamcheh', name: 'پایانه مرزی شلمچه (نقطه صفر)', villageId: 'yadman-shalamcheh', villageName: 'نقطه صفر مرزی', x: 0.065, y: 0.075, desc: 'شاهراه پیاده‌روی اربعین و پایانه بین‌المللی ترانزیتی ایران و عراق (۲.۵ میلیون زائر)', badge: 'پایانه بین‌المللی' },
             { id: 'cor-parking', name: 'پارکینگ بزرگ ۱۰۰ هزار خودرویی', villageId: 'parking-arbaeen', villageName: 'محور شلمچه', x: 0.325, y: 0.275, desc: 'بزرگترین هاب توقفگاهی کشور با ۱۵ پایگاه خدماتی و شاتل‌های اتوبوسرانی زائرین', badge: 'هاب لجستیک' },
-            { id: 'cor-fatemeh', name: 'مجتمع فرهنگی-رفاهی فاطمه‌الزهرا (س)', villageId: 'mojtama-fatemeh-zahra', villageName: 'جاده شلمچه', x: 0.602, y: 0.449, desc: 'مقر اصلی پشتیبانی جمعیت امام‌رضایی‌ها و کانون اسکان ۵,۰۰۰ نفری', badge: 'مقر مرکزی' },
+            { id: 'cor-fatemeh', name: 'مجتمع فرهنگی-رفاهی فاطمه‌الزهرا (س)', villageId: 'mojtama-fatemeh-zahra', villageName: 'جاده شلمچه', x: 0.558, y: 0.426, desc: 'مقر اصلی پشتیبانی جمعیت امام‌رضایی‌ها و کانون اسکان ۵,۰۰۰ نفری', badge: 'مقر مرکزی' },
             { id: 'cor-khein', name: 'یادمان شهدای غواص نهر خین', villageId: 'yadman-khein', villageName: 'محور اروند صغیر', x: 0.590, y: 0.810, desc: 'یادمان عملیاتی کربلای ۴ و ۵ و میعادگاه کاروان‌های راهیان نور و زائرین', badge: 'یادمان شهدا' },
             { id: 'cor-khorramshahr', name: 'میدان مقاومت و مبدأ شلمچه', villageId: 'pol-now', villageName: 'ورودی خرمشهر', x: 0.920, y: 0.820, desc: 'شریان اصلی و مدخل اتصال شهر خرمشهر به بزرگراه شهید همدانی و پایانه مرزی', badge: 'مبدأ کریدور' }
         ]
@@ -33411,12 +33635,19 @@ document.addEventListener('click', (e) => {
 })();
 </script>
 
+<!-- Mozilla PDF.js Core Engine -->
+<script src="./vendor/pdfjs/pdf.min.js"></script>
+
 <script>
 // =========================================================================
-// PERFORMANCE REPORTS & LIVE IN-APP PDF VIEWER MODULE
+// PERFORMANCE REPORTS & ULTRA-FAST FULLSCREEN PDF.JS VIEWER MODULE
 // =========================================================================
 (function() {
     'use strict';
+
+    if (window.pdfjsLib) {
+        window.pdfjsLib.GlobalWorkerOptions.workerSrc = './vendor/pdfjs/pdf.worker.min.js';
+    }
 
     const performanceBooks = [
         {
@@ -33466,19 +33697,26 @@ document.addEventListener('click', (e) => {
         }
     ];
 
-    let currentLiveBook = null;
+    // State of active PDF document
+    let activePdfDoc = null;
+    let activePageNum = 1;
+    let isPageRendering = false;
+    let pendingPageNum = null;
+    let currentPdfScale = 1.0;
+    let isFitWidth = true;
+    let activeBook = null;
 
     function renderReportsGrid() {
         const grid = document.getElementById('reportsBooksGrid');
         if (!grid) return;
 
         grid.innerHTML = performanceBooks.map(book => `
-            <article class="book-frame-card" dir="rtl" data-book-id="${book.id}" title="کلیک برای مطالعه آنلاین و لایو ${book.title}">
+            <article class="book-frame-card" dir="rtl" data-book-id="${book.id}" title="مشاهده ${book.title}">
                 <div class="book-cover-wrap">
                     <img src="${book.coverUrl}" alt="جلد ${book.title}" class="book-cover-img" loading="lazy" />
                     <div class="book-cover-overlay">
                         <span class="book-cover-view-badge" dir="rtl">
-                            <span>مطالعه آنلاین لایو</span>
+                            <span>مشاهده</span>
                             <span>👁️</span>
                         </span>
                     </div>
@@ -33489,8 +33727,8 @@ document.addEventListener('click', (e) => {
                     <p class="book-subtitle" dir="rtl">${book.subtitle}</p>
                 </div>
                 <div class="book-card-footer" dir="rtl">
-                    <button type="button" class="book-live-view-btn" data-book-id="${book.id}" title="مطالعه آنلاین لایو">
-                        <span>📖 مطالعه آنلاین</span>
+                    <button type="button" class="book-live-view-btn" data-book-id="${book.id}" title="مشاهده کتابچه">
+                        <span>👁️ مشاهده</span>
                     </button>
                     <a href="${book.pdfUrl}" download="${book.title}.pdf" class="book-download-btn" title="دانلود مستقیم فایل PDF" onclick="event.stopPropagation();">
                         <span>دانلود</span>
@@ -33500,14 +33738,12 @@ document.addEventListener('click', (e) => {
             </article>
         `).join('');
 
-        // Clicking anywhere on card (except download link) opens the in-app live PDF viewer
+        // Clicking anywhere on card (except download link) opens fullscreen viewer
         grid.querySelectorAll('.book-frame-card').forEach(card => {
-            card.onclick = (e) => {
+            card.onclick = () => {
                 const bookId = card.getAttribute('data-book-id');
                 const book = performanceBooks.find(b => b.id === bookId);
-                if (book) {
-                    openLivePdfViewer(book);
-                }
+                if (book) openFullscreenPdfViewer(book);
             };
         });
 
@@ -33516,23 +33752,124 @@ document.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const bookId = btn.getAttribute('data-book-id');
                 const book = performanceBooks.find(b => b.id === bookId);
-                if (book) {
-                    openLivePdfViewer(book);
-                }
+                if (book) openFullscreenPdfViewer(book);
             };
         });
     }
 
-    function openLivePdfViewer(book) {
-        currentLiveBook = book;
+    // Render requested page onto canvas
+    async function renderPage(num) {
+        if (!activePdfDoc) return;
+        isPageRendering = true;
+
+        const canvas = document.getElementById('pdfViewerCanvas');
+        const container = document.getElementById('pdfCanvasContainer');
+        const pageInput = document.getElementById('pdfPageInput');
+        const totalPagesEl = document.getElementById('pdfTotalPages');
+        const prevBtn = document.getElementById('pdfPrevPageBtn');
+        const nextBtn = document.getElementById('pdfNextPageBtn');
+        const zoomText = document.getElementById('pdfZoomText');
+
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+
+        try {
+            const page = await activePdfDoc.getPage(num);
+
+            const containerWidth = container ? (container.clientWidth - 48) : (window.innerWidth - 48);
+            let viewport = page.getViewport({ scale: 1.0 });
+
+            if (isFitWidth) {
+                currentPdfScale = Math.min(Math.max(containerWidth / viewport.width, 0.45), 2.5);
+            }
+
+            viewport = page.getViewport({ scale: currentPdfScale });
+
+            // High DPI support for razor-sharp Persian text and graphics
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            canvas.width = Math.floor(viewport.width * dpr);
+            canvas.height = Math.floor(viewport.height * dpr);
+            canvas.style.width = Math.floor(viewport.width) + 'px';
+            canvas.style.height = Math.floor(viewport.height) + 'px';
+
+            ctx.save();
+            ctx.scale(dpr, dpr);
+
+            const renderContext = {
+                canvasContext: ctx,
+                viewport: viewport
+            };
+
+            await page.render(renderContext).promise;
+            ctx.restore();
+
+            // Update UI elements
+            activePageNum = num;
+            if (pageInput) pageInput.value = num;
+            if (totalPagesEl) totalPagesEl.textContent = activePdfDoc.numPages;
+            if (prevBtn) prevBtn.disabled = (num <= 1);
+            if (nextBtn) nextBtn.disabled = (num >= activePdfDoc.numPages);
+            if (zoomText) zoomText.textContent = Math.round(currentPdfScale * 100) + '٪';
+
+            if (container) container.scrollTop = 0;
+        } catch (err) {
+            console.error('Error rendering page:', err);
+        } finally {
+            isPageRendering = false;
+            if (pendingPageNum !== null) {
+                renderPage(pendingPageNum);
+                pendingPageNum = null;
+            }
+        }
+    }
+
+    function queueRenderPage(num) {
+        if (isPageRendering) {
+            pendingPageNum = num;
+        } else {
+            renderPage(num);
+        }
+    }
+
+    function goToPrevPage() {
+        if (activePageNum <= 1) return;
+        activePageNum--;
+        queueRenderPage(activePageNum);
+    }
+
+    function goToNextPage() {
+        if (!activePdfDoc || activePageNum >= activePdfDoc.numPages) return;
+        activePageNum++;
+        queueRenderPage(activePageNum);
+    }
+
+    function applyZoom(delta) {
+        isFitWidth = false;
+        currentPdfScale = Math.min(Math.max(currentPdfScale + delta, 0.4), 3.0);
+        queueRenderPage(activePageNum);
+    }
+
+    function resetZoomFitWidth() {
+        isFitWidth = true;
+        queueRenderPage(activePageNum);
+    }
+
+    // Open fullscreen modal and load document with Mozilla PDF.js
+    async function openFullscreenPdfViewer(book) {
+        activeBook = book;
         const viewerModal = document.getElementById('pdfViewerModal');
-        const frame = document.getElementById('pdfViewerFrame');
         const titleEl = document.getElementById('pdfViewerTitle');
         const tagEl = document.getElementById('pdfViewerTag');
         const downloadBtn = document.getElementById('pdfViewerDownloadBtn');
         const newTabBtn = document.getElementById('pdfViewerNewTabBtn');
+        const loadingOverlay = document.getElementById('pdfLoadingOverlay');
+        const progressBar = document.getElementById('pdfProgressBar');
+        const progressText = document.getElementById('pdfProgressText');
+        const errorOverlay = document.getElementById('pdfErrorOverlay');
+        const errorDownloadBtn = document.getElementById('pdfErrorDownloadBtn');
+        const errorNewTabBtn = document.getElementById('pdfErrorNewTabBtn');
 
-        if (!viewerModal || !frame) return;
+        if (!viewerModal) return;
 
         if (titleEl) titleEl.textContent = book.title;
         if (tagEl) tagEl.textContent = book.tag;
@@ -33543,21 +33880,89 @@ document.addEventListener('click', (e) => {
         if (newTabBtn) {
             newTabBtn.onclick = () => window.open(book.pdfUrl, '_blank');
         }
+        if (errorDownloadBtn) {
+            errorDownloadBtn.href = book.pdfUrl;
+            errorDownloadBtn.setAttribute('download', `${book.title}.pdf`);
+        }
+        if (errorNewTabBtn) {
+            errorNewTabBtn.onclick = () => window.open(book.pdfUrl, '_blank');
+        }
 
-        // Set iframe source with native viewer parameters for smooth live viewing
-        frame.src = `${book.pdfUrl}#toolbar=1&navpanes=1&view=FitH`;
-
+        // Show Fullscreen Modal
         if (typeof viewerModal.showModal === 'function') {
             if (!viewerModal.open) viewerModal.showModal();
         } else {
             viewerModal.setAttribute('open', '');
         }
+
+        // Reset display
+        if (loadingOverlay) {
+            loadingOverlay.style.display = 'flex';
+            loadingOverlay.style.opacity = '1';
+        }
+        if (errorOverlay) errorOverlay.style.display = 'none';
+        if (progressBar) progressBar.style.width = '10%';
+        if (progressText) progressText.textContent = 'در حال برقراری ارتباط و آماده‌سازی...';
+
+        activePageNum = 1;
+        isFitWidth = true;
+
+        try {
+            if (!window.pdfjsLib) {
+                throw new Error('PDF.js library is not available');
+            }
+
+            const loadingTask = window.pdfjsLib.getDocument({
+                url: book.pdfUrl,
+                cMapUrl: './vendor/pdfjs/cmaps/',
+                cMapPacked: true
+            });
+
+            loadingTask.onProgress = function(progress) {
+                if (progress && progress.total > 0) {
+                    const pct = Math.min(Math.round((progress.loaded / progress.total) * 100), 98);
+                    if (progressBar) progressBar.style.width = pct + '%';
+                    if (progressText) progressText.textContent = `در حال دریافت سند... (${pct}٪)`;
+                }
+            };
+
+            activePdfDoc = await loadingTask.promise;
+            if (progressBar) progressBar.style.width = '100%';
+            if (progressText) progressText.textContent = 'در حال رندر صفحه اول...';
+
+            await renderPage(1);
+
+            // Hide loading overlay smoothly
+            setTimeout(() => {
+                if (loadingOverlay) {
+                    loadingOverlay.style.opacity = '0';
+                    setTimeout(() => { loadingOverlay.style.display = 'none'; }, 200);
+                }
+            }, 100);
+
+        } catch (err) {
+            console.error('Failed to load PDF via PDF.js:', err);
+            if (loadingOverlay) loadingOverlay.style.display = 'none';
+            if (errorOverlay) errorOverlay.style.display = 'flex';
+        }
     }
 
-    function closeLivePdfViewer() {
+    function closeFullscreenPdfViewer() {
         const viewerModal = document.getElementById('pdfViewerModal');
-        const frame = document.getElementById('pdfViewerFrame');
-        if (frame) frame.src = ''; // stop rendering/memory
+        const canvas = document.getElementById('pdfViewerCanvas');
+
+        if (activePdfDoc) {
+            activePdfDoc.destroy();
+            activePdfDoc = null;
+        }
+
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            canvas.width = 0;
+            canvas.height = 0;
+        }
+
         if (viewerModal) {
             if (typeof viewerModal.close === 'function') {
                 viewerModal.close();
@@ -33575,6 +33980,13 @@ document.addEventListener('click', (e) => {
 
         const viewerModal = document.getElementById('pdfViewerModal');
         const viewerCloseBtn = document.getElementById('pdfViewerCloseBtn');
+        const prevBtn = document.getElementById('pdfPrevPageBtn');
+        const nextBtn = document.getElementById('pdfNextPageBtn');
+        const pageInput = document.getElementById('pdfPageInput');
+        const zoomInBtn = document.getElementById('pdfZoomInBtn');
+        const zoomOutBtn = document.getElementById('pdfZoomOutBtn');
+        const fitWidthBtn = document.getElementById('pdfFitWidthBtn');
+        const zoomResetBtn = document.getElementById('pdfZoomResetBtn');
 
         if (!modal) return;
 
@@ -33608,22 +34020,60 @@ document.addEventListener('click', (e) => {
         if (closeBtn) closeBtn.onclick = closeModal;
         if (backBtn) backBtn.onclick = closeModal;
 
-        if (viewerCloseBtn) viewerCloseBtn.onclick = closeLivePdfViewer;
+        // Fullscreen Viewer Controls
+        if (viewerCloseBtn) viewerCloseBtn.onclick = closeFullscreenPdfViewer;
+        if (prevBtn) prevBtn.onclick = goToPrevPage;
+        if (nextBtn) nextBtn.onclick = goToNextPage;
+        if (zoomInBtn) zoomInBtn.onclick = () => applyZoom(0.15);
+        if (zoomOutBtn) zoomOutBtn.onclick = () => applyZoom(-0.15);
+        if (fitWidthBtn) fitWidthBtn.onclick = resetZoomFitWidth;
+        if (zoomResetBtn) zoomResetBtn.onclick = resetZoomFitWidth;
 
-        // Support closing on backdrop click
-        if (viewerModal) {
-            viewerModal.addEventListener('click', (e) => {
-                if (e.target === viewerModal) closeLivePdfViewer();
+        if (pageInput) {
+            pageInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    const val = parseInt(pageInput.value, 10);
+                    if (activePdfDoc && val >= 1 && val <= activePdfDoc.numPages) {
+                        activePageNum = val;
+                        queueRenderPage(activePageNum);
+                    }
+                }
             });
         }
-        if (modal) {
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) closeModal();
-            });
-        }
+
+        // Keyboard Shortcuts (Arrow Left/Right, PageUp/Down, Escape)
+        window.addEventListener('keydown', (e) => {
+            if (!viewerModal || !viewerModal.open) return;
+
+            if (e.key === 'Escape') {
+                closeFullscreenPdfViewer();
+            } else if (e.key === 'ArrowRight' || e.key === 'PageUp') {
+                // In RTL, ArrowRight goes backward to previous page
+                e.preventDefault();
+                goToPrevPage();
+            } else if (e.key === 'ArrowLeft' || e.key === 'PageDown' || e.key === ' ') {
+                // In RTL, ArrowLeft or Space goes forward to next page
+                e.preventDefault();
+                goToNextPage();
+            }
+        });
+
+        // Window resize debounced re-fit
+        let resizeTimer = null;
+        window.addEventListener('resize', () => {
+            if (viewerModal && viewerModal.open && isFitWidth && activePdfDoc) {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    queueRenderPage(activePageNum);
+                }, 150);
+            }
+        });
 
         window.openPerformanceReportsModal = openModal;
-        window.openLiveBookViewer = openLivePdfViewer;
+        window.openLiveBookViewer = (bookId) => {
+            const b = performanceBooks.find(x => x.id === bookId);
+            if (b) openFullscreenPdfViewer(b);
+        };
     }
 
     if (document.readyState === 'loading') {
@@ -33631,5 +34081,6 @@ document.addEventListener('click', (e) => {
     } else {
         initReportsModal();
     }
-})();</script>
+})();
+</script>
 </body></html>
