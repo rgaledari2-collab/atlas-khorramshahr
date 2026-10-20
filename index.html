@@ -5904,6 +5904,334 @@ dialog#statsDialog::backdrop {
     -webkit-font-smoothing: antialiased;
 }
 
+
+/* =========================================================================
+   PERFORMANCE REPORTS MODAL (کتابچه‌ها و شرح عملکرد قرارگاه)
+   ========================================================================= */
+
+dialog#reportsModal,
+#reportsModal {
+    position: fixed !important;
+    inset: 0 !important;
+    margin: auto !important;
+    width: min(1300px, 95vw) !important;
+    max-width: 1300px !important;
+    height: min(90vh, 880px) !important;
+    max-height: 90vh !important;
+    border-radius: 22px !important;
+    background: #fdfbf7 !important;
+    color: #142a29 !important;
+    border: 1.5px solid #dfd5c4 !important;
+    box-shadow: 0 35px 100px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 0, 0, 0.05) !important;
+    display: none !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    z-index: 9999 !important;
+    padding: 0 !important;
+    direction: rtl !important;
+    font-family: YekanBakh, Tahoma, sans-serif !important;
+}
+
+dialog#reportsModal[open],
+#reportsModal[open] {
+    display: flex !important;
+    animation: modalScaleUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+dialog#reportsModal::backdrop,
+#reportsModal::backdrop {
+    background: rgba(10, 20, 19, 0.82) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+}
+
+.reports-dialog-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.reports-dialog-header {
+    background: linear-gradient(135deg, #102624 0%, #173834 100%);
+    color: #ffffff;
+    padding: 20px 28px;
+    border-bottom: 2px solid #dfd5c4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+.reports-header-title-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.reports-header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(237, 211, 149, 0.15);
+    border: 1px solid rgba(237, 211, 149, 0.4);
+    color: #edd395;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 800;
+    width: fit-content;
+}
+
+.reports-badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 6px #10b981;
+}
+
+.reports-header-title {
+    margin: 4px 0 0 0;
+    font-size: 20px;
+    font-weight: 900;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.reports-header-subtitle {
+    margin: 4px 0 0 0;
+    font-size: 12px;
+    color: #cbd5e1;
+    line-height: 1.6;
+}
+
+.reports-close-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #edd395;
+    font-size: 17px;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.reports-close-btn:hover {
+    background: #edd395;
+    color: #0b1a18;
+    transform: scale(1.08);
+}
+
+.reports-dialog-body {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 26px 28px;
+    background: #fdfbf7;
+}
+
+.reports-books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 22px;
+}
+
+.book-frame-card {
+    background: #ffffff;
+    border: 1.5px solid #ebdcc5;
+    border-radius: 18px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.book-frame-card:hover {
+    transform: translateY(-6px);
+    border-color: #c5a059;
+    box-shadow: 0 16px 36px rgba(20, 42, 41, 0.12), 0 0 0 1px rgba(197, 160, 89, 0.4);
+}
+
+.book-cover-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #142a29;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.25s ease;
+}
+
+.book-frame-card:hover .book-cover-wrap {
+    transform: scale(1.02);
+}
+
+.book-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.25s ease;
+}
+
+.book-cover-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(9, 23, 21, 0.88) 100%);
+    opacity: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 16px;
+    transition: opacity 0.25s ease;
+}
+
+.book-frame-card:hover .book-cover-overlay {
+    opacity: 1;
+}
+
+.book-cover-view-badge {
+    background: #edd395;
+    color: #142a29;
+    font-size: 11.5px;
+    font-weight: 800;
+    padding: 6px 14px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.book-info-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.book-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10.5px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 6px;
+    width: fit-content;
+}
+
+.book-title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 900;
+    color: #142a29;
+    line-height: 1.45;
+}
+
+.book-subtitle {
+    margin: 0;
+    font-size: 11.5px;
+    color: #475569;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.book-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #ebdcc5;
+    margin-top: auto;
+}
+
+.book-size-pill {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #64748b;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.book-read-btn {
+    background: #142a29;
+    color: #edd395;
+    border: 1px solid #c5a059;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 11.5px;
+    font-weight: 800;
+    font-family: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.book-frame-card:hover .book-read-btn {
+    background: #c5a059;
+    color: #142a29;
+    border-color: #a8813a;
+}
+
+.reports-dialog-footer {
+    background: #f7f2e7;
+    border-top: 1px solid #dfd5c4;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+.reports-footer-info {
+    font-size: 11.5px;
+    color: #5d5345;
+    font-weight: 700;
+}
+
+.reports-footer-btn {
+    background: #142a29;
+    color: #edd395;
+    border: 1px solid #c5a059;
+    padding: 6px 16px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.reports-footer-btn:hover {
+    background: #c5a059;
+    color: #142a29;
+}
+
 </style>
 
 
@@ -11570,6 +11898,15 @@ dialog#personDossierDialog::backdrop {
             <span>فیلتر روستاها</span>
         </button>
 
+        <!-- Button: شرح عملکرد (کتابچه‌ها و اسناد رسمی قرارگاه) -->
+        <button type="button" class="nav-action-btn reports-action-btn" id="openReportsModalBtn" title="مشاهده کتابچه‌ها و اسناد شرح عملکرد قرارگاه">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+            <span>شرح عملکرد</span>
+        </button>
+
         <!-- 2. Consolidated Analysis Tools Dropdown Menu -->
         <div class="analysis-dropdown-wrap" id="analysisDropdownWrap">
             <button type="button" class="nav-action-btn analysis-menu-trigger" id="analysisMenuBtn" aria-haspopup="true" aria-expanded="false" title="ابزارهای تخصصی تحلیل، تصمیم‌یار و مقایسه">
@@ -12324,6 +12661,50 @@ dialog#personDossierDialog::backdrop {
             </div>
         </div>
     </dialog>
+    <!-- =========================================================================
+         PERFORMANCE REPORTS & PUBLICATIONS MODAL (پنجره شرح عملکرد و کتابچه‌ها)
+         ========================================================================= -->
+    <dialog id="reportsModal" class="reports-dialog" aria-labelledby="reportsModalTitle">
+        <div class="reports-dialog-inner">
+            <!-- Header Bar -->
+            <div class="reports-dialog-header">
+                <div class="reports-header-title-wrap">
+                    <div class="reports-header-badge">
+                        <span class="reports-badge-dot"></span>
+                        <span>مستندات و انتشارات رسمی قرارگاه</span>
+                    </div>
+                    <h2 id="reportsModalTitle" class="reports-header-title">
+                        <span>📚</span>
+                        <span>شرح عملکرد و کتابچه‌های تخصصی شلمچه</span>
+                    </h2>
+                    <p class="reports-header-subtitle">
+                        مجموعه اسناد راهبردی، کتاب‌های سال، مستندسازی عملکرد اربعین و گزارش‌های تخصصی اشتغال و اقتصاد مقاومتی
+                    </p>
+                </div>
+                <div class="reports-header-actions">
+                    <button type="button" class="reports-close-btn" id="reportsCloseBtn" title="بستن پنجره (Esc)">✕</button>
+                </div>
+            </div>
+
+            <!-- Books Grid Container ("تو چند قاب") -->
+            <div class="reports-dialog-body">
+                <div class="reports-books-grid" id="reportsBooksGrid">
+                    <!-- Populated dynamically via JavaScript with luxury interactive frames -->
+                </div>
+            </div>
+
+            <!-- Footer Bar with Quick Tips -->
+            <div class="reports-dialog-footer">
+                <div class="reports-footer-info">
+                    <span>💡 جهت مطالعه یا بارگیری اسناد، بر روی قاب هر کتابچه کلیک فرمایید (مشاهده آنلاین PDF در مرورگر).</span>
+                </div>
+                <button type="button" class="reports-footer-btn" id="reportsBottomBackBtn">
+                    <span>← بازگشت به نقشه</span>
+                </button>
+            </div>
+        </div>
+    </dialog>
+
 
 <!-- Comparison Matrix Dialog -->
 <dialog id="compareDialog" aria-labelledby="compareTitle">
@@ -32753,4 +33134,170 @@ document.addEventListener('click', (e) => {
 })();
 </script>
 
+<script>
+// =========================================================================
+// PERFORMANCE REPORTS & PUBLICATIONS MODULE (شرح عملکرد و کتابچه‌ها)
+// =========================================================================
+(function() {
+    'use strict';
+
+    const performanceBooks = [
+        {
+            id: 'arbaeen-1405',
+            title: 'اربعین ۱۴۰۵ - روایت یک شبکه خدمت',
+            subtitle: 'شلمچه - منطقه پلاک یک ایران · گزارش عملکرد جمعیت امام رضایی‌ها در اربعین ۱۴۰۵',
+            tag: '🚩 گزارش عملکرد اربعین',
+            tagColor: '#b91c1c',
+            tagBg: '#fef2f2',
+            tagBorder: '#fecaca',
+            size: '۱۴.۷ مگابایت',
+            pdfUrl: './books/arbaeen-1405.pdf',
+            coverUrl: './books/covers/arbaeen-1405.webp'
+        },
+        {
+            id: 'mojtama-fatemeh',
+            title: 'معرفی مجتمع فرهنگی، اجتماعی و مردمی فاطمه الزهرا (س)',
+            subtitle: 'شلمچه · مستند کانون مرجع خدمت، بخش‌های چندمنظوره و ظرفیت‌های منطقه‌ای',
+            tag: '🕌 مجتمع فاطمه الزهرا (س)',
+            tagColor: '#0369a1',
+            tagBg: '#f0f9ff',
+            tagBorder: '#bae6fd',
+            size: '۱۵.۳ مگابایت',
+            pdfUrl: './books/mojtama-fatemeh.pdf',
+            coverUrl: './books/covers/mojtama-fatemeh.webp'
+        },
+        {
+            id: 'eghtesad-moghavamati',
+            title: 'نمایشگاه اقتصاد مقاومتی امام رضا (ع)',
+            subtitle: 'سرمایه‌ای برای مردم پلاک یک ایران · با مشارکت بنیاد برکت و ستاد مرکزی راهیان نور کشور',
+            tag: '🌾 اقتصاد مقاومتی',
+            tagColor: '#b45309',
+            tagBg: '#fef3c7',
+            tagBorder: '#fde68a',
+            size: '۸.۴ مگابایت',
+            pdfUrl: './books/eghtesad-moghavamati.pdf',
+            coverUrl: './books/covers/eghtesad-moghavamati.webp'
+        },
+        {
+            id: 'eshteqal-karafari',
+            title: 'کتابچه تخصصی اشتغال و کارآفرینی',
+            subtitle: 'از حوضچه‌های پرورش ماهی تا باغ‌های نخل؛ روایت مسیری که با آموزش آغاز شد و به خوداتکایی رسید',
+            tag: '💼 اشتغال و کارآفرینی',
+            tagColor: '#15803d',
+            tagBg: '#f0fdf4',
+            tagBorder: '#bbf7d0',
+            size: '۲۱.۲ مگابایت',
+            pdfUrl: './books/eshteqal-karafari.pdf',
+            coverUrl: './books/covers/eshteqal-karafari.webp'
+        },
+        {
+            id: 'ketab-sal-1404',
+            title: 'کتاب سال ۱۴۰۴ داوطلبان جمعیت امام رضایی‌ها',
+            subtitle: 'کارنامه سالانه اقدامات جهادی، رزمایش‌های امدادی و شبکه داوطلبان در منطقه مرزی شلمچه و خرمشهر',
+            tag: '📖 کتاب سال داوطلبان',
+            tagColor: '#065f46',
+            tagBg: '#ecfdf5',
+            tagBorder: '#a7f3d0',
+            size: '۳۵.۵ مگابایت',
+            pdfUrl: './books/ketab-sal-1404.pdf',
+            coverUrl: './books/covers/ketab-sal-1404.webp'
+        }
+    ];
+
+    function renderReportsGrid() {
+        const grid = document.getElementById('reportsBooksGrid');
+        if (!grid) return;
+
+        grid.innerHTML = performanceBooks.map(book => `
+            <article class="book-frame-card" data-pdf="${book.pdfUrl}" title="کلیک برای مشاهده و مطالعه کتابچه ${book.title}">
+                <div class="book-cover-wrap">
+                    <img src="${book.coverUrl}" alt="جلد ${book.title}" class="book-cover-img" loading="lazy" />
+                    <div class="book-cover-overlay">
+                        <span class="book-cover-view-badge">
+                            <span>مطالعه کتابچه (PDF)</span>
+                            <span>↗</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="book-info-wrap">
+                    <span class="book-tag" style="background:${book.tagBg}; color:${book.tagColor}; border:1px solid ${book.tagBorder};">
+                        ${book.tag}
+                    </span>
+                    <h3 class="book-title">${book.title}</h3>
+                    <p class="book-subtitle">${book.subtitle}</p>
+                </div>
+                <div class="book-card-footer">
+                    <span class="book-size-pill">
+                        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                        <span>PDF رسمی · ${book.size}</span>
+                    </span>
+                    <button type="button" class="book-read-btn" data-pdf="${book.pdfUrl}" title="مشاهده کتابچه">
+                        <span>مطالعه</span>
+                        <span>↗</span>
+                    </button>
+                </div>
+            </article>
+        `).join('');
+
+        // Bind clicks to open PDF
+        grid.querySelectorAll('.book-frame-card').forEach(card => {
+            card.onclick = (e) => {
+                e.preventDefault();
+                const pdf = card.getAttribute('data-pdf');
+                if (pdf) {
+                    window.open(pdf, '_blank');
+                }
+            };
+        });
+    }
+
+    function initReportsModal() {
+        const modal = document.getElementById('reportsModal');
+        const triggerBtn = document.getElementById('openReportsModalBtn');
+        const closeBtn = document.getElementById('reportsCloseBtn');
+        const backBtn = document.getElementById('reportsBottomBackBtn');
+
+        if (!modal) return;
+
+        function openModal() {
+            renderReportsGrid();
+            if (typeof modal.showModal === 'function') {
+                if (!modal.open) modal.showModal();
+            } else {
+                modal.setAttribute('open', '');
+            }
+            modal.scrollTop = 0;
+            const body = modal.querySelector('.reports-dialog-body');
+            if (body) body.scrollTop = 0;
+        }
+
+        function closeModal() {
+            if (typeof modal.close === 'function') {
+                modal.close();
+            } else {
+                modal.removeAttribute('open');
+            }
+        }
+
+        if (triggerBtn) {
+            triggerBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal();
+            });
+        }
+
+        if (closeBtn) closeBtn.onclick = closeModal;
+        if (backBtn) backBtn.onclick = closeModal;
+
+        // Global opener helper
+        window.openPerformanceReportsModal = openModal;
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initReportsModal);
+    } else {
+        initReportsModal();
+    }
+})();
+</script>
 </body></html>
