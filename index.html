@@ -5906,7 +5906,7 @@ dialog#statsDialog::backdrop {
 
 
 /* =========================================================================
-   PERFORMANCE REPORTS MODAL (کتابچه‌ها و شرح عملکرد قرارگاه)
+   PERFORMANCE REPORTS & LIVE PDF VIEWER (تک‌رنگ تیره و لیکویید گلس لوکس)
    ========================================================================= */
 
 dialog#reportsModal,
@@ -5914,21 +5914,24 @@ dialog#reportsModal,
     position: fixed !important;
     inset: 0 !important;
     margin: auto !important;
-    width: min(1300px, 95vw) !important;
-    max-width: 1300px !important;
+    width: min(1320px, 95vw) !important;
+    max-width: 1320px !important;
     height: min(90vh, 880px) !important;
     max-height: 90vh !important;
     border-radius: 22px !important;
-    background: #fdfbf7 !important;
-    color: #142a29 !important;
-    border: 1.5px solid #dfd5c4 !important;
-    box-shadow: 0 35px 100px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 0, 0, 0.05) !important;
+    background: rgba(8, 20, 18, 0.94) !important;
+    color: #f1f5f9 !important;
+    border: 1.5px solid rgba(237, 211, 149, 0.28) !important;
+    backdrop-filter: blur(28px) saturate(190%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+    box-shadow: 0 35px 100px rgba(0, 0, 0, 0.75), 0 0 40px rgba(20, 48, 44, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.12) !important;
     display: none !important;
     flex-direction: column !important;
     overflow: hidden !important;
     z-index: 9999 !important;
     padding: 0 !important;
     direction: rtl !important;
+    text-align: right !important;
     font-family: YekanBakh, Tahoma, sans-serif !important;
 }
 
@@ -5940,9 +5943,9 @@ dialog#reportsModal[open],
 
 dialog#reportsModal::backdrop,
 #reportsModal::backdrop {
-    background: rgba(10, 20, 19, 0.82) !important;
-    backdrop-filter: blur(14px) !important;
-    -webkit-backdrop-filter: blur(14px) !important;
+    background: rgba(3, 10, 9, 0.85) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
 }
 
 .reports-dialog-inner {
@@ -5951,38 +5954,48 @@ dialog#reportsModal::backdrop,
     height: 100%;
     width: 100%;
     overflow: hidden;
+    direction: rtl !important;
+    text-align: right !important;
 }
 
+/* 1. Dark Liquid Glass Header */
 .reports-dialog-header {
-    background: linear-gradient(135deg, #102624 0%, #173834 100%);
+    background: linear-gradient(135deg, rgba(16, 38, 35, 0.92) 0%, rgba(9, 23, 21, 0.96) 100%);
     color: #ffffff;
     padding: 20px 28px;
-    border-bottom: 2px solid #dfd5c4;
+    border-bottom: 1px solid rgba(237, 211, 149, 0.22);
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 16px;
     flex-shrink: 0;
+    backdrop-filter: blur(20px);
+    direction: rtl !important;
+    text-align: right !important;
 }
 
 .reports-header-title-wrap {
     display: flex;
     flex-direction: column;
+    align-items: flex-start !important;
     gap: 4px;
+    direction: rtl !important;
+    text-align: right !important;
 }
 
 .reports-header-badge {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: rgba(237, 211, 149, 0.15);
-    border: 1px solid rgba(237, 211, 149, 0.4);
+    background: rgba(237, 211, 149, 0.12);
+    border: 1px solid rgba(237, 211, 149, 0.38);
     color: #edd395;
-    padding: 3px 10px;
+    padding: 3px 11px;
     border-radius: 20px;
     font-size: 11px;
     font-weight: 800;
-    width: fit-content;
+    direction: rtl !important;
+    text-align: right !important;
 }
 
 .reports-badge-dot {
@@ -5990,32 +6003,40 @@ dialog#reportsModal::backdrop,
     height: 6px;
     border-radius: 50%;
     background: #10b981;
-    box-shadow: 0 0 6px #10b981;
+    box-shadow: 0 0 8px #10b981;
+    flex-shrink: 0;
 }
 
 .reports-header-title {
     margin: 4px 0 0 0;
-    font-size: 20px;
+    font-size: 21px;
     font-weight: 900;
     color: #ffffff;
     display: flex;
     align-items: center;
+    justify-content: flex-start !important;
     gap: 10px;
+    direction: rtl !important;
+    text-align: right !important;
+    width: 100%;
 }
 
 .reports-header-subtitle {
     margin: 4px 0 0 0;
     font-size: 12px;
-    color: #cbd5e1;
+    color: #94a3b8;
     line-height: 1.6;
+    direction: rtl !important;
+    text-align: right !important;
+    width: 100%;
 }
 
 .reports-close-btn {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(237, 211, 149, 0.12);
+    border: 1.2px solid rgba(237, 211, 149, 0.38);
     color: #edd395;
     font-size: 17px;
     font-weight: 800;
@@ -6024,47 +6045,58 @@ dialog#reportsModal::backdrop,
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
+    flex-shrink: 0;
 }
 
 .reports-close-btn:hover {
     background: #edd395;
     color: #0b1a18;
     transform: scale(1.08);
+    box-shadow: 0 6px 16px rgba(237, 211, 149, 0.35);
 }
 
+/* 2. Body Grid with Liquid Glass Cards */
 .reports-dialog-body {
     flex: 1;
     overflow-y: auto;
     overflow-x: hidden;
     padding: 26px 28px;
-    background: #fdfbf7;
+    background: radial-gradient(circle at top right, rgba(20, 48, 44, 0.45) 0%, rgba(6, 16, 15, 0.96) 100%);
+    direction: rtl !important;
+    text-align: right !important;
 }
 
 .reports-books-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
     gap: 22px;
+    direction: rtl !important;
+    text-align: right !important;
 }
 
+/* Liquid Glass Book Card */
 .book-frame-card {
-    background: #ffffff;
-    border: 1.5px solid #ebdcc5;
+    background: linear-gradient(145deg, rgba(16, 38, 35, 0.85) 0%, rgba(10, 24, 22, 0.92) 100%);
+    border: 1.5px solid rgba(237, 211, 149, 0.22);
     border-radius: 18px;
     padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    transition: all 0.26s cubic-bezier(0.16, 1, 0.3, 1);
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    direction: rtl !important;
+    text-align: right !important;
 }
 
 .book-frame-card:hover {
     transform: translateY(-6px);
-    border-color: #c5a059;
-    box-shadow: 0 16px 36px rgba(20, 42, 41, 0.12), 0 0 0 1px rgba(197, 160, 89, 0.4);
+    border-color: #edd395;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.75), 0 0 24px rgba(237, 211, 149, 0.22);
 }
 
 .book-cover-wrap {
@@ -6073,8 +6105,9 @@ dialog#reportsModal::backdrop,
     aspect-ratio: 1 / 1;
     border-radius: 12px;
     overflow: hidden;
-    background: #142a29;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.1);
+    background: #061211;
+    border: 1px solid rgba(237, 211, 149, 0.18);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
     transition: transform 0.25s ease;
 }
 
@@ -6093,7 +6126,7 @@ dialog#reportsModal::backdrop,
 .book-cover-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 40%, rgba(9, 23, 21, 0.88) 100%);
+    background: linear-gradient(180deg, transparent 35%, rgba(6, 17, 16, 0.92) 100%);
     opacity: 0;
     display: flex;
     align-items: flex-end;
@@ -6108,22 +6141,27 @@ dialog#reportsModal::backdrop,
 
 .book-cover-view-badge {
     background: #edd395;
-    color: #142a29;
+    color: #0b1a18;
     font-size: 11.5px;
     font-weight: 800;
-    padding: 6px 14px;
+    padding: 7px 16px;
     border-radius: 20px;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    gap: 7px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+    direction: rtl !important;
 }
 
 .book-info-wrap {
     display: flex;
     flex-direction: column;
+    align-items: flex-start !important;
     gap: 6px;
     flex: 1;
+    direction: rtl !important;
+    text-align: right !important;
+    width: 100%;
 }
 
 .book-tag {
@@ -6132,56 +6170,63 @@ dialog#reportsModal::backdrop,
     gap: 5px;
     font-size: 10.5px;
     font-weight: 800;
-    padding: 3px 8px;
+    padding: 3px 9px;
     border-radius: 6px;
     width: fit-content;
+    direction: rtl !important;
+    text-align: right !important;
+    align-self: flex-start !important;
+    border: 1px solid rgba(237, 211, 149, 0.3);
+    background: rgba(237, 211, 149, 0.1);
+    color: #edd395;
 }
 
 .book-title {
     margin: 0;
-    font-size: 14px;
+    font-size: 14.5px;
     font-weight: 900;
-    color: #142a29;
+    color: #ffffff;
     line-height: 1.45;
+    direction: rtl !important;
+    text-align: right !important;
+    width: 100%;
 }
 
 .book-subtitle {
     margin: 0;
     font-size: 11.5px;
-    color: #475569;
+    color: #94a3b8;
     line-height: 1.6;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    direction: rtl !important;
+    text-align: right !important;
+    width: 100%;
 }
 
+/* Card Action Footer with Live View & Download */
 .book-card-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
+    gap: 8px;
     padding-top: 10px;
-    border-top: 1px dashed #ebdcc5;
+    border-top: 1px dashed rgba(237, 211, 149, 0.2);
     margin-top: auto;
+    direction: rtl !important;
+    text-align: right !important;
+    width: 100%;
 }
 
-.book-size-pill {
-    font-size: 10.5px;
-    font-weight: 700;
-    color: #64748b;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.book-read-btn {
-    background: #142a29;
+.book-live-view-btn {
+    background: linear-gradient(135deg, #183e38 0%, #112d28 100%);
     color: #edd395;
     border: 1px solid #c5a059;
     padding: 6px 12px;
     border-radius: 8px;
-    font-size: 11.5px;
+    font-size: 11px;
     font-weight: 800;
     font-family: inherit;
     cursor: pointer;
@@ -6189,47 +6234,248 @@ dialog#reportsModal::backdrop,
     align-items: center;
     gap: 6px;
     transition: all 0.2s ease;
+    direction: rtl !important;
+    flex: 1;
+    justify-content: center;
 }
 
-.book-frame-card:hover .book-read-btn {
-    background: #c5a059;
-    color: #142a29;
-    border-color: #a8813a;
+.book-live-view-btn:hover {
+    background: #edd395;
+    color: #0b1a18;
+    box-shadow: 0 4px 14px rgba(237, 211, 149, 0.35);
 }
 
+.book-download-btn {
+    background: rgba(237, 211, 149, 0.1);
+    color: #f1f5f9;
+    border: 1px solid rgba(237, 211, 149, 0.35);
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    direction: rtl !important;
+    white-space: nowrap;
+}
+
+.book-download-btn:hover {
+    background: rgba(237, 211, 149, 0.25);
+    border-color: #edd395;
+    color: #ffffff;
+}
+
+/* 3. Dark Liquid Glass Footer */
 .reports-dialog-footer {
-    background: #f7f2e7;
-    border-top: 1px solid #dfd5c4;
+    background: linear-gradient(180deg, rgba(12, 28, 25, 0.95) 0%, rgba(7, 18, 16, 0.98) 100%);
+    border-top: 1px solid rgba(237, 211, 149, 0.2);
     padding: 12px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 16px;
     flex-shrink: 0;
+    direction: rtl !important;
+    text-align: right !important;
 }
 
-.reports-footer-info {
+.reports-footer-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     font-size: 11.5px;
-    color: #5d5345;
-    font-weight: 700;
+    color: #edd395;
+    font-weight: 800;
+    background: rgba(237, 211, 149, 0.1);
+    border: 1px solid rgba(237, 211, 149, 0.25);
+    padding: 4px 12px;
+    border-radius: 20px;
 }
 
 .reports-footer-btn {
-    background: #142a29;
+    background: rgba(237, 211, 149, 0.12);
     color: #edd395;
-    border: 1px solid #c5a059;
-    padding: 6px 16px;
+    border: 1px solid rgba(237, 211, 149, 0.38);
+    padding: 7px 18px;
     border-radius: 8px;
     font-family: inherit;
     font-size: 12px;
     font-weight: 800;
     cursor: pointer;
     transition: all 0.2s ease;
+    direction: rtl !important;
 }
 
 .reports-footer-btn:hover {
-    background: #c5a059;
-    color: #142a29;
+    background: #edd395;
+    color: #0b1a18;
+}
+
+/* =========================================================================
+   LIVE IN-APP PDF VIEWER MODAL (پنجره آنلاین و لایو مطالعه کتابچه‌ها)
+   ========================================================================= */
+
+dialog#pdfViewerModal,
+#pdfViewerModal {
+    position: fixed !important;
+    inset: 0 !important;
+    margin: auto !important;
+    width: min(1440px, 96vw) !important;
+    max-width: 1440px !important;
+    height: min(94vh, 920px) !important;
+    max-height: 94vh !important;
+    border-radius: 22px !important;
+    background: rgba(8, 20, 18, 0.96) !important;
+    color: #f1f5f9 !important;
+    border: 1.5px solid rgba(237, 211, 149, 0.35) !important;
+    backdrop-filter: blur(32px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(32px) saturate(200%) !important;
+    box-shadow: 0 40px 120px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
+    display: none !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    z-index: 10000 !important;
+    padding: 0 !important;
+    direction: rtl !important;
+    font-family: YekanBakh, Tahoma, sans-serif !important;
+}
+
+dialog#pdfViewerModal[open],
+#pdfViewerModal[open] {
+    display: flex !important;
+    animation: modalScaleUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+dialog#pdfViewerModal::backdrop,
+#pdfViewerModal::backdrop {
+    background: rgba(3, 10, 9, 0.88) !important;
+    backdrop-filter: blur(18px) !important;
+    -webkit-backdrop-filter: blur(18px) !important;
+}
+
+.pdf-viewer-header {
+    background: linear-gradient(135deg, rgba(16, 38, 35, 0.95) 0%, rgba(9, 23, 21, 0.98) 100%);
+    padding: 14px 24px;
+    border-bottom: 1px solid rgba(237, 211, 149, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-shrink: 0;
+    direction: rtl !important;
+}
+
+.pdf-viewer-title-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+}
+
+.pdf-viewer-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 900;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pdf-viewer-tag {
+    font-size: 11px;
+    font-weight: 800;
+    color: #edd395;
+    background: rgba(237, 211, 149, 0.12);
+    border: 1px solid rgba(237, 211, 149, 0.35);
+    padding: 3px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+.pdf-viewer-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.pdf-tool-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(237, 211, 149, 0.12);
+    border: 1px solid rgba(237, 211, 149, 0.35);
+    color: #f1f5f9;
+    font-family: inherit;
+    font-size: 11.5px;
+    font-weight: 800;
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.pdf-tool-btn:hover {
+    background: #edd395;
+    color: #0b1a18;
+}
+
+.pdf-tool-btn.download-accent {
+    background: linear-gradient(135deg, #183e38 0%, #112d28 100%);
+    border-color: #c5a059;
+    color: #edd395;
+}
+
+.pdf-tool-btn.download-accent:hover {
+    background: #edd395;
+    color: #0b1a18;
+}
+
+.pdf-viewer-close-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(237, 211, 149, 0.12);
+    border: 1.2px solid rgba(237, 211, 149, 0.38);
+    color: #edd395;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.pdf-viewer-close-btn:hover {
+    background: #edd395;
+    color: #0b1a18;
+    transform: scale(1.08);
+}
+
+.pdf-viewer-body {
+    flex: 1;
+    width: 100%;
+    height: calc(100% - 64px);
+    background: #0d1716;
+    position: relative;
+    overflow: hidden;
+}
+
+.pdf-viewer-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+    background: #0d1716;
 }
 
 </style>
@@ -12664,20 +12910,20 @@ dialog#personDossierDialog::backdrop {
     <!-- =========================================================================
          PERFORMANCE REPORTS & PUBLICATIONS MODAL (پنجره شرح عملکرد و کتابچه‌ها)
          ========================================================================= -->
-    <dialog id="reportsModal" class="reports-dialog" aria-labelledby="reportsModalTitle">
-        <div class="reports-dialog-inner">
+    <dialog id="reportsModal" class="reports-dialog" dir="rtl" aria-labelledby="reportsModalTitle">
+        <div class="reports-dialog-inner" dir="rtl">
             <!-- Header Bar -->
-            <div class="reports-dialog-header">
-                <div class="reports-header-title-wrap">
-                    <div class="reports-header-badge">
+            <div class="reports-dialog-header" dir="rtl">
+                <div class="reports-header-title-wrap" dir="rtl">
+                    <div class="reports-header-badge" dir="rtl">
                         <span class="reports-badge-dot"></span>
                         <span>مستندات و انتشارات رسمی قرارگاه</span>
                     </div>
-                    <h2 id="reportsModalTitle" class="reports-header-title">
+                    <h2 id="reportsModalTitle" class="reports-header-title" dir="rtl">
                         <span>📚</span>
                         <span>شرح عملکرد و کتابچه‌های تخصصی شلمچه</span>
                     </h2>
-                    <p class="reports-header-subtitle">
+                    <p class="reports-header-subtitle" dir="rtl">
                         مجموعه اسناد راهبردی، کتاب‌های سال، مستندسازی عملکرد اربعین و گزارش‌های تخصصی اشتغال و اقتصاد مقاومتی
                     </p>
                 </div>
@@ -12687,20 +12933,51 @@ dialog#personDossierDialog::backdrop {
             </div>
 
             <!-- Books Grid Container ("تو چند قاب") -->
-            <div class="reports-dialog-body">
-                <div class="reports-books-grid" id="reportsBooksGrid">
+            <div class="reports-dialog-body" dir="rtl">
+                <div class="reports-books-grid" id="reportsBooksGrid" dir="rtl">
                     <!-- Populated dynamically via JavaScript with luxury interactive frames -->
                 </div>
             </div>
 
-            <!-- Footer Bar with Quick Tips -->
-            <div class="reports-dialog-footer">
-                <div class="reports-footer-info">
-                    <span>💡 جهت مطالعه یا بارگیری اسناد، بر روی قاب هر کتابچه کلیک فرمایید (مشاهده آنلاین PDF در مرورگر).</span>
+            <!-- Footer Bar (Sentence removed per user request) -->
+            <div class="reports-dialog-footer" dir="rtl">
+                <div class="reports-footer-badge" dir="rtl">
+                    <span>✦ ۵ عنوان کتابچه تخصصی و گزارش رسمی پلاک یک ایران</span>
                 </div>
-                <button type="button" class="reports-footer-btn" id="reportsBottomBackBtn">
+                <button type="button" class="reports-footer-btn" id="reportsBottomBackBtn" dir="rtl">
                     <span>← بازگشت به نقشه</span>
                 </button>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- =========================================================================
+         LIVE IN-APP PDF VIEWER MODAL (پنجره آنلاین و لایو مطالعه کتابچه‌ها)
+         ========================================================================= -->
+    <dialog id="pdfViewerModal" class="pdf-viewer-dialog" dir="rtl" aria-labelledby="pdfViewerTitle">
+        <div class="reports-dialog-inner" dir="rtl">
+            <!-- Header Bar -->
+            <div class="pdf-viewer-header" dir="rtl">
+                <div class="pdf-viewer-title-box" dir="rtl">
+                    <span class="pdf-viewer-tag" id="pdfViewerTag">گزارش عملکرد</span>
+                    <h3 class="pdf-viewer-title" id="pdfViewerTitle">عنوان کتابچه</h3>
+                </div>
+                <div class="pdf-viewer-actions">
+                    <a id="pdfViewerDownloadBtn" href="" download class="pdf-tool-btn download-accent" title="دانلود مستقیم فایل PDF">
+                        <span>📥</span>
+                        <span>دانلود فایل PDF</span>
+                    </a>
+                    <button type="button" id="pdfViewerNewTabBtn" class="pdf-tool-btn" title="باز کردن در تب مستقل مرورگر">
+                        <span>تب مستقل</span>
+                        <span>↗</span>
+                    </button>
+                    <button type="button" class="pdf-viewer-close-btn" id="pdfViewerCloseBtn" title="بستن و بازگشت (Esc)">✕</button>
+                </div>
+            </div>
+
+            <!-- Viewer Body with Live Embedded PDF Iframe -->
+            <div class="pdf-viewer-body">
+                <iframe id="pdfViewerFrame" class="pdf-viewer-frame" src="" title="نمایشگر زنده PDF"></iframe>
             </div>
         </div>
     </dialog>
@@ -33136,7 +33413,7 @@ document.addEventListener('click', (e) => {
 
 <script>
 // =========================================================================
-// PERFORMANCE REPORTS & PUBLICATIONS MODULE (شرح عملکرد و کتابچه‌ها)
+// PERFORMANCE REPORTS & LIVE IN-APP PDF VIEWER MODULE
 // =========================================================================
 (function() {
     'use strict';
@@ -33147,9 +33424,6 @@ document.addEventListener('click', (e) => {
             title: 'اربعین ۱۴۰۵ - روایت یک شبکه خدمت',
             subtitle: 'شلمچه - منطقه پلاک یک ایران · گزارش عملکرد جمعیت امام رضایی‌ها در اربعین ۱۴۰۵',
             tag: '🚩 گزارش عملکرد اربعین',
-            tagColor: '#b91c1c',
-            tagBg: '#fef2f2',
-            tagBorder: '#fecaca',
             size: '۱۴.۷ مگابایت',
             pdfUrl: './books/arbaeen-1405.pdf',
             coverUrl: './books/covers/arbaeen-1405.webp'
@@ -33159,9 +33433,6 @@ document.addEventListener('click', (e) => {
             title: 'معرفی مجتمع فرهنگی، اجتماعی و مردمی فاطمه الزهرا (س)',
             subtitle: 'شلمچه · مستند کانون مرجع خدمت، بخش‌های چندمنظوره و ظرفیت‌های منطقه‌ای',
             tag: '🕌 مجتمع فاطمه الزهرا (س)',
-            tagColor: '#0369a1',
-            tagBg: '#f0f9ff',
-            tagBorder: '#bae6fd',
             size: '۱۵.۳ مگابایت',
             pdfUrl: './books/mojtama-fatemeh.pdf',
             coverUrl: './books/covers/mojtama-fatemeh.webp'
@@ -33171,9 +33442,6 @@ document.addEventListener('click', (e) => {
             title: 'نمایشگاه اقتصاد مقاومتی امام رضا (ع)',
             subtitle: 'سرمایه‌ای برای مردم پلاک یک ایران · با مشارکت بنیاد برکت و ستاد مرکزی راهیان نور کشور',
             tag: '🌾 اقتصاد مقاومتی',
-            tagColor: '#b45309',
-            tagBg: '#fef3c7',
-            tagBorder: '#fde68a',
             size: '۸.۴ مگابایت',
             pdfUrl: './books/eghtesad-moghavamati.pdf',
             coverUrl: './books/covers/eghtesad-moghavamati.webp'
@@ -33183,9 +33451,6 @@ document.addEventListener('click', (e) => {
             title: 'کتابچه تخصصی اشتغال و کارآفرینی',
             subtitle: 'از حوضچه‌های پرورش ماهی تا باغ‌های نخل؛ روایت مسیری که با آموزش آغاز شد و به خوداتکایی رسید',
             tag: '💼 اشتغال و کارآفرینی',
-            tagColor: '#15803d',
-            tagBg: '#f0fdf4',
-            tagBorder: '#bbf7d0',
             size: '۲۱.۲ مگابایت',
             pdfUrl: './books/eshteqal-karafari.pdf',
             coverUrl: './books/covers/eshteqal-karafari.webp'
@@ -33195,60 +33460,111 @@ document.addEventListener('click', (e) => {
             title: 'کتاب سال ۱۴۰۴ داوطلبان جمعیت امام رضایی‌ها',
             subtitle: 'کارنامه سالانه اقدامات جهادی، رزمایش‌های امدادی و شبکه داوطلبان در منطقه مرزی شلمچه و خرمشهر',
             tag: '📖 کتاب سال داوطلبان',
-            tagColor: '#065f46',
-            tagBg: '#ecfdf5',
-            tagBorder: '#a7f3d0',
             size: '۳۵.۵ مگابایت',
             pdfUrl: './books/ketab-sal-1404.pdf',
             coverUrl: './books/covers/ketab-sal-1404.webp'
         }
     ];
 
+    let currentLiveBook = null;
+
     function renderReportsGrid() {
         const grid = document.getElementById('reportsBooksGrid');
         if (!grid) return;
 
         grid.innerHTML = performanceBooks.map(book => `
-            <article class="book-frame-card" data-pdf="${book.pdfUrl}" title="کلیک برای مشاهده و مطالعه کتابچه ${book.title}">
+            <article class="book-frame-card" dir="rtl" data-book-id="${book.id}" title="کلیک برای مطالعه آنلاین و لایو ${book.title}">
                 <div class="book-cover-wrap">
                     <img src="${book.coverUrl}" alt="جلد ${book.title}" class="book-cover-img" loading="lazy" />
                     <div class="book-cover-overlay">
-                        <span class="book-cover-view-badge">
-                            <span>مطالعه کتابچه (PDF)</span>
-                            <span>↗</span>
+                        <span class="book-cover-view-badge" dir="rtl">
+                            <span>مطالعه آنلاین لایو</span>
+                            <span>👁️</span>
                         </span>
                     </div>
                 </div>
-                <div class="book-info-wrap">
-                    <span class="book-tag" style="background:${book.tagBg}; color:${book.tagColor}; border:1px solid ${book.tagBorder};">
-                        ${book.tag}
-                    </span>
-                    <h3 class="book-title">${book.title}</h3>
-                    <p class="book-subtitle">${book.subtitle}</p>
+                <div class="book-info-wrap" dir="rtl">
+                    <span class="book-tag" dir="rtl">${book.tag}</span>
+                    <h3 class="book-title" dir="rtl">${book.title}</h3>
+                    <p class="book-subtitle" dir="rtl">${book.subtitle}</p>
                 </div>
-                <div class="book-card-footer">
-                    <span class="book-size-pill">
-                        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
-                        <span>PDF رسمی · ${book.size}</span>
-                    </span>
-                    <button type="button" class="book-read-btn" data-pdf="${book.pdfUrl}" title="مشاهده کتابچه">
-                        <span>مطالعه</span>
-                        <span>↗</span>
+                <div class="book-card-footer" dir="rtl">
+                    <button type="button" class="book-live-view-btn" data-book-id="${book.id}" title="مطالعه آنلاین لایو">
+                        <span>📖 مطالعه آنلاین</span>
                     </button>
+                    <a href="${book.pdfUrl}" download="${book.title}.pdf" class="book-download-btn" title="دانلود مستقیم فایل PDF" onclick="event.stopPropagation();">
+                        <span>دانلود</span>
+                        <span>📥</span>
+                    </a>
                 </div>
             </article>
         `).join('');
 
-        // Bind clicks to open PDF
+        // Clicking anywhere on card (except download link) opens the in-app live PDF viewer
         grid.querySelectorAll('.book-frame-card').forEach(card => {
             card.onclick = (e) => {
-                e.preventDefault();
-                const pdf = card.getAttribute('data-pdf');
-                if (pdf) {
-                    window.open(pdf, '_blank');
+                const bookId = card.getAttribute('data-book-id');
+                const book = performanceBooks.find(b => b.id === bookId);
+                if (book) {
+                    openLivePdfViewer(book);
                 }
             };
         });
+
+        grid.querySelectorAll('.book-live-view-btn').forEach(btn => {
+            btn.onclick = (e) => {
+                e.stopPropagation();
+                const bookId = btn.getAttribute('data-book-id');
+                const book = performanceBooks.find(b => b.id === bookId);
+                if (book) {
+                    openLivePdfViewer(book);
+                }
+            };
+        });
+    }
+
+    function openLivePdfViewer(book) {
+        currentLiveBook = book;
+        const viewerModal = document.getElementById('pdfViewerModal');
+        const frame = document.getElementById('pdfViewerFrame');
+        const titleEl = document.getElementById('pdfViewerTitle');
+        const tagEl = document.getElementById('pdfViewerTag');
+        const downloadBtn = document.getElementById('pdfViewerDownloadBtn');
+        const newTabBtn = document.getElementById('pdfViewerNewTabBtn');
+
+        if (!viewerModal || !frame) return;
+
+        if (titleEl) titleEl.textContent = book.title;
+        if (tagEl) tagEl.textContent = book.tag;
+        if (downloadBtn) {
+            downloadBtn.href = book.pdfUrl;
+            downloadBtn.setAttribute('download', `${book.title}.pdf`);
+        }
+        if (newTabBtn) {
+            newTabBtn.onclick = () => window.open(book.pdfUrl, '_blank');
+        }
+
+        // Set iframe source with native viewer parameters for smooth live viewing
+        frame.src = `${book.pdfUrl}#toolbar=1&navpanes=1&view=FitH`;
+
+        if (typeof viewerModal.showModal === 'function') {
+            if (!viewerModal.open) viewerModal.showModal();
+        } else {
+            viewerModal.setAttribute('open', '');
+        }
+    }
+
+    function closeLivePdfViewer() {
+        const viewerModal = document.getElementById('pdfViewerModal');
+        const frame = document.getElementById('pdfViewerFrame');
+        if (frame) frame.src = ''; // stop rendering/memory
+        if (viewerModal) {
+            if (typeof viewerModal.close === 'function') {
+                viewerModal.close();
+            } else {
+                viewerModal.removeAttribute('open');
+            }
+        }
     }
 
     function initReportsModal() {
@@ -33256,6 +33572,9 @@ document.addEventListener('click', (e) => {
         const triggerBtn = document.getElementById('openReportsModalBtn');
         const closeBtn = document.getElementById('reportsCloseBtn');
         const backBtn = document.getElementById('reportsBottomBackBtn');
+
+        const viewerModal = document.getElementById('pdfViewerModal');
+        const viewerCloseBtn = document.getElementById('pdfViewerCloseBtn');
 
         if (!modal) return;
 
@@ -33289,8 +33608,22 @@ document.addEventListener('click', (e) => {
         if (closeBtn) closeBtn.onclick = closeModal;
         if (backBtn) backBtn.onclick = closeModal;
 
-        // Global opener helper
+        if (viewerCloseBtn) viewerCloseBtn.onclick = closeLivePdfViewer;
+
+        // Support closing on backdrop click
+        if (viewerModal) {
+            viewerModal.addEventListener('click', (e) => {
+                if (e.target === viewerModal) closeLivePdfViewer();
+            });
+        }
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+        }
+
         window.openPerformanceReportsModal = openModal;
+        window.openLiveBookViewer = openLivePdfViewer;
     }
 
     if (document.readyState === 'loading') {
@@ -33298,6 +33631,5 @@ document.addEventListener('click', (e) => {
     } else {
         initReportsModal();
     }
-})();
-</script>
+})();</script>
 </body></html>
