@@ -5906,7 +5906,7 @@ dialog#statsDialog::backdrop {
 
 
 /* =========================================================================
-   PERFORMANCE REPORTS & FULLSCREEN PDF.JS VIEWER (تک‌رنگ تیره و لیکویید گلس لوکس تمام‌صفحه)
+   PERFORMANCE REPORTS & FULLSCREEN CONTINUOUS SCROLL PDF.JS VIEWER (ANTI-IDM)
    ========================================================================= */
 
 dialog#reportsModal,
@@ -5914,17 +5914,17 @@ dialog#reportsModal,
     position: fixed !important;
     inset: 0 !important;
     margin: auto !important;
-    width: min(1320px, 95vw) !important;
-    max-width: 1320px !important;
-    height: min(90vh, 880px) !important;
-    max-height: 90vh !important;
+    width: min(1340px, 95vw) !important;
+    max-width: 1340px !important;
+    height: min(92vh, 900px) !important;
+    max-height: 92vh !important;
     border-radius: 22px !important;
-    background: rgba(8, 20, 18, 0.94) !important;
+    background: rgba(8, 20, 18, 0.95) !important;
     color: #f1f5f9 !important;
     border: 1.5px solid rgba(237, 211, 149, 0.28) !important;
     backdrop-filter: blur(28px) saturate(190%) !important;
     -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
-    box-shadow: 0 35px 100px rgba(0, 0, 0, 0.75), 0 0 40px rgba(20, 48, 44, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 35px 100px rgba(0, 0, 0, 0.8), 0 0 40px rgba(20, 48, 44, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.12) !important;
     display: none !important;
     flex-direction: column !important;
     overflow: hidden !important;
@@ -5960,7 +5960,7 @@ dialog#reportsModal::backdrop,
 
 /* Reports Header */
 .reports-dialog-header {
-    background: linear-gradient(135deg, rgba(16, 38, 35, 0.92) 0%, rgba(9, 23, 21, 0.96) 100%);
+    background: linear-gradient(135deg, rgba(16, 38, 35, 0.94) 0%, rgba(9, 23, 21, 0.98) 100%);
     color: #ffffff;
     padding: 20px 28px;
     border-bottom: 1px solid rgba(237, 211, 149, 0.22);
@@ -6052,26 +6052,26 @@ dialog#reportsModal::backdrop,
     box-shadow: 0 0 16px rgba(237, 211, 149, 0.5);
 }
 
-/* Reports Body */
+/* Reports Body: 5 Clean Cards in Grid */
 .reports-dialog-body {
     flex: 1;
     overflow-y: auto;
-    padding: 28px;
+    padding: 24px 28px;
     background: radial-gradient(circle at 50% 0%, rgba(20, 48, 44, 0.45) 0%, rgba(8, 20, 18, 0.98) 75%);
     direction: rtl !important;
 }
 
 .reports-books-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+    gap: 22px;
     direction: rtl !important;
 }
 
-/* Book Frame Card */
+/* Book Frame Card with Natural Aspect Ratio */
 .book-frame-card {
-    background: rgba(16, 38, 35, 0.85);
-    border: 1.5px solid rgba(237, 211, 149, 0.22);
+    background: rgba(16, 38, 35, 0.88);
+    border: 1.5px solid rgba(237, 211, 149, 0.24);
     border-radius: 16px;
     overflow: hidden;
     display: flex;
@@ -6085,47 +6085,52 @@ dialog#reportsModal::backdrop,
 }
 
 .book-frame-card:hover {
-    transform: translateY(-7px) scale(1.015);
+    transform: translateY(-6px) scale(1.015);
     border-color: rgba(237, 211, 149, 0.7);
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65), 0 0 25px rgba(237, 211, 149, 0.28);
 }
 
+/* Cover Wrapper: NATURAL SQUARE (1:1) MATCHING EXACT 900x900 BOOK COVERS */
 .book-cover-wrap {
     position: relative;
     width: 100%;
-    aspect-ratio: 1 / 1.38;
-    background: #081614;
+    aspect-ratio: 1 / 1 !important; /* تناسب طبیعی و مربعی جلدها بدون کشیدگی عمودی */
+    background: #06110f;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(237, 211, 149, 0.18);
 }
 
 .book-cover-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    transition: transform 0.4s ease;
+    object-fit: contain !important; /* نمایش کامل تمام المان‌های جلد بدون هیچ کراپ */
+    object-position: center;
+    transition: transform 0.35s ease;
     display: block;
 }
 
 .book-frame-card:hover .book-cover-img {
-    transform: scale(1.05);
+    transform: scale(1.04);
 }
 
 .book-cover-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 40%, rgba(6, 17, 15, 0.92) 100%);
-    opacity: 0.85;
+    background: linear-gradient(180deg, transparent 50%, rgba(6, 17, 15, 0.9) 100%);
+    opacity: 0.75;
     transition: opacity 0.3s ease;
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    padding: 16px;
+    padding: 14px;
 }
 
 .book-frame-card:hover .book-cover-overlay {
     opacity: 1;
-    background: linear-gradient(180deg, rgba(8, 20, 18, 0.3) 0%, rgba(6, 17, 15, 0.96) 100%);
+    background: linear-gradient(180deg, rgba(8, 20, 18, 0.2) 0%, rgba(6, 17, 15, 0.95) 100%);
 }
 
 .book-cover-view-badge {
@@ -6134,7 +6139,7 @@ dialog#reportsModal::backdrop,
     gap: 6px;
     background: rgba(237, 211, 149, 0.95);
     color: #0b1c19;
-    font-size: 11px;
+    font-size: 11.5px;
     font-weight: 900;
     padding: 6px 14px;
     border-radius: 999px;
@@ -6150,7 +6155,7 @@ dialog#reportsModal::backdrop,
 }
 
 .book-info-wrap {
-    padding: 16px;
+    padding: 14px 16px;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -6172,7 +6177,7 @@ dialog#reportsModal::backdrop,
 
 .book-title {
     margin: 2px 0 0;
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 800;
     color: #ffffff;
     line-height: 1.5;
@@ -6293,7 +6298,7 @@ dialog#reportsModal::backdrop,
 }
 
 /* =========================================================================
-   FULLSCREEN PDF.JS VIEWER DIALOG (طراحی تمام‌صفحه با اسکرول عمودی پیوسته و ضد IDM)
+   FULLSCREEN CONTINUOUS SCROLL PDF.JS VIEWER DIALOG
    ========================================================================= */
 
 dialog#pdfViewerModal,
@@ -6532,7 +6537,7 @@ dialog#pdfViewerModal::backdrop,
     transform: rotate(90deg) scale(1.08);
 }
 
-/* Viewer Body & Vertical Continuous Scroll */
+/* Continuous Scrollable Viewport */
 .pdf-viewer-body {
     flex: 1;
     width: 100vw;
@@ -6555,7 +6560,6 @@ dialog#pdfViewerModal::backdrop,
     box-sizing: border-box;
 }
 
-/* Custom Sleek Scrollbar */
 .pdf-scroll-container::-webkit-scrollbar {
     width: 10px;
 }
@@ -6578,21 +6582,18 @@ dialog#pdfViewerModal::backdrop,
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 28px;
+    gap: 24px;
     width: 100%;
-    max-width: 1100px;
     padding: 0 16px;
     box-sizing: border-box;
-    transition: max-width 0.2s ease;
 }
 
 .pdf-page-card {
     position: relative;
     background: #ffffff;
     border-radius: 6px;
-    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.7), 0 0 20px rgba(237, 211, 149, 0.08);
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.75), 0 0 20px rgba(237, 211, 149, 0.1);
     overflow: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6600,14 +6601,14 @@ dialog#pdfViewerModal::backdrop,
 }
 
 .pdf-page-card:hover {
-    box-shadow: 0 22px 65px rgba(0, 0, 0, 0.85), 0 0 30px rgba(237, 211, 149, 0.2);
+    box-shadow: 0 22px 65px rgba(0, 0, 0, 0.9), 0 0 30px rgba(237, 211, 149, 0.22);
 }
 
 .pdf-page-number-tag {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: rgba(8, 20, 18, 0.75);
+    background: rgba(8, 20, 18, 0.78);
     backdrop-filter: blur(8px);
     color: #edd395;
     font-size: 11px;
@@ -33760,7 +33761,7 @@ document.addEventListener('click', (e) => {
             title: 'اربعین ۱۴۰۵ - روایت یک شبکه خدمت',
             subtitle: 'شلمچه - منطقه پلاک یک ایران · گزارش عملکرد جمعیت امام رضایی‌ها در اربعین ۱۴۰۵',
             tag: '🚩 گزارش عملکرد اربعین',
-            size: '۴.۵ مگابایت',
+            size: '۱۴.۷ مگابایت',
             pdfUrl: './books/arbaeen-1405.pdf',
             dataUrl: './books/arbaeen-1405.atlasbook',
             coverUrl: './books/covers/arbaeen-1405.webp'
@@ -33770,7 +33771,7 @@ document.addEventListener('click', (e) => {
             title: 'معرفی مجتمع فرهنگی، اجتماعی و مردمی فاطمه الزهرا (س)',
             subtitle: 'شلمچه · مستند کانون مرجع خدمت، بخش‌های چندمنظوره و ظرفیت‌های منطقه‌ای',
             tag: '🕌 مجتمع فاطمه الزهرا (س)',
-            size: '۴.۷ مگابایت',
+            size: '۱۵.۳ مگابایت',
             pdfUrl: './books/mojtama-fatemeh.pdf',
             dataUrl: './books/mojtama-fatemeh.atlasbook',
             coverUrl: './books/covers/mojtama-fatemeh.webp'
@@ -33780,7 +33781,7 @@ document.addEventListener('click', (e) => {
             title: 'نمایشگاه اقتصاد مقاومتی امام رضا (ع)',
             subtitle: 'سرمایه‌ای برای مردم پلاک یک ایران · با مشارکت بنیاد برکت و ستاد مرکزی راهیان نور کشور',
             tag: '🌾 اقتصاد مقاومتی',
-            size: '۲.۵ مگابایت',
+            size: '۸.۴ مگابایت',
             pdfUrl: './books/eghtesad-moghavamati.pdf',
             dataUrl: './books/eghtesad-moghavamati.atlasbook',
             coverUrl: './books/covers/eghtesad-moghavamati.webp'
@@ -33790,7 +33791,7 @@ document.addEventListener('click', (e) => {
             title: 'کتابچه تخصصی اشتغال و کارآفرینی',
             subtitle: 'از حوضچه‌های پرورش ماهی تا باغ‌های نخل؛ روایت مسیری که با آموزش آغاز شد و به خوداتکایی رسید',
             tag: '💼 اشتغال و کارآفرینی',
-            size: '۵.۸ مگابایت',
+            size: '۲۱.۲ مگابایت',
             pdfUrl: './books/eshteqal-karafari.pdf',
             dataUrl: './books/eshteqal-karafari.atlasbook',
             coverUrl: './books/covers/eshteqal-karafari.webp'
@@ -33800,21 +33801,18 @@ document.addEventListener('click', (e) => {
             title: 'کتاب سال ۱۴۰۴ داوطلبان جمعیت امام رضایی‌ها',
             subtitle: 'کارنامه سالانه اقدامات جهادی، رزمایش‌های امدادی و شبکه داوطلبان در منطقه مرزی شلمچه و خرمشهر',
             tag: '📖 کتاب سال داوطلبان',
-            size: '۱۱.۲ مگابایت',
+            size: '۳۵.۵ مگابایت',
             pdfUrl: './books/ketab-sal-1404.pdf',
             dataUrl: './books/ketab-sal-1404.atlasbook',
             coverUrl: './books/covers/ketab-sal-1404.webp'
         }
     ];
 
-    // State of active PDF document
     let activePdfDoc = null;
     let activeBook = null;
-    let pageRenderingStates = {}; // { [pageNum]: 'pending' | 'rendering' | 'done' }
-    let pageViewports = {};
+    let pageRenderingStates = {};
     let intersectionObserver = null;
     let currentZoomMultiplier = 1.0;
-    let basePageWidth = 860;
 
     function renderReportsGrid() {
         const grid = document.getElementById('reportsBooksGrid');
@@ -33866,7 +33864,7 @@ document.addEventListener('click', (e) => {
         });
     }
 
-    // Render an individual page onto its pre-allocated canvas
+    // Render an individual page accurately without distortion
     async function renderPageCard(pageNum) {
         if (!activePdfDoc || pageRenderingStates[pageNum] === 'rendering' || pageRenderingStates[pageNum] === 'done') {
             return;
@@ -33883,38 +33881,43 @@ document.addEventListener('click', (e) => {
 
         try {
             const page = await activePdfDoc.getPage(pageNum);
-            const origViewport = page.getViewport({ scale: 1.0 });
+            const unscaledVp = page.getViewport({ scale: 1.0 });
 
-            // Calculate card dimensions based on container width and zoom multiplier
             const container = document.getElementById('pdfScrollContainer');
-            const availableWidth = container ? (container.clientWidth - 48) : 900;
-            const targetWidth = Math.min(Math.max(availableWidth * 0.94 * currentZoomMultiplier, 400), 1600);
-            const scale = targetWidth / origViewport.width;
+            const availableWidth = container ? (container.clientWidth - 48) : 800;
+
+            // Maintain natural proportions: if square or wide, keep comfortable max width
+            const isLandscapeOrSquare = (unscaledVp.width >= unscaledVp.height);
+            const maxAllowed = isLandscapeOrSquare ? 800 : 860;
+            const targetWidth = Math.min(Math.max(availableWidth * 0.92, 380), maxAllowed) * currentZoomMultiplier;
+
+            const scale = targetWidth / unscaledVp.width;
             const viewport = page.getViewport({ scale });
 
-            // High DPI support for retina displays
+            // HiDPI rendering with devicePixelRatio
             const dpr = Math.min(window.devicePixelRatio || 1, 2);
             canvas.width = Math.floor(viewport.width * dpr);
             canvas.height = Math.floor(viewport.height * dpr);
             canvas.style.width = Math.floor(viewport.width) + 'px';
             canvas.style.height = Math.floor(viewport.height) + 'px';
+
             card.style.width = Math.floor(viewport.width) + 'px';
             card.style.height = Math.floor(viewport.height) + 'px';
 
             const ctx = canvas.getContext('2d');
-            ctx.save();
-            ctx.scale(dpr, dpr);
-
-            await page.render({
+            const renderContext = {
                 canvasContext: ctx,
-                viewport: viewport
-            }).promise;
+                viewport: viewport,
+                transform: dpr !== 1 ? [dpr, 0, 0, dpr, 0, 0] : null
+            };
 
-            ctx.restore();
+            await page.render(renderContext).promise;
 
             canvas.classList.add('rendered');
-            if (skeleton) skeleton.style.opacity = '0';
-            setTimeout(() => { if (skeleton) skeleton.style.display = 'none'; }, 250);
+            if (skeleton) {
+                skeleton.style.opacity = '0';
+                setTimeout(() => { skeleton.style.display = 'none'; }, 200);
+            }
 
             pageRenderingStates[pageNum] = 'done';
         } catch (err) {
@@ -33923,7 +33926,6 @@ document.addEventListener('click', (e) => {
         }
     }
 
-    // Setup scroll observer to update current page indicator and lazy render
     function setupScrollAndObserver() {
         if (intersectionObserver) {
             intersectionObserver.disconnect();
@@ -33932,14 +33934,11 @@ document.addEventListener('click', (e) => {
         const scrollContainer = document.getElementById('pdfScrollContainer');
         const pageInput = document.getElementById('pdfPageInput');
 
-        // Observer for lazy loading: renders pages when within 600px of viewport
         intersectionObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const pageNum = parseInt(entry.target.getAttribute('data-page-num'), 10);
-                    if (pageNum) {
-                        renderPageCard(pageNum);
-                    }
+                    if (pageNum) renderPageCard(pageNum);
                 }
             });
         }, {
@@ -33952,7 +33951,6 @@ document.addEventListener('click', (e) => {
             intersectionObserver.observe(card);
         });
 
-        // Scroll listener to update page counter as user scrolls
         if (scrollContainer) {
             let scrollDebounce = null;
             scrollContainer.onscroll = () => {
@@ -33975,12 +33973,11 @@ document.addEventListener('click', (e) => {
                     if (pageInput && document.activeElement !== pageInput) {
                         pageInput.value = currentVisiblePage;
                     }
-                }, 50);
+                }, 40);
             };
         }
     }
 
-    // Scroll to a specific page smoothly
     function scrollToPage(pageNum) {
         if (!activePdfDoc || pageNum < 1 || pageNum > activePdfDoc.numPages) return;
         const card = document.getElementById(`pdf-page-card-${pageNum}`);
@@ -34007,13 +34004,10 @@ document.addEventListener('click', (e) => {
     function changeZoom(factor) {
         currentZoomMultiplier = Math.min(Math.max(currentZoomMultiplier * factor, 0.5), 2.2);
         const zoomText = document.getElementById('pdfZoomText');
-        if (zoomText) {
-            zoomText.textContent = Math.round(currentZoomMultiplier * 100) + '٪';
-        }
-        // Reset rendered state and re-render visible pages
+        if (zoomText) zoomText.textContent = Math.round(currentZoomMultiplier * 100) + '٪';
+
         pageRenderingStates = {};
         document.querySelectorAll('.pdf-page-card').forEach(card => {
-            const num = parseInt(card.getAttribute('data-page-num'), 10);
             const skeleton = card.querySelector('.pdf-page-skeleton');
             if (skeleton) {
                 skeleton.style.display = 'flex';
@@ -34072,7 +34066,7 @@ document.addEventListener('click', (e) => {
             loadingOverlay.style.opacity = '1';
         }
         if (errorOverlay) errorOverlay.style.display = 'none';
-        if (progressBar) progressBar.style.width = '10%';
+        if (progressBar) progressBar.style.width = '15%';
         if (progressText) progressText.textContent = 'در حال برقراری ارتباط و آماده‌سازی...';
         if (pagesList) pagesList.innerHTML = '';
         if (pageInput) pageInput.value = 1;
@@ -34088,49 +34082,23 @@ document.addEventListener('click', (e) => {
             // ANTI-IDM STREAM FETCH:
             // Fetch .atlasbook binary stream so IDM NEVER intercepts the request
             const streamUrl = book.dataUrl || book.pdfUrl.replace('.pdf', '.atlasbook');
-            const res = await fetch(streamUrl, {
-                cache: 'no-cache',
-                headers: { 'Accept': 'application/octet-stream' }
-            });
-
-            if (!res.ok) throw new Error(`HTTP ${res.status} on ${streamUrl}`);
-
-            const reader = res.body.getReader();
-            const contentLength = +res.headers.get('Content-Length') || 0;
-            let receivedLength = 0;
-            const chunks = [];
-
-            while (true) {
-                const { done, value } = await reader.read();
-                if (done) break;
-                chunks.push(value);
-                receivedLength += value.length;
-
-                if (contentLength > 0 && progressBar) {
-                    const pct = Math.min(Math.round((receivedLength / contentLength) * 100), 96);
-                    progressBar.style.width = pct + '%';
-                    if (progressText) progressText.textContent = `در حال دریافت سریع سند... (${pct}٪)`;
-                }
-            }
-
-            // Assemble into one contiguous Uint8Array
-            const binaryData = new Uint8Array(receivedLength);
-            let pos = 0;
-            for (const chunk of chunks) {
-                binaryData.set(chunk, pos);
-                pos += chunk.length;
-            }
-
-            if (progressBar) progressBar.style.width = '99%';
-            if (progressText) progressText.textContent = 'در حال چیدمان ساختار صفحات...';
-
-            // Load document from Uint8Array purely in-memory
-            activePdfDoc = await window.pdfjsLib.getDocument({
-                data: binaryData,
+            
+            // Progressive PDF.js loading via URL (streaming on demand)
+            const loadingTask = window.pdfjsLib.getDocument({
+                url: streamUrl,
                 cMapUrl: './vendor/pdfjs/cmaps/',
                 cMapPacked: true
-            }).promise;
+            });
 
+            loadingTask.onProgress = function(progress) {
+                if (progress && progress.total > 0 && progressBar) {
+                    const pct = Math.min(Math.round((progress.loaded / progress.total) * 100), 96);
+                    progressBar.style.width = pct + '%';
+                    if (progressText) progressText.textContent = `در حال آماده‌سازی صفحات... (${pct}٪)`;
+                }
+            };
+
+            activePdfDoc = await loadingTask.promise;
             const totalPages = activePdfDoc.numPages;
             if (totalPagesEl) totalPagesEl.textContent = totalPages;
 
@@ -34140,11 +34108,13 @@ document.addEventListener('click', (e) => {
             const aspectRatio = firstVp.height / firstVp.width;
 
             const container = document.getElementById('pdfScrollContainer');
-            const availableWidth = container ? (container.clientWidth - 48) : 900;
-            const initWidth = Math.min(Math.max(availableWidth * 0.94, 400), 1100);
+            const availableWidth = container ? (container.clientWidth - 48) : 800;
+            const isLandscapeOrSquare = (firstVp.width >= firstVp.height);
+            const maxAllowed = isLandscapeOrSquare ? 800 : 860;
+            const initWidth = Math.min(Math.max(availableWidth * 0.92, 380), maxAllowed);
             const initHeight = Math.round(initWidth * aspectRatio);
 
-            // Dynamically generate all page placeholder cards (instant full document height)
+            // Dynamically generate all page placeholder cards (instant full document scrollable height)
             let pagesHtml = '';
             for (let i = 1; i <= totalPages; i++) {
                 pagesHtml += `
@@ -34152,7 +34122,7 @@ document.addEventListener('click', (e) => {
                         <span class="pdf-page-number-tag">صفحه ${i}</span>
                         <div class="pdf-page-skeleton">
                             <div class="pdf-page-skeleton-spinner"></div>
-                            <span>در حال رندر صفحه ${i}...</span>
+                            <span>صفحه ${i}...</span>
                         </div>
                         <canvas class="pdf-page-canvas"></canvas>
                     </div>
@@ -34160,9 +34130,8 @@ document.addEventListener('click', (e) => {
             }
             if (pagesList) pagesList.innerHTML = pagesHtml;
 
-            // Render first 2 pages immediately
+            // Render first page immediately
             await renderPageCard(1);
-            if (totalPages >= 2) renderPageCard(2);
 
             // Setup IntersectionObserver for continuous vertical scroll
             setupScrollAndObserver();
@@ -34174,9 +34143,9 @@ document.addEventListener('click', (e) => {
             setTimeout(() => {
                 if (loadingOverlay) {
                     loadingOverlay.style.opacity = '0';
-                    setTimeout(() => { loadingOverlay.style.display = 'none'; }, 250);
+                    setTimeout(() => { loadingOverlay.style.display = 'none'; }, 200);
                 }
-            }, 80);
+            }, 60);
 
         } catch (err) {
             console.error('Error loading book document:', err);
