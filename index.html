@@ -23215,7 +23215,7 @@ addEventListener('resize', layout); layout();
 
                 const targetId = item.target;
                 const section = item.section || 'stats';
-                const keyword = item.rowQuery || item.nationalId || item.title;
+                const keyword = (item.type === 'person') ? (item.title || '') : '';
 
                 navigateToVillage(targetId, section, keyword);
             }
@@ -23484,7 +23484,7 @@ addEventListener('resize', layout); layout();
 
                     if (currentSelectedPerson) {
                         const p = currentSelectedPerson;
-                        navigateToVillage(p.target, 'stats', p.rowQuery || p.nationalId || p.title);
+                        navigateToVillage(p.target, 'stats', p.title || '');
                     }
                 });
             }
@@ -24987,7 +24987,7 @@ addEventListener('resize', layout); layout();
                         <div class="filter-controls-row">
                             <div class="filter-search-wrap">
                                 <svg class="filter-search-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                                <input type="text" class="filter-search-input" placeholder="${searchPlaceholder}">
+                                <input type="text" class="filter-search-input" placeholder="${searchPlaceholder}" autocomplete="off" value="">
                                 <button type="button" class="filter-search-clear" title="پاک‌کردن متن (Esc)">✕</button>
                             </div>
                             ${eduSelectHtml}
@@ -25016,6 +25016,11 @@ addEventListener('resize', layout); layout();
                     // 7. Bind Elements
                     const searchInput = filterBar.querySelector('.filter-search-input');
                     const clearBtn = filterBar.querySelector('.filter-search-clear');
+                    if (searchInput) {
+                        searchInput.value = '';
+                        searchInput.setAttribute('autocomplete', 'off');
+                    }
+                    if (clearBtn) clearBtn.style.display = 'none';
                     const eduSelect = filterBar.querySelector('.filter-edu-select');
                     const healthSelect = filterBar.querySelector('.filter-health-select');
                     const counterPill = filterBar.querySelector('.filter-counter-pill');
@@ -25279,6 +25284,15 @@ addEventListener('resize', layout); layout();
                         });
                     };
                 }
+
+                // Ensure initial state is clean with 0 default text or numbers
+                if (globalSearchInput) {
+                    globalSearchInput.value = '';
+                    globalSearchInput.setAttribute('autocomplete', 'off');
+                }
+                tableDispatchers.forEach(disp => {
+                    if (typeof disp.reset === 'function') disp.reset();
+                });
             }
 
             // =========================================================================
@@ -26176,7 +26190,7 @@ addEventListener('resize', layout); layout();
                         <div class="dossier-search-bar-wrap" style="margin-bottom:14px;">
                             <div class="dossier-search-input-box">
                                 <span style="font-size:15px; color:#8c6823;">🔍</span>
-                                <input type="text" id="liveTableSearch" placeholder="جستجوی درجا در پرونده‌ها (نام مددجو، کدملی، مدرسه، بیماری، آدرس)..." aria-label="جستجوی درجا در پرونده‌ها">
+                                <input type="text" id="liveTableSearch" placeholder="جستجوی درجا در پرونده‌ها (نام مددجو، کدملی، مدرسه، بیماری، آدرس)..." aria-label="جستجوی درجا در پرونده‌ها" autocomplete="off" value="">
                                 <button type="button" id="dossierClearSearchBtn" style="display:none; background:none; border:none; color:#8c7e6c; font-size:14px; cursor:pointer;" title="پاکسازی">✕</button>
                             </div>
                             <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
@@ -27700,6 +27714,14 @@ addEventListener('resize', layout); layout();
                     const mapSceneEl = document.getElementById('mapScene');
                     if (mapSceneEl) mapSceneEl.classList.remove('drawer-open');
                     if (typeof window.hideSpatialReticle === 'function') window.hideSpatialReticle();
+
+                    const liveSearch = statsDlg.querySelector('#liveTableSearch');
+                    if (liveSearch) {
+                        liveSearch.value = '';
+                    }
+                    statsDlg.querySelectorAll('.filter-search-input').forEach(inp => {
+                        inp.value = '';
+                    });
                 });
             }
         });
@@ -27723,6 +27745,21 @@ addEventListener('resize', layout); layout();
                             if (mainContent) mainContent.scrollTop = 0;
                             const sidebar = statsDlg.querySelector('.exec-sidebar');
                             if (sidebar) sidebar.scrollTop = 0;
+
+                            // Explicitly clear all search filters and reset table filters to blank by default
+                            const liveSearch = statsDlg.querySelector('#liveTableSearch');
+                            if (liveSearch) {
+                                liveSearch.value = '';
+                                liveSearch.setAttribute('autocomplete', 'off');
+                                liveSearch.dispatchEvent(new Event('input', { bubbles: true }));
+                            }
+                            statsDlg.querySelectorAll('.filter-search-input').forEach(inp => {
+                                inp.value = '';
+                                inp.setAttribute('autocomplete', 'off');
+                                inp.dispatchEvent(new Event('input', { bubbles: true }));
+                            });
+                            const sClear = statsDlg.querySelector('#dossierClearSearchBtn');
+                            if (sClear) sClear.style.display = 'none';
                         } catch (e) {
                             statsDlg.setAttribute('open', '');
                         }
