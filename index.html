@@ -6293,7 +6293,7 @@ dialog#reportsModal::backdrop,
 }
 
 /* =========================================================================
-   FULLSCREEN PDF.JS VIEWER DIALOG (تمام‌صفحه با استایل تیره و فوق‌سریع)
+   FULLSCREEN PDF.JS VIEWER DIALOG (طراحی تمام‌صفحه با اسکرول عمودی پیوسته و ضد IDM)
    ========================================================================= */
 
 dialog#pdfViewerModal,
@@ -6392,7 +6392,7 @@ dialog#pdfViewerModal::backdrop,
 .pdf-reader-toolbar {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
 }
 
 .pdf-nav-group,
@@ -6473,9 +6473,22 @@ dialog#pdfViewerModal::backdrop,
 }
 
 .pdf-btn.zoom-level-btn {
-    min-width: 50px;
+    min-width: 65px;
     font-size: 11px;
     color: #edd395;
+}
+
+.pdf-scroll-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(237, 211, 149, 0.1);
+    border: 1px solid rgba(237, 211, 149, 0.3);
+    color: #edd395;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 6px;
 }
 
 .pdf-btn.download-accent {
@@ -6519,7 +6532,7 @@ dialog#pdfViewerModal::backdrop,
     transform: rotate(90deg) scale(1.08);
 }
 
-/* Viewer Body & Canvas */
+/* Viewer Body & Vertical Continuous Scroll */
 .pdf-viewer-body {
     flex: 1;
     width: 100vw;
@@ -6529,41 +6542,131 @@ dialog#pdfViewerModal::backdrop,
     background: radial-gradient(circle at 50% 25%, #0e2420 0%, #040908 100%);
 }
 
-.pdf-canvas-container {
+.pdf-scroll-container {
     width: 100%;
     height: 100%;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    padding: 24px 16px;
+    padding: 24px 0 60px;
     box-sizing: border-box;
 }
 
-.pdf-canvas-shadow-wrap {
-    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.85), 0 0 35px rgba(237, 211, 149, 0.12);
-    border-radius: 4px;
-    overflow: hidden;
-    background: #ffffff;
-    transition: transform 0.15s ease;
+/* Custom Sleek Scrollbar */
+.pdf-scroll-container::-webkit-scrollbar {
+    width: 10px;
 }
 
-.pdf-canvas-shadow-wrap canvas {
+.pdf-scroll-container::-webkit-scrollbar-track {
+    background: rgba(6, 17, 15, 0.95);
+}
+
+.pdf-scroll-container::-webkit-scrollbar-thumb {
+    background: rgba(237, 211, 149, 0.35);
+    border-radius: 5px;
+    border: 2px solid rgba(6, 17, 15, 0.95);
+}
+
+.pdf-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #edd395;
+}
+
+.pdf-pages-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    width: 100%;
+    max-width: 1100px;
+    padding: 0 16px;
+    box-sizing: border-box;
+    transition: max-width 0.2s ease;
+}
+
+.pdf-page-card {
+    position: relative;
+    background: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.7), 0 0 20px rgba(237, 211, 149, 0.08);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.pdf-page-card:hover {
+    box-shadow: 0 22px 65px rgba(0, 0, 0, 0.85), 0 0 30px rgba(237, 211, 149, 0.2);
+}
+
+.pdf-page-number-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(8, 20, 18, 0.75);
+    backdrop-filter: blur(8px);
+    color: #edd395;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(237, 211, 149, 0.3);
+    z-index: 5;
+    pointer-events: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.pdf-page-skeleton {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: #112823;
+    color: rgba(237, 211, 149, 0.7);
+    font-size: 13px;
+    font-weight: 700;
+    z-index: 2;
+    transition: opacity 0.25s ease;
+}
+
+.pdf-page-skeleton-spinner {
+    width: 32px;
+    height: 32px;
+    border: 2px solid rgba(237, 211, 149, 0.2);
+    border-top-color: #edd395;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+.pdf-page-canvas {
     display: block;
+    max-width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.pdf-page-canvas.rendered {
+    opacity: 1;
 }
 
 /* Loading Overlay */
 .pdf-loading-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(6, 17, 15, 0.92);
-    backdrop-filter: blur(12px);
+    background: rgba(6, 17, 15, 0.94);
+    backdrop-filter: blur(14px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 14px;
+    gap: 16px;
     z-index: 20;
     transition: opacity 0.25s ease;
 }
@@ -6584,7 +6687,7 @@ dialog#pdfViewerModal::backdrop,
 }
 
 .pdf-progress-track {
-    width: 240px;
+    width: 260px;
     height: 6px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 999px;
@@ -6601,7 +6704,7 @@ dialog#pdfViewerModal::backdrop,
 
 .pdf-progress-text {
     font-size: 11.5px;
-    color: rgba(241, 245, 249, 0.65);
+    color: rgba(241, 245, 249, 0.7);
 }
 
 /* Error Fallback Box */
@@ -13118,7 +13221,7 @@ dialog#personDossierDialog::backdrop {
     </dialog>
 
     <!-- =========================================================================
-         FULLSCREEN PDF.JS VIEWER DIALOG (پنجره تمام‌صفحه مطالعه آنلاین با موتور موزیلا)
+         FULLSCREEN CONTINUOUS SCROLL PDF.JS VIEWER DIALOG
          ========================================================================= -->
     <dialog id="pdfViewerModal" class="pdf-viewer-dialog" dir="rtl" aria-labelledby="pdfViewerTitle">
         <div class="pdf-viewer-fullscreen-inner" dir="rtl">
@@ -13129,11 +13232,11 @@ dialog#personDossierDialog::backdrop {
                     <h3 class="pdf-viewer-title" id="pdfViewerTitle">عنوان کتابچه</h3>
                 </div>
                 
-                <!-- Center Reader Navigation Controls -->
+                <!-- Center Reader Navigation & Scroll Controls -->
                 <div class="pdf-reader-toolbar" dir="rtl">
                     <div class="pdf-nav-group" dir="rtl">
-                        <button type="button" class="pdf-btn" id="pdfPrevPageBtn" title="صفحه قبلی (کلید راست یا PageUp)">
-                            <span>◀</span>
+                        <button type="button" class="pdf-btn" id="pdfPrevPageBtn" title="اسکرول به صفحه قبلی">
+                            <span>▲</span>
                             <span>قبلی</span>
                         </button>
                         <div class="pdf-page-counter" dir="rtl">
@@ -13142,29 +13245,31 @@ dialog#personDossierDialog::backdrop {
                             <span>از</span>
                             <span id="pdfTotalPages">--</span>
                         </div>
-                        <button type="button" class="pdf-btn" id="pdfNextPageBtn" title="صفحه بعدی (کلید چپ یا PageDown)">
+                        <button type="button" class="pdf-btn" id="pdfNextPageBtn" title="اسکرول به صفحه بعدی">
                             <span>بعدی</span>
-                            <span>▶</span>
+                            <span>▼</span>
                         </button>
                     </div>
 
                     <div class="pdf-zoom-group" dir="rtl">
                         <button type="button" class="pdf-btn icon-only" id="pdfZoomOutBtn" title="کوچک‌نمایی"><span>−</span></button>
-                        <button type="button" class="pdf-btn zoom-level-btn" id="pdfZoomResetBtn" title="بازنشانی اندازه">
-                            <span id="pdfZoomText">۱۰۰٪</span>
+                        <button type="button" class="pdf-btn zoom-level-btn" id="pdfZoomResetBtn" title="تطبیق با عرض صفحه">
+                            <span id="pdfZoomText">عرض کامل</span>
                         </button>
                         <button type="button" class="pdf-btn icon-only" id="pdfZoomInBtn" title="بزرگ‌نمایی"><span>+</span></button>
-                        <button type="button" class="pdf-btn" id="pdfFitWidthBtn" title="تطبیق با عرض صفحه">
-                            <span>عرض صفحه</span>
-                        </button>
+                    </div>
+
+                    <!-- Scroll mode badge -->
+                    <div class="pdf-scroll-indicator" dir="rtl">
+                        <span>📜 اسکرولی</span>
                     </div>
                 </div>
 
                 <!-- Right Actions -->
                 <div class="pdf-viewer-actions" dir="rtl">
-                    <a id="pdfViewerDownloadBtn" href="" download class="pdf-btn download-accent" title="دانلود مستقیم فایل PDF">
+                    <a id="pdfViewerDownloadBtn" href="" download class="pdf-btn download-accent" title="دانلود مستقیم فایل اصلی PDF">
                         <span>📥</span>
-                        <span>دانلود</span>
+                        <span>دانلود PDF</span>
                     </a>
                     <button type="button" id="pdfViewerNewTabBtn" class="pdf-btn" title="باز کردن مستقیم در تب مستقل مرورگر">
                         <span>↗</span>
@@ -13174,12 +13279,12 @@ dialog#personDossierDialog::backdrop {
                 </div>
             </header>
 
-            <!-- Viewer Body -->
+            <!-- Viewer Body with Vertical Continuous Scroll -->
             <main class="pdf-viewer-body" id="pdfViewerBody">
                 <!-- Loading Indicator Overlay -->
                 <div class="pdf-loading-overlay" id="pdfLoadingOverlay">
                     <div class="pdf-loading-spinner"></div>
-                    <div class="pdf-loading-title" id="pdfLoadingTitle">در حال آماده‌سازی و لود فوق‌سریع سند...</div>
+                    <div class="pdf-loading-title" id="pdfLoadingTitle">در حال آماده‌سازی و بارگذاری پرسرعت صفحات کتابچه...</div>
                     <div class="pdf-progress-track">
                         <div class="pdf-progress-bar" id="pdfProgressBar"></div>
                     </div>
@@ -13189,7 +13294,7 @@ dialog#personDossierDialog::backdrop {
                 <!-- Error Fallback Box -->
                 <div class="pdf-error-overlay" id="pdfErrorOverlay" style="display: none;">
                     <div class="pdf-error-icon">⚠️</div>
-                    <h4 class="pdf-error-title">عدم امکان رندر مستقیم در این مرورگر</h4>
+                    <h4 class="pdf-error-title">عدم امکان بارگذاری مستقیم در این مرورگر</h4>
                     <p class="pdf-error-desc">می‌توانید فایل سند را مستقیماً دانلود نموده یا در تب جدید مرورگر مشاهده فرمایید.</p>
                     <div class="pdf-error-actions">
                         <a id="pdfErrorDownloadBtn" href="" download class="pdf-btn download-accent">📥 دانلود مستقیم فایل PDF</a>
@@ -13197,10 +13302,10 @@ dialog#personDossierDialog::backdrop {
                     </div>
                 </div>
 
-                <!-- Scrollable Canvas Viewport -->
-                <div class="pdf-canvas-container" id="pdfCanvasContainer">
-                    <div class="pdf-canvas-shadow-wrap" id="pdfCanvasWrap">
-                        <canvas id="pdfViewerCanvas"></canvas>
+                <!-- Continuous Scrollable Pages Viewport -->
+                <div class="pdf-scroll-container" id="pdfScrollContainer">
+                    <div class="pdf-pages-list" id="pdfPagesList">
+                        <!-- Dynamic page wrappers rendered here -->
                     </div>
                 </div>
             </main>
@@ -33640,7 +33745,7 @@ document.addEventListener('click', (e) => {
 
 <script>
 // =========================================================================
-// PERFORMANCE REPORTS & ULTRA-FAST FULLSCREEN PDF.JS VIEWER MODULE
+// PERFORMANCE REPORTS & CONTINUOUS VERTICAL SCROLL PDF.JS VIEWER (ANTI-IDM)
 // =========================================================================
 (function() {
     'use strict';
@@ -33655,8 +33760,9 @@ document.addEventListener('click', (e) => {
             title: 'اربعین ۱۴۰۵ - روایت یک شبکه خدمت',
             subtitle: 'شلمچه - منطقه پلاک یک ایران · گزارش عملکرد جمعیت امام رضایی‌ها در اربعین ۱۴۰۵',
             tag: '🚩 گزارش عملکرد اربعین',
-            size: '۱۴.۷ مگابایت',
+            size: '۴.۵ مگابایت',
             pdfUrl: './books/arbaeen-1405.pdf',
+            dataUrl: './books/arbaeen-1405.atlasbook',
             coverUrl: './books/covers/arbaeen-1405.webp'
         },
         {
@@ -33664,8 +33770,9 @@ document.addEventListener('click', (e) => {
             title: 'معرفی مجتمع فرهنگی، اجتماعی و مردمی فاطمه الزهرا (س)',
             subtitle: 'شلمچه · مستند کانون مرجع خدمت، بخش‌های چندمنظوره و ظرفیت‌های منطقه‌ای',
             tag: '🕌 مجتمع فاطمه الزهرا (س)',
-            size: '۱۵.۳ مگابایت',
+            size: '۴.۷ مگابایت',
             pdfUrl: './books/mojtama-fatemeh.pdf',
+            dataUrl: './books/mojtama-fatemeh.atlasbook',
             coverUrl: './books/covers/mojtama-fatemeh.webp'
         },
         {
@@ -33673,8 +33780,9 @@ document.addEventListener('click', (e) => {
             title: 'نمایشگاه اقتصاد مقاومتی امام رضا (ع)',
             subtitle: 'سرمایه‌ای برای مردم پلاک یک ایران · با مشارکت بنیاد برکت و ستاد مرکزی راهیان نور کشور',
             tag: '🌾 اقتصاد مقاومتی',
-            size: '۸.۴ مگابایت',
+            size: '۲.۵ مگابایت',
             pdfUrl: './books/eghtesad-moghavamati.pdf',
+            dataUrl: './books/eghtesad-moghavamati.atlasbook',
             coverUrl: './books/covers/eghtesad-moghavamati.webp'
         },
         {
@@ -33682,8 +33790,9 @@ document.addEventListener('click', (e) => {
             title: 'کتابچه تخصصی اشتغال و کارآفرینی',
             subtitle: 'از حوضچه‌های پرورش ماهی تا باغ‌های نخل؛ روایت مسیری که با آموزش آغاز شد و به خوداتکایی رسید',
             tag: '💼 اشتغال و کارآفرینی',
-            size: '۲۱.۲ مگابایت',
+            size: '۵.۸ مگابایت',
             pdfUrl: './books/eshteqal-karafari.pdf',
+            dataUrl: './books/eshteqal-karafari.atlasbook',
             coverUrl: './books/covers/eshteqal-karafari.webp'
         },
         {
@@ -33691,20 +33800,21 @@ document.addEventListener('click', (e) => {
             title: 'کتاب سال ۱۴۰۴ داوطلبان جمعیت امام رضایی‌ها',
             subtitle: 'کارنامه سالانه اقدامات جهادی، رزمایش‌های امدادی و شبکه داوطلبان در منطقه مرزی شلمچه و خرمشهر',
             tag: '📖 کتاب سال داوطلبان',
-            size: '۳۵.۵ مگابایت',
+            size: '۱۱.۲ مگابایت',
             pdfUrl: './books/ketab-sal-1404.pdf',
+            dataUrl: './books/ketab-sal-1404.atlasbook',
             coverUrl: './books/covers/ketab-sal-1404.webp'
         }
     ];
 
     // State of active PDF document
     let activePdfDoc = null;
-    let activePageNum = 1;
-    let isPageRendering = false;
-    let pendingPageNum = null;
-    let currentPdfScale = 1.0;
-    let isFitWidth = true;
     let activeBook = null;
+    let pageRenderingStates = {}; // { [pageNum]: 'pending' | 'rendering' | 'done' }
+    let pageViewports = {};
+    let intersectionObserver = null;
+    let currentZoomMultiplier = 1.0;
+    let basePageWidth = 860;
 
     function renderReportsGrid() {
         const grid = document.getElementById('reportsBooksGrid');
@@ -33738,7 +33848,6 @@ document.addEventListener('click', (e) => {
             </article>
         `).join('');
 
-        // Clicking anywhere on card (except download link) opens fullscreen viewer
         grid.querySelectorAll('.book-frame-card').forEach(card => {
             card.onclick = () => {
                 const bookId = card.getAttribute('data-book-id');
@@ -33757,104 +33866,172 @@ document.addEventListener('click', (e) => {
         });
     }
 
-    // Render requested page onto canvas
-    async function renderPage(num) {
-        if (!activePdfDoc) return;
-        isPageRendering = true;
+    // Render an individual page onto its pre-allocated canvas
+    async function renderPageCard(pageNum) {
+        if (!activePdfDoc || pageRenderingStates[pageNum] === 'rendering' || pageRenderingStates[pageNum] === 'done') {
+            return;
+        }
 
-        const canvas = document.getElementById('pdfViewerCanvas');
-        const container = document.getElementById('pdfCanvasContainer');
-        const pageInput = document.getElementById('pdfPageInput');
-        const totalPagesEl = document.getElementById('pdfTotalPages');
-        const prevBtn = document.getElementById('pdfPrevPageBtn');
-        const nextBtn = document.getElementById('pdfNextPageBtn');
-        const zoomText = document.getElementById('pdfZoomText');
+        const card = document.getElementById(`pdf-page-card-${pageNum}`);
+        if (!card) return;
 
+        const canvas = card.querySelector('canvas');
+        const skeleton = card.querySelector('.pdf-page-skeleton');
         if (!canvas) return;
-        const ctx = canvas.getContext('2d');
+
+        pageRenderingStates[pageNum] = 'rendering';
 
         try {
-            const page = await activePdfDoc.getPage(num);
+            const page = await activePdfDoc.getPage(pageNum);
+            const origViewport = page.getViewport({ scale: 1.0 });
 
-            const containerWidth = container ? (container.clientWidth - 48) : (window.innerWidth - 48);
-            let viewport = page.getViewport({ scale: 1.0 });
+            // Calculate card dimensions based on container width and zoom multiplier
+            const container = document.getElementById('pdfScrollContainer');
+            const availableWidth = container ? (container.clientWidth - 48) : 900;
+            const targetWidth = Math.min(Math.max(availableWidth * 0.94 * currentZoomMultiplier, 400), 1600);
+            const scale = targetWidth / origViewport.width;
+            const viewport = page.getViewport({ scale });
 
-            if (isFitWidth) {
-                currentPdfScale = Math.min(Math.max(containerWidth / viewport.width, 0.45), 2.5);
-            }
-
-            viewport = page.getViewport({ scale: currentPdfScale });
-
-            // High DPI support for razor-sharp Persian text and graphics
+            // High DPI support for retina displays
             const dpr = Math.min(window.devicePixelRatio || 1, 2);
             canvas.width = Math.floor(viewport.width * dpr);
             canvas.height = Math.floor(viewport.height * dpr);
             canvas.style.width = Math.floor(viewport.width) + 'px';
             canvas.style.height = Math.floor(viewport.height) + 'px';
+            card.style.width = Math.floor(viewport.width) + 'px';
+            card.style.height = Math.floor(viewport.height) + 'px';
 
+            const ctx = canvas.getContext('2d');
             ctx.save();
             ctx.scale(dpr, dpr);
 
-            const renderContext = {
+            await page.render({
                 canvasContext: ctx,
                 viewport: viewport
-            };
+            }).promise;
 
-            await page.render(renderContext).promise;
             ctx.restore();
 
-            // Update UI elements
-            activePageNum = num;
-            if (pageInput) pageInput.value = num;
-            if (totalPagesEl) totalPagesEl.textContent = activePdfDoc.numPages;
-            if (prevBtn) prevBtn.disabled = (num <= 1);
-            if (nextBtn) nextBtn.disabled = (num >= activePdfDoc.numPages);
-            if (zoomText) zoomText.textContent = Math.round(currentPdfScale * 100) + '٪';
+            canvas.classList.add('rendered');
+            if (skeleton) skeleton.style.opacity = '0';
+            setTimeout(() => { if (skeleton) skeleton.style.display = 'none'; }, 250);
 
-            if (container) container.scrollTop = 0;
+            pageRenderingStates[pageNum] = 'done';
         } catch (err) {
-            console.error('Error rendering page:', err);
-        } finally {
-            isPageRendering = false;
-            if (pendingPageNum !== null) {
-                renderPage(pendingPageNum);
-                pendingPageNum = null;
+            console.error(`Failed to render page ${pageNum}:`, err);
+            pageRenderingStates[pageNum] = 'error';
+        }
+    }
+
+    // Setup scroll observer to update current page indicator and lazy render
+    function setupScrollAndObserver() {
+        if (intersectionObserver) {
+            intersectionObserver.disconnect();
+        }
+
+        const scrollContainer = document.getElementById('pdfScrollContainer');
+        const pageInput = document.getElementById('pdfPageInput');
+
+        // Observer for lazy loading: renders pages when within 600px of viewport
+        intersectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const pageNum = parseInt(entry.target.getAttribute('data-page-num'), 10);
+                    if (pageNum) {
+                        renderPageCard(pageNum);
+                    }
+                }
+            });
+        }, {
+            root: scrollContainer,
+            rootMargin: '600px 0px 600px 0px',
+            threshold: 0.01
+        });
+
+        document.querySelectorAll('.pdf-page-card').forEach(card => {
+            intersectionObserver.observe(card);
+        });
+
+        // Scroll listener to update page counter as user scrolls
+        if (scrollContainer) {
+            let scrollDebounce = null;
+            scrollContainer.onscroll = () => {
+                clearTimeout(scrollDebounce);
+                scrollDebounce = setTimeout(() => {
+                    const containerRect = scrollContainer.getBoundingClientRect();
+                    const containerMidY = containerRect.top + containerRect.height / 3;
+
+                    const cards = document.querySelectorAll('.pdf-page-card');
+                    let currentVisiblePage = 1;
+
+                    for (let i = 0; i < cards.length; i++) {
+                        const r = cards[i].getBoundingClientRect();
+                        if (r.top <= containerMidY && r.bottom >= containerMidY) {
+                            currentVisiblePage = parseInt(cards[i].getAttribute('data-page-num'), 10);
+                            break;
+                        }
+                    }
+
+                    if (pageInput && document.activeElement !== pageInput) {
+                        pageInput.value = currentVisiblePage;
+                    }
+                }, 50);
+            };
+        }
+    }
+
+    // Scroll to a specific page smoothly
+    function scrollToPage(pageNum) {
+        if (!activePdfDoc || pageNum < 1 || pageNum > activePdfDoc.numPages) return;
+        const card = document.getElementById(`pdf-page-card-${pageNum}`);
+        if (card) {
+            card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            renderPageCard(pageNum);
+            const input = document.getElementById('pdfPageInput');
+            if (input) input.value = pageNum;
+        }
+    }
+
+    function scrollToPrev() {
+        const input = document.getElementById('pdfPageInput');
+        const cur = input ? parseInt(input.value, 10) : 1;
+        if (cur > 1) scrollToPage(cur - 1);
+    }
+
+    function scrollToNext() {
+        const input = document.getElementById('pdfPageInput');
+        const cur = input ? parseInt(input.value, 10) : 1;
+        if (activePdfDoc && cur < activePdfDoc.numPages) scrollToPage(cur + 1);
+    }
+
+    function changeZoom(factor) {
+        currentZoomMultiplier = Math.min(Math.max(currentZoomMultiplier * factor, 0.5), 2.2);
+        const zoomText = document.getElementById('pdfZoomText');
+        if (zoomText) {
+            zoomText.textContent = Math.round(currentZoomMultiplier * 100) + '٪';
+        }
+        // Reset rendered state and re-render visible pages
+        pageRenderingStates = {};
+        document.querySelectorAll('.pdf-page-card').forEach(card => {
+            const num = parseInt(card.getAttribute('data-page-num'), 10);
+            const skeleton = card.querySelector('.pdf-page-skeleton');
+            if (skeleton) {
+                skeleton.style.display = 'flex';
+                skeleton.style.opacity = '1';
             }
-        }
+        });
+        setupScrollAndObserver();
     }
 
-    function queueRenderPage(num) {
-        if (isPageRendering) {
-            pendingPageNum = num;
-        } else {
-            renderPage(num);
-        }
+    function resetZoomFit() {
+        currentZoomMultiplier = 1.0;
+        const zoomText = document.getElementById('pdfZoomText');
+        if (zoomText) zoomText.textContent = 'عرض کامل';
+        pageRenderingStates = {};
+        setupScrollAndObserver();
     }
 
-    function goToPrevPage() {
-        if (activePageNum <= 1) return;
-        activePageNum--;
-        queueRenderPage(activePageNum);
-    }
-
-    function goToNextPage() {
-        if (!activePdfDoc || activePageNum >= activePdfDoc.numPages) return;
-        activePageNum++;
-        queueRenderPage(activePageNum);
-    }
-
-    function applyZoom(delta) {
-        isFitWidth = false;
-        currentPdfScale = Math.min(Math.max(currentPdfScale + delta, 0.4), 3.0);
-        queueRenderPage(activePageNum);
-    }
-
-    function resetZoomFitWidth() {
-        isFitWidth = true;
-        queueRenderPage(activePageNum);
-    }
-
-    // Open fullscreen modal and load document with Mozilla PDF.js
+    // Open fullscreen modal and stream .atlasbook file (Anti-IDM & Zero-Freeze)
     async function openFullscreenPdfViewer(book) {
         activeBook = book;
         const viewerModal = document.getElementById('pdfViewerModal');
@@ -33866,8 +34043,9 @@ document.addEventListener('click', (e) => {
         const progressBar = document.getElementById('pdfProgressBar');
         const progressText = document.getElementById('pdfProgressText');
         const errorOverlay = document.getElementById('pdfErrorOverlay');
-        const errorDownloadBtn = document.getElementById('pdfErrorDownloadBtn');
-        const errorNewTabBtn = document.getElementById('pdfErrorNewTabBtn');
+        const pagesList = document.getElementById('pdfPagesList');
+        const totalPagesEl = document.getElementById('pdfTotalPages');
+        const pageInput = document.getElementById('pdfPageInput');
 
         if (!viewerModal) return;
 
@@ -33880,22 +34058,15 @@ document.addEventListener('click', (e) => {
         if (newTabBtn) {
             newTabBtn.onclick = () => window.open(book.pdfUrl, '_blank');
         }
-        if (errorDownloadBtn) {
-            errorDownloadBtn.href = book.pdfUrl;
-            errorDownloadBtn.setAttribute('download', `${book.title}.pdf`);
-        }
-        if (errorNewTabBtn) {
-            errorNewTabBtn.onclick = () => window.open(book.pdfUrl, '_blank');
-        }
 
-        // Show Fullscreen Modal
+        // Show Modal
         if (typeof viewerModal.showModal === 'function') {
             if (!viewerModal.open) viewerModal.showModal();
         } else {
             viewerModal.setAttribute('open', '');
         }
 
-        // Reset display
+        // Reset UI
         if (loadingOverlay) {
             loadingOverlay.style.display = 'flex';
             loadingOverlay.style.opacity = '1';
@@ -33903,45 +34074,112 @@ document.addEventListener('click', (e) => {
         if (errorOverlay) errorOverlay.style.display = 'none';
         if (progressBar) progressBar.style.width = '10%';
         if (progressText) progressText.textContent = 'در حال برقراری ارتباط و آماده‌سازی...';
+        if (pagesList) pagesList.innerHTML = '';
+        if (pageInput) pageInput.value = 1;
 
-        activePageNum = 1;
-        isFitWidth = true;
+        currentZoomMultiplier = 1.0;
+        pageRenderingStates = {};
 
         try {
             if (!window.pdfjsLib) {
-                throw new Error('PDF.js library is not available');
+                throw new Error('PDF.js engine is not ready');
             }
 
-            const loadingTask = window.pdfjsLib.getDocument({
-                url: book.pdfUrl,
-                cMapUrl: './vendor/pdfjs/cmaps/',
-                cMapPacked: true
+            // ANTI-IDM STREAM FETCH:
+            // Fetch .atlasbook binary stream so IDM NEVER intercepts the request
+            const streamUrl = book.dataUrl || book.pdfUrl.replace('.pdf', '.atlasbook');
+            const res = await fetch(streamUrl, {
+                cache: 'no-cache',
+                headers: { 'Accept': 'application/octet-stream' }
             });
 
-            loadingTask.onProgress = function(progress) {
-                if (progress && progress.total > 0) {
-                    const pct = Math.min(Math.round((progress.loaded / progress.total) * 100), 98);
-                    if (progressBar) progressBar.style.width = pct + '%';
-                    if (progressText) progressText.textContent = `در حال دریافت سند... (${pct}٪)`;
+            if (!res.ok) throw new Error(`HTTP ${res.status} on ${streamUrl}`);
+
+            const reader = res.body.getReader();
+            const contentLength = +res.headers.get('Content-Length') || 0;
+            let receivedLength = 0;
+            const chunks = [];
+
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+                chunks.push(value);
+                receivedLength += value.length;
+
+                if (contentLength > 0 && progressBar) {
+                    const pct = Math.min(Math.round((receivedLength / contentLength) * 100), 96);
+                    progressBar.style.width = pct + '%';
+                    if (progressText) progressText.textContent = `در حال دریافت سریع سند... (${pct}٪)`;
                 }
-            };
+            }
 
-            activePdfDoc = await loadingTask.promise;
+            // Assemble into one contiguous Uint8Array
+            const binaryData = new Uint8Array(receivedLength);
+            let pos = 0;
+            for (const chunk of chunks) {
+                binaryData.set(chunk, pos);
+                pos += chunk.length;
+            }
+
+            if (progressBar) progressBar.style.width = '99%';
+            if (progressText) progressText.textContent = 'در حال چیدمان ساختار صفحات...';
+
+            // Load document from Uint8Array purely in-memory
+            activePdfDoc = await window.pdfjsLib.getDocument({
+                data: binaryData,
+                cMapUrl: './vendor/pdfjs/cmaps/',
+                cMapPacked: true
+            }).promise;
+
+            const totalPages = activePdfDoc.numPages;
+            if (totalPagesEl) totalPagesEl.textContent = totalPages;
+
+            // Fetch Page 1 to get standard aspect ratio
+            const firstPage = await activePdfDoc.getPage(1);
+            const firstVp = firstPage.getViewport({ scale: 1.0 });
+            const aspectRatio = firstVp.height / firstVp.width;
+
+            const container = document.getElementById('pdfScrollContainer');
+            const availableWidth = container ? (container.clientWidth - 48) : 900;
+            const initWidth = Math.min(Math.max(availableWidth * 0.94, 400), 1100);
+            const initHeight = Math.round(initWidth * aspectRatio);
+
+            // Dynamically generate all page placeholder cards (instant full document height)
+            let pagesHtml = '';
+            for (let i = 1; i <= totalPages; i++) {
+                pagesHtml += `
+                    <div class="pdf-page-card" id="pdf-page-card-${i}" data-page-num="${i}" style="width:${initWidth}px; height:${initHeight}px;">
+                        <span class="pdf-page-number-tag">صفحه ${i}</span>
+                        <div class="pdf-page-skeleton">
+                            <div class="pdf-page-skeleton-spinner"></div>
+                            <span>در حال رندر صفحه ${i}...</span>
+                        </div>
+                        <canvas class="pdf-page-canvas"></canvas>
+                    </div>
+                `;
+            }
+            if (pagesList) pagesList.innerHTML = pagesHtml;
+
+            // Render first 2 pages immediately
+            await renderPageCard(1);
+            if (totalPages >= 2) renderPageCard(2);
+
+            // Setup IntersectionObserver for continuous vertical scroll
+            setupScrollAndObserver();
+
+            // Smoothly hide loading overlay
             if (progressBar) progressBar.style.width = '100%';
-            if (progressText) progressText.textContent = 'در حال رندر صفحه اول...';
+            if (progressText) progressText.textContent = 'آماده مطالعه';
 
-            await renderPage(1);
-
-            // Hide loading overlay smoothly
             setTimeout(() => {
                 if (loadingOverlay) {
                     loadingOverlay.style.opacity = '0';
-                    setTimeout(() => { loadingOverlay.style.display = 'none'; }, 200);
+                    setTimeout(() => { loadingOverlay.style.display = 'none'; }, 250);
                 }
-            }, 100);
+            }, 80);
 
         } catch (err) {
-            console.error('Failed to load PDF via PDF.js:', err);
+            console.error('Error loading book document:', err);
             if (loadingOverlay) loadingOverlay.style.display = 'none';
             if (errorOverlay) errorOverlay.style.display = 'flex';
         }
@@ -33949,19 +34187,20 @@ document.addEventListener('click', (e) => {
 
     function closeFullscreenPdfViewer() {
         const viewerModal = document.getElementById('pdfViewerModal');
-        const canvas = document.getElementById('pdfViewerCanvas');
+        const pagesList = document.getElementById('pdfPagesList');
+
+        if (intersectionObserver) {
+            intersectionObserver.disconnect();
+            intersectionObserver = null;
+        }
 
         if (activePdfDoc) {
             activePdfDoc.destroy();
             activePdfDoc = null;
         }
 
-        if (canvas) {
-            const ctx = canvas.getContext('2d');
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            canvas.width = 0;
-            canvas.height = 0;
-        }
+        if (pagesList) pagesList.innerHTML = '';
+        pageRenderingStates = {};
 
         if (viewerModal) {
             if (typeof viewerModal.close === 'function') {
@@ -33985,7 +34224,6 @@ document.addEventListener('click', (e) => {
         const pageInput = document.getElementById('pdfPageInput');
         const zoomInBtn = document.getElementById('pdfZoomInBtn');
         const zoomOutBtn = document.getElementById('pdfZoomOutBtn');
-        const fitWidthBtn = document.getElementById('pdfFitWidthBtn');
         const zoomResetBtn = document.getElementById('pdfZoomResetBtn');
 
         if (!modal) return;
@@ -34022,50 +34260,47 @@ document.addEventListener('click', (e) => {
 
         // Fullscreen Viewer Controls
         if (viewerCloseBtn) viewerCloseBtn.onclick = closeFullscreenPdfViewer;
-        if (prevBtn) prevBtn.onclick = goToPrevPage;
-        if (nextBtn) nextBtn.onclick = goToNextPage;
-        if (zoomInBtn) zoomInBtn.onclick = () => applyZoom(0.15);
-        if (zoomOutBtn) zoomOutBtn.onclick = () => applyZoom(-0.15);
-        if (fitWidthBtn) fitWidthBtn.onclick = resetZoomFitWidth;
-        if (zoomResetBtn) zoomResetBtn.onclick = resetZoomFitWidth;
+        if (prevBtn) prevBtn.onclick = scrollToPrev;
+        if (nextBtn) nextBtn.onclick = scrollToNext;
+        if (zoomInBtn) zoomInBtn.onclick = () => changeZoom(1.15);
+        if (zoomOutBtn) zoomOutBtn.onclick = () => changeZoom(0.85);
+        if (zoomResetBtn) zoomResetBtn.onclick = resetZoomFit;
 
         if (pageInput) {
             pageInput.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
                     const val = parseInt(pageInput.value, 10);
                     if (activePdfDoc && val >= 1 && val <= activePdfDoc.numPages) {
-                        activePageNum = val;
-                        queueRenderPage(activePageNum);
+                        scrollToPage(val);
                     }
                 }
             });
         }
 
-        // Keyboard Shortcuts (Arrow Left/Right, PageUp/Down, Escape)
+        // Keyboard Shortcuts
         window.addEventListener('keydown', (e) => {
             if (!viewerModal || !viewerModal.open) return;
 
             if (e.key === 'Escape') {
                 closeFullscreenPdfViewer();
-            } else if (e.key === 'ArrowRight' || e.key === 'PageUp') {
-                // In RTL, ArrowRight goes backward to previous page
+            } else if (e.key === 'PageUp') {
                 e.preventDefault();
-                goToPrevPage();
-            } else if (e.key === 'ArrowLeft' || e.key === 'PageDown' || e.key === ' ') {
-                // In RTL, ArrowLeft or Space goes forward to next page
+                scrollToPrev();
+            } else if (e.key === 'PageDown' || e.key === ' ') {
                 e.preventDefault();
-                goToNextPage();
+                scrollToNext();
             }
         });
 
-        // Window resize debounced re-fit
+        // Window resize debounced re-render
         let resizeTimer = null;
         window.addEventListener('resize', () => {
-            if (viewerModal && viewerModal.open && isFitWidth && activePdfDoc) {
+            if (viewerModal && viewerModal.open && activePdfDoc) {
                 clearTimeout(resizeTimer);
                 resizeTimer = setTimeout(() => {
-                    queueRenderPage(activePageNum);
-                }, 150);
+                    pageRenderingStates = {};
+                    setupScrollAndObserver();
+                }, 200);
             }
         });
 
