@@ -29,7 +29,7 @@ header{position:absolute;top:0;inset-inline:0;padding:28px 4vw;display:flex;just
 .intro-label{position:absolute;inset:0;display:grid;place-content:center;text-align:center;background:#122a2a55;z-index:8;pointer-events:none;transition:opacity .8s}.intro-label span{color:#ecd29a;font-size:13px}.intro-label strong{font:800 clamp(46px,8vw,98px) YekanBakh}.intro .map-plane{animation:arrival 3s var(--ease) both}.ready .intro-label{opacity:0}.intro .pin,.intro .map-title{opacity:0}@keyframes arrival{from{transform:translate(-50%,-50%) scale(1.65);filter:brightness(.55)}to{transform:translate(-50%,-50%) scale(1);filter:brightness(1)}}.skip{position:absolute;bottom:28px;left:4vw;background:#203c3bcc;color:var(--cream);border:1px solid #e2cd9b66;border-radius:30px;padding:12px 20px;z-index:9}.ready .skip{display:none}
 .portal{position:absolute;inset:0;z-index:5;display:grid;place-content:center;text-align:center;pointer-events:none;opacity:0;background:radial-gradient(ellipse,transparent 10%,#122a2a88 80%);transition:opacity .8s}.portal span{display:block;color:#e8ce99;font-size:12px}.portal strong{font:800 80px YekanBakh;letter-spacing:2px}.portal-line{height:1px;width:130px;background:#c6a15b;margin:24px auto;transform:scaleX(0);transition:transform 1.8s}.flying .portal{opacity:1}.flying .portal-line{transform:scaleX(1)}.flying .pin,.flying .map-title,.flying .map-caption{opacity:0}.flying .map-plane{filter:brightness(.7)}
 .village{position:absolute;inset:0;z-index:4;opacity:0;visibility:hidden;transition:opacity 1.4s,visibility 1.4s;background:#203c3b}.village-bg{position:absolute;inset:-30px;background:var(--map-main-image) center/cover no-repeat;filter:blur(8px) saturate(.65);transform:scale(1.22);transition:transform 2.8s var(--ease),filter 2s}.village:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#102a2ac7,#203c3b78 50%,#122e2eeb)}.in-village .village{opacity:1;visibility:visible}.in-village .village-bg{transform:scale(1.04)}.in-village .map-scene{opacity:0;pointer-events:none}.village-content{position:relative;z-index:1;height:100%;padding:115px 24px 60px;display:flex;flex-direction:column;justify-content:center;align-items:center;overflow:auto}.village-heading{text-align:center;opacity:0;transform:translateY(30px)}.in-village .village-heading{animation:slideUpFade .8s cubic-bezier(.2,.8,.2,1) .4s forwards}.village-heading h1{font:800 clamp(68px,9vw,116px)/1.12 YekanBakh;margin:0 0 16px}.village-heading p{font-size:13px;color:#e5dece;margin:0;opacity:0;transform:translateY(20px)}.in-village .village-heading p{animation:slideUpFade .8s cubic-bezier(.2,.8,.2,1) .6s forwards}.choices{display:grid;grid-template-columns:1fr 1fr;gap:24px;width:min(760px,100%);margin-top:42px}.choice{position:relative;text-align:right;padding:28px 30px 24px;border:1px solid rgba(255,255,255,.3);border-radius:19px;color:var(--cream);background:linear-gradient(135deg,rgba(255,255,255,.15),rgba(255,255,255,.02));backdrop-filter:blur(25px) saturate(1.4);box-shadow:inset 0 2px 4px rgba(255,255,255,.4),0 15px 45px rgba(0,0,0,.3);transition:transform .4s,background .4s,border-color .4s;min-height:202px;opacity:0;transform:translateY(30px);overflow:hidden}.in-village .choice:nth-child(1){animation:slideUpFade .8s cubic-bezier(.2,.8,.2,1) .8s forwards}.in-village .choice:nth-child(2){animation:slideUpFade .8s cubic-bezier(.2,.8,.2,1) 1s forwards}@keyframes slideUpFade{to{opacity:1;transform:translateY(0)}}.choice:after{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);transform:skewX(-20deg);transition:0s}.choice:hover:after{left:200%;transition:.8s ease-in-out}.choice:hover{transform:translateY(-6px);background:linear-gradient(135deg,rgba(255,255,255,.25),rgba(255,255,255,.05));border-color:rgba(255,255,255,.6)}.choice svg{width:32px;height:32px;color:#dfc183;stroke-width:1.4;margin-bottom:16px}.choice h2{font:800 30px YekanBakh;margin:0 0 9px}.choice p{font-size:12px;color:#e0d9cb;margin:0}.choice .arrow{position:absolute;left:26px;bottom:26px;font-size:25px;color:#e4c788}.choice .index{position:absolute;left:28px;top:29px;font-size:11px;color:#d6cab3}.back{background:linear-gradient(135deg,rgba(255,255,255,.2),rgba(255,255,255,.05));color:var(--cream);padding:11px 18px;border:1px solid rgba(255,255,255,.3);border-radius:30px;font-size:12px;backdrop-filter:blur(14px);box-shadow:inset 0 1px 2px rgba(255,255,255,.4)}.village-footer{position:absolute;bottom:22px;left:0;right:0;z-index:2;text-align:center;font-size:10px;color:#d6cbb8;letter-spacing:1px}
-dialog{border:1px solid rgba(255,255,255,.25);background:linear-gradient(135deg,rgba(20,45,45,.5),rgba(10,25,25,.3));color:var(--cream);border-radius:24px;width:min(780px,calc(100% - 28px));max-height:85svh;padding:0;box-shadow:0 30px 60px rgba(0,0,0,.7),inset 0 2px 4px rgba(255,255,255,.3),inset 0 -1px 5px rgba(0,0,0,.5);backdrop-filter:blur(40px) saturate(1.5);overflow-x:hidden;overflow-y:auto}dialog::-webkit-scrollbar{width:6px}dialog::-webkit-scrollbar-track{background:transparent}dialog::-webkit-scrollbar-thumb{background:rgba(255,255,255,.4);border-radius:10px}dialog::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.7)}dialog[open]{animation:modalIn 1.2s cubic-bezier(.16,1,.3,1) forwards;transform-origin:center bottom}@keyframes modalIn{from{opacity:0;transform:translateY(40px) scale(.92);filter:blur(10px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}dialog::backdrop{background:rgba(4,12,12,.7);backdrop-filter:blur(8px)}dialog[open]::backdrop{animation:backdropIn 1.2s cubic-bezier(.16,1,.3,1) forwards}@keyframes backdropIn{from{opacity:0;backdrop-filter:blur(0)}to{opacity:1;backdrop-filter:blur(8px)}}.dialog-cover{height:160px;background:var(--map-main-image) center/cover;position:relative;border-radius:24px 24px 0 0}.dialog-cover:after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent,rgba(18,42,42,.6));box-shadow:inset 0 2px 10px rgba(255,255,255,.2)}.dialog-head{display:flex;align-items:center;justify-content:space-between;padding:15px 28px;position:sticky;top:0;background:transparent;z-index:2;margin-top:-20px}.dialog-head h2{font:800 27px YekanBakh;margin:0;color:#edd395;text-shadow:0 2px 10px rgba(0,0,0,.5)}.close{border:1px solid rgba(255,255,255,.4);border-radius:50%;width:36px;height:36px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);font-size:23px;color:#fff;transition:transform .3s,background .3s}.close:hover{background:rgba(255,255,255,.3);transform:rotate(90deg)}.dialog-body{padding:15px 28px 30px}.muted{font-size:12px;color:#a3adab;line-height:2}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0 28px}.metric{padding:26px 8px;background:linear-gradient(135deg,rgba(255,255,255,.1),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.15);box-shadow:inset 0 2px 3px rgba(255,255,255,.2);border-radius:18px;text-align:center;position:relative;overflow:hidden}.metric:before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent)}.metric strong{display:block;font:800 48px YekanBakh;margin-bottom:10px;background:linear-gradient(180deg,#fff,#edd395);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.metric span{font-size:13px;color:#c4cdc9;font-weight:700}.regional{border-top:1px solid rgba(255,255,255,.05);padding-top:24px}.region-label{font-size:12px;font-weight:700;background:rgba(255,255,255,.15);color:#edd395;border-radius:30px;padding:8px 16px;display:inline-block;border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(10px)}.regional h3{font:800 26px YekanBakh;margin:22px 0 8px;color:#fff}.bar-row{display:grid;grid-template-columns:130px 1fr 45px;gap:14px;align-items:center;font-size:15px;font-weight:700;margin:18px 0}.bar-track{height:12px;border-radius:8px;background:rgba(0,0,0,.4);box-shadow:inset 0 1px 3px rgba(0,0,0,.5);overflow:hidden}.bar-fill{height:100%;background:linear-gradient(90deg,#87744f,#c6a15b);border-radius:8px;position:relative}.bar-fill:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);transform:translateX(-100%);animation:shimmer 2.5s infinite}@keyframes shimmer{100%{transform:translateX(100%)}}.source{font-size:11px;line-height:2;color:#7a8a86;margin-top:28px}.empty{padding:24px 0 30px;text-align:center}.empty svg{width:45px;height:45px;stroke:#c6a15b;fill:none;stroke-width:1.3;opacity:.8;margin-bottom:12px}.empty h3{font:800 24px YekanBakh;color:#edd395}.empty p{font-size:13px;color:#a3adab;line-height:2}.health{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}.health article{border:1px solid rgba(255,255,255,.1);background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.01));border-radius:14px;padding:18px;transition:background .3s;box-shadow:inset 0 2px 4px rgba(255,255,255,.05)}.health article:hover{background:linear-gradient(135deg,rgba(255,255,255,.1),rgba(255,255,255,.03))}.health h4{margin:0 0 8px;font-size:14px;color:#edd395}.health p{font-size:12px;line-height:2;margin:0;color:#c4cdc9}#statsDialog{background:linear-gradient(135deg,rgba(255,255,255,.7),rgba(255,255,255,.3));color:var(--ink);border:1px solid rgba(255,255,255,.6);box-shadow:0 30px 60px rgba(0,0,0,.3),inset 0 2px 6px rgba(255,255,255,.9),inset 0 -1px 5px rgba(255,255,255,.2);backdrop-filter:blur(40px) saturate(1.5)}#statsDialog .dialog-cover:after{background:linear-gradient(to bottom,transparent,rgba(243,235,221,.85));box-shadow:inset 0 2px 10px rgba(255,255,255,.6)}#statsDialog .dialog-head{border-color:rgba(32,60,59,.1)}#statsDialog .dialog-head h2{color:var(--ink)}#statsDialog .close{color:var(--ink);border-color:rgba(32,60,59,.3);background:rgba(255,255,255,.5)}#statsDialog .close:hover{background:rgba(255,255,255,.8)}#statsDialog .metric{background:linear-gradient(135deg,rgba(255,255,255,.6),rgba(255,255,255,.2));border-color:rgba(255,255,255,.5);box-shadow:inset 0 2px 4px rgba(255,255,255,.8),0 4px 15px rgba(0,0,0,.05)}#statsDialog .metric:before{display:none}#statsDialog .metric strong{background:none;-webkit-text-fill-color:initial;color:#8a754e}#statsDialog .metric span{color:#566460}#statsDialog .muted{color:#566460}#statsDialog .regional{border-color:rgba(32,60,59,.1)}#statsDialog .regional h3{color:var(--ink)}#statsDialog .region-label{background:rgba(255,255,255,.5);color:var(--ink);border-color:rgba(255,255,255,.6)}#statsDialog .bar-track{background:#ded6c7;box-shadow:inset 0 1px 3px rgba(0,0,0,.1)}#statsDialog .source{color:#5b6761}
+dialog{border:1px solid rgba(255,255,255,.25);background:linear-gradient(135deg,rgba(20,45,45,.5),rgba(10,25,25,.3));color:var(--cream);border-radius:24px;width:min(780px,calc(100% - 28px));max-height:85svh;padding:0;box-shadow:0 30px 60px rgba(0,0,0,.7),inset 0 2px 4px rgba(255,255,255,.3),inset 0 -1px 5px rgba(0,0,0,.5);backdrop-filter:blur(40px) saturate(1.5);overflow-x:hidden;overflow-y:auto}dialog::-webkit-scrollbar{width:6px}dialog::-webkit-scrollbar-track{background:transparent}dialog::-webkit-scrollbar-thumb{background:rgba(255,255,255,.4);border-radius:10px}dialog::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.7)}dialog[open]{animation:modalIn 0.28s cubic-bezier(.16,1,.3,1) forwards;transform-origin:center bottom}@keyframes modalIn{from{opacity:0;transform:translateY(24px) scale(.95);filter:blur(6px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}dialog::backdrop{background:rgba(4,12,12,.7);backdrop-filter:blur(8px)}dialog[open]::backdrop{animation:backdropIn 0.24s cubic-bezier(.16,1,.3,1) forwards}@keyframes backdropIn{from{opacity:0;backdrop-filter:blur(0)}to{opacity:1;backdrop-filter:blur(8px)}}.dialog-cover{height:160px;background:var(--map-main-image) center/cover;position:relative;border-radius:24px 24px 0 0}.dialog-cover:after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent,rgba(18,42,42,.6));box-shadow:inset 0 2px 10px rgba(255,255,255,.2)}.dialog-head{display:flex;align-items:center;justify-content:space-between;padding:15px 28px;position:sticky;top:0;background:transparent;z-index:2;margin-top:-20px}.dialog-head h2{font:800 27px YekanBakh;margin:0;color:#edd395;text-shadow:0 2px 10px rgba(0,0,0,.5)}.close{border:1px solid rgba(255,255,255,.4);border-radius:50%;width:36px;height:36px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);font-size:23px;color:#fff;transition:transform .3s,background .3s}.close:hover{background:rgba(255,255,255,.3);transform:rotate(90deg)}.dialog-body{padding:15px 28px 30px}.muted{font-size:12px;color:#a3adab;line-height:2}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0 28px}.metric{padding:26px 8px;background:linear-gradient(135deg,rgba(255,255,255,.1),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.15);box-shadow:inset 0 2px 3px rgba(255,255,255,.2);border-radius:18px;text-align:center;position:relative;overflow:hidden}.metric:before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent)}.metric strong{display:block;font:800 48px YekanBakh;margin-bottom:10px;background:linear-gradient(180deg,#fff,#edd395);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.metric span{font-size:13px;color:#c4cdc9;font-weight:700}.regional{border-top:1px solid rgba(255,255,255,.05);padding-top:24px}.region-label{font-size:12px;font-weight:700;background:rgba(255,255,255,.15);color:#edd395;border-radius:30px;padding:8px 16px;display:inline-block;border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(10px)}.regional h3{font:800 26px YekanBakh;margin:22px 0 8px;color:#fff}.bar-row{display:grid;grid-template-columns:130px 1fr 45px;gap:14px;align-items:center;font-size:15px;font-weight:700;margin:18px 0}.bar-track{height:12px;border-radius:8px;background:rgba(0,0,0,.4);box-shadow:inset 0 1px 3px rgba(0,0,0,.5);overflow:hidden}.bar-fill{height:100%;background:linear-gradient(90deg,#87744f,#c6a15b);border-radius:8px;position:relative}.bar-fill:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);transform:translateX(-100%);animation:shimmer 2.5s infinite}@keyframes shimmer{100%{transform:translateX(100%)}}.source{font-size:11px;line-height:2;color:#7a8a86;margin-top:28px}.empty{padding:24px 0 30px;text-align:center}.empty svg{width:45px;height:45px;stroke:#c6a15b;fill:none;stroke-width:1.3;opacity:.8;margin-bottom:12px}.empty h3{font:800 24px YekanBakh;color:#edd395}.empty p{font-size:13px;color:#a3adab;line-height:2}.health{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}.health article{border:1px solid rgba(255,255,255,.1);background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.01));border-radius:14px;padding:18px;transition:background .3s;box-shadow:inset 0 2px 4px rgba(255,255,255,.05)}.health article:hover{background:linear-gradient(135deg,rgba(255,255,255,.1),rgba(255,255,255,.03))}.health h4{margin:0 0 8px;font-size:14px;color:#edd395}.health p{font-size:12px;line-height:2;margin:0;color:#c4cdc9}#statsDialog{background:linear-gradient(135deg,rgba(255,255,255,.7),rgba(255,255,255,.3));color:var(--ink);border:1px solid rgba(255,255,255,.6);box-shadow:0 30px 60px rgba(0,0,0,.3),inset 0 2px 6px rgba(255,255,255,.9),inset 0 -1px 5px rgba(255,255,255,.2);backdrop-filter:blur(40px) saturate(1.5)}#statsDialog .dialog-cover:after{background:linear-gradient(to bottom,transparent,rgba(243,235,221,.85));box-shadow:inset 0 2px 10px rgba(255,255,255,.6)}#statsDialog .dialog-head{border-color:rgba(32,60,59,.1)}#statsDialog .dialog-head h2{color:var(--ink)}#statsDialog .close{color:var(--ink);border-color:rgba(32,60,59,.3);background:rgba(255,255,255,.5)}#statsDialog .close:hover{background:rgba(255,255,255,.8)}#statsDialog .metric{background:linear-gradient(135deg,rgba(255,255,255,.6),rgba(255,255,255,.2));border-color:rgba(255,255,255,.5);box-shadow:inset 0 2px 4px rgba(255,255,255,.8),0 4px 15px rgba(0,0,0,.05)}#statsDialog .metric:before{display:none}#statsDialog .metric strong{background:none;-webkit-text-fill-color:initial;color:#8a754e}#statsDialog .metric span{color:#566460}#statsDialog .muted{color:#566460}#statsDialog .regional{border-color:rgba(32,60,59,.1)}#statsDialog .regional h3{color:var(--ink)}#statsDialog .region-label{background:rgba(255,255,255,.5);color:var(--ink);border-color:rgba(255,255,255,.6)}#statsDialog .bar-track{background:#ded6c7;box-shadow:inset 0 1px 3px rgba(0,0,0,.1)}#statsDialog .source{color:#5b6761}
 @media(max-width:600px){header{padding:20px}.edition{display:none}.brand strong{font-size:13px}.map-title{right:24px;bottom:8vh}.map-title h1{font-size:34px}.map-title p{font-size:11px;max-width:240px;line-height:2}.map-caption{display:none}.village-content{padding:100px 20px 60px}.village-heading h1{font-size:72px}.choices{gap:12px;margin-top:26px}.choice{padding:22px 18px;min-height:180px}.choice h2{font-size:26px}.choice p{font-size:10px;max-width:115px;line-height:1.8}.choice .index{left:18px;top:25px}.choice .arrow{left:18px;bottom:16px}.back{padding:10px 12px;font-size:10px}.metrics{grid-template-columns:repeat(2,1fr)}.dialog-head{padding:20px}.dialog-body{padding:20px}.health{grid-template-columns:1fr}.bar-row{grid-template-columns:90px 1fr 28px;gap:8px}.pin-dot{width:14px;height:14px}.pin span{font-size:12px;padding:4px 10px}.village-footer{font-size:9px}}
 @media(prefers-reduced-motion:reduce){*,*:before{animation:none!important;transition-duration:.01ms!important}}
 
@@ -6747,6 +6747,164 @@ dialog#pdfViewerModal::backdrop,
     align-items: center;
     gap: 12px;
     margin-top: 8px;
+}
+
+/* =========================================================================
+   UNIVERSAL MICRO-ANIMATIONS & TACTILE ESC/BACK INTERACTIONS (ALL SITE MODALS)
+   ========================================================================= */
+@keyframes modalMicroExit {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(12px) scale(0.965);
+        filter: blur(4px);
+    }
+}
+
+@keyframes backdropMicroExit {
+    0% {
+        opacity: 1;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+    100% {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px);
+    }
+}
+
+@keyframes pdfModalMicroExit {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.975);
+    }
+}
+
+dialog.dialog-closing,
+dialog[open].dialog-closing,
+#statsDialog.dialog-closing,
+#servicesDialog.dialog-closing,
+#personDossierDialog.dialog-closing,
+#reportsModal.dialog-closing,
+#compareDialog.dialog-closing,
+#regionalDialog.dialog-closing,
+#dssDialog.dialog-closing,
+#projectsDialog.dialog-closing {
+    animation: modalMicroExit 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+    pointer-events: none !important;
+}
+
+dialog#pdfViewerModal.dialog-closing,
+#pdfViewerModal.dialog-closing {
+    animation: pdfModalMicroExit 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+    pointer-events: none !important;
+}
+
+dialog.dialog-closing::backdrop,
+dialog[open].dialog-closing::backdrop,
+#statsDialog.dialog-closing::backdrop,
+#servicesDialog.dialog-closing::backdrop,
+#personDossierDialog.dialog-closing::backdrop,
+#reportsModal.dialog-closing::backdrop,
+#pdfViewerModal.dialog-closing::backdrop,
+#compareDialog.dialog-closing::backdrop,
+#regionalDialog.dialog-closing::backdrop,
+#dssDialog.dialog-closing::backdrop,
+#projectsDialog.dialog-closing::backdrop {
+    animation: backdropMicroExit 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+/* Village to Map Exit Micro-Animation */
+.village-leaving .village,
+.village-leaving #villageView,
+.village-leaving .village-workspace,
+.village-leaving .v-satellite-viewport-wrap,
+.village-leaving .v-hud-dock,
+.village-leaving .v-hud-header,
+.village-leaving .village-sheet {
+    opacity: 0 !important;
+    transform: translateY(12px) scale(0.975) !important;
+    transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    pointer-events: none !important;
+}
+
+/* Tactile Micro-Animations on All Back and Close Buttons */
+.dossier-back-btn,
+.v-back-nav-btn,
+.v-close-btn,
+.close,
+.exec-close-btn,
+.dialog-close,
+.photos-modal-close,
+#backMap,
+#reportsBottomBackBtn,
+#reportsCloseBtn,
+#pdfViewerCloseBtn,
+#statsBackNavBtn,
+#backToVillageFromServicesBtn,
+#closeCompareBtn,
+#closeRegionalBtn,
+#closeDssBtn,
+#closeProjectsBtn,
+.exit-pure-map-btn,
+[data-action="close-dialog"] {
+    transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.15s, box-shadow 0.15s, opacity 0.15s !important;
+}
+
+.dossier-back-btn:active,
+.v-back-nav-btn:active,
+#villageBackNavBtn:active,
+.v-close-btn:active,
+#villageCloseBtn:active,
+.close:active,
+.exec-close-btn:active,
+.dialog-close:active,
+.photos-modal-close:active,
+#backMap:active,
+#reportsBottomBackBtn:active,
+#reportsCloseBtn:active,
+#pdfViewerCloseBtn:active,
+#statsBackNavBtn:active,
+#backToVillageFromServicesBtn:active,
+#closeCompareBtn:active,
+#closeRegionalBtn:active,
+#closeDssBtn:active,
+#closeProjectsBtn:active,
+.exit-pure-map-btn:active,
+[data-action="close-dialog"]:active {
+    transform: scale(0.92) !important;
+}
+
+/* Performance: Layout Containment & Compositor Acceleration */
+.pdf-page-card {
+    contain: layout paint;
+}
+.book-frame-card {
+    contain: layout;
+}
+.reports-dialog-body {
+    contain: layout;
+}
+.dialog-body {
+    contain: layout;
+}
+.village-workspace {
+    contain: layout;
+}
+#villageMapCanvas {
+    will-change: transform;
+}
+#villageSatelliteImg {
+    will-change: transform;
 }
 </style>
 
@@ -13630,6 +13788,59 @@ dialog#personDossierDialog::backdrop {
     
 
     <script>
+        // =========================================================================
+        // UNIVERSAL DIALOG ANIMATED CONTROLLER & NATIVE CLOSE MONKEY-PATCH
+        // =========================================================================
+        const _nativeDialogClose = (typeof HTMLDialogElement !== 'undefined' && HTMLDialogElement.prototype.close) 
+            ? HTMLDialogElement.prototype.close 
+            : function() { this.removeAttribute('open'); };
+
+        window.closeDialogAnimated = function(dlg, callback) {
+            if (!dlg) {
+                if (callback) callback();
+                return;
+            }
+            if (!dlg.open || dlg.classList.contains('dialog-closing')) {
+                if (callback) callback();
+                return;
+            }
+
+            dlg.classList.add('dialog-closing');
+            setTimeout(() => {
+                dlg.classList.remove('dialog-closing');
+                try {
+                    _nativeDialogClose.call(dlg);
+                } catch (err) {
+                    dlg.removeAttribute('open');
+                }
+                if (typeof callback === 'function') {
+                    callback();
+                }
+            }, 180);
+        };
+
+        if (typeof HTMLDialogElement !== 'undefined' && HTMLDialogElement.prototype) {
+            HTMLDialogElement.prototype.close = function() {
+                if (!this.open) return;
+                if (this.classList.contains('dialog-closing')) {
+                    _nativeDialogClose.call(this);
+                    return;
+                }
+                window.closeDialogAnimated(this);
+            };
+        }
+
+        // Intercept native Escape cancel event across all dialogs
+        document.addEventListener('cancel', function(e) {
+            if (e.target && e.target.tagName === 'DIALOG') {
+                e.preventDefault();
+                if (e.target.id === 'pdfViewerModal' && typeof window.closeFullscreenPdfViewer === 'function') {
+                    window.closeFullscreenPdfViewer();
+                } else {
+                    window.closeDialogAnimated(e.target);
+                }
+            }
+        }, true);
 
                // Odometer script
         const _faFormatter = new Intl.NumberFormat('fa-IR');
@@ -18116,17 +18327,27 @@ const emptyStatsHtml = `<div class="dos-content-grid" id="stats-content-8" class
                     // User is now on the Village Hub with choices: [01 آمار] and [02 خدمات]
                 }, reduced ? 20 : 350);
             }
+            let isBackingOut = false;
             function back() {
                 if (phase !== 'village' && phase !== 'flying') return;
+                if (isBackingOut) return;
+                isBackingOut = true;
                 clearTimeout(timer); clearTimeout(finishTimer);
-                phase = 'map';
-                root.classList.remove('in-village', 'flying');
-                village.inert = true;
-                map.inert = false;
-                updateDOM();
-                villages.forEach(x => { if (x.el) x.el.disabled = false; });
-                $('backMap').hidden = true;
-                if (activeLocation && activeLocation.el) activeLocation.el.focus({ preventScroll: true });
+
+                root.classList.add('village-leaving');
+
+                setTimeout(() => {
+                    phase = 'map';
+                    root.classList.remove('in-village', 'flying', 'village-leaving');
+                    village.inert = true;
+                    map.inert = false;
+                    updateDOM();
+                    villages.forEach(x => { if (x.el) x.el.disabled = false; });
+                    const bm = $('backMap');
+                    if (bm) bm.hidden = true;
+                    if (activeLocation && activeLocation.el) activeLocation.el.focus({ preventScroll: true });
+                    isBackingOut = false;
+                }, 180);
             }
             window.back = back;
             window.enter = enter;
@@ -18314,7 +18535,69 @@ const emptyStatsHtml = `<div class="dos-content-grid" id="stats-content-8" class
                     });
                 }
             }
-            document.addEventListener('keydown', e => { if (e.key === 'Escape' && !document.querySelector('dialog[open]')) back(); });
+            // ==================== UNIFIED MULTI-TIER ESCAPE CONTROLLER ====================
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') {
+                    // Priority 1: Fullscreen PDF viewer
+                    const pdfModal = document.getElementById('pdfViewerModal');
+                    if (pdfModal && (pdfModal.open || pdfModal.hasAttribute('open'))) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        if (typeof window.closeFullscreenPdfViewer === 'function') {
+                            window.closeFullscreenPdfViewer();
+                        } else {
+                            window.closeDialogAnimated(pdfModal);
+                        }
+                        return;
+                    }
+
+                    // Priority 2: Any open native <dialog>
+                    const openDialog = document.querySelector('dialog[open]');
+                    if (openDialog) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        window.closeDialogAnimated(openDialog);
+                        return;
+                    }
+
+                    // Priority 3: Command palette overlay
+                    const cmdBackdrop = document.getElementById('cmdPaletteBackdrop');
+                    if (cmdBackdrop && cmdBackdrop.classList.contains('is-open')) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        if (typeof closeCommandPalette === 'function') closeCommandPalette();
+                        return;
+                    }
+
+                    // Priority 4: Pure map mode
+                    if (document.body.classList.contains('pure-map-mode')) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        if (typeof togglePureMapMode === 'function') togglePureMapMode(false);
+                        return;
+                    }
+
+                    // Priority 5: Smart search dropdown
+                    const sDropdown = document.getElementById('searchResultsDropdown');
+                    if (sDropdown && sDropdown.classList.contains('active')) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        sDropdown.classList.remove('active');
+                        const sInput = document.getElementById('smartSearchInput');
+                        if (sInput && document.activeElement === sInput) sInput.blur();
+                        return;
+                    }
+
+                    // Priority 6: Return from village to map
+                    const rootEl = document.getElementById('root') || document.getElementById('experience');
+                    if (rootEl && rootEl.classList.contains('in-village')) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        if (typeof window.back === 'function') window.back();
+                        return;
+                    }
+                }
+            }, true);
             
             
             // ==================== REGIONAL SUMMARY & CORRIDOR LOGIC ====================
@@ -30171,23 +30454,55 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 <script>
 // =========================================================================
-// UNIVERSAL BACK BUTTON CONTROLLER (ALL WINDOWS & DIALOGS)
+// UNIVERSAL BACK BUTTON & BACKDROP CLICK CONTROLLER (ALL WINDOWS & DIALOGS)
 // =========================================================================
 document.addEventListener('click', (e) => {
     if (!e.target || typeof e.target.closest !== 'function') return;
-    const backBtn = e.target.closest('[data-action="close-dialog"], .dossier-back-btn, #villageBackNavBtn');
+
+    // 1. Back and Close Buttons
+    const backBtn = e.target.closest('[data-action="close-dialog"], .dossier-back-btn, #villageBackNavBtn, #villageCloseBtn, .close, .exec-close-btn, .dialog-close, #reportsCloseBtn, #reportsBottomBackBtn, #pdfViewerCloseBtn, #statsBackNavBtn, #backToVillageFromServicesBtn, #closeCompareBtn, #closeRegionalBtn, #closeDssBtn, #closeProjectsBtn');
     if (backBtn) {
+        e.preventDefault();
         e.stopPropagation();
-        if (backBtn.id === 'villageBackNavBtn' || backBtn.id === 'villageCloseBtn') {
-            if (typeof back === 'function') back();
+
+        if (backBtn.id === 'villageBackNavBtn' || backBtn.id === 'villageCloseBtn' || backBtn.id === 'backMap') {
+            if (typeof window.back === 'function') window.back();
             return;
         }
+
+        if (backBtn.id === 'pdfViewerCloseBtn') {
+            if (typeof window.closeFullscreenPdfViewer === 'function') {
+                window.closeFullscreenPdfViewer();
+                return;
+            }
+        }
+
         const dialog = backBtn.closest('dialog');
-        if (dialog && typeof dialog.close === 'function') {
-            dialog.close();
+        if (dialog) {
+            window.closeDialogAnimated(dialog);
+            return;
         }
     }
-});
+
+    // 2. Backdrop Clicks on Native <dialog> Elements
+    if (e.target && e.target.tagName === 'DIALOG' && e.target.open) {
+        const dlg = e.target;
+        const rect = dlg.getBoundingClientRect();
+        const isInDialog = (
+            rect.top <= e.clientY && e.clientY <= rect.top + rect.height &&
+            rect.left <= e.clientX && e.clientX <= rect.left + rect.width
+        );
+        if (!isInDialog) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (dlg.id === 'pdfViewerModal' && typeof window.closeFullscreenPdfViewer === 'function') {
+                window.closeFullscreenPdfViewer();
+            } else {
+                window.closeDialogAnimated(dlg);
+            }
+        }
+    }
+}, true);
 
 // Category Chips click event delegation
 document.addEventListener('click', (e) => {
@@ -31351,6 +31666,18 @@ document.addEventListener('click', (e) => {
                 const item = villageMapRegistry[k];
                 if (item && item.img) preloadImage(item.img);
             }, 300 + idx * 80);
+        });
+
+        // Preload performance report book covers into memory cache
+        const bookCovers = [
+            './books/covers/ketab-sal-1402.webp',
+            './books/covers/ketab-sal-1403.webp',
+            './books/covers/ketab-sal-1404.webp',
+            './books/covers/ravayat-khedmat.webp',
+            './books/covers/farhang-khedmat.webp'
+        ];
+        bookCovers.forEach((cUrl, idx) => {
+            setTimeout(() => preloadImage(cUrl), 800 + idx * 70);
         });
     }
 
@@ -33811,6 +34138,7 @@ document.addEventListener('click', (e) => {
     let activePdfDoc = null;
     let activeBook = null;
     let pageRenderingStates = {};
+    let activeRenderTasks = {};
     let intersectionObserver = null;
     let currentZoomMultiplier = 1.0;
 
@@ -33821,7 +34149,7 @@ document.addEventListener('click', (e) => {
         grid.innerHTML = performanceBooks.map(book => `
             <article class="book-frame-card" dir="rtl" data-book-id="${book.id}" title="مشاهده ${book.title}">
                 <div class="book-cover-wrap">
-                    <img src="${book.coverUrl}" alt="جلد ${book.title}" class="book-cover-img" loading="lazy" />
+                    <img src="${book.coverUrl}" alt="جلد ${book.title}" class="book-cover-img" loading="lazy" decoding="async" />
                     <div class="book-cover-overlay">
                         <span class="book-cover-view-badge" dir="rtl">
                             <span>مشاهده</span>
@@ -33911,7 +34239,19 @@ document.addEventListener('click', (e) => {
                 transform: dpr !== 1 ? [dpr, 0, 0, dpr, 0, 0] : null
             };
 
-            await page.render(renderContext).promise;
+            const renderTask = page.render(renderContext);
+            activeRenderTasks[pageNum] = renderTask;
+
+            try {
+                await renderTask.promise;
+            } catch (renderErr) {
+                if (renderErr && (renderErr.name === 'RenderingCancelledException' || renderErr.message === 'Rendering cancelled')) {
+                    return;
+                }
+                throw renderErr;
+            } finally {
+                delete activeRenderTasks[pageNum];
+            }
 
             canvas.classList.add('rendered');
             if (skeleton) {
@@ -33921,6 +34261,7 @@ document.addEventListener('click', (e) => {
 
             pageRenderingStates[pageNum] = 'done';
         } catch (err) {
+            if (err && (err.name === 'RenderingCancelledException' || err.message === 'Rendering cancelled')) return;
             console.error(`Failed to render page ${pageNum}:`, err);
             pageRenderingStates[pageNum] = 'error';
         }
@@ -33951,30 +34292,34 @@ document.addEventListener('click', (e) => {
             intersectionObserver.observe(card);
         });
 
-        if (scrollContainer) {
-            let scrollDebounce = null;
-            scrollContainer.onscroll = () => {
-                clearTimeout(scrollDebounce);
-                scrollDebounce = setTimeout(() => {
-                    const containerRect = scrollContainer.getBoundingClientRect();
-                    const containerMidY = containerRect.top + containerRect.height / 3;
+        if (scrollContainer && !scrollContainer._boundScroll) {
+            scrollContainer._boundScroll = true;
+            let scrollTicking = false;
+            scrollContainer.addEventListener('scroll', () => {
+                if (!scrollTicking) {
+                    scrollTicking = true;
+                    requestAnimationFrame(() => {
+                        scrollTicking = false;
+                        const containerRect = scrollContainer.getBoundingClientRect();
+                        const containerMidY = containerRect.top + containerRect.height / 3;
 
-                    const cards = document.querySelectorAll('.pdf-page-card');
-                    let currentVisiblePage = 1;
+                        const cards = document.querySelectorAll('.pdf-page-card');
+                        let currentVisiblePage = 1;
 
-                    for (let i = 0; i < cards.length; i++) {
-                        const r = cards[i].getBoundingClientRect();
-                        if (r.top <= containerMidY && r.bottom >= containerMidY) {
-                            currentVisiblePage = parseInt(cards[i].getAttribute('data-page-num'), 10);
-                            break;
+                        for (let i = 0; i < cards.length; i++) {
+                            const r = cards[i].getBoundingClientRect();
+                            if (r.top <= containerMidY && r.bottom >= containerMidY) {
+                                currentVisiblePage = parseInt(cards[i].getAttribute('data-page-num'), 10);
+                                break;
+                            }
                         }
-                    }
 
-                    if (pageInput && document.activeElement !== pageInput) {
-                        pageInput.value = currentVisiblePage;
-                    }
-                }, 40);
-            };
+                        if (pageInput && document.activeElement !== pageInput) {
+                            pageInput.value = currentVisiblePage;
+                        }
+                    });
+                }
+            }, { passive: true });
         }
     }
 
@@ -34158,13 +34503,21 @@ document.addEventListener('click', (e) => {
         const viewerModal = document.getElementById('pdfViewerModal');
         const pagesList = document.getElementById('pdfPagesList');
 
+        // Cancel all pending render tasks immediately (Prevents CPU/Memory leak)
+        if (typeof activeRenderTasks !== 'undefined') {
+            Object.keys(activeRenderTasks).forEach(k => {
+                try { activeRenderTasks[k].cancel(); } catch(e) {}
+            });
+            activeRenderTasks = {};
+        }
+
         if (intersectionObserver) {
             intersectionObserver.disconnect();
             intersectionObserver = null;
         }
 
         if (activePdfDoc) {
-            activePdfDoc.destroy();
+            try { activePdfDoc.destroy(); } catch(e) {}
             activePdfDoc = null;
         }
 
@@ -34172,7 +34525,9 @@ document.addEventListener('click', (e) => {
         pageRenderingStates = {};
 
         if (viewerModal) {
-            if (typeof viewerModal.close === 'function') {
+            if (typeof window.closeDialogAnimated === 'function') {
+                window.closeDialogAnimated(viewerModal);
+            } else if (typeof viewerModal.close === 'function') {
                 viewerModal.close();
             } else {
                 viewerModal.removeAttribute('open');
@@ -34210,7 +34565,9 @@ document.addEventListener('click', (e) => {
         }
 
         function closeModal() {
-            if (typeof modal.close === 'function') {
+            if (typeof window.closeDialogAnimated === 'function') {
+                window.closeDialogAnimated(modal);
+            } else if (typeof modal.close === 'function') {
                 modal.close();
             } else {
                 modal.removeAttribute('open');
