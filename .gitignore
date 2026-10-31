@@ -13,3 +13,11 @@ stats_dialog_dump.html
 .env*
 !.env.example
 مجتمع فرهنگی، اجتماعی و مردمی/
+*.bak*
+BOOK/
+porsline_schools_text.txt
+soureh_pdf_text.txt
+edu_sheets_data.json
+edu_xlsx_info.json
+test_phones.js
+urgent.js
