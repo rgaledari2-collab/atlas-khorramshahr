@@ -41658,15 +41658,95 @@ summary:focus-visible {
                 </div>
             </div>
 
+            <!-- DYNAMIC MULTI-DIMENSIONAL FILTER TOOLBAR -->
+            <div style="background:#faf7f2; border:1.5px solid #ded1ba; border-radius:16px; padding:16px 20px; display:flex; flex-direction:column; gap:12px; box-shadow:0 3px 12px rgba(40,30,15,0.03);">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; border-bottom:1px solid #ebdcc5; padding-bottom:10px;">
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <span style="font-size:20px;">🎯</span>
+                        <div>
+                            <strong style="font-size:13.5px; color:#132a26;">فیلترهای هدفمندسازی مداخله و اولویت‌بندی میدانی</strong>
+                            <div style="font-size:11px; color:#64748b; margin-top:1px;">تفکیک خروجی‌های میدانی بر اساس روستا، حوزه مداخله، سطح فوریت و جامعه هدف</div>
+                        </div>
+                    </div>
+                    <button type="button" id="simResetFiltersBtn" style="background:#fff; border:1px solid #d6c7b2; color:#b91c1c; font-size:11px; font-weight:800; padding:4px 12px; border-radius:6px; cursor:pointer; font-family:inherit; transition:all 0.15s; display:inline-flex; align-items:center; gap:4px;">
+                        <span>↺</span> <span>بازنشانی همه فیلترها</span>
+                    </button>
+                </div>
+
+                <!-- Filter Rows Grid -->
+                <div style="display:flex; flex-direction:column; gap:10px; font-size:11.5px;">
+                    
+                    <!-- Row 1: Village Dropdown + Urgency Triage -->
+                    <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+                        <!-- Village Dropdown -->
+                        <div style="display:flex; align-items:center; gap:6px;">
+                            <span style="font-weight:900; color:#132a26;">📍 محدوده روستا:</span>
+                            <select id="simVillageSelect" style="background:#ffffff; border:1.5px solid #c6a15b; padding:5px 12px; border-radius:8px; font-size:11.5px; font-weight:800; color:#132a26; font-family:inherit; cursor:pointer; outline:none; box-shadow:0 1px 4px rgba(0,0,0,0.04);">
+                                <option value="all">🌐 کل منطقه پلاک ۱ (۱۳ آبادی و روستا)</option>
+                                <option value="soureh">روستای سوره (محور شلمچه)</option>
+                                <option value="pol-now">روستای پل نو (ورودی مرز)</option>
+                                <option value="ariz">روستای عریض (نخلستان و حاشیه)</option>
+                                <option value="darband-gharbi">روستای دربند غربی (دامپروری و گاومیش)</option>
+                                <option value="darband-sharqi">روستای دربند شرقی (حاشیه اروند)</option>
+                                <option value="jadideh">روستای جدیده (جزیره مینو)</option>
+                                <option value="shahrak-sevvom">روستای شهرک سوم</option>
+                                <option value="sad-dastgah">روستای صد دستگاه</option>
+                                <option value="maslavi-1">روستای مصلاوی ۱ و ۲</option>
+                                <option value="sarhaniyeh-sofla">سرحانیه سفلی و علیا</option>
+                            </select>
+                        </div>
+
+                        <!-- Urgency Chips -->
+                        <div style="display:flex; align-items:center; gap:5px; flex-wrap:wrap;">
+                            <span style="font-weight:900; color:#132a26; margin-right:4px;">🚨 سطح فوریت:</span>
+                            <button type="button" class="sim-urgency-chip active" data-urgency="all" style="padding:4px 10px; border-radius:6px; border:1px solid #0f766e; background:#0f766e; color:#ffffff; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit;">همه سطوح</button>
+                            <button type="button" class="sim-urgency-chip" data-urgency="veto" style="padding:4px 10px; border-radius:6px; border:1px solid #fecaca; background:#fff; color:#dc2626; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit;">🚨 خط قرمز (Veto)</button>
+                            <button type="button" class="sim-urgency-chip" data-urgency="high" style="padding:4px 10px; border-radius:6px; border:1px solid #fed7aa; background:#fff; color:#ea580c; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit;">🔴 اولویت الف (حیاتی)</button>
+                            <button type="button" class="sim-urgency-chip" data-urgency="med" style="padding:4px 10px; border-radius:6px; border:1px solid #cbd5e1; background:#fff; color:#475569; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit;">🟡 اولویت ب (پایدار)</button>
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Sector / Domain Chips -->
+                    <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+                        <span style="font-weight:900; color:#132a26;">🏷️ حوزه اقدام:</span>
+                        <button type="button" class="sim-sector-chip active" data-sector="all" style="padding:4px 10px; border-radius:6px; border:1px solid #0f766e; background:#0f766e; color:#ffffff; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit;">🌐 همه حوزه‌ها</button>
+                        <button type="button" class="sim-sector-chip" data-sector="edu" style="padding:4px 10px; border-radius:6px; border:1px solid #bfdbfe; background:#fff; color:#1d4ed8; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit;">🎓 بازماندگان و آموزش</button>
+                        <button type="button" class="sim-sector-chip" data-sector="transit" style="padding:4px 10px; border-radius:6px; border:1px solid #fef08a; background:#fff; color:#854d0e; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit;">🚌 سرویس تردد</button>
+                        <button type="button" class="sim-sector-chip" data-sector="wash" style="padding:4px 10px; border-radius:6px; border:1px solid #fbcfe8; background:#fff; color:#be185d; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit;">🚰 بهداشت و آبخوری (WASH)</button>
+                        <button type="button" class="sim-sector-chip" data-sector="cool" style="padding:4px 10px; border-radius:6px; border:1px solid #a5f3fc; background:#fff; color:#0e7490; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit;">❄️ سرمایش کلاس‌ها</button>
+                        <button type="button" class="sim-sector-chip" data-sector="smart" style="padding:4px 10px; border-radius:6px; border:1px solid #e9d5ff; background:#fff; color:#7e22ce; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit;">💻 هوشمندسازی و مهارت</button>
+                        <button type="button" class="sim-sector-chip" data-sector="health" style="padding:4px 10px; border-radius:6px; border:1px solid #ddd6fe; background:#fff; color:#6d28d9; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit;">🩺 درمان و بیماران مزمن</button>
+                        <button type="button" class="sim-sector-chip" data-sector="dental" style="padding:4px 10px; border-radius:6px; border:1px solid #99f6e4; background:#fff; color:#0f766e; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit;">🦷 دندانپزشکی جهادی</button>
+                        <button type="button" class="sim-sector-chip" data-sector="livelihood" style="padding:4px 10px; border-radius:6px; border:1px solid #bbf7d0; background:#fff; color:#15803d; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit;">🌴 اشتغال و نخلستان</button>
+                        <button type="button" class="sim-sector-chip" data-sector="shelter" style="padding:4px 10px; border-radius:6px; border:1px solid #fed7aa; background:#fff; color:#c2410c; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit;">🏠 مسکن و سرپناه ایتام</button>
+                    </div>
+
+                    <!-- Row 3: Target Beneficiaries Chips -->
+                    <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+                        <span style="font-weight:900; color:#132a26;">👥 جامعه هدف:</span>
+                        <button type="button" class="sim-target-chip active" data-target="all" style="padding:4px 10px; border-radius:6px; border:1px solid #0f766e; background:#0f766e; color:#ffffff; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit;">همه گروه‌ها</button>
+                        <button type="button" class="sim-target-chip" data-target="dropouts" style="padding:4px 10px; border-radius:6px; border:1px solid #cbd5e1; background:#fff; color:#334155; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit;">🎓 کودکان کار و ترک‌تحصیل</button>
+                        <button type="button" class="sim-target-chip" data-target="girls" style="padding:4px 10px; border-radius:6px; border:1px solid #cbd5e1; background:#fff; color:#334155; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit;">👧 دختران روستایی (تردد امن)</button>
+                        <button type="button" class="sim-target-chip" data-target="orphans" style="padding:4px 10px; border-radius:6px; border:1px solid #cbd5e1; background:#fff; color:#334155; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit;">🤝 خانواده‌های ایتام و زنان سرپرست</button>
+                        <button type="button" class="sim-target-chip" data-target="chronic" style="padding:4px 10px; border-radius:6px; border:1px solid #cbd5e1; background:#fff; color:#334155; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit;">♿ بیماران خاص و کودکان نیازمند درمان</button>
+                        <button type="button" class="sim-target-chip" data-target="schools" style="padding:4px 10px; border-radius:6px; border:1px solid #cbd5e1; background:#fff; color:#334155; font-size:11px; font-weight:800; cursor:pointer; font-family:inherit;">🏫 بافت عمومی مدارس و کلاس‌ها</button>
+                    </div>
+
+                </div>
+            </div>
+
             <!-- LIVE IMPACT OUTPUT: EXACTLY WHAT PROBLEMS ARE SOLVED -->
             <div style="background:#ffffff; border-radius:16px; padding:20px 22px; border:1.5px solid #0f766e; box-shadow:0 6px 20px rgba(15,118,110,0.06); display:flex; flex-direction:column; gap:16px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
                     <div style="display:flex; align-items:center; gap:8px;">
                         <span style="font-size:20px;">✨</span>
-                        <h4 style="margin:0; font-size:15px; font-weight:900; color:#0f766e;">خروجی‌های میدانی: با این مقدار بودجه، دقیقاً این مسائل حل می‌شود:</h4>
+                        <div>
+                            <h4 style="margin:0; font-size:15px; font-weight:900; color:#0f766e;">خروجی‌های میدانی: با این مقدار بودجه، دقیقاً این مسائل حل می‌شود:</h4>
+                            <div id="simActiveFilterSummary" style="font-size:11px; color:#64748b; margin-top:2px;">محاسبه بر مبنای تورم روز ۱۴۰۵ · پوشش متوازن سراسر منطقه شلمچه</div>
+                        </div>
                     </div>
                     <div style="display:flex; align-items:center; gap:8px;">
-                        <span style="font-size:11.5px; color:#64748b; font-weight:800;">درصد حل کل بحران آموزشی پلاک ۱:</span>
+                        <span style="font-size:11.5px; color:#64748b; font-weight:800;">درصد حل کل بحران پلاک ۱:</span>
                         <span id="simCoveragePercentBadge" style="background:#0f766e; color:#ffffff; padding:3px 10px; border-radius:8px; font-weight:900; font-size:13px;">۱۱.۲٪</span>
                     </div>
                 </div>
@@ -41676,62 +41756,117 @@ summary:focus-visible {
                     <div id="simCoverageProgressBar" style="position:absolute; top:0; right:0; height:100%; width:11.2%; background:linear-gradient(90deg,#14b8a6,#0f766e); border-radius:8px; transition:width 0.3s ease;"></div>
                 </div>
 
-                <!-- 5 Metrics Cards Grid -->
-                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:12px;">
+                <!-- 10 EXPANDED COMPREHENSIVE METRICS CARDS GRID -->
+                <div id="simMetricsCardsGrid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(215px, 1fr)); gap:12px;">
                     
                     <!-- Metric 1: Dropouts Returning -->
-                    <div style="background:#eff6ff; border:1.5px solid #bfdbfe; border-radius:12px; padding:14px 16px; display:flex; flex-direction:column; gap:4px;">
+                    <div class="sim-metric-card" data-sector="edu" data-target="dropouts" data-urgency="veto" style="background:#eff6ff; border:1.5px solid #bfdbfe; border-radius:12px; padding:14px 16px; display:flex; flex-direction:column; gap:4px; transition:all 0.2s;">
                         <div style="display:flex; justify-content:space-between; align-items:center;">
                             <span style="font-size:11.5px; color:#1e40af; font-weight:800;">بازگشت به تحصیل بازماندگان:</span>
                             <span style="font-size:18px;">🎓</span>
                         </div>
                         <div style="font-size:24px; font-weight:900; color:#1d4ed8;" id="simMetricDropouts">۵ نفر</div>
-                        <div style="font-size:10.5px; color:#3b82f6; line-height:1.5;">شهریه، کتب، مشاوره و ثبت‌نام در مدارس عریض و شهرک سوم</div>
+                        <div style="font-size:10.5px; color:#3b82f6; line-height:1.5;" id="simMetricDropoutsDesc">شهریه، کتب، مشاوره و ثبت‌نام در مدارس عریض و شهرک سوم</div>
                         <div style="font-size:10px; color:#64748b; margin-top:auto; padding-top:4px;">سرانه روز: ۲۱.۳ میلیون تومان</div>
                     </div>
 
                     <!-- Metric 2: School Transit Service -->
-                    <div style="background:#fefce8; border:1.5px solid #fef08a; border-radius:12px; padding:14px 16px; display:flex; flex-direction:column; gap:4px;">
+                    <div class="sim-metric-card" data-sector="transit" data-target="girls" data-urgency="high" style="background:#fefce8; border:1.5px solid #fef08a; border-radius:12px; padding:14px 16px; display:flex; flex-direction:column; gap:4px; transition:all 0.2s;">
                         <div style="display:flex; justify-content:space-between; align-items:center;">
                             <span style="font-size:11.5px; color:#854d0e; font-weight:800;">سرویس ایاب و ذهاب مدارس:</span>
                             <span style="font-size:18px;">🚌</span>
                         </div>
                         <div style="font-size:24px; font-weight:900; color:#b45309;" id="simMetricTransit">۱۰ دانش‌آموز</div>
-                        <div style="font-size:10.5px; color:#d97706; line-height:1.5;">پوشش ایمن تردد جاده شلمچه (دربند و سرحانیه به خرمشهر)</div>
+                        <div style="font-size:10.5px; color:#d97706; line-height:1.5;" id="simMetricTransitDesc">پوشش ایمن تردد جاده شلمچه (دربند و سرحانیه به خرمشهر)</div>
                         <div style="font-size:10px; color:#64748b; margin-top:auto; padding-top:4px;">سرانه سالانه: ۱۱.۴ میلیون تومان</div>
                     </div>
 
                     <!-- Metric 3: Stationery & Uniform Kits -->
-                    <div style="background:#f0fdf4; border:1.5px solid #bbf7d0; border-radius:12px; padding:14px 16px; display:flex; flex-direction:column; gap:4px;">
+                    <div class="sim-metric-card" data-sector="edu" data-target="schools" data-urgency="med" style="background:#f0fdf4; border:1.5px solid #bbf7d0; border-radius:12px; padding:14px 16px; display:flex; flex-direction:column; gap:4px; transition:all 0.2s;">
                         <div style="display:flex; justify-content:space-between; align-items:center;">
                             <span style="font-size:11.5px; color:#166534; font-weight:800;">بسته نوشت‌افزار و لباس فرم:</span>
                             <span style="font-size:18px;">🎒</span>
                         </div>
                         <div style="font-size:24px; font-weight:900; color:#15803d;" id="simMetricKits">۱۸ بسته کامل</div>
-                        <div style="font-size:10.5px; color:#16a34a; line-height:1.5;">کوله، دفاتر، نوشت‌افزار و روپوش استاندارد دانش‌آموزی</div>
+                        <div style="font-size:10.5px; color:#16a34a; line-height:1.5;" id="simMetricKitsDesc">کوله، دفاتر، نوشت‌افزار و روپوش استاندارد دانش‌آموزی</div>
                         <div style="font-size:10px; color:#64748b; margin-top:auto; padding-top:4px;">سرانه هر بسته: ۴.۹۷ میلیون تومان</div>
                     </div>
 
                     <!-- Metric 4: WASH & Sanitation -->
-                    <div style="background:#fdf2f8; border:1.5px solid #fbcfe8; border-radius:12px; padding:14px 16px; display:flex; flex-direction:column; gap:4px;">
+                    <div class="sim-metric-card" data-sector="wash" data-target="schools" data-urgency="high" style="background:#fdf2f8; border:1.5px solid #fbcfe8; border-radius:12px; padding:14px 16px; display:flex; flex-direction:column; gap:4px; transition:all 0.2s;">
                         <div style="display:flex; justify-content:space-between; align-items:center;">
                             <span style="font-size:11.5px; color:#9d174d; font-weight:800;">بهسازی آبخوری و بهداشت (WASH):</span>
                             <span style="font-size:18px;">🚰</span>
                         </div>
-                        <div style="font-size:24px; font-weight:900; color:#be185d;" id="simMetricWash">۰ مدرسه</div>
-                        <div style="font-size:10.5px; color:#db2777; line-height:1.5;">تعمیر اساسی آب‌سردکن، لوله‌کشی و سرویس‌های بهداشتی</div>
+                        <div style="font-size:24px; font-weight:900; color:#be185d;" id="simMetricWash">۱ مدرسه</div>
+                        <div style="font-size:10.5px; color:#db2777; line-height:1.5;" id="simMetricWashDesc">تعمیر اساسی آب‌سردکن، لوله‌کشی و بهسازی سرویس‌های بهداشتی</div>
                         <div style="font-size:10px; color:#64748b; margin-top:auto; padding-top:4px;">هزینه هر مدرسه: ۹۴.۶ میلیون تومان</div>
                     </div>
 
-                    <!-- Metric 5: Chronic Patients Medical Support -->
-                    <div style="background:#f5f3ff; border:1.5px solid #ddd6fe; border-radius:12px; padding:14px 16px; display:flex; flex-direction:column; gap:4px;">
+                    <!-- Metric 5: Classroom Cooling & Split Units -->
+                    <div class="sim-metric-card" data-sector="cool" data-target="schools" data-urgency="high" style="background:#ecfeff; border:1.5px solid #a5f3fc; border-radius:12px; padding:14px 16px; display:flex; flex-direction:column; gap:4px; transition:all 0.2s;">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="font-size:11.5px; color:#0e7490; font-weight:800;">سرمایش و اسپلیت کلاس‌ها:</span>
+                            <span style="font-size:18px;">❄️</span>
+                        </div>
+                        <div style="font-size:24px; font-weight:900; color:#0891b2;" id="simMetricCooling">۲ کلاس</div>
+                        <div style="font-size:10.5px; color:#06b6d4; line-height:1.5;" id="simMetricCoolingDesc">تجهیز اسپلیت ۲۴هزار و بهسازی برق کلاس‌های مدارس عریض و شهرک</div>
+                        <div style="font-size:10px; color:#64748b; margin-top:auto; padding-top:4px;">سرانه هر کلاس: ۳۵.۵ میلیون تومان</div>
+                    </div>
+
+                    <!-- Metric 6: Smart Classrooms & Skills Labs -->
+                    <div class="sim-metric-card" data-sector="smart" data-target="schools" data-urgency="med" style="background:#faf5ff; border:1.5px solid #e9d5ff; border-radius:12px; padding:14px 16px; display:flex; flex-direction:column; gap:4px; transition:all 0.2s;">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="font-size:11.5px; color:#7e22ce; font-weight:800;">هوشمندسازی و کارگاه مهارتی:</span>
+                            <span style="font-size:18px;">💻</span>
+                        </div>
+                        <div style="font-size:24px; font-weight:900; color:#9333ea;" id="simMetricSmart">۱ کارگاه</div>
+                        <div style="font-size:10.5px; color:#a855f7; line-height:1.5;" id="simMetricSmartDesc">ویدئوپروژکتور، تبلت آموزشی و کیت‌های مهارتی اشتغال مجتمع سوره</div>
+                        <div style="font-size:10px; color:#64748b; margin-top:auto; padding-top:4px;">سرانه تجهیز: ۷۱.۰ میلیون تومان</div>
+                    </div>
+
+                    <!-- Metric 7: Chronic Patients Medical Support -->
+                    <div class="sim-metric-card" data-sector="health" data-target="chronic" data-urgency="veto" style="background:#f5f3ff; border:1.5px solid #ddd6fe; border-radius:12px; padding:14px 16px; display:flex; flex-direction:column; gap:4px; transition:all 0.2s;">
                         <div style="display:flex; justify-content:space-between; align-items:center;">
                             <span style="font-size:11.5px; color:#5b21b6; font-weight:800;">حمایت درمانی دانش‌آموزان بیمار:</span>
                             <span style="font-size:18px;">🩺</span>
                         </div>
-                        <div style="font-size:24px; font-weight:900; color:#6d28d9;" id="simMetricHealth">۱ بیمار خاص</div>
-                        <div style="font-size:10.5px; color:#7c3aed; line-height:1.5;">تأمین داروی دوره‌ای، آزمایش و توانبخشی کودکان بیمار</div>
+                        <div style="font-size:24px; font-weight:900; color:#6d28d9;" id="simMetricHealth">۲ بیمار خاص</div>
+                        <div style="font-size:10.5px; color:#7c3aed; line-height:1.5;" id="simMetricHealthDesc">تأمین داروی دوره‌ای، آزمایش و توانبخشی کودکان بیمار</div>
                         <div style="font-size:10px; color:#64748b; margin-top:auto; padding-top:4px;">سرانه سالانه: ۲۸.۴ میلیون تومان</div>
+                    </div>
+
+                    <!-- Metric 8: Mobile Dental Clinic -->
+                    <div class="sim-metric-card" data-sector="dental" data-target="schools" data-urgency="high" style="background:#f0fdfa; border:1.5px solid #99f6e4; border-radius:12px; padding:14px 16px; display:flex; flex-direction:column; gap:4px; transition:all 0.2s;">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="font-size:11.5px; color:#0f766e; font-weight:800;">کلینیک سیار دندانپزشکی:</span>
+                            <span style="font-size:18px;">🦷</span>
+                        </div>
+                        <div style="font-size:24px; font-weight:900; color:#0d9488;" id="simMetricDental">۳۵ دانش‌آموز</div>
+                        <div style="font-size:10.5px; color:#14b8a6; line-height:1.5;" id="simMetricDentalDesc">ترمیم، کشیدن، جرم‌گیری و فلورایدتراپی رایگان دهان و دندان</div>
+                        <div style="font-size:10px; color:#64748b; margin-top:auto; padding-top:4px;">سرانه هر دانش‌آموز: ۶.۸ میلیون تومان</div>
+                    </div>
+
+                    <!-- Metric 9: Livelihood & Palm Shoots -->
+                    <div class="sim-metric-card" data-sector="livelihood" data-target="orphans" data-urgency="med" style="background:#f0fdf4; border:1.5px solid #bbf7d0; border-radius:12px; padding:14px 16px; display:flex; flex-direction:column; gap:4px; transition:all 0.2s;">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="font-size:11.5px; color:#166534; font-weight:800;">اشتغال خرد و احیای نخلستان:</span>
+                            <span style="font-size:18px;">🌴</span>
+                        </div>
+                        <div style="font-size:24px; font-weight:900; color:#15803d;" id="simMetricLivelihood">۲ طرح کارگاهی</div>
+                        <div style="font-size:10.5px; color:#16a34a; line-height:1.5;" id="simMetricLivelihoodDesc">تسهیلات کارگاهی بانوان سرپرست و توزیع پاجوش مرغوب نخل برحی</div>
+                        <div style="font-size:10px; color:#64748b; margin-top:auto; padding-top:4px;">سرانه طرح: ۴۵.۰ میلیون تومان</div>
+                    </div>
+
+                    <!-- Metric 10: Orphan Housing Roofing -->
+                    <div class="sim-metric-card" data-sector="shelter" data-target="orphans" data-urgency="veto" style="background:#fff7ed; border:1.5px solid #fed7aa; border-radius:12px; padding:14px 16px; display:flex; flex-direction:column; gap:4px; transition:all 0.2s;">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="font-size:11.5px; color:#c2410c; font-weight:800;">ایزوگام و بهسازی سقف مسکن:</span>
+                            <span style="font-size:18px;">🏠</span>
+                        </div>
+                        <div style="font-size:24px; font-weight:900; color:#ea580c;" id="simMetricHousing">۲ مسکن یتیم</div>
+                        <div style="font-size:10.5px; color:#f97316; line-height:1.5;" id="simMetricHousingDesc">عایق رطوبتی، تعمیر سقف و جلوگیری از نفوذ آب در شهرک سوم و عریض</div>
+                        <div style="font-size:10px; color:#64748b; margin-top:auto; padding-top:4px;">سرانه هر واحد: ۴۲.۶ میلیون تومان</div>
                     </div>
 
                 </div>
@@ -41795,7 +41930,7 @@ summary:focus-visible {
             <div style="background:#ffffff; border-radius:16px; padding:20px 22px; border:1px solid #e2d7c5; display:flex; flex-direction:column; gap:12px;">
                 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
                     <div>
-                        <h4 style="margin:0; font-size:14px; font-weight:900; color:#132a26;">فهرست ۹ گلوگاه آموزشی واقعی منطقه شلمچه و وضعیت تأمین اعتبار با این بودجه:</h4>
+                        <h4 id="simBottlenecksTableTitle" style="margin:0; font-size:14px; font-weight:900; color:#132a26;">فهرست ۱۲ گلوگاه عملیاتی منطقه شلمچه و وضعیت تأمین اعتبار با این بودجه:</h4>
                         <div style="font-size:11px; color:#64748b; margin-top:2px;">قیمت‌ها با احتساب نرخ روز سال ۱۴۰۵ به صورت زنده محاسبه شده است.</div>
                     </div>
                 </div>
@@ -41804,7 +41939,7 @@ summary:focus-visible {
                     <table style="width:100%; border-collapse:separate; border-spacing:0; font-size:11.8px; border:1px solid #ebdcc5; border-radius:10px; overflow:hidden;">
                         <thead>
                             <tr style="background:#132a26; color:#edd395; font-size:11px; font-weight:900;">
-                                <th style="padding:10px; text-align:right;">عنوان مسئله / گلوگاه آموزشی</th>
+                                <th style="padding:10px; text-align:right;">عنوان مسئله / گلوگاه عملیاتی</th>
                                 <th style="padding:10px; text-align:center;">روستای هدف</th>
                                 <th style="padding:10px; text-align:center;">هزینه روز ۱۴۰۵ (تومان)</th>
                                 <th style="padding:10px; text-align:center;">تعداد جامعه هدف</th>
@@ -42722,16 +42857,25 @@ summary:focus-visible {
     let simInflation = 0.42;    // +42% Daily 1405 Khuzestan education inflation
     let simPackage = 'balanced'; // 'rescue' | 'balanced' | 'infra'
 
+    // Filter State Variables for Budget Simulator
+    let simActiveVillage = 'all';
+    let simActiveSector = 'all';
+    let simActiveUrgency = 'all';
+    let simActiveTarget = 'all';
+
     const realBottlenecks = [
-        { id: 1, title: 'بازگرداندن دانش‌آموزان بازمانده و کودکان کار به کلاس درس', village: 'عریض، شهرک سوم و سوره', baseCost: 150000000, target: '۱۲ دانش‌آموز', perCapitaBase: 12500000 },
-        { id: 2, title: 'سرویس مینی‌بوس و ون مسیر پرخطر جاده شلمچه', village: 'دربند غربی و شرقی', baseCost: 160000000, target: '۲۸ دانش‌آموز', perCapitaBase: 5700000 },
-        { id: 3, title: 'بهسازی آبخوری و بهداشت مدارس (طرح WASH)', village: 'مدارس پل نو و سوره', baseCost: 200000000, target: '۲ مجتمع (۶۸۰ نفر)', perCapitaBase: 100000000 },
-        { id: 4, title: 'بسته‌های جامع نوشت‌افزار، کوله و لباس فرم استاندارد', village: 'سرحانیه، جدیده و صد دستگاه', baseCost: 180000000, target: '۳۰۰ بسته کامل', perCapitaBase: 3500000 },
-        { id: 5, title: 'سرویس اختصاصی دختران متوسطه اول و دوم به خرمشهر', village: 'مصلاوی ۱ و ۲', baseCost: 140000000, target: '۱۹ دانش‌آموز دختر', perCapitaBase: 7300000 },
-        { id: 6, title: 'پشتیبانی دارویی و درمانی بیماران خاص دانش‌آموزی', village: 'سراسر ۱۳ روستای پلاک ۱', baseCost: 150000000, target: '۱۴ بیمار خاص', perCapitaBase: 10700000 },
-        { id: 7, title: 'تعمیر و ارتقای کولرهای گازی کلاس‌های درس (بحران گرما)', village: 'مدارس عریض و شهرک سوم', baseCost: 250000000, target: '۱۰ کلاس درس', perCapitaBase: 25000000 },
-        { id: 8, title: 'هوشمندسازی، تبلت آموزشی و کارگاه مهارت‌آموزی', village: 'مجتمع آموزشی رزمندگان سوره', baseCost: 200000000, target: '۴۶۰ دانش‌آموز', perCapitaBase: 50000000 },
-        { id: 9, title: 'کتب کمک‌آموزشی تقویتی و سنجش هوش کودکان پیش‌دبستانی', village: 'شهرک سوم و دربند', baseCost: 120000000, target: '۱۲۰ نوآموز', perCapitaBase: 1000000 }
+        { id: 1, title: 'بازگرداندن دانش‌آموزان بازمانده و کودکان کار به کلاس درس', village: 'عریض، شهرک سوم و سوره', villageId: ['ariz', 'shahrak-sevvom', 'soureh'], sector: 'edu', targetGroup: 'dropouts', urgency: 'veto', target: '۱۲ دانش‌آموز', perCapitaBase: 12500000, baseCost: 150000000 },
+        { id: 2, title: 'سرویس مینی‌بوس و ون مسیر پرخطر جاده شلمچه', village: 'دربند غربی و شرقی', villageId: ['darband-gharbi', 'darband-sharqi'], sector: 'transit', targetGroup: 'girls', urgency: 'high', target: '۲۸ دانش‌آموز', perCapitaBase: 5700000, baseCost: 160000000 },
+        { id: 3, title: 'بهسازی آبخوری، فیلتراسیون و بهداشت مدارس (طرح WASH)', village: 'مدارس پل نو و سوره', villageId: ['pol-now', 'soureh'], sector: 'wash', targetGroup: 'schools', urgency: 'high', target: '۲ مجتمع (۶۸۰ نفر)', perCapitaBase: 100000000, baseCost: 200000000 },
+        { id: 4, title: 'بسته‌های جامع نوشت‌افزار، کوله و لباس فرم استاندارد', village: 'سرحانیه، جدیده و صد دستگاه', villageId: ['sarhaniyeh-sofla', 'sarhaniyeh-olya', 'jadideh', 'sad-dastgah'], sector: 'edu', targetGroup: 'schools', urgency: 'med', target: '۳۰۰ بسته کامل', perCapitaBase: 3500000, baseCost: 180000000 },
+        { id: 5, title: 'سرویس اختصاصی دختران متوسطه اول و دوم به خرمشهر', village: 'مصلاوی ۱ و ۲', villageId: ['maslavi-1', 'maslavi-2'], sector: 'transit', targetGroup: 'girls', urgency: 'high', target: '۱۹ دانش‌آموز دختر', perCapitaBase: 7300000, baseCost: 140000000 },
+        { id: 6, title: 'پشتیبانی دارویی و درمانی بیماران خاص دانش‌آموزی', village: 'سراسر ۱۳ روستای پلاک ۱', villageId: ['all'], sector: 'health', targetGroup: 'chronic', urgency: 'veto', target: '۱۴ بیمار خاص', perCapitaBase: 10700000, baseCost: 150000000 },
+        { id: 7, title: 'تعمیر و ارتقای کولرهای گازی کلاس‌های درس (بحران گرما)', village: 'مدارس عریض و شهرک سوم', villageId: ['ariz', 'shahrak-sevvom'], sector: 'cool', targetGroup: 'schools', urgency: 'high', target: '۱۰ کلاس درس', perCapitaBase: 25000000, baseCost: 250000000 },
+        { id: 8, title: 'هوشمندسازی، تبلت آموزشی و کارگاه مهارت‌آموزی', village: 'مجتمع آموزشی رزمندگان سوره', villageId: ['soureh'], sector: 'smart', targetGroup: 'schools', urgency: 'med', target: '۴۶۰ دانش‌آموز', perCapitaBase: 50000000, baseCost: 200000000 },
+        { id: 9, title: 'کتب کمک‌آموزشی تقویتی و سنجش هوش کودکان پیش‌دبستانی', village: 'شهرک سوم و دربند', villageId: ['shahrak-sevvom', 'darband-gharbi'], sector: 'edu', targetGroup: 'schools', urgency: 'med', target: '۱۲۰ نوآموز', perCapitaBase: 1000000, baseCost: 120000000 },
+        { id: 10, title: 'اردوی جهادی کلینیک سیار دندانپزشکی و بهداشت دهان', village: 'روستاهای پل نو، عریض و دربند', villageId: ['pol-now', 'ariz', 'darband-gharbi'], sector: 'dental', targetGroup: 'schools', urgency: 'high', target: '۳۵۰ دانش‌آموز', perCapitaBase: 4800000, baseCost: 95000000 },
+        { id: 11, title: 'توزیع پاجوش مرغوب نخل برحی و وام اشتغال خرد زنان', village: 'جدیده، عریض و سوره', villageId: ['jadideh', 'ariz', 'soureh'], sector: 'livelihood', targetGroup: 'orphans', urgency: 'med', target: '۱۵ کارگاه خانگی', perCapitaBase: 31700000, baseCost: 230000000 },
+        { id: 12, title: 'ایزوگام و بهسازی سقف منازل آسیب‌پذیر ایتام', village: 'شهرک سوم، مصلاوی و عریض', villageId: ['shahrak-sevvom', 'maslavi-1', 'ariz'], sector: 'shelter', targetGroup: 'orphans', urgency: 'veto', target: '۲۲ واحد مسکونی', perCapitaBase: 30000000, baseCost: 180000000 }
     ];
 
     function toFaMoney(num) {
@@ -42754,46 +42898,88 @@ summary:focus-visible {
         const transitUnitCost = Math.round(8000000 * factor);  // ~11.4M Toman
         const kitUnitCost = Math.round(3500000 * factor);      // ~4.97M Toman
         const washUnitCost = Math.round(66666667 * factor);    // ~94.6M Toman
+        const coolingUnitCost = Math.round(25000000 * factor); // ~35.5M Toman
+        const smartUnitCost = Math.round(50000000 * factor);   // ~71.0M Toman
         const healthUnitCost = Math.round(20000000 * factor);  // ~28.4M Toman
+        const dentalUnitCost = Math.round(4800000 * factor);   // ~6.8M Toman
+        const livelihoodUnitCost = Math.round(31700000 * factor); // ~45.0M Toman
+        const housingUnitCost = Math.round(30000000 * factor); // ~42.6M Toman
 
-        // Total budget needed to solve all 9 bottlenecks in 1405
+        // Total budget needed for all bottlenecks in 1405
         const totalBaseNeeded = realBottlenecks.reduce((sum, b) => sum + b.baseCost, 0);
-        const total1405Needed = Math.round(totalBaseNeeded * factor); // ~2.2B Toman
+        const total1405Needed = Math.round(totalBaseNeeded * factor);
 
         const coveragePercent = Math.min(100, Math.max(0, (simBudget / total1405Needed) * 100));
 
-        // Dynamic allocations based on chosen scenario / package
-        let dropouts = 0;
-        let transit = 0;
-        let kits = 0;
-        let wash = 0;
-        let health = 0;
+        // Dynamic allocations based on chosen sector focus and scenario package
+        let dropouts = 0, transit = 0, kits = 0, wash = 0, cooling = 0, smart = 0, health = 0, dental = 0, livelihood = 0, housing = 0;
 
-        if (simPackage === 'rescue') {
-            // Allocate 60% to dropouts, 25% to transit, 15% to kits
-            dropouts = Math.floor((simBudget * 0.60) / dropoutUnitCost);
-            transit = Math.floor((simBudget * 0.25) / transitUnitCost);
-            kits = Math.floor((simBudget * 0.15) / kitUnitCost);
-            wash = Math.floor((simBudget * 0.00) / washUnitCost);
-            health = Math.floor(dropouts * 0.1);
-        } else if (simPackage === 'infra') {
-            // Allocate 50% to wash & classrooms, 25% to transit, 15% to dropouts, 10% to kits
-            wash = Math.floor((simBudget * 0.50) / washUnitCost);
-            transit = Math.floor((simBudget * 0.25) / transitUnitCost);
-            dropouts = Math.floor((simBudget * 0.15) / dropoutUnitCost);
-            kits = Math.floor((simBudget * 0.10) / kitUnitCost);
-            health = Math.floor(dropouts * 0.15);
+        if (simActiveSector === 'wash') {
+            wash = Math.floor(simBudget / washUnitCost);
+            cooling = Math.floor((simBudget * 0.15) / coolingUnitCost);
+            dropouts = Math.floor((simBudget * 0.05) / dropoutUnitCost);
+        } else if (simActiveSector === 'cool') {
+            cooling = Math.floor(simBudget / coolingUnitCost);
+            wash = Math.floor((simBudget * 0.15) / washUnitCost);
+        } else if (simActiveSector === 'edu') {
+            dropouts = Math.floor((simBudget * 0.45) / dropoutUnitCost);
+            kits = Math.floor((simBudget * 0.30) / kitUnitCost);
+            smart = Math.floor((simBudget * 0.25) / smartUnitCost);
+        } else if (simActiveSector === 'transit') {
+            transit = Math.floor((simBudget * 0.80) / transitUnitCost);
+            dropouts = Math.floor((simBudget * 0.20) / dropoutUnitCost);
+        } else if (simActiveSector === 'health') {
+            health = Math.floor((simBudget * 0.60) / healthUnitCost);
+            dental = Math.floor((simBudget * 0.40) / dentalUnitCost);
+        } else if (simActiveSector === 'dental') {
+            dental = Math.floor(simBudget / dentalUnitCost);
+            health = Math.floor((simBudget * 0.15) / healthUnitCost);
+        } else if (simActiveSector === 'livelihood') {
+            livelihood = Math.floor(simBudget / livelihoodUnitCost);
+            housing = Math.floor((simBudget * 0.20) / housingUnitCost);
+        } else if (simActiveSector === 'shelter') {
+            housing = Math.floor(simBudget / housingUnitCost);
+            cooling = Math.floor((simBudget * 0.20) / coolingUnitCost);
+        } else if (simActiveSector === 'smart') {
+            smart = Math.floor(simBudget / smartUnitCost);
+            kits = Math.floor((simBudget * 0.25) / kitUnitCost);
         } else {
-            // 'balanced' (Default Recommended)
-            // Balanced distribution across immediate needs
-            dropouts = Math.floor((simBudget * 0.38) / dropoutUnitCost);
-            transit = Math.floor((simBudget * 0.28) / transitUnitCost);
-            kits = Math.floor((simBudget * 0.20) / kitUnitCost);
-            wash = Math.floor((simBudget * 0.08) / washUnitCost);
-            health = Math.floor((simBudget * 0.06) / healthUnitCost);
+            // 'all' sectors: Distribute across all 10 based on package preset
+            if (simPackage === 'rescue') {
+                dropouts = Math.floor((simBudget * 0.35) / dropoutUnitCost);
+                transit = Math.floor((simBudget * 0.20) / transitUnitCost);
+                kits = Math.floor((simBudget * 0.12) / kitUnitCost);
+                health = Math.floor((simBudget * 0.08) / healthUnitCost);
+                dental = Math.floor((simBudget * 0.05) / dentalUnitCost);
+                wash = Math.floor((simBudget * 0.06) / washUnitCost);
+                cooling = Math.floor((simBudget * 0.06) / coolingUnitCost);
+                smart = Math.floor((simBudget * 0.03) / smartUnitCost);
+                livelihood = Math.floor((simBudget * 0.03) / livelihoodUnitCost);
+                housing = Math.floor((simBudget * 0.02) / housingUnitCost);
+            } else if (simPackage === 'infra') {
+                wash = Math.floor((simBudget * 0.26) / washUnitCost);
+                cooling = Math.floor((simBudget * 0.22) / coolingUnitCost);
+                housing = Math.floor((simBudget * 0.16) / housingUnitCost);
+                smart = Math.floor((simBudget * 0.12) / smartUnitCost);
+                transit = Math.floor((simBudget * 0.10) / transitUnitCost);
+                dropouts = Math.floor((simBudget * 0.07) / dropoutUnitCost);
+                kits = Math.floor((simBudget * 0.07) / kitUnitCost);
+            } else {
+                // 'balanced' (Default Recommended)
+                dropouts = Math.floor((simBudget * 0.22) / dropoutUnitCost);
+                transit = Math.floor((simBudget * 0.16) / transitUnitCost);
+                kits = Math.floor((simBudget * 0.12) / kitUnitCost);
+                wash = Math.floor((simBudget * 0.12) / washUnitCost);
+                cooling = Math.floor((simBudget * 0.10) / coolingUnitCost);
+                smart = Math.floor((simBudget * 0.07) / smartUnitCost);
+                health = Math.floor((simBudget * 0.06) / healthUnitCost);
+                dental = Math.floor((simBudget * 0.05) / dentalUnitCost);
+                livelihood = Math.floor((simBudget * 0.05) / livelihoodUnitCost);
+                housing = Math.floor((simBudget * 0.05) / housingUnitCost);
+            }
         }
 
-        // DOM elements update
+        // Update DOM metrics
         const elDropouts = document.getElementById('simMetricDropouts');
         if (elDropouts) elDropouts.textContent = toFaMoney(dropouts) + ' نفر';
 
@@ -42806,8 +42992,23 @@ summary:focus-visible {
         const elWash = document.getElementById('simMetricWash');
         if (elWash) elWash.textContent = toFaMoney(wash) + ' مدرسه';
 
+        const elCooling = document.getElementById('simMetricCooling');
+        if (elCooling) elCooling.textContent = toFaMoney(cooling) + ' کلاس';
+
+        const elSmart = document.getElementById('simMetricSmart');
+        if (elSmart) elSmart.textContent = toFaMoney(smart) + ' کارگاه';
+
         const elHealth = document.getElementById('simMetricHealth');
         if (elHealth) elHealth.textContent = toFaMoney(health) + ' بیمار خاص';
+
+        const elDental = document.getElementById('simMetricDental');
+        if (elDental) elDental.textContent = toFaMoney(dental) + ' دانش‌آموز';
+
+        const elLivelihood = document.getElementById('simMetricLivelihood');
+        if (elLivelihood) elLivelihood.textContent = toFaMoney(livelihood) + ' طرح';
+
+        const elHousing = document.getElementById('simMetricHousing');
+        if (elHousing) elHousing.textContent = toFaMoney(housing) + ' مسکن';
 
         const elCoverageBadge = document.getElementById('simCoveragePercentBadge');
         if (elCoverageBadge) elCoverageBadge.textContent = coveragePercent.toFixed(1).replace('.', '/') + '٪';
@@ -42821,13 +43022,70 @@ summary:focus-visible {
             elWords.textContent = 'معادل: ' + toFaMoney(simBudget) + ' تومان (' + numToWordsFa(simBudget) + ' تومان)';
         }
 
-        // Update bottlenecks table with dynamic funding status
+        // Filter Metric Cards visibility based on Active Sector & Target & Urgency
+        const cards = document.querySelectorAll('#simMetricsCardsGrid .sim-metric-card');
+        let visibleCardCount = 0;
+        cards.forEach(card => {
+            const cSector = card.getAttribute('data-sector');
+            const cTarget = card.getAttribute('data-target');
+            const cUrgency = card.getAttribute('data-urgency');
+
+            let match = true;
+            if (simActiveSector !== 'all' && cSector !== simActiveSector) match = false;
+            if (simActiveTarget !== 'all' && cTarget !== simActiveTarget) match = false;
+            if (simActiveUrgency !== 'all' && cUrgency !== simActiveUrgency) match = false;
+
+            if (match) {
+                card.style.display = 'flex';
+                card.style.opacity = '1';
+                visibleCardCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        // Update summary text
+        const elSummary = document.getElementById('simActiveFilterSummary');
+        if (elSummary) {
+            const vName = (document.getElementById('simVillageSelect')?.selectedOptions[0]?.textContent || 'کل منطقه').replace('🌐 ', '');
+            elSummary.textContent = `محاسبه بر مبنای تورم روز ۱۴۰۵ · تمرکز بر: ${vName} · نمایش ${toFaMoney(visibleCardCount)} سنجه عملیاتی`;
+        }
+
+        // Update Village-specific descriptions if village selected
+        if (simActiveVillage !== 'all') {
+            const d1 = document.getElementById('simMetricDropoutsDesc');
+            if (d1) d1.textContent = 'بورسیه، کتب و ثبت‌نام دانش‌آموزان بازمانده در محدوده ' + simActiveVillage;
+            const d2 = document.getElementById('simMetricTransitDesc');
+            if (d2) d2.textContent = 'سرویس شاتل ون ایاب‌وذهاب دانش‌آموزان به مدارس معین ' + simActiveVillage;
+        }
+
+        // Update Bottlenecks Table with Filters
         const tbody = document.getElementById('simBottlenecksTableBody');
         if (tbody) {
             let runningSpent = 0;
             let rowsHtml = '';
 
-            realBottlenecks.forEach((b, idx) => {
+            const filteredBottlenecks = realBottlenecks.filter(b => {
+                if (simActiveVillage !== 'all') {
+                    if (!b.villageId.includes('all') && !b.villageId.includes(simActiveVillage)) return false;
+                }
+                if (simActiveSector !== 'all' && b.sector !== simActiveSector) return false;
+                if (simActiveUrgency !== 'all' && b.urgency !== simActiveUrgency) return false;
+                if (simActiveTarget !== 'all' && b.targetGroup !== simActiveTarget) return false;
+                return true;
+            });
+
+            const elTableTitle = document.getElementById('simBottlenecksTableTitle');
+            if (elTableTitle) {
+                elTableTitle.textContent = 'فهرست ' + toFaMoney(filteredBottlenecks.length) + ' گلوگاه اولویت‌دار منطقه شلمچه و وضعیت تأمین اعتبار با این بودجه:';
+            }
+
+            if (filteredBottlenecks.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:20px; color:#64748b; font-weight:800;">موردی با این فیلترها یافت نشد. می‌توانید با دکمه بازنشانی، همه موارد را مشاهده فرمایید.</td></tr>';
+                return;
+            }
+
+            filteredBottlenecks.forEach((b, idx) => {
                 const bCost1405 = Math.round(b.baseCost * factor);
                 const isEven = idx % 2 === 1;
                 const rowBg = isEven ? '#faf7f2' : '#ffffff';
@@ -42861,7 +43119,7 @@ summary:focus-visible {
         }
     }
 
-        function setupBudgetSimulatorEvents() {
+    function setupBudgetSimulatorEvents() {
         const inputEl = document.getElementById('simBudgetInput');
         const sliderEl = document.getElementById('simBudgetSlider');
 
@@ -42941,13 +43199,121 @@ summary:focus-visible {
                 });
                 this.classList.add('active');
                 this.style.background = '#f0fdf4';
-                this.style.border = '2px solid #059669';
-                this.style.boxShadow = '0 4px 12px rgba(5,150,105,0.08)';
+                this.style.border = '1.5px solid #10b981';
+                this.style.boxShadow = '0 4px 12px rgba(16,185,129,0.1)';
 
-                simPackage = this.getAttribute('data-package') || 'balanced';
+                const pkg = this.getAttribute('data-package');
+                if (pkg) {
+                    simPackage = pkg;
+                    updateBudgetSimulator();
+                }
+            });
+        });
+
+        // 1. Village Select Filter Event
+        const vSelect = document.getElementById('simVillageSelect');
+        if (vSelect) {
+            vSelect.addEventListener('change', function() {
+                simActiveVillage = this.value;
+                updateBudgetSimulator();
+            });
+        }
+
+        // 2. Sector Filter Chips Event
+        document.querySelectorAll('.sim-sector-chip').forEach(chip => {
+            chip.addEventListener('click', function() {
+                document.querySelectorAll('.sim-sector-chip').forEach(c => {
+                    c.classList.remove('active');
+                    c.style.background = '#ffffff';
+                    c.style.color = '#334155';
+                    c.style.border = '1px solid #cbd5e1';
+                });
+                this.classList.add('active');
+                this.style.background = '#0f766e';
+                this.style.color = '#ffffff';
+                this.style.border = '1px solid #0f766e';
+
+                simActiveSector = this.getAttribute('data-sector') || 'all';
                 updateBudgetSimulator();
             });
         });
+
+        // 3. Urgency Filter Chips Event
+        document.querySelectorAll('.sim-urgency-chip').forEach(chip => {
+            chip.addEventListener('click', function() {
+                document.querySelectorAll('.sim-urgency-chip').forEach(c => {
+                    c.classList.remove('active');
+                    c.style.background = '#ffffff';
+                    c.style.color = '#475569';
+                    c.style.border = '1px solid #cbd5e1';
+                });
+                this.classList.add('active');
+                this.style.background = '#0f766e';
+                this.style.color = '#ffffff';
+                this.style.border = '1px solid #0f766e';
+
+                simActiveUrgency = this.getAttribute('data-urgency') || 'all';
+                updateBudgetSimulator();
+            });
+        });
+
+        // 4. Target Group Filter Chips Event
+        document.querySelectorAll('.sim-target-chip').forEach(chip => {
+            chip.addEventListener('click', function() {
+                document.querySelectorAll('.sim-target-chip').forEach(c => {
+                    c.classList.remove('active');
+                    c.style.background = '#ffffff';
+                    c.style.color = '#334155';
+                    c.style.border = '1px solid #cbd5e1';
+                });
+                this.classList.add('active');
+                this.style.background = '#0f766e';
+                this.style.color = '#ffffff';
+                this.style.border = '1px solid #0f766e';
+
+                simActiveTarget = this.getAttribute('data-target') || 'all';
+                updateBudgetSimulator();
+            });
+        });
+
+        // 5. Reset Filters Button Event
+        const resetBtn = document.getElementById('simResetFiltersBtn');
+        if (resetBtn) {
+            resetBtn.addEventListener('click', function() {
+                simActiveVillage = 'all';
+                simActiveSector = 'all';
+                simActiveUrgency = 'all';
+                simActiveTarget = 'all';
+
+                if (vSelect) vSelect.value = 'all';
+
+                document.querySelectorAll('.sim-sector-chip').forEach(c => {
+                    const isAll = c.getAttribute('data-sector') === 'all';
+                    c.classList.toggle('active', isAll);
+                    c.style.background = isAll ? '#0f766e' : '#ffffff';
+                    c.style.color = isAll ? '#ffffff' : '#334155';
+                    c.style.border = isAll ? '1px solid #0f766e' : '1px solid #cbd5e1';
+                });
+
+                document.querySelectorAll('.sim-urgency-chip').forEach(c => {
+                    const isAll = c.getAttribute('data-urgency') === 'all';
+                    c.classList.toggle('active', isAll);
+                    c.style.background = isAll ? '#0f766e' : '#ffffff';
+                    c.style.color = isAll ? '#ffffff' : '#475569';
+                    c.style.border = isAll ? '1px solid #0f766e' : '1px solid #cbd5e1';
+                });
+
+                document.querySelectorAll('.sim-target-chip').forEach(c => {
+                    const isAll = c.getAttribute('data-target') === 'all';
+                    c.classList.toggle('active', isAll);
+                    c.style.background = isAll ? '#0f766e' : '#ffffff';
+                    c.style.color = isAll ? '#ffffff' : '#334155';
+                    c.style.border = isAll ? '1px solid #0f766e' : '1px solid #cbd5e1';
+                });
+
+                updateBudgetSimulator();
+            });
+        }
 
         updateBudgetSimulator();
     }
