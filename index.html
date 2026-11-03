@@ -13727,6 +13727,26 @@ body.village-leaving .map-scene {
 </style>
 
 
+<style>
+/* Universal Crisp Close Button Rotation & Scale Animation */
+.close,
+dialog .close,
+.modal-close-btn,
+.site-guide-close-btn,
+.school-dossier-close-btn,
+.close-btn {
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, color 0.2s ease !important;
+    cursor: pointer !important;
+}
+.close:hover,
+dialog .close:hover,
+.modal-close-btn:hover,
+.site-guide-close-btn:hover,
+.school-dossier-close-btn:hover,
+.close-btn:hover {
+    transform: rotate(90deg) scale(1.15) !important;
+}
+</style>
 </head>
 <body><main class="experience ready" id="experience">
 
@@ -25335,7 +25355,7 @@ addEventListener('resize', layout); layout();
                     projects: 'خدمات درمانی، بهسازی معابر، توانبخشی کودکان'
                 },
                 'sarhaniyeh-olya': {
-                    name: 'سرحانیه ۲ (اولیا)',
+                    name: 'سرحانیه علیا',
                     dehestan: 'حومه غربی',
                     pop: '۳,۵۸۰ نفر',
                     families: '۱,۰۰۹ خانوار',
@@ -32533,7 +32553,7 @@ function runDssAlgorithm() {
                 {
                     id: 'p4',
                     title: 'بهسازی و نوسازی مسکن محرومین و ایتام شدید',
-                    village: 'سرحانیه سفلی و علیا',
+                    village: 'سرحانیه سفلی و سرحانیه علیا',
                     status: 'in_progress',
                     statusText: 'در حال اجرا (۴۵٪)',
                     physicalProgress: 45,
@@ -33481,6 +33501,7 @@ function runDssAlgorithm() {
         // =========================================================================
 
         const targetPhotoVillages = [
+            { id: 'shahrak-sadat', name: 'شهرک سادات', defaultImg: './shahrak-sadat_map_web.webp', fallback: './shahrak-sadat_map.webp', desc: 'حومه غربی · همجوار شلمچه' },
             { id: 'pol-now', name: 'پل نو', defaultImg: './image_0.webp', fallback: './pol_now_map.webp', desc: 'محور شلمچه · حومه غربی' },
             { id: 'ariz', name: 'عریض', defaultImg: './ariz_map.webp', fallback: './ariz_map.webp', desc: 'جاده شلمچه · بخش مرکزی' },
             { id: 'jadideh', name: 'جدیده', defaultImg: './jadideh_map.webp', fallback: './jadideh_map.webp', desc: 'حومه شرقی · نخلستان‌ها' },
@@ -33492,6 +33513,26 @@ function runDssAlgorithm() {
         ];
 
         var villageMapRegistry = window.villageMapRegistry = {
+            'shahrak-sadat': {
+                img: './shahrak-sadat_map_web.webp',
+                fallback: './shahrak-sadat_map.webp',
+                badge: 'پایش هوایی شلمچه · نقشه تفصیلی شهرک سادات',
+                kicker: '🛰️ نقشه هوایی ماهواره‌ای تفصیلی · شهرک سادات',
+                name: 'شهرک سادات',
+                sub: 'حومه غربی · محور مواصلاتی شلمچه',
+                chipPop: '👥 ۲,۵۳۵ نفر',
+                chipFam: '🏡 ۴۸۰ خانوار',
+                chipSchool: '🎒 مدرسه نوساز آل یاسین / مجتمع افسوسی',
+                statsDesc: 'جمعیت: ۲,۵۳۵ نفر · ۴۸۰ خانوار · ۶۰ فرزند و یتیم · بالاترین سرانه حمایتی',
+                statsHtml: '<div class="v-metric-row"><span class="m-label">👥 جمعیت کل:</span><span class="m-val highlight">۲,۵۳۵ نفر (۴۸۰ خانوار)</span></div>',
+                servDesc: 'مدرسه آل‌یاسین، حسینیه سادات، دهیاری و مسکن نوساز',
+                servHtml: '<div class="v-metric-row"><span class="m-label">🏥 خدمات:</span><span class="m-val">تجهیز لوازم منزل، جهیزیه و طرح حامی</span></div>',
+                pois: [
+                    { top: '45.0%', left: '55.0%', label: 'حسینیه سادات', icon: '🕌', type: 'culture', color: 'red' },
+                    { top: '50.0%', left: '42.0%', label: 'مدرسه آل یاسین', icon: '🏫', type: 'school', color: 'orange' },
+                    { top: '58.0%', left: '60.0%', label: 'دهیاری شهرک سادات', icon: '🏛️', type: 'gov', color: 'purple' }
+                ]
+            },
             'pol-now': {
                 img: './pol-now_map_web.webp',
                 fallback: './pol_now_map.webp',
@@ -35412,7 +35453,6 @@ document.addEventListener('click', (e) => {
 
             // ۲. سرحانیه سفلی
             { id: 'sch-shalamcheh-girls', schoolKey: 'shalamcheh-girls', name: 'دبستان شهدای شلمچه', villageId: 'sarhaniyeh-sofla', villageName: 'سرحانیه سفلی', x: 0.805, y: 0.615, desc: '۱۶۰ دانش‌آموز دخترانه · مدیر: خانم زبیدی · مرکز آموزش ابتدایی دختران ساحلی', badge: 'ابتدایی دخترانه' },
-            { id: 'sch-motiri', schoolKey: 'motiri', name: 'دبستان شهید مطیری نژاد', villageId: 'sarhaniyeh-sofla', villageName: 'سرحانیه سفلی', x: 0.800, y: 0.608, desc: '۱۷۵ دانش‌آموز دخترانه · مدیر: خانم بحرانی · 🚨 نیازمند تعمیرات اساسی کالبدی', badge: '🚨 بازسازی کالبدی' },
 
             // ۳. پل نو
             { id: 'sch-hor-e-riahee', schoolKey: 'hor-e-riahee', name: 'دبستان حر بن ریاحی', villageId: 'pol-now', villageName: 'پل نو', x: 0.638, y: 0.470, desc: '۹۰ دانش‌آموز (۴۰ دختر، ۵۰ پسر) · ۷ کلاس درس · مدیر: آقای شرجی · ۳۶ خانواده کم‌برخوردار · کانون آموزش روستای پل نو', badge: 'ابتدایی پسرانه' },
@@ -35420,6 +35460,7 @@ document.addEventListener('click', (e) => {
             { id: 'sch-razmandegan', schoolKey: 'razmandegan', name: 'دبستان رزمندگان', villageId: 'pol-now', villageName: 'پل نو', x: 0.652, y: 0.485, desc: '۱۸۵ دانش‌آموز پسرانه · مدیر: آقای غیورپور · مجهز به آزمایشگاه پایه', badge: 'ابتدایی پسرانه' },
 
             // ۴. سوره
+            { id: 'sch-motiri', schoolKey: 'motiri', name: 'دبستان شهید کاظم مطیری‌زاده', villageId: 'soureh', villageName: 'سوره', x: 0.692, y: 0.760, desc: '۱۱۴ دانش‌آموز دخترانه · ۶ کلاس · ۳۱ یتیم · واقع در روستای سوره درب بندر فعیلیه · مدیر: خانم فتاحی‌پور / هاشمی', badge: 'ابتدایی سوره' },
             { id: 'sch-komeil', schoolKey: 'komeil', name: 'مدرسه کمیل (متوسطه)', villageId: 'soureh', villageName: 'سوره', x: 0.690, y: 0.755, desc: '۱۱۵ دانش‌آموز متوسطه اول پسرانه · مدیر: آقای عاشوری · پوشش تحصیلی نوجوانان منطقه', badge: 'متوسطه اول' },
             { id: 'sch-rahiyan-noor', schoolKey: 'rahiyan-noor', name: 'مدرسه راهیان نور', villageId: 'soureh', villageName: 'سوره', x: 0.698, y: 0.765, desc: '۱۶۸ دانش‌آموز دخترانه · مدیر: خانم فتاحی‌پور · مرکز آموزش دخترانه نخلستان‌های سوره', badge: 'ابتدایی دخترانه' },
 
@@ -38845,6 +38886,12 @@ water: [
                 const allBtn = document.querySelector('#servCatFilterChips .serv-cat-chip[data-cat="all"]');
                 if (allBtn) allBtn.click();
             }
+            setTimeout(() => {
+                const tbl = document.getElementById('servVillageTable') || document.querySelector('.serv-table-wrapper') || document.getElementById('servCatFilterChips');
+                if (tbl) {
+                    tbl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 60);
         };
 
 
@@ -39010,7 +39057,18 @@ water: [
 
                 count++;
 
-                const servicesPills = hh.services.map(s => {
+                // Deduplicate services for this household so identical tags do not repeat
+                const dedupServices = [];
+                const seenPillKeys = new Set();
+                (hh.services || []).forEach(s => {
+                    const pillKey = (s.serviceCategory || '') + '_' + (s.title || '') + '_' + (s.date || '');
+                    if (!seenPillKeys.has(pillKey)) {
+                        seenPillKeys.add(pillKey);
+                        dedupServices.push(s);
+                    }
+                });
+
+                const servicesPills = dedupServices.map(s => {
                     let color = '#b45309';
                     let bg = '#fef3c7';
                     let border = '#fde68a';
@@ -44116,7 +44174,10 @@ summary:focus-visible {
                         <span style="font-size:18px;">⚠️</span>
                         <strong style="font-size:14px; color:#9a3412;">گلوگاه‌های کالبدی و نیازمندی‌های فوری ممیزی پلاک ۱ خرمشهر و شلمچه:</strong>
                     </div>
-                    <span id="schoolModalBudgetEst" style="background:#ffedd5; color:#c2410c; border:1px solid #fed7aa; font-size:12px; font-weight:900; padding:4px 12px; border-radius:8px;">برآورد رفع گلوگاه: ۱۸۵ م.ت</span>
+                    <div style="display:inline-flex; align-items:center; gap:6px;">
+                        <span id="schoolModalBudgetEst" style="background:#ffedd5; color:#c2410c; border:1px solid #fed7aa; font-size:12px; font-weight:900; padding:4px 12px; border-radius:8px;">برآورد رفع گلوگاه: ۱۸۵ م.ت</span>
+                        <button type="button" onclick="window.openSiteGuideModal('school-budget')" style="background:#ffedd5; border:1.5px solid #fdba74; color:#c2410c; width:26px; height:26px; border-radius:50%; font-size:13px; font-weight:900; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s;" title="راهنمای نحوه محاسبه برآورد کالبدی و رفع گلوگاه">❓</button>
+                    </div>
                 </div>
                 <ul id="schoolModalNeedsList" style="margin:0; padding-right:20px; font-size:12px; color:#7c2d12; line-height:2.0;">
                     <!-- Needs list -->
@@ -44130,7 +44191,10 @@ summary:focus-visible {
                     <div style="display:flex; align-items:center; gap:8px;">
                         <span style="font-size:20px;">🏗️</span>
                         <div>
-                            <span style="font-size:13px; font-weight:900; color:#9a3412;" id="schoolModalPdiTitle">شاخص محرومیت کالبدی ممیزی (PDI): ۹۲٪ · اولویت ۱ مداخله کالبدی</span>
+                            <div style="display:flex; align-items:center; gap:6px;">
+                                <span style="font-size:13px; font-weight:900; color:#9a3412;" id="schoolModalPdiTitle">شاخص محرومیت کالبدی ممیزی (PDI): ۹۲٪ · اولویت ۱ مداخله کالبدی</span>
+                                <button type="button" onclick="window.openSiteGuideModal('pdi')" style="background:#fee2e2; border:1.5px solid #fca5a5; color:#b91c1c; width:22px; height:22px; border-radius:50%; font-size:11px; font-weight:900; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; transition:all 0.2s;" title="راهنمای شاخص محرومیت کالبدی PDI">❓</button>
+                            </div>
                             <div style="font-size:11px; color:#c2410c; margin-top:2px;" id="schoolModalPdiFactors">عوامل بحرانی: سرمایش نامناسب · سقف و ایزوگام · کسری میز و صندلی</div>
                         </div>
                     </div>
@@ -44218,7 +44282,10 @@ summary:focus-visible {
                 <div style="width:50px; height:50px; border-radius:15px; background:rgba(20,184,166,0.2); border:1.5px solid #2dd4bf; display:flex; align-items:center; justify-content:center; font-size:26px; box-shadow:0 4px 15px rgba(13,148,136,0.3);">🩺</div>
                 <div>
                     <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-                        <h3 style="margin:0; font-size:18px; font-weight:900; color:#ccfbf1;">گزارش تحلیلی زیج حیاتی و پایش سلامت روستای پل نو</h3>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <h3 style="margin:0; font-size:18px; font-weight:900; color:#ccfbf1;">گزارش تحلیلی زیج حیاتی و پایش سلامت روستای پل نو</h3>
+                            <button type="button" onclick="window.openSiteGuideModal('vital-horoscope')" style="background:rgba(20,184,166,0.3); border:1px solid #2dd4bf; color:#ccfbf1; width:24px; height:24px; border-radius:50%; font-size:12px; font-weight:900; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s;" title="راهنمای متدولوژی زیج حیاتی">❓</button>
+                        </div>
                         <span style="background:#0d9488; color:#ffffff; font-size:11px; font-weight:800; padding:2px 10px; border-radius:6px; border:1px solid #2dd4bf;">زیج حیاتی مستند میدانی</span>
                         <span style="background:#ecfdf5; color:#065f46; font-size:11px; font-weight:900; padding:2px 10px; border-radius:6px;">پوشش ۱۰۰٪ زایمان بیمارستانی</span>
                     </div>
@@ -44730,22 +44797,22 @@ summary:focus-visible {
         },
         'motiri': {
             id: 'motiri',
-            name: 'دبستان شهید مطیری نژاد',
+            name: 'دبستان شهید کاظم مطیری‌زاده',
             porslineCode: 'nqZRF',
             porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/nqZRF?review_token=bda3f1c4-633b-4c60-93d7-6826a1dd7851',
-            fullName: 'دبستان شهید مطیری نژاد (ابتدایی دخترانه)',
-            gender: 'دخترانه',
+            fullName: 'دبستان شهید کاظم مطیری‌زاده (ابتدایی دو شیفت)',
+            gender: 'دخترانه / پسرانه',
             level: 'ابتدایی',
-            villageId: 'sarhaniyeh-sofla',
-            villageName: 'سرحانیه سفلی',
-            principal: 'خانم بحرانی',
-            phone: '۰۹۳۵*** - ثبت در دبیرخانه ممیزی',
-            studentsCount: 175,
+            villageId: 'soureh',
+            villageName: 'سوره',
+            principal: 'خانم فتاحی‌پور (دخترانه) / خانم هاشمی (پسرانه)',
+            phone: '۰۹۱۶۳۳۲۸۶۳۲ - ۰۹۰۳۳۵۹۲۵۴۶',
+            studentsCount: 114,
             classesCount: 6,
-            condition: '🚨 نیازمند بازسازی کامل کالبدی',
+            condition: '🚨 نیازمند بازسازی کامل کالبدی و سرویس‌های بهداشتی',
             conditionSeverity: 'critical',
             budgetEst: '۱۶۰,۰۰۰,۰۰۰ تومان',
-            address: 'خرمشهر، روستای سرحانیه سفلی، جنب اروندرود',
+            address: 'خرمشهر، روستای سوره، درب بندر فعیلیه',
             needs: [
                 'تخریب و بازسازی کامل سرویس‌های بهداشتی',
                 'ایزوگام و آب‌بندی سقف کلاسی',
@@ -45248,4 +45315,189 @@ window.syncPorslineSchoolLive = function(e) {
     }
 })();
 </script>
+
+
+<!-- ==================== MODAL: SITE UNIVERSAL GUIDE & METHODOLOGY ==================== -->
+<div id="siteGuideModal" class="site-guide-modal-overlay" style="display:none; position:fixed; inset:0; z-index:999999; background:rgba(6,22,20,0.85); backdrop-filter:blur(8px); align-items:center; justify-content:center; padding:16px; opacity:0; transition:opacity 0.25s ease;">
+    <div class="site-guide-modal-dialog" style="background:#ffffff; width:100%; max-width:850px; max-height:90vh; border-radius:20px; border:1.5px solid #c6a15b; box-shadow:0 25px 65px rgba(0,0,0,0.45); display:flex; flex-direction:column; overflow:hidden; font-family:YekanBakh,sans-serif; direction:rtl; transform:scale(0.96); transition:transform 0.25s ease;">
+        <!-- Header -->
+        <div style="background:linear-gradient(135deg,#132a26,#1b3b35); padding:18px 24px; color:#ffffff; display:flex; align-items:center; justify-content:space-between; border-bottom:1.5px solid #c6a15b;">
+            <div style="display:flex; align-items:center; gap:12px;">
+                <div style="width:46px; height:46px; border-radius:14px; background:rgba(198,161,91,0.2); border:1px solid #c6a15b; display:flex; align-items:center; justify-content:center; font-size:24px;">💡</div>
+                <div>
+                    <h3 id="guideModalTitle" style="margin:0; font-size:17.5px; font-weight:900; color:#edd395;">راهنمای متدولوژی و نحوه محاسبات سامانه</h3>
+                    <div style="font-size:11.5px; color:#cbd5e1; margin-top:4px;" id="guideModalSubtitle">راهنمای شفاف فرمول‌ها، ضرایب کالبدی و تحلیل‌های میدانی اطلس پلاک ۱</div>
+                </div>
+            </div>
+            <button type="button" onclick="window.closeSiteGuideModal()" style="background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:#edd395; width:36px; height:36px; border-radius:10px; cursor:pointer; font-size:18px; font-weight:700; display:flex; align-items:center; justify-content:center; transition:all 0.2s ease;" title="بستن (ESC)">✕</button>
+        </div>
+
+        <!-- Guide Category Tabs -->
+        <div style="background:#f8fafc; border-bottom:1px solid #e2e8f0; padding:10px 18px; display:flex; gap:8px; overflow-x:auto;" id="guideCategoryTabs">
+            <button type="button" class="guide-tab-btn active" id="tab-school-budget" onclick="window.switchGuideTopic('school-budget')" style="background:#0f766e; color:#ffffff; border:none; padding:7px 14px; border-radius:8px; font-size:12px; font-weight:800; cursor:pointer; font-family:inherit;">🏫 برآورد نیاز کالبدی مدارس</button>
+            <button type="button" class="guide-tab-btn" id="tab-pdi" onclick="window.switchGuideTopic('pdi')" style="background:#e2e8f0; color:#334155; border:none; padding:7px 14px; border-radius:8px; font-size:12px; font-weight:800; cursor:pointer; font-family:inherit;">🏗️ شاخص محرومیت (PDI)</button>
+            <button type="button" class="guide-tab-btn" id="tab-crisis-simulator" onclick="window.switchGuideTopic('crisis-simulator')" style="background:#e2e8f0; color:#334155; border:none; padding:7px 14px; border-radius:8px; font-size:12px; font-weight:800; cursor:pointer; font-family:inherit;">🧮 شبیه‌ساز بودجه بحران و تورم</button>
+            <button type="button" class="guide-tab-btn" id="tab-vital-horoscope" onclick="window.switchGuideTopic('vital-horoscope')" style="background:#e2e8f0; color:#334155; border:none; padding:7px 14px; border-radius:8px; font-size:12px; font-weight:800; cursor:pointer; font-family:inherit;">🩺 زیج حیاتی و سلامت</button>
+        </div>
+
+        <!-- Body -->
+        <div id="guideModalBodyContent" style="padding:22px 26px; overflow-y:auto; flex:1; font-size:13px; line-height:2.0; color:#334155;">
+            <!-- Dynamic topic content injected here -->
+        </div>
+
+        <!-- Footer -->
+        <div style="background:#f8fafc; padding:12px 24px; border-top:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:11.5px; color:#64748b;">جمعیت امام‌رضایی‌ها · سامانه رصد و پایش پلاک ۱ ایران</span>
+            <button type="button" onclick="window.closeSiteGuideModal()" style="background:#132a26; color:#ffffff; border:none; padding:7px 20px; border-radius:8px; font-size:12px; font-weight:800; cursor:pointer; font-family:inherit;">متوجه شدم</button>
+        </div>
+    </div>
+</div>
+
+<script id="site-guide-controller-js">
+(function() {
+    const guideTopics = {
+        'school-budget': {
+            title: 'نحوه محاسبه برآورد نیاز کالبدی و رفع گلوگاه‌های مدارس',
+            subtitle: 'فرمول استاندارد مهندسی و برآورد قیمت روز اقلام کالبدی پلاک ۱ خرمشهر',
+            html: `
+                <div style="background:#fffaf0; border:1.5px solid #fed7aa; border-radius:14px; padding:16px; margin-bottom:16px;">
+                    <div style="font-weight:900; color:#9a3412; font-size:14px; margin-bottom:6px;">📐 فرمول کلی محاسبه برآورد کالبدی هر مدرسه:</div>
+                    <div style="font-family:monospace; direction:ltr; text-align:left; background:#ffffff; padding:10px 14px; border-radius:8px; border:1px solid #fdba74; font-size:12.5px; color:#c2410c;">
+                        Total_Estimate = Sum(Equipment_HVAC + Roof_Insulation + WASH_Hygiene + Class_Supplies) * (1 + PDI_Factor)
+                    </div>
+                    <div style="font-size:12px; color:#7c2d12; margin-top:8px;">
+                        مبالغ ریالی بر اساس <strong>فهرست‌بهای نوسازی مدارس، قیمت‌های روز تجهیزات در بازار خوزستان</strong> و <strong>پاسخ‌های ثبت‌شده ممیزی میدانی ارزیابان در پرسلاین</strong> تعیین شده‌اند.
+                    </div>
+                </div>
+
+                <h4 style="color:#0f766e; margin:16px 0 8px;">۴ سرفصل اصلی برآورد کالبدی:</h4>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px; margin-bottom:16px;">
+                    <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px;">
+                        <strong style="color:#0284c7;">۱. سرمایش حاره‌ای (اسپلیت T3):</strong>
+                        <div style="font-size:12px; color:#475569; margin-top:4px;">برای هر کلاس درس در اقلیم سوزان خرمشهر، ۱ دستگاه اسپلیت ۳۰,۰۰۰ حاره‌ای استاندارد معادل <strong>۳۵ تا ۴۵ میلیون تومان</strong> پیش‌بینی شده است.</div>
+                    </div>
+                    <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px;">
+                        <strong style="color:#0f766e;">۲. ایزوگام و عایق سقف:</strong>
+                        <div style="font-size:12px; color:#475569; margin-top:4px;">بام ۳۰۰ تا ۶۰۰ متری مدارس نیازمند لکه‌گیری، پرایمر و ایزوگام دولایه فویل‌دار استاندارد جهت جلوگیری از چکه در باران‌های پاییزه: متری <strong>۱۰۰,۰۰۰ تومان (۳۰ تا ۵۰ م.ت)</strong>.</div>
+                    </div>
+                    <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px;">
+                        <strong style="color:#ea580c;">۳. سرویس‌های بهداشتی و بهداشت (WASH):</strong>
+                        <div style="font-size:12px; color:#475569; margin-top:4px;">تخریب، تعویض کاسه‌های توالت، شیرآلات اهرمی مقاوم، مخزن آب شرب و پمپ تحت فشار: <strong>۲۵ تا ۶۰ میلیون تومان</strong>.</div>
+                    </div>
+                    <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px;">
+                        <strong style="color:#7c3aed;">۴. میز، صندلی آموزگار و اداری:</strong>
+                        <div style="font-size:12px; color:#475569; margin-top:4px;">هر ست میز و صندلی ارگونومیک معلم: ۵ تا ۸ م.ت · رایانه اداری و دستگاه تکثیر امتحانات: <strong>۲۵ تا ۳۵ میلیون تومان</strong>.</div>
+                    </div>
+                </div>
+
+                <div style="background:#f0fdf4; border:1px solid #86efac; border-radius:10px; padding:12px; font-size:12px; color:#14532d;">
+                    ✓ <strong>مثال عینی:</strong> مدرسه با برآورد ۶۸ میلیون تومان شامل ۲ عدد اسپلیت سرمایشی اورژانسی (۴۵ م.ت) + عایق‌کاری جزئی سقف کلاسی و تعمیر آبخوری (۲۳ م.ت) می‌باشد.
+                </div>
+            `
+        },
+        'pdi': {
+            title: 'شاخص محرومیت کالبدی ممیزی (Physical Deficit Index - PDI)',
+            subtitle: 'فرمول امتیازدهی چندمعیاره خرابی و اولویت‌بندی مداخله عمرانی در ۱۶ مدرسه',
+            html: `
+                <p>شاخص محرومیت کالبدی <strong>PDI (عددی بین ۰ تا ۱۰۰٪)</strong> درجه وخامت فیزیکی و اضطرار بازسازی مدرسه را نشان می‌دهد. هر چه این درصد بالاتر باشد، نیاز به مداخله فوری‌تر است.</p>
+                <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:12px; padding:14px; margin-bottom:14px;">
+                    <div style="font-weight:800; color:#0f172a; margin-bottom:6px;">وزن‌دهی شاخص‌های ۵گانه PDI:</div>
+                    <ul style="margin:0; padding-right:20px; font-size:12px; line-height:2.0; color:#334155;">
+                        <li><strong>نقص سرمایش و تهویه در تابستان (وزن ۳۰٪):</strong> عدم کارایی اسپلیت‌ها در دمای بالای ۵۰ درجه.</li>
+                        <li><strong>فرسودگی سقف و خطر تخریب/نشتی (وزن ۲۵٪):</strong> ریزش اندود یا چکه باران.</li>
+                        <li><strong>عدم کفایت سرویس‌های بهداشتی و آبخوری (وزن ۲۰٪):</strong> تناسب نامناسب تعداد چشمه‌ها با جمعیت دانش‌آموزی.</li>
+                        <li><strong>خطرات ایمنی برق و حیاط (وزن ۱۵٪):</strong> کلید/پریزهای خطرناک، سیم‌کشی روکار یا نبود دیوارکشی امن.</li>
+                        <li><strong>تجهیزات و فناوری آموزشی (وزن ۱۰٪):</strong> کمبود میز، صندلی، تخته و سیستم اتوماسیون.</li>
+                    </ul>
+                </div>
+                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                    <span style="background:#fee2e2; color:#b91c1c; padding:4px 10px; border-radius:6px; font-size:11.5px; font-weight:800;">۸۵٪ تا ۱۰۰٪: بحران شدید (اولویت ۱)</span>
+                    <span style="background:#ffedd5; color:#c2410c; padding:4px 10px; border-radius:6px; font-size:11.5px; font-weight:800;">۷۰٪ تا ۸۴٪: نیازمند بهسازی فوری</span>
+                    <span style="background:#ecfdf5; color:#047857; padding:4px 10px; border-radius:6px; font-size:11.5px; font-weight:800;">زیر ۷۰٪: وضعیت استاندارد</span>
+                </div>
+            `
+        },
+        'crisis-simulator': {
+            title: 'شبیه‌ساز بودجه بحران، حل مسئله و شاخص تورم ۱۴۰۵',
+            subtitle: 'الگوریتم برآورد هزینه‌ها، نرخ تورم کالایی و تحلیل حساسیت منابع مالی',
+            html: `
+                <p>شبیه‌ساز بودجه بحران، ابزاری استراتژیک برای تخصیص منابع بهینه در ۴ سرفصل آموزش، معیشت، بهداشت و جهیزیه است.</p>
+                <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:12px; padding:14px; margin-bottom:14px;">
+                    <strong style="color:#92400e;">💡 سازوکار محاسبه تورم اقلام:</strong>
+                    <div style="font-size:12px; color:#78350f; margin-top:4px;">
+                        قیمت پایه اقلام با نرخ تورم هدف‌گذاری‌شده بانک مرکزی و مرکز آمار برای سال ۱۴۰۵ (ضریب ۴۲٪ تا ۴۸٪ سالانه بر اقلام سرمایه‌ای و ساختمانی) تعدیل شده است تا برآوردهای اعتباری در زمان اجرا دچار کسری بودجه نشوند.
+                    </div>
+                </div>
+                <ul style="margin:0; padding-right:20px; font-size:12px; color:#334155; line-height:2.0;">
+                    <li><strong>ورود دستی اعداد:</strong> کارشناس می‌تواند مبالغ ریالی هر بسته را به صورت دستی در فیلدهای عددی تایپ کرده یا از اسلایدرهای حساسیت استفاده کند.</li>
+                    <li><strong>سرانه خانوار:</strong> سامانه به صورت خودکار سرانه دریافتی هر خانوار محروم را با میانگین کل روستاهای شلمچه مقایسه می‌کند.</li>
+                </ul>
+            `
+        },
+        'vital-horoscope': {
+            title: 'متدولوژی زیج حیاتی و شاخص‌های سلامت روستای پل نو',
+            subtitle: 'شناسنامه آماری جمعیت، تولد و مراقبت‌های مادر و کودک ثبت‌شده در نظام بهورزی',
+            html: `
+                <p><strong>زیج حیاتی (Vital Horoscope)</strong>، ابزار ثبت رسمی و پایش پیوسته شاخص‌های حیاتی و جمعیتی در خانه‌های بهداشت کشور است.</p>
+                <div style="background:#f0fdfa; border:1px solid #99f6e4; border-radius:12px; padding:14px; margin-bottom:14px;">
+                    <strong style="color:#0f766e;">شاخص‌های کلیدی مستند در زیج حیاتی پل نو:</strong>
+                    <ul style="margin:6px 0 0; padding-right:20px; font-size:12px; color:#134e4a; line-height:2.0;">
+                        <li><strong>پوشش زایمان در مرکز درمانی (۱۰۰٪):</strong> تمام تولدها در بیمارستان انجام شده و مرگ مادری صفر است.</li>
+                        <li><strong>سهم زایمان مادران نوجوان (۱۷.۱۱٪):</strong> شاخص ویژه مداخله تربیتی و پیشگیری از ترک تحصیل دختران.</li>
+                        <li><strong>شاخص کم‌وزنی نوزادان LBW (۷.۱۴٪):</strong> نوزادان با وزن کمتر از ۲۵۰۰ گرم که نیازمند سبد تغذیه مادر و کودک هستند.</li>
+                    </ul>
+                </div>
+            `
+        }
+    };
+
+    window.openSiteGuideModal = function(topicKey) {
+        const modal = document.getElementById('siteGuideModal');
+        if (!modal) return;
+        const key = topicKey || 'school-budget';
+        window.switchGuideTopic(key);
+
+        modal.style.display = 'flex';
+        requestAnimationFrame(() => {
+            modal.style.opacity = '1';
+            const dialog = modal.querySelector('.site-guide-modal-dialog');
+            if (dialog) dialog.style.transform = 'scale(1)';
+        });
+    };
+
+    window.closeSiteGuideModal = function() {
+        const modal = document.getElementById('siteGuideModal');
+        if (!modal) return;
+        modal.style.opacity = '0';
+        const dialog = modal.querySelector('.site-guide-modal-dialog');
+        if (dialog) dialog.style.transform = 'scale(0.96)';
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 250);
+    };
+
+    window.switchGuideTopic = function(topicKey) {
+        const topic = guideTopics[topicKey] || guideTopics['school-budget'];
+        const titleEl = document.getElementById('guideModalTitle');
+        const subEl = document.getElementById('guideModalSubtitle');
+        const bodyEl = document.getElementById('guideModalBodyContent');
+
+        if (titleEl) titleEl.textContent = topic.title;
+        if (subEl) subEl.textContent = topic.subtitle;
+        if (bodyEl) bodyEl.innerHTML = topic.html;
+
+        // Update active tab buttons
+        document.querySelectorAll('.guide-tab-btn').forEach(btn => {
+            if (btn.id === 'tab-' + topicKey) {
+                btn.style.background = '#0f766e';
+                btn.style.color = '#ffffff';
+            } else {
+                btn.style.background = '#e2e8f0';
+                btn.style.color = '#334155';
+            }
+        });
+    };
+})();
+</script>
+
 </body></html>
