@@ -9129,6 +9129,86 @@ body.in-village .gis-dock-wrap {
     --pt-glow: rgba(245, 158, 11, 0.4);
 }
 
+/* Compact School Pins on GIS: Icon only by default, smooth label reveal on hover */
+.gis-point.gis-pt-schools {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    border-radius: 50% !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 0 !important;
+    cursor: pointer !important;
+    transition: width 0.26s cubic-bezier(0.16, 1, 0.3, 1),
+                padding 0.26s cubic-bezier(0.16, 1, 0.3, 1),
+                border-radius 0.26s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.22s ease,
+                border-color 0.22s ease,
+                z-index 0.1s ease !important;
+}
+
+.gis-point.gis-pt-schools .gis-point-icon {
+    width: 24px !important;
+    height: 24px !important;
+    font-size: 14px !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.gis-point.gis-pt-schools .gis-point-pulse {
+    border-radius: 50% !important;
+    transition: border-radius 0.26s ease !important;
+}
+
+.gis-point.gis-pt-schools .gis-point-label {
+    max-width: 0 !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: inline-block !important;
+    pointer-events: none !important;
+    transition: max-width 0.26s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.20s ease,
+                margin 0.20s ease,
+                padding 0.20s ease !important;
+}
+
+/* Hover & Focus State: Expand badge and show school name */
+.gis-point.gis-pt-schools:hover,
+.gis-point.gis-pt-schools:focus-visible {
+    width: auto !important;
+    min-width: 32px !important;
+    border-radius: 20px !important;
+    padding: 4px 12px 4px 8px !important;
+    gap: 6px !important;
+    z-index: 100 !important;
+    transform: translate(-50%, -50%) scale(1.12) !important;
+    box-shadow: 0 10px 28px rgba(245, 158, 11, 0.65), 0 0 0 2px rgba(245, 158, 11, 0.5) !important;
+    border-color: #ffffff !important;
+}
+
+.gis-point.gis-pt-schools:hover .gis-point-pulse,
+.gis-point.gis-pt-schools:focus-visible .gis-point-pulse {
+    border-radius: 22px !important;
+}
+
+.gis-point.gis-pt-schools:hover .gis-point-label,
+.gis-point.gis-pt-schools:focus-visible .gis-point-label {
+    max-width: 280px !important;
+    opacity: 1 !important;
+    margin-right: 4px !important;
+    pointer-events: auto !important;
+}
+
 .gis-layer-health {
     --layer-color: #10b981;
     --layer-bg: rgba(16, 185, 129, 0.15);
@@ -35600,6 +35680,7 @@ water: [
                 el.style.top = (pt.y * 100) + '%';
                 el.setAttribute('data-layer', layerKey);
                 el.setAttribute('data-pt-id', pt.id);
+                el.setAttribute('title', pt.name + (pt.desc ? ' · ' + pt.desc : ''));
 
                 el.innerHTML = `
                     <div class="gis-point-pulse"></div>
