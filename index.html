@@ -13747,6 +13747,22 @@ dialog .close:hover,
     transform: rotate(90deg) scale(1.15) !important;
 }
 </style>
+<style>
+/* Universal Highest Z-Index for Person Dossier Dialog so it opens above everything */
+dialog#personDossierDialog,
+#personDossierDialog {
+    z-index: 9999999 !important;
+    position: fixed !important;
+    inset: 0 !important;
+    margin: auto !important;
+}
+dialog#personDossierDialog::backdrop,
+#personDossierDialog::backdrop {
+    z-index: 9999998 !important;
+    background: rgba(10, 22, 20, 0.85) !important;
+    backdrop-filter: blur(8px) !important;
+}
+</style>
 </head>
 <body><main class="experience ready" id="experience">
 
@@ -35445,33 +35461,36 @@ document.addEventListener('click', (e) => {
     const gisLayerData = {
                 schools: [
             // ۱. سرحانیه علیا
-            { id: 'sch-zeinabiyeh', schoolKey: 'zeinabiyeh', name: 'دبستان زینبیه', villageId: 'sarhaniyeh-olya', villageName: 'سرحانیه علیا', x: 0.812, y: 0.635, desc: '۲۵۸ دانش‌آموز دخترانه · مدیر: خانم مکیه محمدی (۰۹۱۶۶۳۴۱۳۷۳) · قطب آموزش دختران حومه غربی و سرحانیه علیا', badge: 'ابتدایی دخترانه' },
+            { id: 'sch-zeinabiyeh', schoolKey: 'zeinabiyeh', name: 'دبستان زینبیه', villageId: 'sarhaniyeh-olya', villageName: 'سرحانیه علیا', x: 0.812, y: 0.635, desc: '۲۵۸ دانش‌آموز دخترانه (۱۲ کلاس) · مدیر: خانم مکیه محمدی (۰۹۱۶۶۳۴۱۳۷۳) · قطب آموزش دختران حومه غربی و سرحانیه علیا · کد پرسلاین: 8iaE1', badge: 'ابتدایی دخترانه (۲۵۸ دانش‌آموز)' },
+            { id: 'sch-alavieh', schoolKey: 'alavieh', name: 'دبستان علویه', villageId: 'sarhaniyeh-olya', villageName: 'سرحانیه علیا', x: 0.818, y: 0.648, desc: '۲۷۱ دانش‌آموز دخترانه (۱۱ کلاس) · مدیر: خانم نسرین بحرانی (۰۹۳۷۸۰۹۹۰۵۴) · ۱۲ یتیم · صد دستگاه و سرحانیه علیا · کد پرسلاین: GM3RK', badge: 'ابتدایی دخترانه (۲۷۱ دانش‌آموز)' },
             { id: 'sch-enghelab', schoolKey: 'enghelab', name: 'دبستان انقلاب اسلامی', villageId: 'sarhaniyeh-olya', villageName: 'سرحانیه علیا', x: 0.816, y: 0.640, desc: '۱۹۴ دانش‌آموز پسرانه · مدیر: آقای آلبوغبیش · دایر در نوبت اول', badge: 'ابتدایی پسرانه' },
-            { id: 'sch-marzdaran', schoolKey: 'marzdaran', name: 'دبستان مرزداران', villageId: 'sarhaniyeh-olya', villageName: 'سرحانیه علیا', x: 0.808, y: 0.630, desc: '۱۷۳ دانش‌آموز پسرانه · مدیر: آقای سکینی‌نیا · پوشش آموزشی حاشیه اروند', badge: 'ابتدایی پسرانه' },
-            { id: 'sch-alavieh', schoolKey: 'alavieh', name: 'دبستان علویه', villageId: 'sarhaniyeh-olya', villageName: 'سرحانیه علیا', x: 0.818, y: 0.648, desc: '۲۴۰ دانش‌آموز دخترانه · مدیر: خانم طبیشی · فعال در نوبت اول', badge: 'ابتدایی دخترانه' },
-            { id: 'sch-asiyeh', schoolKey: 'asiyeh', name: 'دبستان آسیه', villageId: 'sarhaniyeh-olya', villageName: 'سرحانیه علیا', x: 0.810, y: 0.625, desc: '۲۲۰ دانش‌آموز دخترانه · مدیر: خانم محمدی · 🚨 نیازمند بازسازی سقف و سرمایش', badge: '🚨 نیازمند بهسازی' },
+            { id: 'sch-marzdaran', schoolKey: 'marzdaran', name: 'دبستان مرزداران', villageId: 'sarhaniyeh-olya', villageName: 'سرحانیه علیا', x: 0.808, y: 0.630, desc: '۱۶۴ دانش‌آموز (۶ کلاس) · مدیر: اسماعیل مهدی‌فر (۰۹۱۶۶۳۰۰۹۷۹) · ۶ یتیم · ۲۰ کم‌برخوردار · تأسیس ۱۳۷۴ / نوساز ۱۳۹۸ · کد پرسلاین: n2BIW', badge: 'ابتدایی پسرانه (۱۶۴ دانش‌آموز)' },
+            { id: 'sch-asiyeh', schoolKey: 'asiyeh', name: 'دبستان آسیه', villageId: 'sarhaniyeh-olya', villageName: 'سرحانیه علیا', x: 0.810, y: 0.625, desc: '۲۲۰ دانش‌آموز دخترانه · مدیر: خانم محمدی · نیازمند بهسازی سقف و سرمایش', badge: 'ابتدایی دخترانه' },
 
             // ۲. سرحانیه سفلی
-            { id: 'sch-shalamcheh-girls', schoolKey: 'shalamcheh-girls', name: 'دبستان شهدای شلمچه', villageId: 'sarhaniyeh-sofla', villageName: 'سرحانیه سفلی', x: 0.805, y: 0.615, desc: '۱۶۰ دانش‌آموز دخترانه · مدیر: خانم زبیدی · مرکز آموزش ابتدایی دختران ساحلی', badge: 'ابتدایی دخترانه' },
+            { id: 'sch-shalamcheh-girls', schoolKey: 'shalamcheh-girls', name: 'دبستان شهدای شلمچه', villageId: 'sarhaniyeh-sofla', villageName: 'سرحانیه سفلی', x: 0.805, y: 0.615, desc: '۱۷۹ دانش‌آموز (۶ کلاس) · مدیر: خانم فرشته حیدری‌نژاد (۰۹۳۷۴۵۶۳۵۵۳) · مرکز آموزش ابتدایی دختران ساحلی · کد پرسلاین: ERBSW', badge: 'ابتدایی دخترانه (۱۷۹ دانش‌آموز)' },
 
             // ۳. پل نو
-            { id: 'sch-hor-e-riahee', schoolKey: 'hor-e-riahee', name: 'دبستان حر بن ریاحی', villageId: 'pol-now', villageName: 'پل نو', x: 0.638, y: 0.470, desc: '۹۰ دانش‌آموز (۴۰ دختر، ۵۰ پسر) · ۷ کلاس درس · مدیر: آقای شرجی · ۳۶ خانواده کم‌برخوردار · کانون آموزش روستای پل نو', badge: 'ابتدایی پسرانه' },
-            { id: 'sch-dekhoda', schoolKey: 'dekhoda', name: 'دبستان دهخدا', villageId: 'pol-now', villageName: 'پل نو', x: 0.645, y: 0.478, desc: '۲۷۰ دانش‌آموز پسرانه · مدیر: آقای آبسالان · کانون آموزش ابتدایی غرب خرمشهر', badge: 'ابتدایی پسرانه' },
-            { id: 'sch-razmandegan', schoolKey: 'razmandegan', name: 'دبستان رزمندگان', villageId: 'pol-now', villageName: 'پل نو', x: 0.652, y: 0.485, desc: '۱۸۵ دانش‌آموز پسرانه · مدیر: آقای غیورپور · مجهز به آزمایشگاه پایه', badge: 'ابتدایی پسرانه' },
+            { id: 'sch-hor-e-riahee', schoolKey: 'hor-e-riahee', name: 'دبستان حر بن ریاحی', villageId: 'pol-now', villageName: 'پل نو', x: 0.638, y: 0.470, desc: '۹۰ دانش‌آموز (۴۰ دختر، ۵۰ پسر در ۷ کلاس) · مدیر: آقای شرجی · ۳۶ خانوار محروم · مدخل روستای پل نو · کد پرسلاین: ejMU7', badge: 'ابتدایی مختلط (۹۰ دانش‌آموز)' },
+            { id: 'sch-dekhoda', schoolKey: 'dekhoda', name: 'دبستان دهخدا', villageId: 'pol-now', villageName: 'پل نو', x: 0.645, y: 0.478, desc: '۳۲۴ دانش‌آموز پسرانه (۸ کلاس) · مدیر: آقای جعفر سکینی (۰۹۱۶۳۳۲۲۷۶۶) · کانون پرجمعیت ابتدایی غرب خرمشهر · کد پرسلاین: 2Z1Ej', badge: 'ابتدایی پسرانه (۳۲۴ دانش‌آموز)' },
 
-            // ۴. سوره
-            { id: 'sch-motiri', schoolKey: 'motiri', name: 'دبستان شهید کاظم مطیری‌زاده', villageId: 'soureh', villageName: 'سوره', x: 0.692, y: 0.760, desc: '۱۱۴ دانش‌آموز دخترانه · ۶ کلاس · ۳۱ یتیم · واقع در روستای سوره درب بندر فعیلیه · مدیر: خانم فتاحی‌پور / هاشمی', badge: 'ابتدایی سوره' },
-            { id: 'sch-komeil', schoolKey: 'komeil', name: 'مدرسه کمیل (متوسطه)', villageId: 'soureh', villageName: 'سوره', x: 0.690, y: 0.755, desc: '۱۱۵ دانش‌آموز متوسطه اول پسرانه · مدیر: آقای عاشوری · پوشش تحصیلی نوجوانان منطقه', badge: 'متوسطه اول' },
-            { id: 'sch-rahiyan-noor', schoolKey: 'rahiyan-noor', name: 'مدرسه راهیان نور', villageId: 'soureh', villageName: 'سوره', x: 0.698, y: 0.765, desc: '۱۶۸ دانش‌آموز دخترانه · مدیر: خانم فتاحی‌پور · مرکز آموزش دخترانه نخلستان‌های سوره', badge: 'ابتدایی دخترانه' },
+            // ۴. سوره و صد دستگاه
+            { id: 'sch-motiri', schoolKey: 'motiri', name: 'دبستان شهید کاظم مطیری‌زاده', villageId: 'soureh', villageName: 'سوره', x: 0.692, y: 0.760, desc: '۱۱۴ دانش‌آموز دخترانه (۶ کلاس) · ۳۱ یتیم · ۴۲ خانوار محروم · واقع در روستای سوره درب بندر فعیلیه · مدیران: خانم فتاحی‌پور (۰۹۱۶۳۳۲۸۶۳۲) / خانم هاشمی · کد پرسلاین: nqZRF', badge: 'ابتدایی سوره (۱۱۴ دانش‌آموز)' },
+            { id: 'sch-razmandegan', schoolKey: 'razmandegan', name: 'دبستان رزمندگان', villageId: 'soureh', villageName: 'سوره', x: 0.685, y: 0.750, desc: '۹۶ دانش‌آموز (۶ کلاس ابتدایی + ۲ پیش‌دبستانی) · مدیر: خانم عاتیه هاشمی (۰۹۰۳۳۵۹۲۵۴۶) · ۱۵ خانوار محروم · سوره، خیابان فتح‌المبین ۱ · کد پرسلاین: 3EEkN', badge: 'ابتدایی پسرانه (۹۶ دانش‌آموز)' },
+            { id: 'sch-komeil', schoolKey: 'komeil', name: 'مدرسه کمیل (متوسطه اول)', villageId: 'soureh', villageName: 'سوره', x: 0.690, y: 0.755, desc: '۱۱۵ دانش‌آموز متوسطه اول (۴ کلاس) · پوشش تحصیلی نوجوانان روستای سوره و محور شلمچه · کد پرسلاین: P7jyA', badge: 'متوسطه اول (۱۱۵ دانش‌آموز)' },
+            { id: 'sch-rahiyan-noor', schoolKey: 'rahiyan-noor', name: 'مدرسه راهیان نور', villageId: 'soureh', villageName: 'سوره', x: 0.698, y: 0.765, desc: '۳۸۲ دانش‌آموز دخترانه (۱۲ کلاس) · مدیر: خانم سلیمه زبیراوی (۰۹۱۶۳۳۲۴۱۶۳) · تأسیس ۱۳۶۸ · کانون آموزش دختران سوره و صد دستگاه · کد پرسلاین: R4lnc', badge: 'ابتدایی دخترانه (۳۸۲ دانش‌آموز)' },
 
-            // ۵. مصلاوی و دربند
+            // ۵. مصلاوی و سرحانیه دوم
+            { id: 'sch-resalat-jaber', schoolKey: 'resalat-jaber', name: 'مدرسه رسالت / جابر بن حیان', villageId: 'maslavi-1', villageName: 'مصلاوی', x: 0.755, y: 0.528, desc: '۱۴۳ دانش‌آموز (۶ کلاس نظری/فنی) · مدیر: سید احمد آلبوشکه (۰۹۳۸۵۰۰۶۷۸۸) · ۱۵ یتیم · سرحانیه دوم / مصلاوی · کد پرسلاین: I6wyN', badge: 'ابتدایی پسرانه (۱۴۳ دانش‌آموز)' },
+            { id: 'sch-shamkhani', schoolKey: 'shamkhani', name: 'هنرستان شهدای شمخانی', villageId: 'maslavi-1', villageName: 'مصلاوی', x: 0.765, y: 0.550, desc: '۱۳۰ هنرجوی دختر (۸ کارگاه و کلاس) · مدیر: خانم خاتون طبیشی (۰۹۱۶۶۳۴۸۰۸۹) · آموزش‌های فنی‌حرفه‌ای و کاردانش دختران · کد پرسلاین: MD2R3', badge: 'هنرستان دخترانه (۱۳۰ هنرجو)' },
             { id: 'sch-maslavi-1', schoolKey: 'maslavi-1', name: 'دبستان شهدای مصلاوی ۱', villageId: 'maslavi-1', villageName: 'مصلاوی ۱', x: 0.760, y: 0.535, desc: '۱۸۴ دانش‌آموز پسرانه · مدیر: آقای طرفی · کانون آموزش فرزندان روستاهای مصلاوی و دربند', badge: 'ابتدایی پسرانه' },
             { id: 'sch-maslavi-2', schoolKey: 'maslavi-2', name: 'دبستان شهدای مصلاوی ۲', villageId: 'maslavi-2', villageName: 'مصلاوی ۲', x: 0.772, y: 0.545, desc: '۱۹۰ دانش‌آموز دخترانه · مدیر: خانم کلثومی · پوشش تحصیلی دختران شرق خرمشهر', badge: 'ابتدایی دخترانه' },
-            { id: 'sch-resalat-jaber', schoolKey: 'resalat-jaber', name: 'مدرسه رسالت / جابر بن حیان', villageId: 'maslavi-1', villageName: 'مصلاوی', x: 0.755, y: 0.528, desc: '۱۶۰ دانش‌آموز پسرانه · مدیر: آقای نیسی‌پور · نیازمند نوسازی و سیستم سرمایش', badge: 'ابتدایی پسرانه' },
-            { id: 'sch-shamkhani', schoolKey: 'shamkhani', name: 'هنرستان شهدای شمخانی', villageId: 'maslavi-1', villageName: 'مصلاوی', x: 0.765, y: 0.550, desc: '۱۷۰ دانش‌آموز دخترانه · مدیر: خانم غزلاوی · آموزش‌های فنی‌حرفه‌ای و کاردانش', badge: 'هنرستان فنی' },
 
-            // ۶. شهرک سوم
-            { id: 'sch-al-yasin', schoolKey: 'al-yasin', name: 'دبستان آل‌یاسین', villageId: 'shahrak-sevvom', villageName: 'شهرک سوم', x: 0.425, y: 0.298, desc: '۴۸ دانش‌آموز در ۷ پایه تحصیلی · مدرسه نوساز با پوشش نوار مرزی شلمچه', badge: 'نوساز فعال' }
+            // ۶. شهرک سادات
+            { id: 'sch-al-yasin', schoolKey: 'al-yasin', name: 'دبستان آل‌یاسین', villageId: 'shahrak-sadat', villageName: 'شهرک سادات', x: 0.425, y: 0.298, desc: '۳۶ دانش‌آموز (۶ کلاس درس) · مدیر: خانم شهلا بوسویط (۰۹۰۳۰۳۶۲۶۵۹) · دبستان نوساز محور شهرک سادات · کد پرسلاین: 85MvL', badge: 'ابتدایی نوساز (۳۶ دانش‌آموز)' },
+
+            // ۷. عریض
+            { id: 'sch-khedmat-ariz', schoolKey: 'khedmat-ariz', name: 'دبستان شهدای خدمت عریض', villageId: 'ariz', villageName: 'عریض', x: 0.510, y: 0.420, desc: '۲۴ دانش‌آموز (۱۴ دختر، ۱۰ پسر در ۲ کلاس) · مدیران: عادل عباسپور (۰۹۳۵۹۳۶۱۴۸۶) / محمدرضا دفاعی · کانون آموزش روستای عریض · کد پرسلاین: 1KQeL', badge: 'ابتدایی مختلط (۲۴ دانش‌آموز)' }
         ],
         health: [
             { id: 'hlt-pol-now', name: 'خانه بهداشت روستایی پل نو', villageId: 'pol-now', villageName: 'پل نو', x: 0.649, y: 0.482, desc: 'پایشگر زیج حیاتی و سلامت ۳,۸۰۶ نفر جمعیت مرزی · ۱۰۰٪ زایمان ایمن بیمارستانی · پایش تغذیه مادر و کودک', badge: 'زیج حیاتی فعال' },
@@ -39595,10 +39614,11 @@ water: [
         accs.forEach(acc => {
             const titleEl = acc.querySelector('summary h2, summary');
             const title = titleEl ? titleEl.textContent : '';
-            const isOrphan = title.includes('ایتام');
-            const isNeedy = title.includes('کم برخوردار') || title.includes('کم‌برخوردار');
+            const isOrphan = title.includes('ایتام') || title.includes('یتیم');
+            const isNeedy = title.includes('کم برخوردار') || title.includes('کم‌برخوردار') || title.includes('مددجو');
+            const isStudent = title.includes('دانش‌آموز') || title.includes('مدارس');
 
-            if (!isOrphan && !isNeedy) return;
+            if (!isOrphan && !isNeedy && !isStudent) return;
 
             let village = curVillage;
             const vMatch = title.match(/روستای\s+([^\s<]+(?:\s+[^\s<]+)?)/);
@@ -44526,19 +44546,21 @@ summary:focus-visible {
         'hor-e-riahee': {
             id: 'hor-e-riahee',
             name: 'دبستان حر بن ریاحی',
-            fullName: 'دبستان حر بن ریاحی (ابتدایی پسرانه)',
-            gender: 'پسرانه',
+            fullName: 'دبستان حر بن ریاحی (ابتدایی پسرانه و دخترانه)',
+            gender: 'مختلط',
             level: 'ابتدایی',
             villageId: 'pol-now',
             villageName: 'پل نو',
             principal: 'آقای شرجی',
-            phone: 'ثبت در دبیرخانه ممیزی (کد ممیزی پرسلاین: ejMU7)',
+            phone: 'ثبت در سامانه ممیزی (کد پرسلاین: ejMU7)',
             studentsCount: 90,
             classesCount: 7,
-            condition: '🚨 نیازمند کلاس تقویتی، بازسازی کالبدی و پشتیبانی تحصیلی',
+            orphansCount: 14,
+            needyCount: 36,
+            condition: '🚨 نیازمند بازسازی کالبدی، ایزوگام سقف و آبخوری بهداشتی',
             conditionSeverity: 'critical',
             budgetEst: '۱۸۵,۰۰۰,۰۰۰ تومان',
-            address: 'خرمشهر، جاده مرزی شلمچه، روستای پل نو',
+            address: 'خرمشهر، جاده مرزی شلمچه، مدخل روستای پل نو',
             porslineCode: 'ejMU7',
             porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/ejMU7?review_token=074e7779-7fc9-4876-90f9-4b45711a783a',
             needs: [
@@ -44552,6 +44574,367 @@ summary:focus-visible {
             ],
             keywords: ['حر بن ریاحی', 'حر', 'شرجی']
         },
+        'dekhoda': {
+            id: 'dekhoda',
+            name: 'دبستان دهخدا',
+            fullName: 'دبستان دهخدا (ابتدایی پسرانه پرجمعیت)',
+            gender: 'پسرانه',
+            level: 'ابتدایی',
+            villageId: 'pol-now',
+            villageName: 'پل نو',
+            principal: 'جعفر سکینی',
+            phone: '۰۹۱۶۳۳۲۲۷۶۶',
+            studentsCount: 324,
+            classesCount: 8,
+            orphansCount: 18,
+            needyCount: 45,
+            condition: '✓ فعال و پرجمعیت محور پل نو',
+            conditionSeverity: 'normal',
+            budgetEst: '۱۱۰,۰۰۰,۰۰۰ تومان',
+            address: 'خرمشهر، مدخل محور شلمچه، روستای پل نو',
+            porslineCode: '2Z1Ej',
+            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/2Z1Ej?review_token=a637a43a-1ab0-46b0-be00-759bd9f82736',
+            needs: [
+                'میز و صندلی دانش‌آموزی استاندارد دو نفره',
+                'دستگاه تکثیر پرسرعت و چاپگر اداری',
+                'تجهیز سیستم صوتی و نمازخانه مدرسه',
+                'بازسازی آبسردکن استیل و آبخوری حیاط'
+            ],
+            keywords: ['دهخدا', 'سکینی', 'جعفر سکینی']
+        },
+        'motiri': {
+            id: 'motiri',
+            name: 'دبستان شهید کاظم مطیری‌زاده',
+            fullName: 'دبستان شهید کاظم مطیری‌زاده (ابتدایی دو شیفت دخترانه/پسرانه)',
+            gender: 'دو شیفت (دخترانه/پسرانه)',
+            level: 'ابتدایی',
+            villageId: 'soureh',
+            villageName: 'سوره',
+            principal: 'خانم فتاحی‌پور (دخترانه) / خانم هاشمی (پسرانه)',
+            phone: '۰۹۱۶۳۳۲۸۶۳۲ - ۰۹۰۳۳۵۹۲۵۴۶',
+            studentsCount: 114,
+            classesCount: 6,
+            orphansCount: 31,
+            needyCount: 42,
+            condition: '🚨 نیازمند بازسازی کامل کالبدی و سرویس‌های بهداشتی',
+            conditionSeverity: 'critical',
+            budgetEst: '۱۶۰,۰۰۰,۰۰۰ تومان',
+            address: 'خرمشهر، روستای سوره، درب بندر فعیلیه',
+            porslineCode: 'nqZRF',
+            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/nqZRF?review_token=bda3f1c4-633b-4c60-93d7-6826a1dd7851',
+            needs: [
+                'تخریب و بازسازی کامل سرویس‌های بهداشتی',
+                'ایزوگام و آب‌بندی سقف کلاسی',
+                'تعویض کامل سیم‌کشی فرسوده برق',
+                'تجهیز ۴ دستگاه اسپلیت سرمایشی نو',
+                'میز و صندلی معلمان و کمد اداری'
+            ],
+            keywords: ['مطیری', 'شهید مطیری', 'کاظم مطیری', 'فتاحی‌پور', 'هاشمی']
+        },
+        'razmandegan': {
+            id: 'razmandegan',
+            name: 'دبستان رزمندگان',
+            porslineCode: '3EEkN',
+            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/3EEkN?review_token=b1817612-c105-448f-ad13-c6b209fec8df',
+            fullName: 'دبستان رزمندگان (ابتدایی پسرانه و پیش‌دبستانی دو شیفت)',
+            gender: 'پسرانه',
+            level: 'ابتدایی و پیش‌دبستانی',
+            villageId: 'soureh',
+            villageName: 'سوره',
+            principal: 'خانم عاتیه هاشمی',
+            phone: '۰۹۰۳۳۵۹۲۵۴۶',
+            studentsCount: 96,
+            classesCount: 8,
+            orphansCount: 15,
+            needyCount: 15,
+            condition: '✓ تأسیس ۱۳۸۸ · دایر در ۲ شیفت',
+            conditionSeverity: 'normal',
+            budgetEst: '۸۲,۰۰۰,۰۰۰ تومان',
+            address: 'خرمشهر، روستای سوره، خیابان فتح‌المبین ۱',
+            needs: [
+                'نوسازی و شاداب‌سازی ۶ کلاس درس ابتدایی',
+                'تجهیز ۲ کلاس پیش‌دبستانی و اسباب‌بازی ایمن',
+                'کیت آزمایشگاهی و ابزار آموزشی پایه',
+                'چاپگر و دستگاه تکثیر امتحانات'
+            ],
+            keywords: ['رزمندگان', 'عاتیه هاشمی', 'فتح المبین']
+        },
+        'rahiyan-noor': {
+            id: 'rahiyan-noor',
+            name: 'مدرسه راهیان نور',
+            porslineCode: 'R4lnc',
+            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/R4lnc?review_token=756def52-a98f-4150-89ce-fdac1eea4b97',
+            fullName: 'مدرسه راهیان نور (متوسطه اول دخترانه دو شیفت)',
+            gender: 'دخترانه',
+            level: 'متوسطه اول',
+            villageId: 'soureh',
+            villageName: 'سوره',
+            principal: 'خانم سلیمه زبیراوی',
+            phone: '۰۹۱۶۳۳۲۴۱۶۳',
+            studentsCount: 382,
+            classesCount: 12,
+            orphansCount: 22,
+            needyCount: 50,
+            condition: '✓ تأسیس ۱۳۶۸ · کادر ۳۰ نفره آموزشی',
+            conditionSeverity: 'normal',
+            budgetEst: '۱۴۵,۰۰۰,۰۰۰ تومان',
+            address: 'خرمشهر، روستای سوره و صد دستگاه',
+            needs: [
+                'تجهیز کارگاه کار و فناوری و رایانه',
+                'کتابخانه و منابع مطالعاتی دوره اول متوسطه',
+                'سرویس دوره‌ای اسپلیت‌های سرمایشی',
+                'طرح‌های مشاوره‌ای و مددکاری پیشگیری از ترک تحصیل'
+            ],
+            keywords: ['راهیان نور', 'زبیراوی', 'سلیمه زبیراوی']
+        },
+        'marzdaran': {
+            id: 'marzdaran',
+            name: 'دبستان مرزداران',
+            porslineCode: 'n2BIW',
+            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/n2BIW?review_token=7a79668a-8fbb-4167-9fe1-e2eea4412c0a',
+            fullName: 'دبستان مرزداران (ابتدایی پسرانه دولتی، شیفت چرخشی)',
+            gender: 'پسرانه',
+            level: 'ابتدایی',
+            villageId: 'darband-gharbi',
+            villageName: 'دربند غربی',
+            principal: 'اسماعیل مهدی فر',
+            phone: '۰۹۱۶۶۳۰۰۹۷۹',
+            studentsCount: 164,
+            classesCount: 6,
+            orphansCount: 6,
+            needyCount: 20,
+            condition: '✓ تأسیس ۱۳۷۴ / نوساز ۱۳۹۸ · کادر ۷ نفره (معاون: سید علی هاشمی)',
+            conditionSeverity: 'normal',
+            budgetEst: '۹۲,۰۰۰,۰۰۰ تومان',
+            address: 'خرمشهر، جاده شلمچه، دربند غربی، خیابان مرزداران',
+            needs: [
+                'روشنایی استاندارد حیاط و سالن مدرسه',
+                'تجهیز دستگاه تصفیه آب و آبخوری بهداشتی',
+                'لایروبی و دفع بهداشتی فاضلاب',
+                'دیتاپروژکتور و تجهیزات هوشمندسازی کلاس‌ها'
+            ],
+            keywords: ['مرزداران', 'مهدی فر', 'اسماعیل مهدی فر', 'دربند غربی']
+        },
+        'resalat-jaber': {
+            id: 'resalat-jaber',
+            name: 'مدرسه رسالت / جابر بن حیان',
+            porslineCode: 'I6wyN',
+            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/I6wyN?review_token=9ec4bc4a-1273-4cc9-82c8-bc7ecea2b9ce',
+            fullName: 'مدرسه رسالت و جابر بن حیان (متوسطه دوم فنی و نظری پسرانه)',
+            gender: 'پسرانه',
+            level: 'متوسطه دوم',
+            villageId: 'maslavi-1',
+            villageName: 'مصلاوی',
+            principal: 'سید احمد آلبوشکه',
+            phone: '۰۹۳۸۵۰۰۶۷۸۸',
+            studentsCount: 143,
+            classesCount: 6,
+            orphansCount: 15,
+            needyCount: 35,
+            condition: '🚨 نیازمند تجهیز کارگاه‌های فنی و سیستم سرمایش',
+            conditionSeverity: 'warning',
+            budgetEst: '۱۷۵,۰۰۰,۰۰۰ تومان',
+            address: 'خرمشهر، روستای سرحانیه دوم و مصلاوی',
+            needs: [
+                'تجهیز کارگاه تخصصی کامپیوتر و شبکه (رشته کامپیوتر)',
+                'ابزارآلات و ملزومات کارگاه ساختمان و عمران',
+                'ایزوگام سقف کارگاه‌ها و کلاس‌ها',
+                'دستگاه تکثیر و رایانه اداری'
+            ],
+            keywords: ['رسالت', 'جابر بن حیان', 'آلبوشکه', 'مصلاوی']
+        },
+        'shalamcheh-girls': {
+            id: 'shalamcheh-girls',
+            name: 'دبستان شهدای شلمچه',
+            porslineCode: 'ERBSW',
+            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/ERBSW?review_token=508d86b4-e79d-451a-8d5c-25d967956a70',
+            fullName: 'دبستان شهدای شلمچه (ابتدایی دخترانه ساحلی)',
+            gender: 'دخترانه',
+            level: 'ابتدایی',
+            villageId: 'sarhaniyeh-sofla',
+            villageName: 'سرحانیه سفلی',
+            principal: 'فرشته حیدری‌نژاد',
+            phone: '۰۹۳۷۴۵۶۳۵۵۳',
+            studentsCount: 179,
+            classesCount: 6,
+            orphansCount: 16,
+            needyCount: 38,
+            condition: '✓ دایر در نوار ساحلی اروند · کادر ۸ معلم متخصص',
+            conditionSeverity: 'normal',
+            budgetEst: '۸۸,۰۰۰,۰۰۰ تومان',
+            address: 'خرمشهر، روستای سرحانیه سفلی، ساحل اروند',
+            needs: [
+                'تجهیز کتابخانه کلاسی و کانون فرهنگی دختران',
+                'بهسازی آبخوری و سرویس‌های بهداشتی',
+                '۴ دستگاه اسپلیت سرمایشی حاره‌ای',
+                'میز و نیمکت استاندارد دو نفره'
+            ],
+            keywords: ['شهدای شلمچه', 'حیدری نژاد', 'سرحانیه سفلی']
+        },
+        'alavieh': {
+            id: 'alavieh',
+            name: 'دبستان علویه',
+            porslineCode: 'GM3RK',
+            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/GM3RK?review_token=193ea18f-5dd9-42c5-a087-6e5fe310e47c',
+            fullName: 'دبستان علویه (ابتدایی دخترانه دو شیفت)',
+            gender: 'دخترانه',
+            level: 'ابتدایی',
+            villageId: 'sarhaniyeh-olya',
+            villageName: 'سرحانیه علیا',
+            principal: 'خانم نسرین بحرانی',
+            phone: '۰۹۳۷۸۰۹۹۰۵۴',
+            studentsCount: 271,
+            classesCount: 11,
+            orphansCount: 12,
+            needyCount: 40,
+            condition: '✓ تأسیس ۱۳۶۸ · ۱۱ کلاس درس دایر',
+            conditionSeverity: 'normal',
+            budgetEst: '۱۱۵,۰۰۰,۰۰۰ تومان',
+            address: 'خرمشهر، شهری صد دستگاه و سرحانیه علیا',
+            needs: [
+                'آب‌بندی و ایزوگام سقف پیش از بارندگی',
+                'اسپلیت سرمایشی کلاس‌های طبقه دوم',
+                'دستگاه تکثیر و چاپگر اداری',
+                'پشتیبانی مشاوره‌ای دانش‌آموزان نیازمند'
+            ],
+            keywords: ['علویه', 'بحرانی', 'نسرین بحرانی', 'صد دستگاه']
+        },
+        'zeinabiyeh': {
+            id: 'zeinabiyeh',
+            name: 'دبستان زینبیه',
+            porslineCode: '8iaE1',
+            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/8iaE1?review_token=e881ab82-2f42-4e36-a7d4-5887d1d93678',
+            fullName: 'دبستان زینبیه (ابتدایی دخترانه دو نوبته)',
+            gender: 'دخترانه',
+            level: 'ابتدایی',
+            villageId: 'sarhaniyeh-olya',
+            villageName: 'سرحانیه علیا',
+            principal: 'مکیه محمدی',
+            phone: '۰۹۱۶۶۳۴۱۳۷۳',
+            studentsCount: 258,
+            classesCount: 12,
+            orphansCount: 19,
+            needyCount: 48,
+            condition: '✓ تأسیس ۱۳۷۶ · قطب آموزش دختران سرحانیه علیا',
+            conditionSeverity: 'normal',
+            budgetEst: '۱۲۸,۰۰۰,۰۰۰ تومان',
+            address: 'خرمشهر، حومه غربی، روستای سرحانیه دوم (علیا)',
+            needs: [
+                'آب‌بندی و عایق کامل سقف کلاس‌ها پیش از بارندگی',
+                'بهسازی سرویس بهداشتی و مخزن آب شرب',
+                'دیتاپروژکتور کلاسی هوشمند و چاپگر',
+                'برنامه‌های فرهنگی و مشاوره‌ای جهت پیشگیری از ترک تحصیل'
+            ],
+            keywords: ['زینبیه', 'مکیه محمدی', 'سرحانیه دوم']
+        },
+        'shamkhani': {
+            id: 'shamkhani',
+            name: 'هنرستان شهدای شمخانی',
+            porslineCode: 'MD2R3',
+            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/MD2R3?review_token=81e6c235-85cc-4352-a095-314bd4ebadc7',
+            fullName: 'هنرستان کاردانش و فنی شهدای شمخانی (دخترانه)',
+            gender: 'دخترانه',
+            level: 'هنرستان فنی',
+            villageId: 'maslavi-1',
+            villageName: 'مصلاوی',
+            principal: 'خاتون طبیشی',
+            phone: '۰۹۱۶۶۳۴۸۰۸۹',
+            studentsCount: 130,
+            classesCount: 8,
+            orphansCount: 10,
+            needyCount: 30,
+            condition: '✓ تأسیس ۱۴۰۱ · مجهز به کارگاه‌های خیاطی و کامپیوتر',
+            conditionSeverity: 'normal',
+            budgetEst: '۱۶۵,۰۰۰,۰۰۰ تومان',
+            address: 'خرمشهر، روستای سرحانیه دوم، کوچه کنار کلانتری',
+            needs: [
+                'چرخ‌های خیاطی صنعتی راسته و سردوز (۸ دستگاه)',
+                'تجهیز اتو بخار مخزن‌دار کارگاهی',
+                'رایانه‌های کارگاه طراحی و الگوسازی (۴ دستگاه)',
+                'مواد مصرفی، پارچه و ملزومات آموزشی دوخت'
+            ],
+            keywords: ['شمخانی', 'شهدای شمخانی', 'طبیشی', 'خاتون طبیشی']
+        },
+        'al-yasin': {
+            id: 'al-yasin',
+            name: 'دبستان آل‌یاسین',
+            porslineCode: '85MvL',
+            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/85MvL?review_token=a8d45885-9731-4d09-967d-f08a8be44ac5',
+            fullName: 'دبستان نوساز آل‌یاسین (ابتدایی مختلط)',
+            gender: 'مختلط',
+            level: 'ابتدایی',
+            villageId: 'shahrak-sadat',
+            villageName: 'شهرک سادات',
+            principal: 'شهلا بوسویط',
+            phone: '۰۹۰۳۰۳۶۲۶۵۹',
+            studentsCount: 36,
+            classesCount: 6,
+            orphansCount: 4,
+            needyCount: 12,
+            condition: '✓ تأسیس ۱۴۰۵ · مدرسه نوساز با پوشش نوار مرزی',
+            conditionSeverity: 'normal',
+            budgetEst: '۳۲,۰۰۰,۰۰۰ تومان',
+            address: 'خرمشهر، حومه غربی، شهرک سادات',
+            needs: [
+                'کتاب‌های کمک‌آموزشی پایه اول تا ششم',
+                'وسایل بازی ایمن حیاط برای دانش‌آموزان',
+                'پکیج لوازم‌التحریر رایگان دانش‌آموزان'
+            ],
+            keywords: ['آل یاسین', 'آل‌یاسین', 'شهلا بوسویط', 'شهرک سادات']
+        },
+        'shohada-khedmat': {
+            id: 'shohada-khedmat',
+            name: 'دبستان شهدای خدمت عریض',
+            porslineCode: '1KQeL',
+            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/1KQeL?review_token=a23b6795-a390-4885-b496-635b6b2f8420',
+            fullName: 'دبستان شهدای خدمت (ابتدایی مختلط دولتی تک‌شیفت)',
+            gender: 'مختلط',
+            level: 'ابتدایی',
+            villageId: 'ariz',
+            villageName: 'عریض',
+            principal: 'عادل عباسپور',
+            phone: '۰۹۳۵۹۳۶۱۴۸۶',
+            studentsCount: 24,
+            classesCount: 2,
+            orphansCount: 3,
+            needyCount: 8,
+            condition: '✓ دایر در نخلستان‌های عریض · آموزگاران: عباسپور و دفاعی',
+            conditionSeverity: 'normal',
+            budgetEst: '۲۸,۰۰۰,۰۰۰ تومان',
+            address: 'خرمشهر، روستای عریض، جاده شلمچه',
+            needs: [
+                'دستگاه آبسردکن استیل و آبخوری بهداشتی',
+                'اسپلیت سرمایشی کلاس درس',
+                'بسته‌های نوشت‌افزار و کتاب‌های تقویتی'
+            ],
+            keywords: ['شهدای خدمت', 'عریض', 'عباسپور', 'عادل عباسپور']
+        },
+        'komeil': {
+            id: 'komeil',
+            name: 'مدرسه کمیل',
+            porslineCode: 'P7jyA',
+            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/P7jyA?review_token=bf5e1327-68ab-46a4-b60c-bbb1ad919240',
+            fullName: 'مدرسه متوسطه اول کمیل (پسرانه دو شیفت)',
+            gender: 'پسرانه',
+            level: 'متوسطه اول',
+            villageId: 'soureh',
+            villageName: 'سوره',
+            principal: 'آقای عاشوری',
+            phone: 'ثبت در سامانه ممیزی',
+            studentsCount: 115,
+            classesCount: 4,
+            orphansCount: 9,
+            needyCount: 22,
+            condition: '✓ تأسیس ۱۳۷۵ / شروع ۹۵ · پوشش تحصیلی نوجوانان سوره',
+            conditionSeverity: 'normal',
+            budgetEst: '۶۵,۰۰۰,۰۰۰ تومان',
+            address: 'خرمشهر، روستای سوره',
+            needs: [
+                'تجهیز کارگاه فناوری و کامپیوتر',
+                'بهسازی روشنایی و سرمایش کلاس‌ها'
+            ],
+            keywords: ['کمیل', 'عاشوری', 'سوره']
+        },
         'enghelab': {
             id: 'enghelab',
             name: 'دبستان انقلاب اسلامی',
@@ -44564,6 +44947,8 @@ summary:focus-visible {
             phone: '۰۹۳۶*** - ثبت در دبیرخانه ممیزی',
             studentsCount: 194,
             classesCount: 6,
+            orphansCount: 11,
+            needyCount: 30,
             condition: '✓ دایر و فعال در نوبت اول',
             conditionSeverity: 'normal',
             budgetEst: '۷۵,۰۰۰,۰۰۰ تومان',
@@ -44571,256 +44956,9 @@ summary:focus-visible {
             needs: [
                 'دستگاه چاپگر و تکثیر اداری',
                 'تجهیز کمد و قفسه کتابخانه کلاسی',
-                'اسپلیت گرمسیری و بهسازی سیستم سرمایش کلاس‌های درس',
-                'رنگ‌آمیزی و شاداب‌سازی فضای حیاط و خط‌کشی ورزشی'
+                'اسپلیت گرمسیری و بهسازی سیستم سرمایش کلاس‌های درس'
             ],
             keywords: ['انقلاب', 'آلبوغبیش']
-        },
-        'dekhoda': {
-            id: 'dekhoda',
-            name: 'دبستان دهخدا',
-            fullName: 'دبستان دهخدا (ابتدایی پسرانه)',
-            gender: 'پسرانه',
-            level: 'ابتدایی',
-            villageId: 'pol-now',
-            villageName: 'پل نو',
-            principal: 'آقای آبسالان',
-            phone: '۰۹۱۶*** - ثبت در دبیرخانه ممیزی',
-            studentsCount: 270,
-            classesCount: 7,
-            condition: '✓ فعال و پرجمعیت',
-            conditionSeverity: 'normal',
-            budgetEst: '۹۵,۰۰۰,۰۰۰ تومان',
-            address: 'خرمشهر، مدخل محور شلمچه، روستای پل نو',
-            needs: [
-                'میز و صندلی دانش‌آموزی استاندارد دو نفره',
-                'دستگاه تکثیر و چاپگر',
-                'تجهیز سیستم صوتی و نمازخانه مدرسه',
-                'تجهیزات ورزشی و توپ و دروازه مینی‌فوتبال'
-            ],
-            keywords: ['دهخدا', 'آبسالان']
-        },
-        'razmandegan': {
-            id: 'razmandegan',
-            name: 'دبستان رزمندگان',
-            porslineCode: '3EEkN',
-            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/3EEkN?review_token=b1817612-c105-448f-ad13-c6b209fec8df',
-            fullName: 'دبستان رزمندگان (ابتدایی پسرانه)',
-            gender: 'پسرانه',
-            level: 'ابتدایی',
-            villageId: 'pol-now',
-            villageName: 'پل نو',
-            principal: 'آقای غیورپور',
-            phone: '۰۹۳۷*** - ثبت در دبیرخانه ممیزی',
-            studentsCount: 185,
-            classesCount: 6,
-            condition: '✓ فعال در نوبت صبح',
-            conditionSeverity: 'normal',
-            budgetEst: '۶۸,۰۰۰,۰۰۰ تومان',
-            address: 'خرمشهر، نوار مرزی شلمچه، روستای پل نو',
-            needs: [
-                'سیستم رایانه آموزشی و اداری',
-                'تعمیر و سرویس اسپلیت‌های سرمایشی',
-                'کمد و فایل کتابخانه'
-            ],
-            keywords: ['رزمندگان', 'غیورپور']
-        },
-        'marzdaran': {
-            id: 'marzdaran',
-            name: 'دبستان مرزداران',
-            fullName: 'دبستان مرزداران (ابتدایی پسرانه)',
-            gender: 'پسرانه',
-            level: 'ابتدایی',
-            villageId: 'sarhaniyeh-olya',
-            villageName: 'سرحانیه علیا',
-            principal: 'آقای سکینی‌نیا',
-            phone: '۰۹۳۸*** - ثبت در دبیرخانه ممیزی',
-            studentsCount: 173,
-            classesCount: 6,
-            condition: '✓ فعال حاشیه اروند',
-            conditionSeverity: 'normal',
-            budgetEst: '۷۲,۰۰۰,۰۰۰ تومان',
-            address: 'خرمشهر، نوار ساحلی اروند، روستای سرحانیه علیا',
-            needs: [
-                'پروژکتور کلاسی هوشمند',
-                'چاپگر چندکاره و اسکنر',
-                'بهسازی آبخوری و فیلتر تصفیه آب'
-            ],
-            keywords: ['مرزداران', 'سکینی']
-        },
-        'komeil': {
-            id: 'komeil',
-            name: 'مدرسه کمیل',
-            fullName: 'مدرسه کمیل (متوسطه اول پسرانه)',
-            gender: 'پسرانه',
-            level: 'متوسطه اول',
-            villageId: 'soureh',
-            villageName: 'سوره',
-            principal: 'آقای عاشوری',
-            phone: '۰۹۱۶*** - ثبت در دبیرخانه ممیزی',
-            studentsCount: 115,
-            classesCount: 4,
-            condition: '✓ قطب متوسطه روستایی',
-            conditionSeverity: 'normal',
-            budgetEst: '۱۱۰,۰۰۰,۰۰۰ تومان',
-            address: 'خرمشهر، روستای سوره، حاشیه جاده شلمچه',
-            needs: [
-                'تجهیز کارگاه فناوری و سایت کامپیوتر (۵ سیستم)',
-                'تجهیز آزمایشگاه علوم تجربی متوسطه',
-                'میز و نیمکت استاندارد ارگونومیک نوجوانان'
-            ],
-            keywords: ['کمیل', 'عاشوری']
-        },
-        'maslavi-1': {
-            id: 'maslavi-1',
-            name: 'دبستان شهدای مصلاوی ۱',
-            fullName: 'دبستان شهدای مصلاوی ۱ (ابتدایی پسرانه)',
-            gender: 'پسرانه',
-            level: 'ابتدایی',
-            villageId: 'maslavi-1',
-            villageName: 'مصلاوی ۱',
-            principal: 'آقای طرفی',
-            phone: '۰۹۱۶*** - ثبت در دبیرخانه ممیزی',
-            studentsCount: 184,
-            classesCount: 6,
-            condition: '⚠️ نیازمند بهسازی تجهیزات',
-            conditionSeverity: 'warning',
-            budgetEst: '۸۴,۰۰۰,۰۰۰ تومان',
-            address: 'خرمشهر، روستای مصلاوی ۱، محور نخلستان‌ها',
-            needs: [
-                'تجهیز اسپلیت سرمایشی ۳۰ هزار پیستونی (۳ دستگاه)',
-                'تعویض صندلی‌ها و تخته‌های آموزشی',
-                'بازسازی درب‌ها و پنجره‌های کلاسی'
-            ],
-            keywords: ['مصلاوی ۱', 'شهدای مصلاوی ۱', 'طرفی']
-        },
-        'resalat-jaber': {
-            id: 'resalat-jaber',
-            name: 'مدرسه رسالت / جابر بن حیان',
-            porslineCode: 'I6wyN',
-            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/I6wyN?review_token=9ec4bc4a-1273-4cc9-82c8-bc7ecea2b9ce',
-            fullName: 'مدرسه رسالت و جابر بن حیان (ابتدایی پسرانه)',
-            gender: 'پسرانه',
-            level: 'ابتدایی',
-            villageId: 'maslavi-1',
-            villageName: 'مصلاوی',
-            principal: 'آقای نیسی‌پور',
-            phone: '۰۹۳۵*** - ثبت در دبیرخانه ممیزی',
-            studentsCount: 160,
-            classesCount: 6,
-            condition: '🚨 نیازمند نوسازی و بهسازی',
-            conditionSeverity: 'critical',
-            budgetEst: '۱۳۵,۰۰۰,۰۰۰ تومان',
-            address: 'خرمشهر، روستای مصلاوی، مجاورت جاده مرزی',
-            needs: [
-                'نوسازی سیستم برق‌رسانی و تابلو برق کلاسی',
-                'تجهیز سیستم سرمایش اسپلیت در تمامی کلاس‌ها',
-                'بهسازی سرویس بهداشتی و شیرآلات اهرمی',
-                'چاپگر و تجهیزات اداری مدیر و معلمان'
-            ],
-            keywords: ['رسالت', 'جابر بن حیان', 'نیسی']
-        },
-        'shalamcheh-girls': {
-            id: 'shalamcheh-girls',
-            name: 'دبستان شهدای شلمچه',
-            porslineCode: 'ERBSW',
-            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/ERBSW?review_token=508d86b4-e79d-451a-8d5c-25d967956a70',
-            fullName: 'دبستان شهدای شلمچه (ابتدایی دخترانه)',
-            gender: 'دخترانه',
-            level: 'ابتدایی',
-            villageId: 'sarhaniyeh-sofla',
-            villageName: 'سرحانیه سفلی',
-            principal: 'خانم زبیدی',
-            phone: '۰۹۳۹*** - ثبت در دبیرخانه ممیزی',
-            studentsCount: 160,
-            classesCount: 6,
-            condition: '⚠️ نیازمند تجهیز و بهسازی',
-            conditionSeverity: 'warning',
-            budgetEst: '۸۰,۰۰۰,۰۰۰ تومان',
-            address: 'خرمشهر، روستای سرحانیه سفلی',
-            needs: [
-                'تجهیز کتابخانه و کانون پرورش فکری دختران',
-                'اسپلیت سرمایشی و پنکه سقفی کمکی',
-                'تجهیزات ورزشی ویژه دختران (حلقه، طناب، شطرنج)'
-            ],
-            keywords: ['شهدای شلمچه', 'زبیدی']
-        },
-        'alavieh': {
-            id: 'alavieh',
-            name: 'دبستان علویه',
-            porslineCode: 'GM3RK',
-            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/GM3RK?review_token=193ea18f-5dd9-42c5-a087-6e5fe310e47c',
-            fullName: 'دبستان علویه (ابتدایی دخترانه)',
-            gender: 'دخترانه',
-            level: 'ابتدایی',
-            villageId: 'sarhaniyeh-olya',
-            villageName: 'سرحانیه علیا',
-            principal: 'خانم طبیشی',
-            phone: '۰۹۳۶*** - ثبت در دبیرخانه ممیزی',
-            studentsCount: 240,
-            classesCount: 7,
-            condition: '✓ فعال و پرجمعیت دخترانه',
-            conditionSeverity: 'normal',
-            budgetEst: '۸۸,۰۰۰,۰۰۰ تومان',
-            address: 'خرمشهر، جاده مرزی شلمچه، روستای سرحانیه علیا',
-            needs: [
-                'میز و نیمکت دو نفره استاندارد',
-                'چاپگر و اسکنر',
-                'تجهیز نمازخانه و فرش سجاده‌ای'
-            ],
-            keywords: ['علویه', 'طبیشی']
-        },
-        'zeinabiyeh': {
-            id: 'zeinabiyeh',
-            name: 'دبستان زینبیه',
-            fullName: 'دبستان زینبیه (ابتدایی دخترانه)',
-            gender: 'دخترانه',
-            level: 'ابتدایی',
-            villageId: 'sarhaniyeh-olya',
-            villageName: 'سرحانیه علیا',
-            principal: 'خانم مکیه محمدی',
-            phone: '۰۹۱۶۶۳۴۱۳۷۳',
-            studentsCount: 258,
-            classesCount: 12,
-            condition: '🚨 نیازمند کلاس‌های تقویتی و پیشگیری از ترک تحصیل پایه ششم',
-            conditionSeverity: 'warning',
-            budgetEst: '۱۲۰,۰۰۰,۰۰۰ تومان',
-            address: 'خرمشهر، حومه غربی، روستای سرحانیه دوم (علیا)',
-            porslineCode: '8iaE1',
-            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/8iaE1?review_token=e881ab82-2f42-4e36-a7d4-5887d1d93678',
-            needs: [
-                'دیتاپروژکتور کلاسی هوشمند',
-                'سیستم رایانه دفتر مدیریت',
-                'تعمیر شیرآلات و آبخوری بهداشتی'
-            ],
-            keywords: ['زینبیه', 'حیدری']
-        },
-        'motiri': {
-            id: 'motiri',
-            name: 'دبستان شهید کاظم مطیری‌زاده',
-            porslineCode: 'nqZRF',
-            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/nqZRF?review_token=bda3f1c4-633b-4c60-93d7-6826a1dd7851',
-            fullName: 'دبستان شهید کاظم مطیری‌زاده (ابتدایی دو شیفت)',
-            gender: 'دخترانه / پسرانه',
-            level: 'ابتدایی',
-            villageId: 'soureh',
-            villageName: 'سوره',
-            principal: 'خانم فتاحی‌پور (دخترانه) / خانم هاشمی (پسرانه)',
-            phone: '۰۹۱۶۳۳۲۸۶۳۲ - ۰۹۰۳۳۵۹۲۵۴۶',
-            studentsCount: 114,
-            classesCount: 6,
-            condition: '🚨 نیازمند بازسازی کامل کالبدی و سرویس‌های بهداشتی',
-            conditionSeverity: 'critical',
-            budgetEst: '۱۶۰,۰۰۰,۰۰۰ تومان',
-            address: 'خرمشهر، روستای سوره، درب بندر فعیلیه',
-            needs: [
-                'تخریب و بازسازی کامل سرویس‌های بهداشتی',
-                'ایزوگام و آب‌بندی سقف کلاسی',
-                'تعویض کامل سیم‌کشی فرسوده برق',
-                'تجهیز ۴ دستگاه اسپلیت سرمایشی نو',
-                'میز و صندلی معلمان و کمد اداری'
-            ],
-            keywords: ['مطیری', 'بحرانی']
         },
         'asiyeh': {
             id: 'asiyeh',
@@ -44834,42 +44972,43 @@ summary:focus-visible {
             phone: '۰۹۳۷*** - ثبت در دبیرخانه ممیزی',
             studentsCount: 220,
             classesCount: 6,
-            condition: '🚨 نیازمند بهسازی اساسی',
-            conditionSeverity: 'critical',
-            budgetEst: '۱۴۰,۰۰۰,۰۰۰ تومان',
+            orphansCount: 14,
+            needyCount: 35,
+            condition: '🚨 نیازمند بازسازی سقف و سرمایش',
+            conditionSeverity: 'warning',
+            budgetEst: '۸۵,۰۰۰,۰۰۰ تومان',
             address: 'خرمشهر، روستای سرحانیه علیا',
             needs: [
                 'آب‌بندی و عایق سقف کلاس‌ها پیش از بارندگی',
-                'تعمیر و نوسازی تاسیسات سرمایشی',
-                'رایانه، چاپگر و تجهیز اتاق معلمان',
-                'شاداب‌سازی حیاط و رنگ‌آمیزی دیوارها'
+                'بهسازی سرویس‌های بهداشتی',
+                'تعویض سیم‌کشی فرسوده برق'
             ],
             keywords: ['آسیه', 'محمدی']
         },
-        'rahiyan-noor': {
-            id: 'rahiyan-noor',
-            name: 'مدرسه راهیان نور',
-            porslineCode: 'R4lnc',
-            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/R4lnc?review_token=756def52-a98f-4150-89ce-fdac1eea4b97',
-            fullName: 'مدرسه راهیان نور (ابتدایی دخترانه)',
-            gender: 'دخترانه',
+        'maslavi-1': {
+            id: 'maslavi-1',
+            name: 'دبستان شهدای مصلاوی ۱',
+            fullName: 'دبستان شهدای مصلاوی ۱ (ابتدایی پسرانه)',
+            gender: 'پسرانه',
             level: 'ابتدایی',
-            villageId: 'soureh',
-            villageName: 'سوره',
-            principal: 'خانم فتاحی پور',
-            phone: '۰۹۱۶*** - ثبت در دبیرخانه ممیزی',
-            studentsCount: 168,
+            villageId: 'maslavi-1',
+            villageName: 'مصلاوی ۱',
+            principal: 'آقای طرفی',
+            phone: '۰۹۳۸*** - ثبت در دبیرخانه ممیزی',
+            studentsCount: 184,
             classesCount: 6,
-            condition: '✓ فعال و استاندارد نخلستان',
+            orphansCount: 8,
+            needyCount: 25,
+            condition: '✓ فعال و کانون آموزشی مصلاوی',
             conditionSeverity: 'normal',
-            budgetEst: '۷۶,۰۰۰,۰۰۰ تومان',
-            address: 'خرمشهر، روستای سوره، محور اروند',
+            budgetEst: '۷۲,۰۰۰,۰۰۰ تومان',
+            address: 'خرمشهر، روستای مصلاوی ۱',
             needs: [
-                'تجهیز کتابخانه و کتاب‌های داستان رده سنی الف و ب',
-                'سرویس دوره‌ای اسپلیت‌ها',
-                'امکانات صوتی و مراسمات صبحگاهی'
+                'تجهیزات ورزشی و زمین بازی',
+                'تجهیز آبسردکن بهداشتی',
+                'میز و صندلی معلمان'
             ],
-            keywords: ['راهیان نور', 'فتاحی']
+            keywords: ['مصلاوی ۱', 'طرفی']
         },
         'maslavi-2': {
             id: 'maslavi-2',
@@ -44883,6 +45022,8 @@ summary:focus-visible {
             phone: '۰۹۳۹*** - ثبت در دبیرخانه ممیزی',
             studentsCount: 190,
             classesCount: 6,
+            orphansCount: 7,
+            needyCount: 22,
             condition: '✓ فعال در نوبت صبح',
             conditionSeverity: 'normal',
             budgetEst: '۷۸,۰۰۰,۰۰۰ تومان',
@@ -44892,62 +45033,10 @@ summary:focus-visible {
                 'تجهیز آبسردکن استیل استاندارد',
                 'میز و نیمکت دانش‌آموزی'
             ],
-            keywords: ['مصلاوی ۲', 'شهدای مصلاوی ۲', 'کلثومی']
-        },
-        'shamkhani': {
-            id: 'shamkhani',
-            name: 'هنرستان شهدای شمخانی',
-            porslineCode: 'MD2R3',
-            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/MD2R3?review_token=81e6c235-85cc-4352-a095-314bd4ebadc7',
-            fullName: 'هنرستان کاردانش و فنی شهدای شمخانی (دخترانه)',
-            gender: 'دخترانه',
-            level: 'هنرستان فنی',
-            villageId: 'maslavi-1',
-            villageName: 'مصلاوی',
-            principal: 'خانم غزلاوی',
-            phone: '۰۹۱۶*** - ثبت در دبیرخانه ممیزی',
-            studentsCount: 170,
-            classesCount: 6,
-            condition: '✓ مجهز به کارگاه خیاطی و طراحی',
-            conditionSeverity: 'normal',
-            budgetEst: '۱۵۰,۰۰۰,۰۰۰ تومان',
-            address: 'خرمشهر، روستای مصلاوی، مجاورت جاده شلمچه',
-            needs: [
-                'چرخ‌های خیاطی صنعتی راسته و سردوز (۸ دستگاه)',
-                'تجهیز سیستم اتو بخار مخزن‌دار کارگاهی',
-                'رایانه‌های کارگاه طراحی و الگوسازی (۴ دستگاه)',
-                'مواد مصرفی، پارچه و ملزومات آموزشی دوخت'
-            ],
-            keywords: ['شمخانی', 'شهدای شمخانی', 'غزلاوی']
-        },
-        'al-yasin': {
-            id: 'al-yasin',
-            name: 'دبستان آل‌یاسین',
-            porslineCode: '85MvL',
-            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/85MvL?review_token=a8d45885-9731-4d09-967d-f08a8be44ac5',
-            fullName: 'دبستان نوساز آل‌یاسین (ابتدایی و پیش‌دبستانی)',
-            gender: 'مختلط',
-            level: 'ابتدایی',
-            villageId: 'shahrak-sevvom',
-            villageName: 'شهرک سوم',
-            principal: 'مدیریت مجتمع',
-            phone: 'ثبت در سامانه',
-            studentsCount: 48,
-            classesCount: 7,
-            condition: '✓ نوساز و مجهز',
-            conditionSeverity: 'normal',
-            budgetEst: '۳۵,۰۰۰,۰۰۰ تومان',
-            address: 'خرمشهر، محور مواصلاتی شلمچه، شهرک سوم',
-            needs: [
-                'کتاب‌های کمک‌آموزشی پایه اول تا ششم',
-                'وسایل بازی ایمن حیاط برای پیش‌دبستانی',
-                'پکیج لوازم‌التحریر رایگان دانش‌آموزان'
-            ],
-            keywords: ['آل یاسین', 'آل‌یاسین', 'شهرک سوم']
+            keywords: ['مصلاوی ۲', 'کلثومی']
         }
     };
-
-    window.schoolsDetailedData = schoolsDetailedData;
+window.schoolsDetailedData = schoolsDetailedData;
 
     function toFa(n) {
         if (n === null || n === undefined) return '';
@@ -44999,7 +45088,82 @@ window.syncPorslineSchoolLive = function(e) {
     }, 850);
 };
 
-    window.openSchoolDossierModal = function(rawKey) {
+    
+    // Dynamic Render of 16 Schools Directory from Authoritative schoolsDetailedData (Porsline Live Sync)
+    window.renderSchoolsGridFromData = function() {
+        const container = document.getElementById('schoolsGridContainer');
+        if (!container || !window.schoolsDetailedData) return;
+
+        const data = window.schoolsDetailedData;
+        const keys = Object.keys(data);
+        if (keys.length === 0) return;
+
+        let html = '';
+        keys.forEach(k => {
+            const s = data[k];
+            const isCritical = s.conditionSeverity === 'critical';
+            const genderCls = s.gender.includes('پسر') ? 'boys' : (s.gender.includes('دختر') ? 'girls' : 'mixed');
+            const bg = isCritical ? '#fffaf0' : '#f8fafc';
+            const border = isCritical ? '1.5px solid #f87171' : '1px solid #cbd5e1';
+            const badgeBg = isCritical ? '#fee2e2' : '#e0f2fe';
+            const badgeColor = isCritical ? '#b91c1c' : '#0369a1';
+            const statusLabel = isCritical ? '🚨 بازسازی کالبدی فوری' : '✓ فعال و دایر';
+            const porslineBadge = s.porslineCode ? `<span style="background:#ecfdf5; color:#047857; font-size:10px; font-weight:800; padding:2px 6px; border-radius:4px; border:1px solid #a7f3d0;">✓ ممیزی میدانی پرسلاین (${s.porslineCode})</span>` : '';
+
+            html += `
+            <div class="school-card-box" data-school-key="${s.id}" data-gender="${genderCls}" data-renovate="${isCritical ? 'yes' : 'no'}"
+                 onclick="window.openSchoolDossierModal('${s.id}')"
+                 style="background:${bg}; border:${border}; border-radius:12px; padding:14px; display:flex; flex-direction:column; gap:8px; cursor:pointer; transition:all 0.2s ease;"
+                 title="مشاهده شناسنامه جامع و پرونده دانش‌آموزی ${s.name} ↗">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
+                    <div>
+                        <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-bottom:4px;">
+                            <span style="background:${badgeBg}; color:${badgeColor}; font-weight:900; font-size:10px; padding:2px 6px; border-radius:4px;">${statusLabel}</span>
+                            ${porslineBadge}
+                        </div>
+                        <h5 style="margin:2px 0; font-size:13.5px; font-weight:900; color:#132a26;">${s.fullName || s.name}</h5>
+                        <div style="font-size:11px; color:#64748b; margin-top:2px;">
+                            📍 روستای <strong>${s.villageName}</strong> · مدیر: <strong style="color:#0f172a;">${s.principal}</strong> ${s.phone ? ' · 📞 ' + s.phone : ''}
+                        </div>
+                    </div>
+                    <div style="text-align:left; flex-shrink:0;">
+                        <span style="background:#dbeafe; color:#1e40af; font-weight:900; font-size:12px; padding:3px 8px; border-radius:8px; white-space:nowrap;">${(s.studentsCount || 0).toLocaleString('fa-IR')} محصل</span>
+                        ${s.classesCount ? `<div style="font-size:10.5px; color:#64748b; margin-top:2px; font-weight:700;">${s.classesCount.toLocaleString('fa-IR')} کلاس درس</div>` : ''}
+                    </div>
+                </div>
+                <div style="background:${isCritical ? '#fef2f2' : '#f1f5f9'}; border:1px dashed ${isCritical ? '#fca5a5' : '#cbd5e1'}; border-radius:8px; padding:8px 10px; font-size:11px; color:${isCritical ? '#991b1b' : '#334155'}; line-height:1.6;">
+                    <strong>📌 وضعیت کالبدی:</strong> ${s.condition}
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto; padding-top:6px; border-top:1px solid rgba(0,0,0,0.06);">
+                    <span style="font-size:11px; color:#0f766e; font-weight:800;">
+                        👥 ${(s.orphansCount || 0).toLocaleString('fa-IR')} یتیم · ${(s.needyCount || 0).toLocaleString('fa-IR')} کم‌برخوردار
+                    </span>
+                    <button type="button" class="view-school-link-btn" style="background:#0f766e; color:#ffffff; border:none; padding:4px 10px; border-radius:6px; font-size:11px; font-weight:800; cursor:pointer;">
+                        مشاهده پرونده ↗
+                    </button>
+                </div>
+            </div>
+            `;
+        });
+
+        container.innerHTML = html;
+
+        // Update overall school count and student badge in header
+        const totalStudents = keys.reduce((acc, k) => acc + (data[k].studentsCount || 0), 0);
+        const headerBadge = document.querySelector('h4 span[style*="background:#fef3c7"]');
+        if (headerBadge) {
+            headerBadge.textContent = `${totalStudents.toLocaleString('fa-IR')} دانش‌آموز`;
+        }
+    };
+
+    // Auto-invoke on DOM ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => { setTimeout(window.renderSchoolsGridFromData, 50); });
+    } else {
+        setTimeout(window.renderSchoolsGridFromData, 50);
+    }
+
+window.openSchoolDossierModal = function(rawKey) {
         let key = rawKey;
         if (key && key.startsWith('sch-')) key = key.replace('sch-', '');
         
@@ -45197,8 +45361,17 @@ window.syncPorslineSchoolLive = function(e) {
                     return `
                         <tr style="border-bottom:1px solid #e2e8f0;">
                             <td style="padding:8px 10px; color:#64748b; font-weight:700;">${toFa(idx + 1)}</td>
-                            <td style="padding:8px 10px; font-weight:800; color:#0f172a;">${st.studentName}</td>
-                            <td style="padding:8px 10px; color:#475569;">${st.fatherName ? 'فرزند ' + st.fatherName : st.guardian}</td>
+                            <td style="padding:8px 10px;">
+                                <button type="button" class="person-dossier-link-btn orphan-link" data-name="${st.studentName}" data-village="${st.village}" data-father="${st.fatherName || ''}" data-gname="${st.guardian || ''}" data-role="orphan" style="background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.3); color:#059669; font-weight:800; padding:3px 8px; border-radius:6px; cursor:pointer; font-family:inherit; display:inline-flex; align-items:center; gap:4px;" title="مشاهده شناسنامه و پرونده فردی ${st.studentName} (ایتام)">
+                                    <span>🧒 ${st.studentName}</span>
+                                    <span style="font-size:10px;">↗</span>
+                                </button>
+                            </td>
+                            <td style="padding:8px 10px;">
+                                <button type="button" class="person-dossier-link-btn guardian-link" data-name="${st.guardian || st.fatherName}" data-village="${st.village}" data-role="guardian" style="background:none; border:none; padding:0; color:#475569; font-weight:700; cursor:pointer; font-family:inherit; text-decoration:underline;" title="مشاهده شناسنامه سرپرست">
+                                    ${st.fatherName ? 'فرزند ' + st.fatherName : st.guardian} ↗
+                                </button>
+                            </td>
                             <td style="padding:8px 10px; color:#0369a1; font-weight:700;">${st.grade}</td>
                             <td style="padding:8px 10px;"><span style="background:${st.health.includes('سالم') ? '#ecfdf5' : '#fef2f2'}; color:${st.health.includes('سالم') ? '#047857' : '#b91c1c'}; font-size:10.5px; font-weight:700; padding:2px 6px; border-radius:4px;">${st.health}</span></td>
                             <td style="padding:8px 10px;">${sBadges || '<span style="color:#94a3b8; font-size:10.5px;">پویش تحصیلی پلاک ۱</span>'}</td>
