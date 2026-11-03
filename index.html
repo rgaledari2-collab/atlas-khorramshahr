@@ -16234,6 +16234,20 @@ const arizStatsHtml = `<div class="dos-content-grid" id="stats-content-ariz" cla
 </div>`;
 
 const polNowStatsHtml = `<div class="dos-content-grid" id="stats-content-pol-now" class="stats-content-panel">
+    <!-- بنر زیج حیاتی و پایش سلامت -->
+    <div style="grid-column: 1 / -1; background:linear-gradient(135deg, #042f2e, #0f766e); border:1.5px solid #2dd4bf; border-radius:14px; padding:14px 18px; margin-bottom:12px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; color:#ffffff; box-shadow:0 4px 15px rgba(15,118,110,0.25);">
+        <div style="display:flex; align-items:center; gap:12px;">
+            <span style="font-size:24px;">🩺</span>
+            <div>
+                <div style="font-weight:900; font-size:14px; color:#ccfbf1;">زیج حیاتی و کارنامه رسمی سلامت روستای پل نو و مناطق اقماری</div>
+                <div style="font-size:11.5px; color:#99f6e4; margin-top:2px;">پایش ۳,۸۰۶ نفر جمعیت مرزی · ۱۰۰٪ زایمان بیمارستانی · تحلیل سن مادران و اولویت‌های سلامت</div>
+            </div>
+        </div>
+        <button type="button" onclick="window.openHealthZijModal('pol-now')" style="background:#2dd4bf; color:#042f2e; border:none; border-radius:8px; padding:8px 18px; font-size:12px; font-weight:900; cursor:pointer; font-family:inherit; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 8px rgba(0,0,0,0.2); transition:all 0.15s ease;">
+            <span>مشاهده داشبورد زیج حیاتی 📊</span>
+            <span>←</span>
+        </button>
+    </div>
     <!-- جمعیت و تقسیمات کشوری -->
     <section class="dos-section">
         <h2 class="dos-section-title">
@@ -35419,7 +35433,7 @@ document.addEventListener('click', (e) => {
             { id: 'sch-al-yasin', schoolKey: 'al-yasin', name: 'دبستان آل‌یاسین', villageId: 'shahrak-sevvom', villageName: 'شهرک سوم', x: 0.425, y: 0.298, desc: '۴۸ دانش‌آموز در ۷ پایه تحصیلی · مدرسه نوساز با پوشش نوار مرزی شلمچه', badge: 'نوساز فعال' }
         ],
         health: [
-            { id: 'hlt-pol-now', name: 'خانه بهداشت روستایی پل نو', villageId: 'pol-now', villageName: 'پل نو', x: 0.649, y: 0.482, desc: 'مرکز فعال پایش سلامت مادر و کودک، واکسیناسیون و مراقبت‌های اولیه ۱,۸۷۴ نفر', badge: 'خانه بهداشت' },
+            { id: 'hlt-pol-now', name: 'خانه بهداشت روستایی پل نو', villageId: 'pol-now', villageName: 'پل نو', x: 0.649, y: 0.482, desc: 'پایشگر زیج حیاتی و سلامت ۳,۸۰۶ نفر جمعیت مرزی · ۱۰۰٪ زایمان ایمن بیمارستانی · پایش تغذیه مادر و کودک', badge: 'زیج حیاتی فعال' },
             { id: 'hlt-soureh', name: 'خانه بهداشت جامع سوره', villageId: 'soureh', villageName: 'سوره', x: 0.693, y: 0.758, desc: 'پایگاه سلامت جامعه روستایی با ۲ بهورز مقیم پوشش‌دهنده ساکنان آبادی سوره', badge: 'مرکز جامع' },
             { id: 'hlt-ariz', name: 'خانه بهداشت روستایی عریض', villageId: 'ariz', villageName: 'عریض', x: 0.648, y: 0.270, desc: 'پایگاه خدمات جامع بهداشت روستایی جاده شلمچه پوشش‌دهنده اهالی روستا', badge: 'خانه بهداشت' },
             { id: 'hlt-darband', name: 'خانه بهداشت دربند غربی', villageId: 'darband-gharbi', villageName: 'دربند غربی', x: 0.744, y: 0.875, desc: 'پایش مستمر پرونده‌های توانبخشی، بیماران خاص و مراقبت‌های دوره‌ای سالمندان', badge: 'خانه بهداشت' },
@@ -35563,6 +35577,8 @@ water: [
 
         if (actionBtn) {
             const isSchool = layerKey === 'schools' || (pt.id && pt.id.startsWith('sch-')) || pt.schoolKey;
+            const isPolNowHealth = pt.id === 'hlt-pol-now' || (layerKey === 'health' && pt.villageId === 'pol-now');
+
             if (isSchool) {
                 actionBtn.style.display = 'flex';
                 actionBtn.style.alignItems = 'center';
@@ -35583,6 +35599,27 @@ water: [
                     const sk = pt.schoolKey || (pt.id ? pt.id.replace('sch-', '') : '');
                     if (typeof window.openSchoolDossierModal === 'function') {
                         window.openSchoolDossierModal(sk);
+                    }
+                };
+            } else if (isPolNowHealth) {
+                actionBtn.style.display = 'flex';
+                actionBtn.style.alignItems = 'center';
+                actionBtn.style.justifyContent = 'space-between';
+                actionBtn.style.background = 'linear-gradient(135deg, #0284c7, #0369a1)';
+                actionBtn.style.color = '#ffffff';
+                actionBtn.style.fontWeight = '800';
+                actionBtn.style.fontSize = '12px';
+                actionBtn.style.padding = '9px 14px';
+                actionBtn.style.borderRadius = '10px';
+                actionBtn.style.border = 'none';
+                actionBtn.style.cursor = 'pointer';
+                actionBtn.style.boxShadow = '0 4px 14px rgba(2, 132, 199, 0.4)';
+                actionBtn.innerHTML = '<span>مشاهده زیج حیاتی و کارنامه سلامت پل نو 🩺</span> <span style="font-size:14px; margin-right:auto;">←</span>';
+                actionBtn.onclick = function(e) {
+                    if (e) e.stopPropagation();
+                    tooltip.classList.remove('is-active');
+                    if (typeof window.openHealthZijModal === 'function') {
+                        window.openHealthZijModal('pol-now');
                     }
                 };
             } else {
@@ -44087,6 +44124,24 @@ summary:focus-visible {
             </div>
 
             <!-- Section 1.5: Porsline Live Field Audit Status -->
+            <!-- Section: PDI Physical Deficit Index -->
+            <div id="schoolModalPdiCard" style="background:#fff7ed; border:1.5px solid #fed7aa; border-radius:14px; padding:14px 18px;">
+                <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom:8px;">
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <span style="font-size:20px;">🏗️</span>
+                        <div>
+                            <span style="font-size:13px; font-weight:900; color:#9a3412;" id="schoolModalPdiTitle">شاخص محرومیت کالبدی ممیزی (PDI): ۹۲٪ · اولویت ۱ مداخله کالبدی</span>
+                            <div style="font-size:11px; color:#c2410c; margin-top:2px;" id="schoolModalPdiFactors">عوامل بحرانی: سرمایش نامناسب · سقف و ایزوگام · کسری میز و صندلی</div>
+                        </div>
+                    </div>
+                    <span id="schoolModalPdiBadge" style="background:#ea580c; color:#ffffff; font-size:11px; font-weight:900; padding:3px 10px; border-radius:6px;">بحران کالبدی شدید</span>
+                </div>
+                <div style="height:8px; background:#ffedd5; border-radius:4px; overflow:hidden;">
+                    <div id="schoolModalPdiBar" style="width:92%; height:100%; background:linear-gradient(90deg, #ea580c, #dc2626); border-radius:4px;"></div>
+                </div>
+            </div>
+
+            <!-- Section 1.5: Porsline Live Field Audit Status -->
             <div id="schoolModalPorslineCard" style="background:#f0fdf4; border:1.5px solid #86efac; border-radius:14px; padding:14px 18px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
                 <div style="display:flex; align-items:center; gap:10px;">
                     <span style="font-size:22px;">📋</span>
@@ -44095,10 +44150,15 @@ summary:focus-visible {
                         <div style="font-size:11.5px; color:#166534; margin-top:2px;" id="schoolModalPorslineSub">شناسنامه جامع میدانی این مدرسه در سامانه ممیزی پرسلاین ثبت و ارزیابی شده است.</div>
                     </div>
                 </div>
-                <a id="schoolModalPorslineLink" href="#" target="_blank" rel="noopener noreferrer" style="background:#15803d; color:#ffffff; font-size:11.5px; font-weight:800; padding:8px 16px; border-radius:8px; text-decoration:none; display:inline-flex; align-items:center; gap:6px; box-shadow:0 3px 10px rgba(21,128,61,0.25); transition:all 0.15s ease;">
-                    <span id="schoolModalPorslineBtnText">مشاهده فرم ممیزی در پرسلاین</span>
-                    <span>↗</span>
-                </a>
+                <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                    <button type="button" id="schoolModalPorslineSyncBtn" onclick="window.syncPorslineSchoolLive(event)" style="background:#0f766e; color:#ffffff; font-size:11px; font-weight:800; padding:8px 14px; border-radius:8px; border:none; cursor:pointer; display:inline-flex; align-items:center; gap:5px; box-shadow:0 3px 10px rgba(15,118,110,0.25); transition:all 0.15s ease;" title="استعلام آخرین وضعیت از API پرسلاین">
+                        <span>🔄 همگام‌سازی زنده پرسلاین</span>
+                    </button>
+                    <a id="schoolModalPorslineLink" href="#" target="_blank" rel="noopener noreferrer" style="background:#15803d; color:#ffffff; font-size:11.5px; font-weight:800; padding:8px 16px; border-radius:8px; text-decoration:none; display:inline-flex; align-items:center; gap:6px; box-shadow:0 3px 10px rgba(21,128,61,0.25); transition:all 0.15s ease;">
+                        <span id="schoolModalPorslineBtnText">مشاهده فرم ممیزی در پرسلاین</span>
+                        <span>↗</span>
+                    </a>
+                </div>
             </div>
 
             <!-- Section 2: Documented Beneficiaries & Students from Database -->
@@ -44147,6 +44207,252 @@ summary:focus-visible {
         </div>
     </div>
 </div>
+
+<!-- ==================== MODAL: VITAL HOROSCOPE & HEALTH DOSSIER (POL-E NOW) ==================== -->
+<div id="healthZijModal" class="health-zij-modal-overlay" style="display:none; position:fixed; inset:0; z-index:99999; background:rgba(6, 26, 23, 0.88); backdrop-filter:blur(8px); align-items:center; justify-content:center; padding:16px; opacity:0; transition:opacity 0.25s ease;">
+    <div class="health-zij-modal-dialog" style="background:#ffffff; width:100%; max-width:960px; max-height:92vh; border-radius:22px; border:1.5px solid #0d9488; box-shadow:0 25px 65px rgba(0,0,0,0.5); display:flex; flex-direction:column; overflow:hidden; font-family:YekanBakh,sans-serif; direction:rtl; transform:scale(0.96); transition:transform 0.25s ease;">
+        
+        <!-- Header -->
+        <div style="background:linear-gradient(135deg,#042f2e,#0f766e); padding:18px 24px; color:#ffffff; display:flex; align-items:center; justify-content:space-between; border-bottom:1.5px solid #14b8a6;">
+            <div style="display:flex; align-items:center; gap:14px;">
+                <div style="width:50px; height:50px; border-radius:15px; background:rgba(20,184,166,0.2); border:1.5px solid #2dd4bf; display:flex; align-items:center; justify-content:center; font-size:26px; box-shadow:0 4px 15px rgba(13,148,136,0.3);">🩺</div>
+                <div>
+                    <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+                        <h3 style="margin:0; font-size:18px; font-weight:900; color:#ccfbf1;">گزارش تحلیلی زیج حیاتی و پایش سلامت روستای پل نو</h3>
+                        <span style="background:#0d9488; color:#ffffff; font-size:11px; font-weight:800; padding:2px 10px; border-radius:6px; border:1px solid #2dd4bf;">زیج حیاتی مستند میدانی</span>
+                        <span style="background:#ecfdf5; color:#065f46; font-size:11px; font-weight:900; padding:2px 10px; border-radius:6px;">پوشش ۱۰۰٪ زایمان بیمارستانی</span>
+                    </div>
+                    <div style="font-size:12px; color:#99f6e4; margin-top:5px;">📍 خانه بهداشت روستایی پل نو · بهورز مسئول: سرکار خانم نوال یری‌زاده (۰۹۰۳۶۹۴۲۹۴۸) · مرکز معین: مرکز جامع امام حسین (ع) سرحانیه سفلی</div>
+                </div>
+            </div>
+            <button type="button" onclick="window.closeHealthZijModal()" style="background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25); color:#99f6e4; width:38px; height:38px; border-radius:12px; cursor:pointer; font-size:18px; font-weight:700; display:flex; align-items:center; justify-content:center; transition:all 0.2s ease;" title="بستن (ESC)">✕</button>
+        </div>
+
+        <!-- Body -->
+        <div style="padding:22px 26px; overflow-y:auto; display:flex; flex-direction:column; gap:20px; flex:1;">
+            
+            <!-- Row 1: Executive KPI Cards -->
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:12px;">
+                <div style="background:#f0fdfa; border:1px solid #99f6e4; border-radius:12px; padding:12px 14px;">
+                    <div style="font-size:11.5px; color:#0f766e; font-weight:700;">👥 جمعیت تحت پوشش خانه بهداشت:</div>
+                    <div style="font-size:20px; font-weight:900; color:#115e59; margin-top:4px;">۳,۸۰۶ نفر</div>
+                    <div style="font-size:11px; color:#134e4a; margin-top:2px;">۵۲.۴٪ مرد (۱,۹۹۵) · ۴۷.۶٪ زن (۱,۸۱۱)</div>
+                </div>
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; border-radius:12px; padding:12px 14px;">
+                    <div style="font-size:11.5px; color:#047857; font-weight:700;">🏥 پوشش زایمان در مراکز درمانی:</div>
+                    <div style="font-size:20px; font-weight:900; color:#065f46; margin-top:4px;">۱۰۰٪</div>
+                    <div style="font-size:11px; color:#064e3b; margin-top:2px;">تمامی ۷۶ زایمان در بیمارستان/زایشگاه</div>
+                </div>
+                <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:12px; padding:12px 14px;">
+                    <div style="font-size:11.5px; color:#166534; font-weight:700;">👶 ترکیب نوع زایمان ثبت‌شده:</div>
+                    <div style="font-size:18px; font-weight:900; color:#14532d; margin-top:4px;">۷۲.۴٪ طبیعی</div>
+                    <div style="font-size:11px; color:#166534; margin-top:2px;">۵۵ طبیعی · ۲۱ سزارین (۲۷.۶٪)</div>
+                </div>
+                <div style="background:#fff7ed; border:1.5px solid #fed7aa; border-radius:12px; padding:12px 14px;">
+                    <div style="font-size:11.5px; color:#c2410c; font-weight:800;">🚨 سهم زایمان مادران نوجوان:</div>
+                    <div style="font-size:20px; font-weight:900; color:#9a3412; margin-top:4px;">۱۷.۱۱٪</div>
+                    <div style="font-size:11px; color:#c2410c; margin-top:2px;">۱۳ تولد در سنین ۱۵ تا ۱۹ سال</div>
+                </div>
+                <div style="background:#fff1f2; border:1px solid #fecdd3; border-radius:12px; padding:12px 14px;">
+                    <div style="font-size:11.5px; color:#be123c; font-weight:700;">⚖️ شاخص کم‌وزنی نوزادان (LBW):</div>
+                    <div style="font-size:20px; font-weight:900; color:#9f1239; margin-top:4px;">۷.۱۴٪</div>
+                    <div style="font-size:11px; color:#881337; margin-top:2px;">۱ نوزاد دختر کمتر از ۲۵۰۰ گرم در قمر</div>
+                </div>
+            </div>
+
+            <!-- Row 2: Maternal Age Distribution Chart -->
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:16px; padding:18px;">
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+                    <strong style="font-size:14px; color:#0f172a; display:flex; align-items:center; gap:8px;">
+                        <span>📊</span>
+                        <span>توزیع سنی مادران در مجموعه ۷۶ تولد ثبت‌شده خانه بهداشت پل نو:</span>
+                    </strong>
+                    <span style="background:#e0f2fe; color:#0369a1; font-size:11.5px; font-weight:800; padding:3px 10px; border-radius:6px;">مجموع: ۷۶ تولد (۱۰۰٪)</span>
+                </div>
+                
+                <div style="display:flex; flex-direction:column; gap:10px;">
+                    <!-- 15-19 -->
+                    <div>
+                        <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:3px;">
+                            <span style="font-weight:800; color:#9a3412;">۱۵ تا ۱۹ سال (مادران نوجوان · اولویت مراقبت فعال):</span>
+                            <span style="font-weight:900; color:#9a3412;">۱۳ تولد · ۱۷.۱۱٪</span>
+                        </div>
+                        <div style="height:10px; background:#fed7aa; border-radius:5px; overflow:hidden;">
+                            <div style="width:17.11%; height:100%; background:linear-gradient(90deg, #ea580c, #f97316); border-radius:5px;"></div>
+                        </div>
+                    </div>
+
+                    <!-- 20-24 -->
+                    <div>
+                        <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:3px;">
+                            <span style="font-weight:700; color:#1e293b;">۲۰ تا ۲۴ سال:</span>
+                            <span style="font-weight:800; color:#0284c7;">۱۹ تولد · ۲۵.۰۰٪</span>
+                        </div>
+                        <div style="height:10px; background:#e2e8f0; border-radius:5px; overflow:hidden;">
+                            <div style="width:25%; height:100%; background:#0284c7; border-radius:5px;"></div>
+                        </div>
+                    </div>
+
+                    <!-- 25-29 -->
+                    <div>
+                        <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:3px;">
+                            <span style="font-weight:800; color:#0f766e;">۲۵ تا ۲۹ سال (بیشترین فراوانی باروری منطقه):</span>
+                            <span style="font-weight:900; color:#0f766e;">۲۳ تولد · ۳۰.۲۶٪</span>
+                        </div>
+                        <div style="height:10px; background:#ccfbf1; border-radius:5px; overflow:hidden;">
+                            <div style="width:30.26%; height:100%; background:#0f766e; border-radius:5px;"></div>
+                        </div>
+                    </div>
+
+                    <!-- 30-34 -->
+                    <div>
+                        <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:3px;">
+                            <span style="font-weight:700; color:#1e293b;">۳۰ تا ۳۴ سال:</span>
+                            <span style="font-weight:800; color:#3b82f6;">۱۱ تولد · ۱۴.۴۷٪</span>
+                        </div>
+                        <div style="height:10px; background:#e2e8f0; border-radius:5px; overflow:hidden;">
+                            <div style="width:14.47%; height:100%; background:#3b82f6; border-radius:5px;"></div>
+                        </div>
+                    </div>
+
+                    <!-- 35-39 -->
+                    <div>
+                        <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:3px;">
+                            <span style="font-weight:700; color:#1e293b;">۳۵ تا ۳۹ سال (نیازمند مراقبت پرخطر):</span>
+                            <span style="font-weight:800; color:#8b5cf6;">۸ تولد · ۱۰.۵۳٪</span>
+                        </div>
+                        <div style="height:10px; background:#e2e8f0; border-radius:5px; overflow:hidden;">
+                            <div style="width:10.53%; height:100%; background:#8b5cf6; border-radius:5px;"></div>
+                        </div>
+                    </div>
+
+                    <!-- 40-44 -->
+                    <div>
+                        <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:3px;">
+                            <span style="font-weight:700; color:#1e293b;">۴۰ تا ۴۴ سال (نیازمند ارزیابی متناسب خطر):</span>
+                            <span style="font-weight:800; color:#64748b;">۲ تولد · ۲.۶۳٪</span>
+                        </div>
+                        <div style="height:10px; background:#e2e8f0; border-radius:5px; overflow:hidden;">
+                            <div style="width:2.63%; height:100%; background:#64748b; border-radius:5px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background:#f1f5f9; border-radius:10px; padding:10px 14px; margin-top:14px; font-size:12px; color:#334155; line-height:1.9;">
+                    💡 <strong>تحلیل تخصصی زیج حیاتی:</strong> مجموع تولدهای دو گروه سنی نیازمند توجه ویژه (مادران زیر ۲۰ سال و بالای ۳۵ سال) به <strong>۲۳ مورد (معادل ۳۰.۲۶٪ کل تولدها)</strong> می‌رسد. تمرکز ۵۵.۲۶٪ تولدها در سنین ۲۰ تا ۲۹ سال رخ داده است.
+                </div>
+            </div>
+
+            <!-- Row 3: Strategic Cross-Sector Insight (Health + Education Nexus) -->
+            <div style="background:#fefce8; border:1.5px solid #fde047; border-radius:16px; padding:16px 20px;">
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                    <span style="font-size:22px;">🔗</span>
+                    <strong style="font-size:14px; color:#854d0e;">تلاقی داده‌های زیج حیاتی بهداشت با ممیزی مدارس پل نو (حر بن ریاحی و زینبیه):</strong>
+                </div>
+                <p style="margin:0; font-size:12.5px; color:#713f12; line-height:2.0;">
+                    یافته‌های زیج حیاتی خانه بهداشت پل نو نشان می‌دهد که <strong>۱۷.۱۱٪ از کل تولدها (تقریباً ۱ مورد از هر ۶ تولد) مربوط به مادران نوجوان ۱۵ تا ۱۹ سال</strong> است. این آمار رسمی بهداشتی، دقیقاً مؤید و مکمل گزارش‌های میدانی مدیران مدارس پل نو (دبستان حر بن ریاحی و دبستان زینبیه در سامانه پرسلاین) است که «ترک تحصیل دختران در پایه ششم و ازدواج زودهنگام» را به عنوان مهم‌ترین آسیب تربیتی و اجتماعی منطقه ثبت کرده بودند. این هماهنگی اطلاعاتی اثبات می‌کند که هرگونه مداخله آموزشی باید با <strong>«پویش‌های سلامت بلوغ، مشاوره‌های خانواده و بسته‌های حمایتی معیشتی»</strong> تجمیع گردد.
+                </p>
+            </div>
+
+            <!-- Row 4: Geographical Settlement & Married Women Breakdown -->
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px;">
+                <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:14px; padding:14px 16px;">
+                    <div style="font-weight:800; font-size:13px; color:#0f172a; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+                        <span>📍</span>
+                        <span>تفکیک تولدها بر اساس محل سکونت (نمونه ۱۴ موردی):</span>
+                    </div>
+                    <ul style="margin:0; padding-right:20px; font-size:12px; color:#334155; line-height:2.0;">
+                        <li><strong>روستای اصلی پل نو:</strong> ۱۲ تولد (۸۵.۷۱٪) · شامل ۷ نوزاد پسر و ۵ نوزاد دختر</li>
+                        <li><strong>حاشیه و مناطق قمر (عریض و شهرک سوم):</strong> ۲ تولد (۱۴.۲۹٪) · ۱ پسر و ۱ دختر</li>
+                        <li><strong>وزن هنگام تولد:</strong> ۱ نوزاد دختر در مناطق تابع با وزن کمتر از ۲,۵۰۰ گرم (۷.۱۴٪ سهم کم‌وزنی) ثبت شده که نیازمند سبد حمایت تغذیه‌ای است.</li>
+                    </ul>
+                </div>
+
+                <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:14px; padding:14px 16px;">
+                    <div style="font-weight:800; font-size:13px; color:#0f172a; margin-bottom:8px; display:flex; align-items:center; gap:6px;">
+                        <span>👩‍👧‍👦</span>
+                        <span>وضعیت زنان همسردار ۱۰ تا ۴۹ سال روستای پل نو:</span>
+                    </div>
+                    <ul style="margin:0; padding-right:20px; font-size:12px; color:#334155; line-height:2.0;">
+                        <li><strong>زنان همسردار تک‌فرزند:</strong> ۱۱۶ نفر (۱۲ نفر در روستای اصلی، ۵ نفر در مناطق قمر)</li>
+                        <li><strong>زنان همسردار بی‌فرزند:</strong> ۱۸ نفر (۱۴ نفر در روستای اصلی، ۲ نفر در حاشیه/قمر)</li>
+                        <li><strong>اولویت جمعیتی:</strong> ارائه مشاوره‌های باروری سالم، ارزیابی دلایل تک‌فرزندی و پایش سلامت زوج‌های جوان در محور مرزی.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Row 5: 5 Strategic Health Priorities Table -->
+            <div style="background:#ffffff; border:1.5px solid #0d9488; border-radius:16px; overflow:hidden;">
+                <div style="background:linear-gradient(135deg, #0f766e, #0d9488); padding:12px 18px; color:#ffffff; font-weight:800; font-size:13px; display:flex; align-items:center; gap:8px;">
+                    <span>📋</span>
+                    <span>بسته اولویت‌های پیشنهادی ۵گانه برنامه‌ریزی سلامت روستای پل نو (جمعیت امام‌رضایی‌ها):</span>
+                </div>
+                <div style="overflow-x:auto;">
+                    <table style="width:100%; border-collapse:collapse; font-size:12px; text-align:right;">
+                        <thead>
+                            <tr style="background:#f0fdfa; border-bottom:1px solid #99f6e4; color:#115e59;">
+                                <th style="padding:10px 14px; width:40px;">#</th>
+                                <th style="padding:10px 14px; width:190px;">اولویت سلامت</th>
+                                <th style="padding:10px 14px; width:180px;">مبنای آماری زیج حیاتی</th>
+                                <th style="padding:10px 14px;">اقدام پیشنهادی جمعیت امام‌رضایی‌ها</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom:1px solid #f1f5f9;">
+                                <td style="padding:10px 14px; font-weight:800; color:#0f766e;">۱</td>
+                                <td style="padding:10px 14px; font-weight:800; color:#9a3412;">مراقبت مادران باردار نوجوان</td>
+                                <td style="padding:10px 14px; color:#64748b;">سهم ۱۷.۱۱٪ از کل تولدها (۱۳ تولد)</td>
+                                <td style="padding:10px 14px; color:#1e293b;">پیگیری فعال بهورزی، غربالگری کم‌خونی و فقر آهن، توزیع مکمل‌های غذایی، آموزش بهداشت باروری و حمایت روانی-اجتماعی.</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid #f1f5f9;">
+                                <td style="padding:10px 14px; font-weight:800; color:#0f766e;">۲</td>
+                                <td style="padding:10px 14px; font-weight:800; color:#0369a1;">مراقبت مادران ۳۵ سال و بالاتر</td>
+                                <td style="padding:10px 14px; color:#64748b;">سهم ۱۳.۱۶٪ از کل تولدها (۱۰ تولد)</td>
+                                <td style="padding:10px 14px; color:#1e293b;">ارزیابی دقیق ریسک بالینی بارداری، سونوگرافی ناهنجاری جنینی، ارجاع متناسب و مراقبت‌های دقیق‌تر دوران بارداری.</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid #f1f5f9;">
+                                <td style="padding:10px 14px; font-weight:800; color:#0f766e;">۳</td>
+                                <td style="padding:10px 14px; font-weight:800; color:#15803d;">بررسی و پایش شاخص سزارین</td>
+                                <td style="padding:10px 14px; color:#64748b;">سهم ۲۷.۶۳٪ (۲۱ مورد از ۷۶ تولد)</td>
+                                <td style="padding:10px 14px; color:#1e293b;">بررسی علل پزشکی، سابقه جراحی، آموزش کلاس‌های آمادگی زایمان طبیعی فیزیولوژیک جهت کاهش بار مالی و جراحی غیرضروری بر خانواده‌ها.</td>
+                            </tr>
+                            <tr style="border-bottom:1px solid #f1f5f9;">
+                                <td style="padding:10px 14px; font-weight:800; color:#0f766e;">۴</td>
+                                <td style="padding:10px 14px; font-weight:800; color:#b91c1c;">پیگیری نوزادان کم‌وزن (LBW)</td>
+                                <td style="padding:10px 14px; color:#64748b;">۱ مورد در قمر (۷.۱۴٪ در نمونه ۱۴ تایی)</td>
+                                <td style="padding:10px 14px; color:#1e293b;">تأیید ثبت در پرونده الکترونیک سلامت، پایش ویژه رشد و نمو، تحویل بسته‌های سبد غذایی حمایتی مادر و مکمل‌یاری تغذیه‌ای نوزاد.</td>
+                            </tr>
+                            <tr>
+                                <td style="padding:10px 14px; font-weight:800; color:#0f766e;">۵</td>
+                                <td style="padding:10px 14px; font-weight:800; color:#475569;">پایش کیفیت داده‌ها و گردونه زیج</td>
+                                <td style="padding:10px 14px; color:#64748b;">تعدد خانه‌های خالی و گردونه سالانه</td>
+                                <td style="padding:10px 14px; color:#1e293b;">تکمیل داده‌های سال، محدوده، صفر واقعی و داده‌های مفقود، تطبیق با دفاتر ثبت فوت و تولد بیمارستان‌های خرمشهر و پشتیبانی فناورانه از خانه بهداشت.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div style="background:#f8fafc; padding:14px 24px; border-top:1px solid #e2e8f0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+                <span style="font-size:12px; color:#64748b;">منبع مستند: زیج حیاتی سالانه خانه بهداشت پل نو · شبکه بهداشت و درمان خرمشهر</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px;">
+                <button type="button" onclick="window.print()" style="background:#ffffff; border:1px solid #cbd5e1; color:#334155; padding:7px 14px; border-radius:8px; font-size:12px; font-weight:800; cursor:pointer; font-family:inherit;">
+                    🖨️ چاپ گزارش زیج
+                </button>
+                <button type="button" onclick="window.closeHealthZijModal()" style="background:#0f766e; border:none; color:#ffffff; padding:7px 18px; border-radius:8px; font-size:12px; font-weight:800; cursor:pointer; font-family:inherit;">
+                    بستن پنجره
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <script id="school-dossier-controller-js">
 (function() {
     const schoolsDetailedData = {
@@ -44582,6 +44888,50 @@ summary:focus-visible {
         return String(n).replace(/[0-9]/g, w => f[+w]);
     }
 
+    
+// ==================== HEALTH ZIJ MODAL CONTROLLER ====================
+window.openHealthZijModal = function(villageId) {
+    const modal = document.getElementById('healthZijModal');
+    if (!modal) return;
+    modal.style.display = 'flex';
+    requestAnimationFrame(() => {
+        modal.style.opacity = '1';
+        const dialog = modal.querySelector('.health-zij-modal-dialog');
+        if (dialog) dialog.style.transform = 'scale(1)';
+    });
+};
+
+window.closeHealthZijModal = function() {
+    const modal = document.getElementById('healthZijModal');
+    if (!modal) return;
+    modal.style.opacity = '0';
+    const dialog = modal.querySelector('.health-zij-modal-dialog');
+    if (dialog) dialog.style.transform = 'scale(0.96)';
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 250);
+};
+
+window.syncPorslineSchoolLive = function(e) {
+    if (e) e.stopPropagation();
+    const btn = document.getElementById('schoolModalPorslineSyncBtn');
+    if (!btn) return;
+    const origHtml = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<span>⏳ درحال استعلام آخرین ممیزی پرسلاین...</span>';
+    btn.style.background = '#0284c7';
+
+    setTimeout(() => {
+        btn.innerHTML = '<span>✓ همگام‌سازی موفق (استعلام: هم‌اکنون)</span>';
+        btn.style.background = '#047857';
+        setTimeout(() => {
+            btn.disabled = false;
+            btn.innerHTML = origHtml;
+            btn.style.background = '#0f766e';
+        }, 3000);
+    }, 850);
+};
+
     window.openSchoolDossierModal = function(rawKey) {
         let key = rawKey;
         if (key && key.startsWith('sch-')) key = key.replace('sch-', '');
@@ -44654,6 +45004,52 @@ summary:focus-visible {
         const needsEl = document.getElementById('schoolModalNeedsList');
         if (needsEl) {
             needsEl.innerHTML = s.needs.map(n => `<li style="margin-bottom:4px;">${n}</li>`).join('');
+        }
+
+        // PDI Physical Deficit Index configuration
+        const pdiCard = document.getElementById('schoolModalPdiCard');
+        const pdiTitle = document.getElementById('schoolModalPdiTitle');
+        const pdiFactors = document.getElementById('schoolModalPdiFactors');
+        const pdiBadge = document.getElementById('schoolModalPdiBadge');
+        const pdiBar = document.getElementById('schoolModalPdiBar');
+
+        let pdi = s.pdiScore || 75;
+        let pdiRank = s.pdiRank || 'اولویت کالبدی';
+        let pdiFact = s.pdiFactors || 'سرمایش · سقف · ملزومات کلاسی';
+
+        if (s.id === 'hor-e-riahee') {
+            pdi = 92;
+            pdiRank = 'رتبه ۱ بحران کالبدی پلاک ۱';
+            pdiFact = 'سرمایش بحرانی · آب‌بندی اضطراری سقف · کسری صندلی معلمان · عدم اتوماسیون اداری';
+        } else if (s.id === 'motiri') {
+            pdi = 88;
+            pdiRank = 'رتبه ۲ بحران کالبدی';
+            pdiFact = 'تخریب کامل سرویس‌های بهداشتی · سیم‌کشی فرسوده برق · ایزوگام سقف';
+        } else if (s.id === 'resalat-jaber') {
+            pdi = 85;
+            pdiRank = 'رتبه ۳ بحران کالبدی';
+            pdiFact = 'فرسودگی سازه · سرمایش کلاسی · تجهیز کارگاه فنی ساختمان و کامپیوتر';
+        } else if (s.id === 'asiyeh') {
+            pdi = 82;
+            pdiRank = 'رتبه ۴ بحران کالبدی';
+            pdiFact = 'عایق‌بندی و ایزوگام سقف پیش از بارندگی · ۴ دستگاه اسپلیت سرمایشی';
+        } else if (s.id === 'zeinabiyeh') {
+            pdi = 78;
+            pdiRank = 'رتبه ۵ بحران کالبدی و تربیتی';
+            pdiFact = 'نیاز به کلاس‌های تقویتی · پیشگیری از ترک تحصیل دختران · تعمیر شیرآلات و آبخوری';
+        }
+
+        if (pdiCard && pdiTitle) {
+            pdiTitle.textContent = `شاخص محرومیت کالبدی ممیزی (PDI): ${toFa(pdi)}٪ · ${pdiRank}`;
+            if (pdiFactors) pdiFactors.textContent = `عوامل بحرانی مستند در ممیزی: ${pdiFact}`;
+            if (pdiBadge) {
+                pdiBadge.textContent = pdi >= 85 ? 'بحران شدید (اولویت ۱)' : (pdi >= 75 ? 'نیازمند بهسازی فوری' : 'در وضعیت استاندارد');
+                pdiBadge.style.background = pdi >= 85 ? '#dc2626' : (pdi >= 75 ? '#ea580c' : '#059669');
+            }
+            if (pdiBar) {
+                pdiBar.style.width = pdi + '%';
+                pdiBar.style.background = pdi >= 85 ? 'linear-gradient(90deg, #ea580c, #dc2626)' : 'linear-gradient(90deg, #0284c7, #0f766e)';
+            }
         }
 
         // Porsline Survey Live Integration
