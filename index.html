@@ -35390,7 +35390,7 @@ document.addEventListener('click', (e) => {
     const gisLayerData = {
                 schools: [
             // ۱. سرحانیه علیا
-            { id: 'sch-hor-e-riahee', schoolKey: 'hor-e-riahee', name: 'دبستان حر بن ریاحی', villageId: 'sarhaniyeh-olya', villageName: 'سرحانیه علیا', x: 0.812, y: 0.635, desc: '۲۹۷ دانش‌آموز پسرانه · مدیر: آقای شرجی · 🚨 نیازمند بازسازی کامل کالبدی', badge: '🚨 بازسازی کالبدی' },
+            { id: 'sch-zeinabiyeh', schoolKey: 'zeinabiyeh', name: 'دبستان زینبیه', villageId: 'sarhaniyeh-olya', villageName: 'سرحانیه علیا', x: 0.812, y: 0.635, desc: '۲۵۸ دانش‌آموز دخترانه · مدیر: خانم مکیه محمدی (۰۹۱۶۶۳۴۱۳۷۳) · قطب آموزش دختران حومه غربی و سرحانیه علیا', badge: 'ابتدایی دخترانه' },
             { id: 'sch-enghelab', schoolKey: 'enghelab', name: 'دبستان انقلاب اسلامی', villageId: 'sarhaniyeh-olya', villageName: 'سرحانیه علیا', x: 0.816, y: 0.640, desc: '۱۹۴ دانش‌آموز پسرانه · مدیر: آقای آلبوغبیش · دایر در نوبت اول', badge: 'ابتدایی پسرانه' },
             { id: 'sch-marzdaran', schoolKey: 'marzdaran', name: 'دبستان مرزداران', villageId: 'sarhaniyeh-olya', villageName: 'سرحانیه علیا', x: 0.808, y: 0.630, desc: '۱۷۳ دانش‌آموز پسرانه · مدیر: آقای سکینی‌نیا · پوشش آموزشی حاشیه اروند', badge: 'ابتدایی پسرانه' },
             { id: 'sch-alavieh', schoolKey: 'alavieh', name: 'دبستان علویه', villageId: 'sarhaniyeh-olya', villageName: 'سرحانیه علیا', x: 0.818, y: 0.648, desc: '۲۴۰ دانش‌آموز دخترانه · مدیر: خانم طبیشی · فعال در نوبت اول', badge: 'ابتدایی دخترانه' },
@@ -35401,9 +35401,9 @@ document.addEventListener('click', (e) => {
             { id: 'sch-motiri', schoolKey: 'motiri', name: 'دبستان شهید مطیری نژاد', villageId: 'sarhaniyeh-sofla', villageName: 'سرحانیه سفلی', x: 0.800, y: 0.608, desc: '۱۷۵ دانش‌آموز دخترانه · مدیر: خانم بحرانی · 🚨 نیازمند تعمیرات اساسی کالبدی', badge: '🚨 بازسازی کالبدی' },
 
             // ۳. پل نو
+            { id: 'sch-hor-e-riahee', schoolKey: 'hor-e-riahee', name: 'دبستان حر بن ریاحی', villageId: 'pol-now', villageName: 'پل نو', x: 0.638, y: 0.470, desc: '۹۰ دانش‌آموز (۴۰ دختر، ۵۰ پسر) · ۷ کلاس درس · مدیر: آقای شرجی · ۳۶ خانواده کم‌برخوردار · کانون آموزش روستای پل نو', badge: 'ابتدایی پسرانه' },
             { id: 'sch-dekhoda', schoolKey: 'dekhoda', name: 'دبستان دهخدا', villageId: 'pol-now', villageName: 'پل نو', x: 0.645, y: 0.478, desc: '۲۷۰ دانش‌آموز پسرانه · مدیر: آقای آبسالان · کانون آموزش ابتدایی غرب خرمشهر', badge: 'ابتدایی پسرانه' },
             { id: 'sch-razmandegan', schoolKey: 'razmandegan', name: 'دبستان رزمندگان', villageId: 'pol-now', villageName: 'پل نو', x: 0.652, y: 0.485, desc: '۱۸۵ دانش‌آموز پسرانه · مدیر: آقای غیورپور · مجهز به آزمایشگاه پایه', badge: 'ابتدایی پسرانه' },
-            { id: 'sch-zeinabiyeh', schoolKey: 'zeinabiyeh', name: 'دبستان زینبیه', villageId: 'pol-now', villageName: 'پل نو', x: 0.638, y: 0.470, desc: '۲۵۵ دانش‌آموز دخترانه · مدیر: خانم حیدری · قطب آموزش دختران روستای پل نو', badge: 'ابتدایی دخترانه' },
 
             // ۴. سوره
             { id: 'sch-komeil', schoolKey: 'komeil', name: 'مدرسه کمیل (متوسطه)', villageId: 'soureh', villageName: 'سوره', x: 0.690, y: 0.755, desc: '۱۱۵ دانش‌آموز متوسطه اول پسرانه · مدیر: آقای عاشوری · پوشش تحصیلی نوجوانان منطقه', badge: 'متوسطه اول' },
@@ -35562,14 +35562,31 @@ water: [
         if (descEl) descEl.textContent = pt.desc;
 
         if (actionBtn) {
-            if (pt.villageId === 'yadman-shalamcheh' || pt.villageId === 'yadman-khein') {
-                actionBtn.style.display = 'none';
-            } else {
-                actionBtn.style.display = '';
-                actionBtn.onclick = function() {
+            const isSchool = layerKey === 'schools' || (pt.id && pt.id.startsWith('sch-')) || pt.schoolKey;
+            if (isSchool) {
+                actionBtn.style.display = 'flex';
+                actionBtn.style.alignItems = 'center';
+                actionBtn.style.justifyContent = 'space-between';
+                actionBtn.style.background = 'linear-gradient(135deg, #0f766e, #0d9488)';
+                actionBtn.style.color = '#ffffff';
+                actionBtn.style.fontWeight = '800';
+                actionBtn.style.fontSize = '12px';
+                actionBtn.style.padding = '9px 14px';
+                actionBtn.style.borderRadius = '10px';
+                actionBtn.style.border = 'none';
+                actionBtn.style.cursor = 'pointer';
+                actionBtn.style.boxShadow = '0 4px 14px rgba(15, 118, 110, 0.4)';
+                actionBtn.innerHTML = '<span>مشاهده شناسنامه جامع مدرسه 🏫</span> <span style="font-size:14px; margin-right:auto;">←</span>';
+                actionBtn.onclick = function(e) {
+                    if (e) e.stopPropagation();
                     tooltip.classList.remove('is-active');
-                    openTargetVillageDossier(pt.villageId, pt.villageName);
+                    const sk = pt.schoolKey || (pt.id ? pt.id.replace('sch-', '') : '');
+                    if (typeof window.openSchoolDossierModal === 'function') {
+                        window.openSchoolDossierModal(sk);
+                    }
                 };
+            } else {
+                actionBtn.style.display = 'none';
             }
         }
 
@@ -44069,6 +44086,21 @@ summary:focus-visible {
                 </ul>
             </div>
 
+            <!-- Section 1.5: Porsline Live Field Audit Status -->
+            <div id="schoolModalPorslineCard" style="background:#f0fdf4; border:1.5px solid #86efac; border-radius:14px; padding:14px 18px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <span style="font-size:22px;">📋</span>
+                    <div>
+                        <div style="font-size:13px; font-weight:800; color:#14532d;" id="schoolModalPorslineTitle">پایش میدانی پرسلاین: متصل به سامانه ممیزی زنده پلاک ۱</div>
+                        <div style="font-size:11.5px; color:#166534; margin-top:2px;" id="schoolModalPorslineSub">شناسنامه جامع میدانی این مدرسه در سامانه ممیزی پرسلاین ثبت و ارزیابی شده است.</div>
+                    </div>
+                </div>
+                <a id="schoolModalPorslineLink" href="#" target="_blank" rel="noopener noreferrer" style="background:#15803d; color:#ffffff; font-size:11.5px; font-weight:800; padding:8px 16px; border-radius:8px; text-decoration:none; display:inline-flex; align-items:center; gap:6px; box-shadow:0 3px 10px rgba(21,128,61,0.25); transition:all 0.15s ease;">
+                    <span id="schoolModalPorslineBtnText">مشاهده فرم ممیزی در پرسلاین</span>
+                    <span>↗</span>
+                </a>
+            </div>
+
             <!-- Section 2: Documented Beneficiaries & Students from Database -->
             <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:14px; padding:16px;">
                 <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
@@ -44124,16 +44156,18 @@ summary:focus-visible {
             fullName: 'دبستان حر بن ریاحی (ابتدایی پسرانه)',
             gender: 'پسرانه',
             level: 'ابتدایی',
-            villageId: 'sarhaniyeh-olya',
-            villageName: 'سرحانیه علیا',
+            villageId: 'pol-now',
+            villageName: 'پل نو',
             principal: 'آقای شرجی',
-            phone: '۰۹۱۶*** - ثبت در دبیرخانه ممیزی',
-            studentsCount: 297,
-            classesCount: 8,
-            condition: '🚨 نیازمند بازسازی کامل کالبدی',
+            phone: 'ثبت در دبیرخانه ممیزی (کد ممیزی پرسلاین: ejMU7)',
+            studentsCount: 90,
+            classesCount: 7,
+            condition: '🚨 نیازمند کلاس تقویتی، بازسازی کالبدی و پشتیبانی تحصیلی',
             conditionSeverity: 'critical',
             budgetEst: '۱۸۵,۰۰۰,۰۰۰ تومان',
-            address: 'خرمشهر، جاده مرزی شلمچه، روستای سرحانیه علیا',
+            address: 'خرمشهر، جاده مرزی شلمچه، روستای پل نو',
+            porslineCode: 'ejMU7',
+            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/ejMU7?review_token=074e7779-7fc9-4876-90f9-4b45711a783a',
             needs: [
                 'میز و صندلی آموزگار و معلم (۸ ست کامل استاندارد)',
                 'رایانه اداری، چاپگر و سیستم اتوماسیون مدرسه',
@@ -44196,6 +44230,8 @@ summary:focus-visible {
         'razmandegan': {
             id: 'razmandegan',
             name: 'دبستان رزمندگان',
+            porslineCode: '3EEkN',
+            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/3EEkN?review_token=b1817612-c105-448f-ad13-c6b209fec8df',
             fullName: 'دبستان رزمندگان (ابتدایی پسرانه)',
             gender: 'پسرانه',
             level: 'ابتدایی',
@@ -44288,6 +44324,8 @@ summary:focus-visible {
         'resalat-jaber': {
             id: 'resalat-jaber',
             name: 'مدرسه رسالت / جابر بن حیان',
+            porslineCode: 'I6wyN',
+            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/I6wyN?review_token=9ec4bc4a-1273-4cc9-82c8-bc7ecea2b9ce',
             fullName: 'مدرسه رسالت و جابر بن حیان (ابتدایی پسرانه)',
             gender: 'پسرانه',
             level: 'ابتدایی',
@@ -44312,6 +44350,8 @@ summary:focus-visible {
         'shalamcheh-girls': {
             id: 'shalamcheh-girls',
             name: 'دبستان شهدای شلمچه',
+            porslineCode: 'ERBSW',
+            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/ERBSW?review_token=508d86b4-e79d-451a-8d5c-25d967956a70',
             fullName: 'دبستان شهدای شلمچه (ابتدایی دخترانه)',
             gender: 'دخترانه',
             level: 'ابتدایی',
@@ -44335,6 +44375,8 @@ summary:focus-visible {
         'alavieh': {
             id: 'alavieh',
             name: 'دبستان علویه',
+            porslineCode: 'GM3RK',
+            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/GM3RK?review_token=193ea18f-5dd9-42c5-a087-6e5fe310e47c',
             fullName: 'دبستان علویه (ابتدایی دخترانه)',
             gender: 'دخترانه',
             level: 'ابتدایی',
@@ -44361,16 +44403,18 @@ summary:focus-visible {
             fullName: 'دبستان زینبیه (ابتدایی دخترانه)',
             gender: 'دخترانه',
             level: 'ابتدایی',
-            villageId: 'pol-now',
-            villageName: 'پل نو',
-            principal: 'خانم حیدری',
-            phone: '۰۹۱۶*** - ثبت در دبیرخانه ممیزی',
-            studentsCount: 255,
-            classesCount: 8,
-            condition: '✓ قطب آموزش دختران پل نو',
-            conditionSeverity: 'normal',
-            budgetEst: '۹۲,۰۰۰,۰۰۰ تومان',
-            address: 'خرمشهر، روستای پل نو، کوچه ولایت',
+            villageId: 'sarhaniyeh-olya',
+            villageName: 'سرحانیه علیا',
+            principal: 'خانم مکیه محمدی',
+            phone: '۰۹۱۶۶۳۴۱۳۷۳',
+            studentsCount: 258,
+            classesCount: 12,
+            condition: '🚨 نیازمند کلاس‌های تقویتی و پیشگیری از ترک تحصیل پایه ششم',
+            conditionSeverity: 'warning',
+            budgetEst: '۱۲۰,۰۰۰,۰۰۰ تومان',
+            address: 'خرمشهر، حومه غربی، روستای سرحانیه دوم (علیا)',
+            porslineCode: '8iaE1',
+            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/8iaE1?review_token=e881ab82-2f42-4e36-a7d4-5887d1d93678',
             needs: [
                 'دیتاپروژکتور کلاسی هوشمند',
                 'سیستم رایانه دفتر مدیریت',
@@ -44381,6 +44425,8 @@ summary:focus-visible {
         'motiri': {
             id: 'motiri',
             name: 'دبستان شهید مطیری نژاد',
+            porslineCode: 'nqZRF',
+            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/nqZRF?review_token=bda3f1c4-633b-4c60-93d7-6826a1dd7851',
             fullName: 'دبستان شهید مطیری نژاد (ابتدایی دخترانه)',
             gender: 'دخترانه',
             level: 'ابتدایی',
@@ -44430,6 +44476,8 @@ summary:focus-visible {
         'rahiyan-noor': {
             id: 'rahiyan-noor',
             name: 'مدرسه راهیان نور',
+            porslineCode: 'R4lnc',
+            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/R4lnc?review_token=756def52-a98f-4150-89ce-fdac1eea4b97',
             fullName: 'مدرسه راهیان نور (ابتدایی دخترانه)',
             gender: 'دخترانه',
             level: 'ابتدایی',
@@ -44476,6 +44524,8 @@ summary:focus-visible {
         'shamkhani': {
             id: 'shamkhani',
             name: 'هنرستان شهدای شمخانی',
+            porslineCode: 'MD2R3',
+            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/MD2R3?review_token=81e6c235-85cc-4352-a095-314bd4ebadc7',
             fullName: 'هنرستان کاردانش و فنی شهدای شمخانی (دخترانه)',
             gender: 'دخترانه',
             level: 'هنرستان فنی',
@@ -44500,6 +44550,8 @@ summary:focus-visible {
         'al-yasin': {
             id: 'al-yasin',
             name: 'دبستان آل‌یاسین',
+            porslineCode: '85MvL',
+            porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/85MvL?review_token=a8d45885-9731-4d09-967d-f08a8be44ac5',
             fullName: 'دبستان نوساز آل‌یاسین (ابتدایی و پیش‌دبستانی)',
             gender: 'مختلط',
             level: 'ابتدایی',
@@ -44602,6 +44654,45 @@ summary:focus-visible {
         const needsEl = document.getElementById('schoolModalNeedsList');
         if (needsEl) {
             needsEl.innerHTML = s.needs.map(n => `<li style="margin-bottom:4px;">${n}</li>`).join('');
+        }
+
+        // Porsline Survey Live Integration
+        const pCard = document.getElementById('schoolModalPorslineCard');
+        const pTitle = document.getElementById('schoolModalPorslineTitle');
+        const pSub = document.getElementById('schoolModalPorslineSub');
+        const pLink = document.getElementById('schoolModalPorslineLink');
+        const pBtnText = document.getElementById('schoolModalPorslineBtnText');
+
+        if (pCard && pLink) {
+            if (s.porslineReviewUrl) {
+                pCard.style.background = '#f0fdf4';
+                pCard.style.borderColor = '#86efac';
+                if (pTitle) {
+                    pTitle.style.color = '#14532d';
+                    pTitle.textContent = 'پایش میدانی پرسلاین: ثبت‌شده و مستند در ممیزی میدانی ✓ (کد پیگیری: ' + s.porslineCode + ')';
+                }
+                if (pSub) {
+                    pSub.style.color = '#166534';
+                    pSub.textContent = 'شناسنامه جامع میدانی و صورت‌جلسه نیازسنجی این مدرسه با موفقیت در پرسلاین ثبت و ارزیابی شده است.';
+                }
+                pLink.href = s.porslineReviewUrl;
+                pLink.style.background = '#15803d';
+                if (pBtnText) pBtnText.textContent = 'مشاهده فرم ممیزی در پرسلاین';
+            } else {
+                pCard.style.background = '#fffbeb';
+                pCard.style.borderColor = '#fde68a';
+                if (pTitle) {
+                    pTitle.style.color = '#78350f';
+                    pTitle.textContent = 'پایش میدانی پرسلاین: در انتظار تکمیل ارزیاب میدانی 📋';
+                }
+                if (pSub) {
+                    pSub.style.color = '#92400e';
+                    pSub.textContent = 'ارزیابان میدانی می‌توانند جهت تکمیل و به‌روزرسانی فرم شناسنامه جامع این مدرسه در پرسلاین اقدام نمایند.';
+                }
+                pLink.href = 'https://survey.porsline.ir/s/vNs67hKl';
+                pLink.style.background = '#d97706';
+                if (pBtnText) pBtnText.textContent = 'ثبت و تکمیل فرم در پرسلاین ➕';
+            }
         }
 
         // Search servicesData for students belonging to this school
