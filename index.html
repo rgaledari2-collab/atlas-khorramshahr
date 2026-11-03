@@ -35570,7 +35570,7 @@ document.addEventListener('click', (e) => {
             { id: 'sch-al-yasin', schoolKey: 'al-yasin', name: 'دبستان آل‌یاسین', villageId: 'shahrak-sadat', villageName: 'شهرک سادات', x: 0.425, y: 0.298, desc: '۳۶ دانش‌آموز (۶ کلاس درس) · مدیر: خانم شهلا بوسویط (۰۹۰۳۰۳۶۲۶۵۹) · دبستان نوساز محور شهرک سادات · کد پرسلاین: 85MvL', badge: 'ابتدایی نوساز (۳۶ دانش‌آموز)' },
 
             // ۷. عریض
-            { id: 'sch-khedmat-ariz', schoolKey: 'khedmat-ariz', name: 'دبستان شهدای خدمت عریض', villageId: 'ariz', villageName: 'عریض', x: 0.510, y: 0.420, desc: '۲۴ دانش‌آموز (۱۴ دختر، ۱۰ پسر در ۲ کلاس) · مدیران: عادل عباسپور (۰۹۳۵۹۳۶۱۴۸۶) / محمدرضا دفاعی · کانون آموزش روستای عریض · کد پرسلاین: 1KQeL', badge: 'ابتدایی مختلط (۲۴ دانش‌آموز)' }
+            { id: 'sch-emam-rezaeiha', schoolKey: 'emam-rezaeiha', name: 'مدرسه امام‌رضایی‌ها', villageId: 'ariz', villageName: 'عریض', x: 0.654, y: 0.252, desc: '۲۴ دانش‌آموز (۱۴ دختر، ۱۰ پسر در ۲ کلاس چندپایه) · کانون آموزش روستای عریض · مدیران: عادل عباسپور (۰۹۳۵۹۳۶۱۴۸۶) و محمدرضا دفاعی · کد پرسلاین: 1KQeL', badge: 'ابتدایی عریض (۲۴ دانش‌آموز)' }
         ],
         health: [
             { id: 'hlt-pol-now', name: 'خانه بهداشت روستایی پل نو', villageId: 'pol-now', villageName: 'پل نو', x: 0.649, y: 0.482, desc: 'پایشگر زیج حیاتی و سلامت ۳,۸۰۶ نفر جمعیت مرزی · ۱۰۰٪ زایمان ایمن بیمارستانی · پایش تغذیه مادر و کودک', badge: 'زیج حیاتی فعال' },
@@ -44963,33 +44963,36 @@ summary:focus-visible {
             ],
             keywords: ['آل یاسین', 'آل‌یاسین', 'شهلا بوسویط', 'شهرک سادات']
         },
-        'shohada-khedmat': {
-            id: 'shohada-khedmat',
-            name: 'دبستان شهدای خدمت عریض',
+        'emam-rezaeiha': {
+            id: 'emam-rezaeiha',
+            name: 'مدرسه امام‌رضایی‌ها',
             porslineCode: '1KQeL',
             porslineReviewUrl: 'https://survey.porsline.ir/n/k/vNs67hKl/1KQeL?review_token=a23b6795-a390-4885-b496-635b6b2f8420',
-            fullName: 'دبستان شهدای خدمت (ابتدایی مختلط دولتی تک‌شیفت)',
+            fullName: 'مدرسه امام‌رضایی‌ها (ابتدایی روستای عریض)',
             gender: 'مختلط',
-            level: 'ابتدایی',
+            level: 'ابتدایی (پایه‌های ۱ تا ۶ در ۲ کلاس چندپایه)',
             villageId: 'ariz',
             villageName: 'عریض',
-            principal: 'عادل عباسپور',
+            principal: 'عادل عباسپور (۰۹۳۵۹۳۶۱۴۸۶) / محمدرضا دفاعی',
             phone: '۰۹۳۵۹۳۶۱۴۸۶',
             studentsCount: 24,
             classesCount: 2,
-            orphansCount: 3,
-            needyCount: 8,
-            condition: '✓ دایر در نخلستان‌های عریض · آموزگاران: عباسپور و دفاعی',
-            conditionSeverity: 'normal',
-            budgetEst: '۲۸,۰۰۰,۰۰۰ تومان',
-            address: 'خرمشهر، روستای عریض، جاده شلمچه',
+            orphansCount: 4,
+            needyCount: 16,
+            condition: '⚠️ نیازمند تجهیزات سرمایشی، ویدئوپروژکتور، وایت‌برد و بهسازی کالبدی',
+            conditionSeverity: 'warning',
+            budgetEst: '۴۵,۰۰۰,۰۰۰ تومان',
+            address: 'خوزستان، خرمشهر، روستای عریض، کانون آموزش روستا',
             needs: [
-                'دستگاه آبسردکن استیل و آبخوری بهداشتی',
-                'اسپلیت سرمایشی کلاس درس',
-                'بسته‌های نوشت‌افزار و کتاب‌های تقویتی'
+                'تامین تجهیزات تهویه (۵ عدد پنکه سقفی و ۵ عدد بخاری استاندار)',
+                'تجهیز ۴ دستگاه ویدئوپروژکتور آموزشی و ۲ تخته وایت‌برد بزرگ',
+                '۱۰ تخته پرده کلاسی و بهسازی نور محیطی کلاس‌ها',
+                'قالی و موکت برای نمازخانه و بهسازی فضای استقرار دانش‌آموزان',
+                'نقاشی دیوارهای بیرونی و داخلی مدرسه و فضاسازی باطراوت کلاسی'
             ],
-            keywords: ['شهدای خدمت', 'عریض', 'عباسپور', 'عادل عباسپور']
+            keywords: ['امام رضایی ها', 'امام‌رضایی‌ها', 'مدرسه امام رضایی ها', 'عریض', 'عباسپور', 'عادل عباسپور', 'دفاعی', 'محمدرضا دفاعی', 'شهدای خدمت']
         },
+        
         'komeil': {
             id: 'komeil',
             name: 'مدرسه کمیل',
@@ -45117,7 +45120,9 @@ summary:focus-visible {
             keywords: ['مصلاوی ۲', 'کلثومی']
         }
     };
-window.schoolsDetailedData = schoolsDetailedData;
+schoolsDetailedData['shohada-khedmat'] = schoolsDetailedData['emam-rezaeiha'];
+schoolsDetailedData['khedmat-ariz'] = schoolsDetailedData['emam-rezaeiha'];
+    window.schoolsDetailedData = schoolsDetailedData;
 
     function toFa(n) {
         if (n === null || n === undefined) return '';
@@ -45180,8 +45185,11 @@ window.syncPorslineSchoolLive = function(e) {
         if (keys.length === 0) return;
 
         let html = '';
+        const seenIds = new Set();
         keys.forEach(k => {
             const s = data[k];
+            if (!s || !s.id || seenIds.has(s.id)) return;
+            seenIds.add(s.id);
             const isCritical = s.conditionSeverity === 'critical';
             const genderCls = s.gender.includes('پسر') ? 'boys' : (s.gender.includes('دختر') ? 'girls' : 'mixed');
             const bg = isCritical ? '#fffaf0' : '#f8fafc';
@@ -45247,6 +45255,7 @@ window.syncPorslineSchoolLive = function(e) {
 window.openSchoolDossierModal = function(rawKey) {
         let key = rawKey;
         if (key && key.startsWith('sch-')) key = key.replace('sch-', '');
+        if (key === 'shohada-khedmat' || key === 'khedmat-ariz') key = 'emam-rezaeiha';
         
         // Find best match in detailed data
         let s = schoolsDetailedData[key];
