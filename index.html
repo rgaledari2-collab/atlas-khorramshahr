@@ -7529,6 +7529,10 @@ body.village-leaving .map-scene {
 #printableA4VillageDossier {
     display: none !important;
 }
+
+#pdfViewerNewTabBtn {
+    display: none !important;
+}
 </style>
 
 
@@ -9129,8 +9133,8 @@ body.in-village .gis-dock-wrap {
     --pt-glow: rgba(245, 158, 11, 0.4);
 }
 
-/* Compact School Pins on GIS: Icon only by default, smooth label reveal on hover */
-.gis-point.gis-pt-schools {
+/* Universal Compact Pins across ALL GIS Layers (Schools, Health, Water, Corridor): Icon only by default, smooth label reveal on hover */
+.gis-point {
     width: 32px !important;
     height: 32px !important;
     min-width: 32px !important;
@@ -9151,7 +9155,7 @@ body.in-village .gis-dock-wrap {
                 z-index 0.1s ease !important;
 }
 
-.gis-point.gis-pt-schools .gis-point-icon {
+.gis-point .gis-point-icon {
     width: 24px !important;
     height: 24px !important;
     font-size: 14px !important;
@@ -9162,12 +9166,12 @@ body.in-village .gis-dock-wrap {
     justify-content: center !important;
 }
 
-.gis-point.gis-pt-schools .gis-point-pulse {
+.gis-point .gis-point-pulse {
     border-radius: 50% !important;
     transition: border-radius 0.26s ease !important;
 }
 
-.gis-point.gis-pt-schools .gis-point-label {
+.gis-point .gis-point-label {
     max-width: 0 !important;
     opacity: 0 !important;
     overflow: hidden !important;
@@ -9182,9 +9186,9 @@ body.in-village .gis-dock-wrap {
                 padding 0.20s ease !important;
 }
 
-/* Hover & Focus State: Expand badge and show school name */
-.gis-point.gis-pt-schools:hover,
-.gis-point.gis-pt-schools:focus-visible {
+/* Hover & Focus: Expand badge smoothly to reveal name on all layers */
+.gis-point:hover,
+.gis-point:focus-visible {
     width: auto !important;
     min-width: 32px !important;
     border-radius: 20px !important;
@@ -9192,17 +9196,17 @@ body.in-village .gis-dock-wrap {
     gap: 6px !important;
     z-index: 100 !important;
     transform: translate(-50%, -50%) scale(1.12) !important;
-    box-shadow: 0 10px 28px rgba(245, 158, 11, 0.65), 0 0 0 2px rgba(245, 158, 11, 0.5) !important;
+    box-shadow: 0 10px 28px var(--pt-glow, rgba(0,0,0,0.6)), 0 0 0 2px var(--pt-color, #38bdf8) !important;
     border-color: #ffffff !important;
 }
 
-.gis-point.gis-pt-schools:hover .gis-point-pulse,
-.gis-point.gis-pt-schools:focus-visible .gis-point-pulse {
+.gis-point:hover .gis-point-pulse,
+.gis-point:focus-visible .gis-point-pulse {
     border-radius: 22px !important;
 }
 
-.gis-point.gis-pt-schools:hover .gis-point-label,
-.gis-point.gis-pt-schools:focus-visible .gis-point-label {
+.gis-point:hover .gis-point-label,
+.gis-point:focus-visible .gis-point-label {
     max-width: 280px !important;
     opacity: 1 !important;
     margin-right: 4px !important;
@@ -15161,10 +15165,7 @@ dialog#personDossierDialog::backdrop,
                         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                         <span>دانلود PDF</span>
                     </a>
-                    <button type="button" id="pdfViewerNewTabBtn" class="pdf-btn" title="باز کردن مستقیم در تب مستقل مرورگر" aria-label="باز کردن سند در تب جدید مرورگر">
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                        <span>تب جدید</span>
-                    </button>
+                    
                     <button type="button" class="pdf-close-btn" id="pdfViewerCloseBtn" title="بستن پنجره تمام‌صفحه (Esc)" aria-label="بستن پنجره تمام‌صفحه (Esc)">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                     </button>
@@ -41384,7 +41385,7 @@ summary:focus-visible {
                     <div>
                         <h4 style="margin:0 0 4px; font-size:15px; font-weight:900; color:#132a26; display:flex; align-items:center; gap:8px;">
                             <span>🏫 شناسنامه جامع ۱۶ مدرسه پلاک ۱ ایران و گلوگاه‌های کالبدی</span>
-                            <span style="font-size:11px; background:#fef3c7; color:#92400e; border:1px solid #fde68a; padding:2px 8px; border-radius:6px;">۳,۱۷۶ دانش‌آموز</span>
+                            <span style="font-size:11px; background:#fef3c7; color:#92400e; border:1px solid #fde68a; padding:2px 8px; border-radius:6px;">۳,۱۲۴ دانش‌آموز</span>
                         </h4>
                         <div style="font-size:11.5px; color:#64748b;">اطلاعات رسمی مدیران، تعداد محصلان و نیازمندی‌های فوری ساختمانی، سرمایشی و فناوری به تفکیک مدارس</div>
                     </div>
